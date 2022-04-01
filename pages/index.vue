@@ -1,8 +1,6 @@
 <template>
   <atom-wrapper tag="main">
-    <atom-wrapper tag="section" full-height flex flex-center>
-      <hero-illus />
-    </atom-wrapper>
+    <hero-banner />
     <atom-wrapper tag="section" full-height flex flex-center>
       Problematiques
     </atom-wrapper>
@@ -17,10 +15,10 @@
 
 <script>
 import AtomWrapper from '../components/atoms/AtomWrapper'
-import HeroIllus from '../components/molecules/HeroIllus'
+import HeroBanner from '../components/organisms/HeroBanner'
 
 export default {
   name: 'IndexPage',
-  components: { AtomWrapper, HeroIllus },
+  components: { AtomWrapper, HeroBanner },
 }
 </script>
