@@ -8,7 +8,12 @@
       class="section-hero"
     >
       <hero-banner />
-      <button-arrow direction="down" :size="46" :on-click="scrollDown" />
+      <button-arrow
+        direction="down"
+        :size="46"
+        :arrow-size="24"
+        :on-click="scrollDown"
+      />
     </atom-wrapper>
     <atom-wrapper
       ref="sectionProblematics"
@@ -17,7 +22,7 @@
       flex
       flex-center
     >
-      Problematiques
+      <slider-questions />
     </atom-wrapper>
     <atom-wrapper tag="section" full-height flex flex-center>
       Services
@@ -31,11 +36,12 @@
 <script>
 import AtomWrapper from '../components/atoms/AtomWrapper'
 import ButtonArrow from '../components/atoms/ButtonArrow'
+import SliderQuestions from '../components/molecules/SliderQuestions'
 import HeroBanner from '../components/organisms/HeroBanner'
 
 export default {
   name: 'IndexPage',
-  components: { AtomWrapper, HeroBanner, ButtonArrow },
+  components: { AtomWrapper, HeroBanner, ButtonArrow, SliderQuestions },
   methods: {
     scrollDown() {
       this.$refs.sectionProblematics.scrollIntoView()

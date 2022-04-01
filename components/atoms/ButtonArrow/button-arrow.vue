@@ -2,8 +2,8 @@
   <button class="button-arrow" :style="cssProps" @click="onClick">
     <atom-image
       src="/images/arrow.svg"
-      :width="24"
-      :height="24"
+      :width="arrowSize"
+      :height="arrowSize"
       :fluid="false"
       :class="`--${direction}`"
     />
@@ -23,6 +23,10 @@ export default {
     size: {
       type: Number,
       default: 46,
+    },
+    arrowSize: {
+      type: Number,
+      default: 24,
     },
     onClick: {
       type: Function,
@@ -54,6 +58,12 @@ export default {
 
   .atom-image {
     &.--down {
+    }
+    &.--left {
+      transform: rotate(90deg);
+    }
+    &.--right {
+      transform: rotate(-90deg);
     }
   }
 }
