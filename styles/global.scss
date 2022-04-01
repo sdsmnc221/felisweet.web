@@ -1,0 +1,19 @@
+@import './variables';
+
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&display=swap');
+
+@font-face {
+  font-family: 'Lucida';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('~assets/fonts/lucida-handwriting.ttf') format('truetype');
+}
+
+*,
+body {
+  box-sizing: border-box;
+  font-family: 'Lucida', sans-serif;
+  font-weight: 400;
+  color: red;
+}
