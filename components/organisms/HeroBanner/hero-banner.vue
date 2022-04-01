@@ -1,12 +1,5 @@
 <template>
-  <atom-wrapper
-    tag="section"
-    full-height
-    flex
-    flex-center
-    flex-col
-    class="hero-banner"
-  >
+  <atom-wrapper class="hero-banner">
     <hero-illus />
     <logo-felisweet />
     <atom-wrapper tag="h1" class="hero-text">
@@ -29,6 +22,11 @@ export default {
 
 <style lang="scss">
 .hero-banner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
   .hero-text {
     width: 100%;
     text-align: center;

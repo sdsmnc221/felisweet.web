@@ -5,7 +5,8 @@
     :width="width"
     :height="height"
     :alt="alt"
-    class="atom-image fluid-img"
+    class="atom-image"
+    :class="{ '--fluid': fluid }"
   />
 </template>
 
@@ -23,7 +24,6 @@ export default {
     },
     alt: {
       type: String,
-      required: true,
       default: '',
     },
     height: {
@@ -34,14 +34,20 @@ export default {
       type: Number,
       default: null,
     },
+    fluid: {
+      type: Boolean,
+      default: true,
+    },
   },
 }
 </script>
 
 <style lang="scss">
-img.fluid-img {
-  display: inline-block;
-  width: 100%;
-  height: auto;
+.atom-image {
+  &.--fluid {
+    display: inline-block;
+    width: 100%;
+    height: auto;
+  }
 }
 </style>

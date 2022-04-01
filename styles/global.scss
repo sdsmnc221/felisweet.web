@@ -11,6 +11,10 @@
   src: url('/fonts/lucida-handwriting.ttf') format('truetype');
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 *,
 body {
   box-sizing: border-box;
