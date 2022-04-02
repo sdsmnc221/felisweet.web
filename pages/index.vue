@@ -47,6 +47,7 @@
         :image-pos="service.imagePos"
         :image-src="service.imageSrc"
       />
+      <bubble-image src="images/illus-services-bowl.svg" :size="148" />
     </atom-wrapper>
     <atom-wrapper tag="section" full-height flex flex-center>
       Contact
@@ -137,6 +138,11 @@ main {
         bottom: -50%;
         left: -4%;
       }
+    }
+
+    & > .bubble-image {
+      margin: 0 auto;
+      margin-top: -32px;
     }
   }
 }
