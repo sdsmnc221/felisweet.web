@@ -21,8 +21,10 @@
       full-height
       flex
       flex-center
+      flex-col
     >
       <slider-questions />
+      <problematics-illus />
     </atom-wrapper>
     <atom-wrapper tag="section" full-height flex flex-center>
       Services
@@ -36,12 +38,19 @@
 <script>
 import AtomWrapper from '../components/atoms/AtomWrapper'
 import ButtonArrow from '../components/atoms/ButtonArrow'
+import ProblematicsIllus from '../components/molecules/ProblematicsIllus'
 import SliderQuestions from '../components/molecules/SliderQuestions'
 import HeroBanner from '../components/organisms/HeroBanner'
 
 export default {
   name: 'IndexPage',
-  components: { AtomWrapper, HeroBanner, ButtonArrow, SliderQuestions },
+  components: {
+    AtomWrapper,
+    HeroBanner,
+    ButtonArrow,
+    SliderQuestions,
+    ProblematicsIllus,
+  },
   methods: {
     scrollDown() {
       this.$refs.sectionProblematics.scrollIntoView()
