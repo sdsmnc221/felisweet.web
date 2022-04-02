@@ -8,7 +8,17 @@
     />
     <atom-wrapper class="questions">
       <ul ref="questions" :style="styleObject">
-        <li v-for="(question, index) in questions" :key="'question' + index">
+        <li
+          v-for="(question, index) in questions"
+          :key="'question' + index"
+          :class="{
+            '--hidden': index !== activeIndex,
+            '--visible': index === activeIndex,
+            '--bg-img-1': index == 0,
+            '--bg-img-2': index == 1,
+            '--bg-img-3': index == 2,
+          }"
+        >
           {{ question }}
         </li>
       </ul>
@@ -50,24 +60,13 @@ export default {
     },
   },
   methods: {
-    fadeQuestion() {
-      Array.from(this.$refs.questions.children).forEach((q) => {
-        q.classList.remove('--visible')
-        q.classList.add('--hidden')
-      })
-      this.$refs.questions
-        .querySelector(`:nth-of-type(${this.activeIndex + 1})`)
-        .classList.add('--visible')
-    },
     prevQuestion() {
       this.activeIndex =
         this.activeIndex > 0 ? this.activeIndex - 1 : this.questions.length - 1
-      this.fadeQuestion()
     },
     nextQuestion() {
       this.activeIndex =
         this.activeIndex < this.questions.length - 1 ? this.activeIndex + 1 : 0
-      this.fadeQuestion()
     },
   },
 }
@@ -82,12 +81,7 @@ export default {
     width: 50vw;
     height: 32vh;
     @include rem(margin, 0 $spacing-l);
-    background-image: url('/images/bubble.svg');
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
     overflow: hidden;
-    position: relative;
 
     ul {
       list-style-type: none;
@@ -109,6 +103,34 @@ export default {
       text-align: center;
       @include rem(padding, 0 $spacing-xl * 1.2);
       transition: all ease 1.2s;
+      position: relative;
+
+      &::after {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+        width: 220%;
+        height: 220%;
+        z-index: -1;
+      }
+
+      &.--bg-img-1::after {
+        background-image: url('/images/bubble-1.svg');
+        transform: translate(-50%, -50%) scaleX(-1);
+      }
+
+      &.--bg-img-2::after {
+        background-image: url('/images/bubble-2.svg');
+      }
+
+      &.--bg-img-3::after {
+        background-image: url('/images/bubble-3.svg');
+      }
 
       &.--hidden {
         opacity: 0;
