@@ -22,12 +22,22 @@
       flex
       flex-center
       flex-col
+      class="section-problematics"
     >
       <slider-questions />
       <problematics-illus />
     </atom-wrapper>
-    <atom-wrapper tag="section" full-height flex flex-center>
-      Services
+    <atom-wrapper
+      tag="section"
+      full-height
+      flex
+      flex-center
+      class="section-services"
+    >
+      <h2>
+        On vous propose <br />
+        <b>nos services</b> :
+      </h2>
     </atom-wrapper>
     <atom-wrapper tag="section" full-height flex flex-center>
       Contact
@@ -67,6 +77,22 @@ main {
       @include rem(bottom, $spacing-2xl);
       left: 50%;
       transform: translateX(-50%);
+    }
+  }
+
+  .section-problematics {
+  }
+
+  .section-services {
+    h2 {
+      @include rem(font-size, $font-size-body-xl);
+      @include rem(padding, 0 $spacing-2xl);
+      text-align: center;
+
+      b {
+        @include rem(font-size, $font-size-body-xl);
+        font-weight: $weight-bold;
+      }
     }
   }
 }

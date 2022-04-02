@@ -1,11 +1,13 @@
 <template>
   <atom-wrapper class="problematics-illus">
-    <atom-image src="/images/illus-problematics.svg" />
-    <p>Alors on est là pour vous !</p>
-    <h2>
-      <b>FeliSweet</b> vous donne des <b>solutions</b> à (presque)
-      <b>tous vos problèmes félins</b> !
-    </h2>
+    <atom-wrapper class="problematics-wrapper">
+      <atom-image src="/images/illus-problematics.svg" />
+      <p>Alors on est là pour vous !</p>
+      <h2>
+        <b>FeliSweet</b> vous donne des <b>solutions</b> à (presque)
+        <b>tous vos problèmes félins</b> !
+      </h2>
+    </atom-wrapper>
     <atom-image
       src="/images/illus-problematics-cat.svg"
       class="problematics-cat"
@@ -25,11 +27,12 @@ export default {
 
 <style lang="scss">
 .problematics-illus {
-  width: 112%;
-  position: relative;
-  @include rem(top, -$spacing-3xl);
-  @include rem(left, $spacing-l);
-  @include rem(margin-bottom, $spacing-5xl * 1.6);
+  .problematics-wrapper {
+    width: 112%;
+    position: relative;
+    @include rem(top, -$spacing-3xl);
+    @include rem(left, $spacing-l);
+  }
 
   p,
   h2 {
@@ -59,10 +62,10 @@ export default {
   }
 
   .problematics-cat {
-    position: absolute;
+    position: relative;
     width: 108px;
-    bottom: -22%;
-    right: 5%;
+    float: right;
+    top: -48px;
   }
 }
 </style>
