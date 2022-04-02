@@ -76,6 +76,7 @@ export default {
 <style lang="scss">
 .slider-questions {
   width: 100vw;
+  top: 32px;
 
   .questions {
     width: 50vw;

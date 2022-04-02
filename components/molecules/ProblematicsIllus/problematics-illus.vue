@@ -27,6 +27,9 @@ export default {
 
 <style lang="scss">
 .problematics-illus {
+  overflow: hidden;
+  padding-top: 60px;
+
   .problematics-wrapper {
     width: 112%;
     position: relative;
