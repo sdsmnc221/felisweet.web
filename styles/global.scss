@@ -23,6 +23,7 @@ body {
   font-family: $font-family-quicksand;
   font-weight: $weight-regular;
   @include rem(font-size, $font-size-root);
+  transition: all ease 0.64s;
 }
 
 body {

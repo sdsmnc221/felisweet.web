@@ -7,7 +7,7 @@
       :on-click="prevQuestion"
     />
     <atom-wrapper class="questions">
-      <ul ref="questions" :style="styleObject">
+      <ul :style="styleObject">
         <li
           v-for="(question, index) in questions"
           :key="'question' + index"
@@ -96,12 +96,12 @@ export default {
     li {
       font-family: $font-family-lucida;
       @include rem(font-size, $font-size-body-xs);
-      @include rem(line-height, $font-size-body-xs * 1.2);
+      @include rem(line-height, calc($font-size-body-xs * 1.2));
       display: flex;
       justify-content: center;
       align-items: center;
       text-align: center;
-      @include rem(padding, 0 $spacing-xl * 1.2);
+      @include rem(padding, 0 calc($spacing-xl * 1.2));
       transition: all ease 1.2s;
       position: relative;
 

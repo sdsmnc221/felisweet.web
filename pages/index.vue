@@ -49,6 +49,16 @@
       />
       <bubble-image src="images/illus-services-bowl.svg" :size="148" />
     </atom-wrapper>
+    <atom-wrapper
+      tag="section"
+      flex
+      flex-center
+      flex-col
+      class="section-reviews"
+    >
+      <h2><b>Les témoignages</b> :</h2>
+      <slider-reviews :reviews="reviews" />
+    </atom-wrapper>
     <atom-wrapper tag="section" full-height flex flex-center>
       Contact
     </atom-wrapper>
@@ -63,6 +73,7 @@ import ProblematicsIllus from '../components/molecules/ProblematicsIllus'
 import ServiceBlock from '../components/molecules/ServiceBlock'
 import SliderQuestions from '../components/molecules/SliderQuestions'
 import HeroBanner from '../components/organisms/HeroBanner'
+import SliderReviews from '../components/organisms/SliderReviews'
 
 export default {
   name: 'IndexPage',
@@ -74,6 +85,7 @@ export default {
     ProblematicsIllus,
     BubbleImage,
     ServiceBlock,
+    SliderReviews,
   },
   data() {
     return {
@@ -89,6 +101,27 @@ export default {
           description: `Vous ne pouvez pas être là pour vous occuper de votre loulou ? <b>On viendra une fois par jour tenir compagnie à votre chat.</b> On restera au moins une heure avec lui. On s’occupera de lui nettoyer ses litières en passant un coup de balais derrière, de lui changer son eau, de lui donner à manger. On aura de longue partie de jeux avec lui et des moments câlins.`,
           imagePos: 'top',
           imageSrc: '/images/illus-services-cat.svg',
+        },
+      ],
+      reviews: [
+        {
+          author: 'Adeline Trpette',
+          text: `Marie est une super personne qui aime les animaux par dessus tout et qui à un don pour communiquer avec eux.
+Heureusement qu’elle a été là pour habituer nos deux chats au harnais à leur début en extérieur ! Grâce à ses talents, ils l’ont très bien accepté 🙂
+Elle nous a aussi beaucoup aidé pour les problèmes de comportement de notre petit Abou qui faisait pipi hors de sa litière.
+Merci Marie !!`,
+        },
+        {
+          author: 'Jac Noirot',
+          text: `quel soulagement d avoir rencontré Nany Marie : disponible, douce, attentionnée,  ses conseils sont très utiles, je l appellerai de nouveau sans hésitation pour ses bons services !`,
+        },
+        {
+          author: 'Trương Thị Vân An ',
+          text: `Mon Robin m'a quitté pour aller vivre dans la forêt juste avant que je parte en vacances 😭. Mais il rentre quand même pour la nourriture. Un grand merci à Felisweet de s'occuper de lui la semaine où je n'étais pas chez moi. Elle a travaillé sur l'environnement (placement des gamelles, des friandises, des caméras) pour attirer Robin et lui faire revenir plus fréquemment dans la pièce. Très contente d'avoir faire confiance en elle 🥰.`,
+        },
+        {
+          author: 'Mel Sdz',
+          text: `Super expérience avec Marie Benedicte! Photos et vidéos tous les jours, mise en place d’une caméra afin de pouvoir voir nos chats pendant notre absence. Au top, je recommande !!`,
         },
       ],
     }
@@ -123,7 +156,7 @@ main {
     h2 {
       @include rem(font-size, $font-size-body-xl);
       @include rem(padding, 0 $spacing-2xl);
-      @include rem(margin, $spacing-2xl 0 $spacing-2xl/2 0);
+      @include rem(margin, $spacing-2xl 0 calc($spacing-2xl/2) 0);
       text-align: center;
       position: relative;
       font-weight: $weight-regular;
@@ -143,6 +176,24 @@ main {
     & > .bubble-image {
       margin: 0 auto;
       margin-top: -32px;
+    }
+  }
+
+  .section-reviews {
+    &.--flex {
+      justify-content: flex-start;
+    }
+
+    h2 {
+      @include rem(font-size, $font-size-body-xl);
+      @include rem(padding, 0 $spacing-2xl);
+      @include rem(margin, $spacing-2xl 0 calc($spacing-2xl/2) 0);
+      text-align: center;
+
+      b {
+        @include rem(font-size, $font-size-body-xl);
+        font-weight: $weight-bold;
+      }
     }
   }
 }

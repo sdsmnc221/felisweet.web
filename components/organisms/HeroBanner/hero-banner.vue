@@ -39,13 +39,13 @@ export default {
 
       &:first-of-type,
       &:first-of-type b {
-        @include rem(font-size, 12px);
+        @include rem(font-size, $font-size-body-m);
         letter-spacing: 0.5px;
       }
 
       &:last-of-type,
       &:last-of-type b {
-        @include rem(font-size, $font-size-root);
+        @include rem(font-size, $font-size-body-l);
         letter-spacing: 1px;
       }
     }

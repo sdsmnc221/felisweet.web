@@ -1,11 +1,11 @@
 $baseFontSize: 16px;
 
 @mixin rem($property, $px_values) {
-  $baseline_rem: ($baseFontSize / 1rem);
+  $baseline_rem: calc($baseFontSize / 1rem);
   #{$property}: $px_values;
 
   @if type-of($px_values) == 'number' {
-    #{$property}: $px_values / $baseline_rem;
+    #{$property}: calc($px_values / $baseline_rem);
   } @else {
     $rem_values: ();
 
@@ -13,7 +13,7 @@ $baseFontSize: 16px;
       @if $value == 0 {
         $rem_values: append($rem_values, $value);
       } @else {
-        $rem_values: append($rem_values, ($value / $baseline_rem));
+        $rem_values: append($rem_values, calc($value / $baseline_rem));
       }
     }
     #{$property}: $rem_values;
