@@ -59,8 +59,8 @@
       <h2><b>Les témoignages</b> :</h2>
       <slider-reviews :reviews="reviews" />
     </atom-wrapper>
-    <atom-wrapper tag="section" full-height flex flex-center>
-      Contact
+    <atom-wrapper tag="section" flex flex-center class="section-contact">
+      <contact-banner />
     </atom-wrapper>
   </atom-wrapper>
 </template>
@@ -72,6 +72,7 @@ import ButtonArrow from '../components/atoms/ButtonArrow'
 import ProblematicsIllus from '../components/molecules/ProblematicsIllus'
 import ServiceBlock from '../components/molecules/ServiceBlock'
 import SliderQuestions from '../components/molecules/SliderQuestions'
+import ContactBanner from '../components/organisms/ContactBanner'
 import HeroBanner from '../components/organisms/HeroBanner'
 import SliderReviews from '../components/organisms/SliderReviews'
 
@@ -86,6 +87,7 @@ export default {
     BubbleImage,
     ServiceBlock,
     SliderReviews,
+    ContactBanner,
   },
   data() {
     return {
@@ -194,6 +196,13 @@ main {
         @include rem(font-size, $font-size-body-xl);
         font-weight: $weight-bold;
       }
+    }
+  }
+
+  .section-contact {
+    @include rem(margin-top, $spacing-4xl);
+    &.--flex {
+      justify-content: flex-start;
     }
   }
 }
