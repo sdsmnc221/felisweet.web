@@ -34,5 +34,16 @@ export default {
     height: 80vw;
     border-radius: $radius-full;
   }
+
+  @media #{$mq-medium} {
+    width: 48vw;
+    @include rem(margin-right, $spacing-4xl);
+
+    .circle {
+      width: 40vw;
+      height: 40vw;
+      transform: translate(-50%, -55%);
+    }
+  }
 }
 </style>

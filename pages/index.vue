@@ -219,5 +219,22 @@ main {
       justify-content: flex-start;
     }
   }
+
+  @media #{$mq-medium} {
+    .section-hero {
+      height: 100vh;
+      overflow: hidden;
+
+      .button-arrow {
+        @include rem(bottom, $spacing-3xl);
+        width: 64px;
+        height: 64px;
+
+        .atom-image {
+          transform: scale(1.2);
+        }
+      }
+    }
+  }
 }
 </style>
