@@ -26,6 +26,7 @@
     >
       <slider-questions />
       <problematics-illus />
+      <atom-image class="problematics-paw" src="/images/paw.svg" />
     </atom-wrapper>
     <atom-wrapper
       tag="section"
@@ -62,11 +63,13 @@
     <atom-wrapper tag="section" flex flex-center class="section-contact">
       <contact-banner />
     </atom-wrapper>
+    <paws-pattern :paws-per-section="4" />
   </atom-wrapper>
 </template>
 
 <script>
 import AtomWrapper from '../components/atoms/AtomWrapper'
+import AtomImage from '../components/atoms/AtomImage'
 import BubbleImage from '../components/atoms/BubbleImage'
 import ButtonArrow from '../components/atoms/ButtonArrow'
 import ProblematicsIllus from '../components/molecules/ProblematicsIllus'
@@ -74,12 +77,14 @@ import ServiceBlock from '../components/molecules/ServiceBlock'
 import SliderQuestions from '../components/molecules/SliderQuestions'
 import ContactBanner from '../components/organisms/ContactBanner'
 import HeroBanner from '../components/organisms/HeroBanner'
+import PawsPattern from '../components/organisms/Paws-Pattern'
 import SliderReviews from '../components/organisms/SliderReviews'
 
 export default {
   name: 'IndexPage',
   components: {
     AtomWrapper,
+    AtomImage,
     HeroBanner,
     ButtonArrow,
     SliderQuestions,
@@ -88,6 +93,7 @@ export default {
     ServiceBlock,
     SliderReviews,
     ContactBanner,
+    PawsPattern,
   },
   data() {
     return {
@@ -138,6 +144,8 @@ Merci Marie !!`,
 
 <style lang="scss">
 main {
+  overflow: hidden;
+
   .section-hero {
     .button-arrow {
       position: absolute;
@@ -148,6 +156,12 @@ main {
   }
 
   .section-problematics {
+    .problematics-paw {
+      position: absolute;
+      width: 245px;
+      bottom: 5%;
+      left: -10%;
+    }
   }
 
   .section-services {
