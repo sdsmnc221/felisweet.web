@@ -16,7 +16,13 @@
             '--visible': index === activeIndex,
           }"
         >
-          {{ review.text }}
+          <span>
+            <br />
+            {{ review.text }}
+            <br />
+            <atom-image src="/images/double-quote.svg" class="reviews-quote" />
+          </span>
+          <span>- {{ review.author }}</span>
           <atom-image src="/images/illus-temoins.svg" class="reviews-cat" />
         </li>
       </ul>
@@ -81,7 +87,7 @@ export default {
     position: relative;
     width: 64vw;
     height: 40vh;
-    @include rem(margin, 0 $spacing-l);
+    @include rem(margin, $spacing-2xl $spacing-l);
 
     ul {
       list-style-type: none;
@@ -95,14 +101,12 @@ export default {
     li {
       min-width: 64vw;
       width: calc(100% - calc($spacing-l * 2));
-      font-family: $font-family-lucida;
-      @include rem(font-size, $font-size-body-xs);
-      @include rem(line-height, calc($font-size-body-xs * 1.2));
+      @include rem(padding, $spacing-2xl $spacing-l);
       display: flex;
+      flex-direction: column;
       justify-content: center;
       align-items: center;
-      text-align: center;
-      @include rem(padding, $spacing-l);
+      text-align: justify;
       transition: all ease 1.2s;
       position: relative;
       border-radius: 24px;
@@ -117,6 +121,27 @@ export default {
       &.--visible {
         opacity: 1;
         transform: scale(1);
+      }
+
+      span {
+        display: block;
+        position: relative;
+        font-family: $font-family-lucida;
+        @include rem(font-size, $font-size-body-xs);
+        @include rem(line-height, calc($font-size-body-xs * 1.2));
+
+        .reviews-quote {
+          width: 24px;
+          position: absolute;
+          top: -4%;
+          left: -4%;
+        }
+
+        &:last-of-type {
+          @include rem(margin-top, $spacing-l);
+          width: 100%;
+          text-align: right;
+        }
       }
 
       .reviews-cat {
