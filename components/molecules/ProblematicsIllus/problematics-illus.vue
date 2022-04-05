@@ -80,7 +80,7 @@ export default {
     }
 
     p {
-      @include rem(font-size, $font-size-body-m);
+      @include rem(font-size, $font-size-body-s);
     }
 
     h2,
@@ -96,6 +96,18 @@ export default {
       float: right;
       top: 98%;
       right: 24vw;
+    }
+  }
+
+  @media #{$mq-medium} {
+    p {
+      @include rem(font-size, $font-size-body-l);
+      transform: translateY(12px);
+    }
+
+    h2,
+    b {
+      @include rem(font-size, $font-size-body-l);
     }
   }
 }

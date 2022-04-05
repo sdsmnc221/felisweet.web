@@ -121,5 +121,16 @@ export default {
       top: 10vh;
     }
   }
+
+  @media #{$mq-tablet} {
+    &:first-of-type {
+      top: 0;
+      left: -16vw;
+    }
+
+    h3 {
+      @include rem(font-size, $font-size-body-l);
+    }
+  }
 }
 </style>
