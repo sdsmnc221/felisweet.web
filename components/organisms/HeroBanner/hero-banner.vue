@@ -29,6 +29,7 @@ export default {
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  margin-top: -$spacing-5xl;
 
   .hero-text {
     width: 100%;
@@ -60,6 +61,7 @@ export default {
 
   @media #{$mq-medium} {
     flex-direction: row-reverse;
+    margin-top: 0;
 
     .hero-text {
       width: 50vw;

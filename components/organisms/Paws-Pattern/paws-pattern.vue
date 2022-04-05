@@ -5,6 +5,7 @@
 <script>
 import AtomWrapper from '../../atoms/AtomWrapper'
 import { randomNumberInRange as random } from '../../../utils'
+import PawImage from '../../../static/images/paw.svg'
 
 export default {
   components: { AtomWrapper },
@@ -33,7 +34,7 @@ export default {
     createPaw(size, left, top) {
       const img = document.createElement('img')
       img.classList.add('paw')
-      img.src = '/images/paw.svg'
+      img.src = PawImage
       img.style.width = size
       img.style.top = top
       img.style.left = left

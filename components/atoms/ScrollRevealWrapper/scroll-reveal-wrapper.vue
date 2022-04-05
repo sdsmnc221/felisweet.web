@@ -1,5 +1,15 @@
 <template>
-  <div ref="scroll-reveal" class="scroll-reveal">
+  <div
+    ref="scroll-reveal"
+    class="scroll-reveal"
+    :class="{
+      '--top': top,
+      '--bottom': bottom,
+      '--left': left,
+      '--right': right,
+      '--scale': scale,
+    }"
+  >
     <slot> </slot>
   </div>
 </template>
@@ -7,11 +17,33 @@
 <script>
 export default {
   name: 'ScrollRevealWrapper',
+  props: {
+    top: {
+      type: Boolean,
+      default: false,
+    },
+    bottom: {
+      type: Boolean,
+      default: false,
+    },
+    left: {
+      type: Boolean,
+      default: false,
+    },
+    right: {
+      type: Boolean,
+      default: false,
+    },
+    scale: {
+      type: Boolean,
+      default: false,
+    },
+  },
   mounted() {
     this.scrollTrigger(this.$refs['scroll-reveal'])
   },
   methods: {
-    scrollTrigger(el, options = {}) {
+    scrollTrigger(el, options = { rootMargin: '-160px' }) {
       //   let els = document.querySelectorAll(selector)
       //   els = Array.from(els)
       //   els.forEach((el) => {
@@ -51,13 +83,36 @@ export default {
 
 <style lang="scss">
 .scroll-reveal {
+  position: relative;
   opacity: 0;
-  transform: translateY(24vh);
-  transition: all ease 1.2s;
+  transition: all $ease-out-sine 1.2s;
+
+  &.--top {
+    top: 20vh;
+  }
+
+  &.--bottom {
+    top: -80vh;
+  }
+
+  &.--left {
+    left: 20vw;
+  }
+
+  &.--right {
+    right: 20vw;
+  }
+
+  &.--scale {
+    transform: scale(0);
+  }
 
   &.active {
     opacity: 1;
-    transform: translateY(0);
+    transform: scale(1);
+    top: 0;
+    left: 0;
+    right: 0;
   }
 }
 </style>
