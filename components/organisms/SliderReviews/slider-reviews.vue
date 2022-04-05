@@ -154,7 +154,7 @@ export default {
     }
   }
 
-  @media #{$mq-medium} {
+  @media #{$mq-medium}, #{$mq-tablet} {
     .reviews {
       li {
         @include rem(padding, $spacing-3xl $spacing-2xl);

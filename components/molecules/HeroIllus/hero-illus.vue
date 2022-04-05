@@ -35,7 +35,7 @@ export default {
     border-radius: $radius-full;
   }
 
-  @media #{$mq-medium} {
+  @media #{$mq-medium}, #{$mq-tablet}, #{$mq-mobile} {
     width: 48vw;
     @include rem(margin-right, $spacing-4xl);
 

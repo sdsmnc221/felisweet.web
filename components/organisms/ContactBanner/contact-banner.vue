@@ -172,5 +172,41 @@ export default {
       }
     }
   }
+
+  @media #{$mq-tablet} {
+    .contact-head {
+      margin: 0 auto;
+      width: 72vw;
+
+      h2 {
+        @include rem(font-size, $font-size-heading-4);
+        width: 100%;
+        bottom: 4vh;
+      }
+    }
+
+    .contact-foot {
+      margin: 0 auto;
+      width: 68vw;
+
+      .contact-text {
+        @include rem(font-size, $font-size-body-m);
+        top: 6vh;
+
+        a {
+          @include rem(font-size, $font-size-body-xl);
+        }
+      }
+
+      .contact-planning {
+        @include rem(font-size, $font-size-body-s);
+        top: 34%;
+      }
+
+      .contact-note {
+        @include rem(font-size, $font-size-body-xs);
+      }
+    }
+  }
 }
 </style>

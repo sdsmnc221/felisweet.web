@@ -144,7 +144,7 @@ export default {
     }
   }
 
-  @media #{$mq-medium} {
+  @media #{$mq-medium}, #{$mq-tablet} {
     button {
       display: none;
     }
@@ -158,6 +158,8 @@ export default {
         li {
           width: 32vw;
           padding: 0 10%;
+          @include rem(font-size, $font-size-body-s);
+          @include rem(line-height, calc($font-size-body-s * 1.2));
 
           &::after {
             width: 240px;

@@ -59,7 +59,7 @@ export default {
     }
   }
 
-  @media #{$mq-medium} {
+  @media #{$mq-medium}, #{$mq-tablet} {
     flex-direction: row-reverse;
     margin-top: 0;
 
@@ -88,6 +88,28 @@ export default {
 
     & > .logo-felisweet {
       display: none;
+    }
+  }
+
+  @media #{$mq-mobile} {
+    .logo-felisweet {
+      width: 48vw;
+    }
+
+    .hero-text {
+      span {
+        &:nth-of-type(2),
+        &:nth-last-of-type(2) b {
+          @include rem(font-size, $font-size-heading-5);
+          letter-spacing: 0.1px;
+        }
+
+        &:last-of-type,
+        &:last-of-type b {
+          @include rem(font-size, $font-size-heading-4);
+          letter-spacing: 1px;
+        }
+      }
     }
   }
 }

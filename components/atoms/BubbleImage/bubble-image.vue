@@ -61,7 +61,7 @@ export default {
     }
   }
 
-  @media #{$mq-medium} {
+  @media #{$mq-medium}, #{$mq-tablet} {
     &.--with-border {
       &::after {
         display: none;

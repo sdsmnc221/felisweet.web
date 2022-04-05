@@ -21,7 +21,7 @@ export default {
 .hero-logo-felisweet {
   display: none !important;
 
-  @media #{$mq-medium} {
+  @media #{$mq-medium}, #{$mq-tablet} {
     display: block !important;
     text-align: center;
     transform: scale(0.8) rotate(-8deg);

@@ -93,7 +93,7 @@ export default {
     }
   }
 
-  @media #{$mq-medium} {
+  @media #{$mq-medium}, #{$mq-tablet} {
     width: 40vw;
 
     &:first-of-type {

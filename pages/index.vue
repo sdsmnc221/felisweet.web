@@ -232,7 +232,7 @@ main {
     }
   }
 
-  @media #{$mq-medium} {
+  @media #{$mq-medium}, #{$mq-tablet} {
     .section-hero {
       height: 100vh;
       overflow: hidden;

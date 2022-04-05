@@ -72,7 +72,7 @@ export default {
     top: -48px;
   }
 
-  @media #{$mq-medium} {
+  @media #{$mq-medium}, #{$mq-tablet} {
     overflow: visible;
 
     .problematics-wrapper {
