@@ -1,68 +1,78 @@
 <template>
   <atom-wrapper tag="main">
-    <atom-wrapper
-      tag="section"
-      full-height
-      flex
-      flex-center
-      class="section-hero"
-    >
-      <hero-banner />
-      <button-arrow
-        direction="down"
-        :size="46"
-        :arrow-size="24"
-        :on-click="scrollDown"
-      />
-    </atom-wrapper>
-    <atom-wrapper
-      ref="sectionProblematics"
-      tag="section"
-      full-height
-      flex
-      flex-center
-      flex-col
-      class="section-problematics"
-    >
-      <slider-questions />
-      <problematics-illus />
-      <atom-image class="problematics-paw" src="/images/paw.svg" />
-    </atom-wrapper>
-    <atom-wrapper
-      tag="section"
-      flex
-      flex-center
-      flex-col
-      class="section-services"
-    >
-      <h2>
-        On vous propose <br />
-        <b>nos services</b> :
-        <bubble-image src="/images/illus-services-house.svg" />
-      </h2>
-      <service-block
-        v-for="(service, index) in services"
-        :key="'servive' + index"
-        :title="service.title"
-        :description="service.description"
-        :image-pos="service.imagePos"
-        :image-src="service.imageSrc"
-      />
-      <bubble-image src="images/illus-services-bowl.svg" :size="148" />
-    </atom-wrapper>
-    <atom-wrapper
-      tag="section"
-      flex
-      flex-center
-      flex-col
-      class="section-reviews"
-    >
-      <h2><b>Les témoignages</b> :</h2>
-      <slider-reviews :reviews="reviews" />
-    </atom-wrapper>
-    <atom-wrapper tag="section" flex flex-center class="section-contact">
-      <contact-banner />
-    </atom-wrapper>
+    <scroll-reveal-wrapper>
+      <atom-wrapper
+        tag="section"
+        full-height
+        flex
+        flex-center
+        class="section-hero"
+      >
+        <hero-banner />
+        <button-arrow
+          direction="down"
+          :size="46"
+          :arrow-size="24"
+          :on-click="scrollDown"
+        />
+      </atom-wrapper>
+    </scroll-reveal-wrapper>
+    <scroll-reveal-wrapper>
+      <atom-wrapper
+        ref="sectionProblematics"
+        tag="section"
+        full-height
+        flex
+        flex-center
+        flex-col
+        class="section-problematics"
+      >
+        <slider-questions />
+        <problematics-illus />
+        <atom-image class="problematics-paw" src="/images/paw.svg" />
+      </atom-wrapper>
+    </scroll-reveal-wrapper>
+    <scroll-reveal-wrapper>
+      <atom-wrapper
+        tag="section"
+        flex
+        flex-center
+        flex-col
+        class="section-services"
+      >
+        <h2>
+          On vous propose <br />
+          <b>nos services</b> :
+          <bubble-image src="/images/illus-services-house.svg" />
+        </h2>
+        <service-block
+          v-for="(service, index) in services"
+          :key="'servive' + index"
+          :title="service.title"
+          :description="service.description"
+          :image-pos="service.imagePos"
+          :image-src="service.imageSrc"
+        />
+        <bubble-image src="images/illus-services-bowl.svg" :size="148" />
+      </atom-wrapper>
+    </scroll-reveal-wrapper>
+    <scroll-reveal-wrapper>
+      <atom-wrapper
+        tag="section"
+        flex
+        flex-center
+        flex-col
+        class="section-reviews"
+      >
+        <h2><b>Les témoignages</b> :</h2>
+        <slider-reviews :reviews="reviews" />
+      </atom-wrapper>
+    </scroll-reveal-wrapper>
+    <scroll-reveal-wrapper>
+      <atom-wrapper tag="section" flex flex-center class="section-contact">
+        <contact-banner />
+      </atom-wrapper>
+    </scroll-reveal-wrapper>
     <paws-pattern :paws-per-section="4" />
   </atom-wrapper>
 </template>
@@ -79,6 +89,7 @@ import ContactBanner from '../components/organisms/ContactBanner'
 import HeroBanner from '../components/organisms/HeroBanner'
 import PawsPattern from '../components/organisms/Paws-Pattern'
 import SliderReviews from '../components/organisms/SliderReviews'
+import ScrollRevealWrapper from '../components/atoms/ScrollRevealWrapper'
 
 export default {
   name: 'IndexPage',
@@ -94,6 +105,7 @@ export default {
     SliderReviews,
     ContactBanner,
     PawsPattern,
+    ScrollRevealWrapper,
   },
   data() {
     return {
