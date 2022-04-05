@@ -114,7 +114,7 @@ export default {
         background-size: contain;
         background-repeat: no-repeat;
         background-position: center;
-        width: 220%;
+        width: 2200%;
         height: 220%;
         z-index: -1;
       }
@@ -140,6 +140,39 @@ export default {
       &.--visible {
         opacity: 1;
         transform: scale(1);
+      }
+    }
+  }
+
+  @media #{$mq-medium} {
+    button {
+      display: none;
+    }
+
+    .questions {
+      width: 100%;
+
+      ul {
+        width: 100%;
+
+        li {
+          width: 32vw;
+          padding: 0 10%;
+
+          &::after {
+            width: 240px;
+            height: 240px;
+          }
+
+          &.--bg-img-1::after {
+            transform: translate(-50%, -50%) scaleX(1);
+          }
+
+          &.--hidden {
+            opacity: 1;
+            transform: scale(1);
+          }
+        }
       }
     }
   }

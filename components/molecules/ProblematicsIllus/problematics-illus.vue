@@ -49,6 +49,7 @@ export default {
     left: 16%;
     transform: rotate(-3.2deg);
     text-transform: uppercase;
+    text-align: center;
     @include rem(font-size, $font-size-body-xs);
   }
 
@@ -69,6 +70,33 @@ export default {
     width: 108px;
     float: right;
     top: -48px;
+  }
+
+  @media #{$mq-medium} {
+    overflow: visible;
+
+    .problematics-wrapper {
+      width: 50%;
+    }
+
+    p {
+      @include rem(font-size, $font-size-body-m);
+    }
+
+    h2,
+    b {
+      @include rem(font-size, $font-size-body-m);
+      right: 40%;
+      top: 60%;
+    }
+
+    .problematics-cat {
+      position: absolute;
+      width: 120px;
+      float: right;
+      top: 98%;
+      right: 24vw;
+    }
   }
 }
 </style>

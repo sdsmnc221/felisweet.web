@@ -235,6 +235,32 @@ main {
         }
       }
     }
+
+    .section-services {
+      h2 {
+        top: -10vh;
+        left: -16vw;
+
+        @include rem(font-size, $font-size-heading-3);
+
+        b {
+          @include rem(font-size, $font-size-heading-3);
+        }
+
+        .bubble-image {
+          width: 240px;
+          left: 48vw;
+          top: 32vh;
+        }
+      }
+
+      & > .bubble-image {
+        width: 320px;
+        position: absolute;
+        top: 50%;
+        left: 8%;
+      }
+    }
   }
 }
 </style>

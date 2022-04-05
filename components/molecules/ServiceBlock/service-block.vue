@@ -92,5 +92,30 @@ export default {
       right: 20%;
     }
   }
+
+  @media #{$mq-medium} {
+    width: 40vw;
+
+    &:first-of-type {
+      top: -12vh;
+      left: -16vw;
+    }
+
+    &:last-of-type {
+      left: 16vw;
+    }
+
+    .bubble-image.--top {
+      width: 160px;
+      left: -10vw;
+      top: 10vh;
+    }
+
+    .bubble-image.--bottom {
+      width: 160px;
+      left: -36vw;
+      top: 10vh;
+    }
+  }
 }
 </style>

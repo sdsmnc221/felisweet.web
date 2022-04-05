@@ -60,5 +60,13 @@ export default {
       background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' rx='100' ry='100' stroke='%237FBBDDFF' stroke-width='6' stroke-dasharray='6%2c 14' stroke-dashoffset='0' stroke-linecap='square'/%3e%3c/svg%3e");
     }
   }
+
+  @media #{$mq-medium} {
+    &.--with-border {
+      &::after {
+        display: none;
+      }
+    }
+  }
 }
 </style>

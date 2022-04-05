@@ -26,7 +26,7 @@ export default {
     text-align: center;
     transform: scale(0.8) rotate(-8deg);
     width: auto;
-    top: -100px;
+    top: -72px;
     left: 4vw;
 
     &::after {

@@ -88,7 +88,7 @@ export default {
 
     .contact-planning {
       @include rem(font-size, calc($font-size-body-xxs * 1.2));
-      @include rem(padding, $spacing-s);
+      @include rem(padding, $spacing-s calc($spacing-s * 2));
       background-color: $color-outremer-blue;
       color: $color-jellybean-blue;
       text-transform: uppercase;
@@ -110,6 +110,41 @@ export default {
       bottom: 36%;
       color: $color-white;
       text-align: center;
+    }
+  }
+
+  @media #{$mq-medium} {
+    .contact-head {
+      margin: 0 auto;
+      width: 64vw;
+
+      h2 {
+        @include rem(font-size, $font-size-heading-4);
+        width: 100%;
+        bottom: 24px;
+      }
+    }
+
+    .contact-foot {
+      margin: 0 auto;
+      width: 60vw;
+
+      .contact-text {
+        @include rem(font-size, $font-size-body-xl);
+        @include rem(top, $spacing-2xl);
+
+        a {
+          @include rem(font-size, $font-size-body-xl);
+        }
+      }
+
+      .contact-planning {
+        @include rem(font-size, $font-size-body-m);
+      }
+
+      .contact-note {
+        @include rem(font-size, $font-size-body-xs);
+      }
     }
   }
 }

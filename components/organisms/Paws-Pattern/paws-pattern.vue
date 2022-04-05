@@ -22,7 +22,7 @@ export default {
       const { top, bottom } = this.getSectionTopBottom(heights, i)
 
       for (let j = 0; j < this.pawsPerSection; j++) {
-        const s = random(24, 72) + 'vw'
+        const s = random(16, 32) + 'vw'
         const l = random(0, 72) + 'vw'
         const t = random(top, bottom) + 'px'
         this.createPaw(s, l, t)
