@@ -261,6 +261,13 @@ main {
         left: 8%;
       }
     }
+
+    .section-reviews {
+      h2,
+      h2 b {
+        @include rem(font-size, $font-size-heading-3);
+      }
+    }
   }
 }
 </style>

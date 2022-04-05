@@ -55,6 +55,31 @@ export default {
   align-items: center;
   width: var(--size);
   height: var(--size);
+  border: 6px solid transparent;
+  position: relative;
+
+  &::after {
+    content: '';
+    position: absolute;
+    display: block;
+    width: var(--size);
+    height: var(--size);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    transition: all 0.64s ease;
+    border-radius: $radius-full;
+    border: 2px dashed transparent;
+  }
+
+  &:hover {
+    &::after {
+      opacity: 1;
+      border: 2px dashed $color-link-water;
+      transform: translate(-50%, -50%) scale(2);
+    }
+  }
 
   .atom-image {
     &.--down {

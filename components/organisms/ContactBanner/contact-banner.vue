@@ -100,6 +100,30 @@ export default {
       transform: translateX(-50%);
       border-radius: 20px;
       letter-spacing: 0.6px;
+
+      &:after {
+        content: '';
+        display: block;
+        opacity: 0;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 100%;
+        height: 100%;
+        border-radius: 20px;
+        border: 2px dashed $color-link-water;
+        transition: all ease 0.64s;
+      }
+      &:hover {
+        color: $color-white;
+        background-color: $color-jellybean-blue;
+
+        &::after {
+          opacity: 1;
+          transform: translate(-50%, -50%) scale(1.04, 1.2);
+        }
+      }
     }
 
     .contact-note {
@@ -121,7 +145,7 @@ export default {
       h2 {
         @include rem(font-size, $font-size-heading-4);
         width: 100%;
-        bottom: 24px;
+        bottom: 8vh;
       }
     }
 
@@ -131,7 +155,7 @@ export default {
 
       .contact-text {
         @include rem(font-size, $font-size-body-xl);
-        @include rem(top, $spacing-2xl);
+        top: 10vh;
 
         a {
           @include rem(font-size, $font-size-body-xl);
@@ -140,6 +164,7 @@ export default {
 
       .contact-planning {
         @include rem(font-size, $font-size-body-m);
+        top: 36%;
       }
 
       .contact-note {

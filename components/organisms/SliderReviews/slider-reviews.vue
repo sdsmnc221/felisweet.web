@@ -153,5 +153,23 @@ export default {
       }
     }
   }
+
+  @media #{$mq-medium} {
+    .reviews {
+      li {
+        @include rem(padding, $spacing-3xl $spacing-2xl);
+
+        .reviews-quote {
+          top: 0;
+          left: 0;
+        }
+
+        .reviews-cat {
+          width: 32vw;
+          top: -64px;
+        }
+      }
+    }
+  }
 }
 </style>

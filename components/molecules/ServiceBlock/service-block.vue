@@ -105,6 +105,10 @@ export default {
       left: 16vw;
     }
 
+    h3 {
+      @include rem(font-size, $font-size-heading-4);
+    }
+
     .bubble-image.--top {
       width: 160px;
       left: -10vw;
