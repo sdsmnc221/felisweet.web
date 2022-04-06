@@ -68,7 +68,7 @@
         <slider-reviews :reviews="reviews" />
       </atom-wrapper>
     </scroll-reveal-wrapper>
-    <scroll-reveal-wrapper top>
+    <scroll-reveal-wrapper top delay="0.8s">
       <atom-wrapper tag="section" flex flex-center class="section-contact">
         <contact-banner />
       </atom-wrapper>

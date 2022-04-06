@@ -1,23 +1,27 @@
 <template>
-  <atom-wrapper tag="footer" flex flex-center flex-col class="site-footer">
-    <logo-felisweet />
-    <p class="links">
-      <a href="/">Crédits</a>
-      <span>-</span>
-      <a href="/">Mentions légales</a>
-    </p>
-    <p class="copyright">
-      <span>© 2022 FeliSweet.</span> <span>All rights reserved.</span>
-    </p>
-  </atom-wrapper>
+  <scroll-reveal-wrapper top root-margin="80%">
+    <atom-wrapper tag="footer" flex flex-center flex-col class="site-footer">
+      <logo-felisweet />
+      <p class="links">
+        <a href="/">Crédits</a>
+        <span>-</span>
+        <a href="/">Mentions légales</a>
+      </p>
+      <p class="copyright">
+        <span>© 2022 FeliSweet.</span> <span>All rights reserved.</span>
+      </p>
+    </atom-wrapper>
+  </scroll-reveal-wrapper>
 </template>
 
 <script>
 import AtomWrapper from '../../atoms/AtomWrapper'
 import LogoFelisweet from '../../atoms/LogoFelisweet'
+import ScrollRevealWrapper from '../../atoms/ScrollRevealWrapper'
+
 export default {
   name: 'SiteFooter',
-  components: { AtomWrapper, LogoFelisweet },
+  components: { AtomWrapper, LogoFelisweet, ScrollRevealWrapper },
 }
 </script>
 

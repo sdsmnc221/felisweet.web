@@ -9,6 +9,7 @@
       '--right': right,
       '--scale': scale,
     }"
+    :style="cssProps"
   >
     <slot> </slot>
   </div>
@@ -38,12 +39,27 @@ export default {
       type: Boolean,
       default: false,
     },
+    rootMargin: {
+      type: String,
+      default: '-160px',
+    },
+    delay: {
+      type: String,
+      default: '0s',
+    },
+  },
+  computed: {
+    cssProps() {
+      return {
+        '--delay': this.delay,
+      }
+    },
   },
   mounted() {
     this.scrollTrigger(this.$refs['scroll-reveal'])
   },
   methods: {
-    scrollTrigger(el, options = { rootMargin: '-160px' }) {
+    scrollTrigger(el, options = { rootMargin: this.rootMargin }) {
       //   let els = document.querySelectorAll(selector)
       //   els = Array.from(els)
       //   els.forEach((el) => {
@@ -86,6 +102,7 @@ export default {
   position: relative;
   opacity: 0;
   transition: all $ease-out-sine 1.2s;
+  transition-delay: var(--delay);
 
   &.--top {
     top: 20vh;
