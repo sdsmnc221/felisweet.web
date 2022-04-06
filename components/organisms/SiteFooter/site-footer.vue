@@ -39,7 +39,6 @@ export default {
   }
 
   @media #{$mq-medium} {
-    @include rem(margin-top, $spacing-2xl);
     @include rem(padding, $spacing-l);
 
     .logo-felisweet {
