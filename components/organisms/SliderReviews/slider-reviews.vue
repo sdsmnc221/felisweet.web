@@ -159,6 +159,10 @@ export default {
       li {
         @include rem(padding, $spacing-3xl $spacing-2xl);
 
+        span {
+          @include rem(font-size, $font-size-body-s);
+        }
+
         .reviews-quote {
           top: 0;
           left: 0;
