@@ -4,15 +4,26 @@ export default {
 
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    title: 'felisweet.web',
+    title:
+      'Felisweet Marie-Bénédicte Siruguet - Comportementaliste et Cat-sitter autour de Sainte-Geneviève-des-Bois',
     htmlAttrs: {
-      lang: 'en',
+      lang: 'fr',
     },
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: '' },
-      { name: 'format-detection', content: 'telephone=no' },
+      {
+        hid: 'description',
+        name: 'description',
+        content:
+          "Amoureuse des Félins, titulaire de l'ACACED et du certificat de comportementaliste félin en méthode positive, je serai heureuse de pouvoir m'occuper de vos loulous pendant votre absence. Jouer, manger, câlinés, bichonnés. SIREN 903 844 868",
+      },
+      {
+        hid: 'keywords',
+        name: 'keywords',
+        content:
+          'FeliSweet, Comportementaliste, Félin, Cat-sitting, Cat sitting, Sainte-Geneviève-des-Bois, Sainte Geneviève des Bois, Ile de France, Chat, Chats, Marie Bénédicte Siruguet, Comportementalisme',
+      },
     ],
     link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
   },
