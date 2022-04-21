@@ -17,9 +17,9 @@
         <br />
         Ou téléphonez au : <a href="tel: +33675561587">06 76 56 15 87</a>
       </p>
-      <a href="#" target="__blank" class="contact-planning">
+      <button class="contact-planning" @click="openPlanning">
         Vérifier le planning !
-      </a>
+      </button>
       <p class="contact-note">
         On est disponible autour de la commune <br />
         de Sainte-Geneviève-des-Bois en <br />
@@ -37,6 +37,12 @@ import AtomWrapper from '../../atoms/AtomWrapper'
 export default {
   name: 'ContactBanner',
   components: { AtomWrapper, AtomImage },
+  props: {
+    openPlanning: {
+      type: Function,
+      default: () => {},
+    },
+  },
 }
 </script>
 
@@ -99,6 +105,7 @@ export default {
       left: 50%;
       transform: translateX(-50%);
       border-radius: 20px;
+      border: 2px dashed transparent;
       letter-spacing: 0.6px;
 
       &:after {

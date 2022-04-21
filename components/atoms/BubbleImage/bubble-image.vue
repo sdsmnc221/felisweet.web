@@ -4,6 +4,7 @@
     :style="cssProps"
     class="bubble-image"
     :class="{ '--with-border': withBorder }"
+    @click="onClick"
   >
     <atom-image :src="src" />
   </atom-wrapper>
@@ -28,6 +29,10 @@ export default {
     withBorder: {
       type: Boolean,
       default: false,
+    },
+    onClick: {
+      type: Function,
+      default: () => {},
     },
   },
   computed: {

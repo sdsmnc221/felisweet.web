@@ -2,9 +2,9 @@
   <atom-wrapper tag="footer" flex flex-center flex-col class="site-footer">
     <logo-felisweet />
     <p class="links">
-      <a href="/">Crédits</a>
+      <button @click="openCredits">Crédits</button>
       <span>-</span>
-      <a href="/">Mentions légales</a>
+      <button @click="openMentions">Mentions légales</button>
     </p>
     <p class="copyright">
       <span>© 2022 FeliSweet.</span> <span>All rights reserved.</span>
@@ -19,6 +19,28 @@ import LogoFelisweet from '../../atoms/LogoFelisweet'
 export default {
   name: 'SiteFooter',
   components: { AtomWrapper, LogoFelisweet },
+  props: {
+    openPopup: {
+      type: Function,
+      default: null,
+    },
+    popupContentCredits: {
+      type: String,
+      default: null,
+    },
+    popupContentMentions: {
+      type: String,
+      default: null,
+    },
+  },
+  methods: {
+    openCredits() {
+      this.openPopup(this.popupContentCredits)
+    },
+    openMentions() {
+      this.openPopup(this.popupContentMentions)
+    },
+  },
 }
 </script>
 
@@ -33,7 +55,7 @@ export default {
   }
 
   p,
-  a {
+  button {
     color: $color-nepal-blue;
     @include rem(font-size, $font-size-body-xs);
     @include rem(line-height, $font-size-body-m);
@@ -47,7 +69,7 @@ export default {
     }
 
     p,
-    a,
+    button,
     span {
       @include rem(font-size, $font-size-body-s);
       @include rem(line-height, $font-size-body-m);
@@ -65,8 +87,13 @@ export default {
         display: none;
       }
 
-      a {
+      button {
         display: block;
+        background: none;
+        outline: none;
+        border: none;
+        cursor: pointer;
+        text-decoration: underline;
       }
     }
 

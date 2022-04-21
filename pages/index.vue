@@ -70,7 +70,7 @@
     </scroll-reveal-wrapper>
     <scroll-reveal-wrapper top delay="0.8s">
       <atom-wrapper tag="section" flex flex-center class="section-contact">
-        <contact-banner />
+        <contact-banner :open-planning="openPlanning" />
       </atom-wrapper>
     </scroll-reveal-wrapper>
     <paws-pattern :paws-per-section="4" />
@@ -106,6 +106,16 @@ export default {
     ContactBanner,
     PawsPattern,
     ScrollRevealWrapper,
+  },
+  props: {
+    openPopup: {
+      type: Function,
+      default: null,
+    },
+    popupContentPlanning: {
+      type: String,
+      default: null,
+    },
   },
   data() {
     return {
@@ -149,6 +159,9 @@ Merci Marie !!`,
   methods: {
     scrollDown() {
       this.$refs.sectionProblematics.scrollIntoView()
+    },
+    openPlanning() {
+      this.openPopup(this.popupContentPlanning)
     },
   },
 }
