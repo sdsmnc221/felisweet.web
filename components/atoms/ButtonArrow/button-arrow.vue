@@ -1,5 +1,5 @@
 <template>
-  <button class="button-arrow" :style="cssProps" @click="onClick">
+  <button class="button-arrow link" :style="cssProps" @click="onClick">
     <atom-image
       src="/images/arrow.svg"
       :width="arrowSize"
@@ -49,7 +49,6 @@ export default {
   border: none;
   background-color: $color-link-water;
   border-radius: $radius-full;
-  cursor: pointer;
   display: flex;
   justify-content: center;
   align-items: center;

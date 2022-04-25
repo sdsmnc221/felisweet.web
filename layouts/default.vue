@@ -17,6 +17,7 @@
       :popup-content-credits="popupContentHTML.credits"
       :popup-content-mentions="popupContentHTML.mentions"
     />
+    <dot-cursor />
   </div>
 </template>
 
@@ -24,9 +25,10 @@
 import SiteFooter from '../components/organisms/SiteFooter'
 import SiteHeader from '../components/organisms/SiteHeader'
 import PopUp from '../components/molecules/PopUp'
+import DotCursor from '../components/molecules/DotCursor'
 
 export default {
-  components: { SiteFooter, SiteHeader, PopUp },
+  components: { SiteFooter, SiteHeader, PopUp, DotCursor },
   data() {
     return {
       header: {

@@ -1,6 +1,6 @@
 <template>
   <atom-wrapper tag="picture" class="logo-felisweet" :style="cssProps">
-    <nuxt-link to="/">
+    <nuxt-link to="/" class="link">
       <atom-image src="/images/logo.svg" alt="FeliSweet's Logo" />
     </nuxt-link>
   </atom-wrapper>

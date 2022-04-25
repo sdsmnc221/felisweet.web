@@ -13,11 +13,14 @@
       <atom-image src="/images/illus-contact-foot.svg" />
       <p class="contact-text">
         Écrivez à :
-        <a href="mailto:mb.siruguet@felisweet.com">mb.siruguet@felisweet.com</a>
+        <a href="mailto:mb.siruguet@felisweet.com" class="link"
+          >mb.siruguet@felisweet.com</a
+        >
         <br />
-        Ou téléphonez au : <a href="tel: +33675561587">06 76 56 15 87</a>
+        Ou téléphonez au :
+        <a href="tel: +33675561587" class="link">06 76 56 15 87</a>
       </p>
-      <button class="contact-planning" @click="openPlanning">
+      <button class="contact-planning link" @click="openPlanning">
         Vérifier le planning !
       </button>
       <p class="contact-note">

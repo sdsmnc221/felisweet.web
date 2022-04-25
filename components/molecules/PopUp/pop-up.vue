@@ -2,7 +2,7 @@
   <atom-wrapper class="pop-up">
     <slot name="content">Some contentr</slot>
     <bubble-image
-      class="close-btn"
+      class="close-btn link"
       src="/images/close.svg"
       with-border
       :on-click="close"
@@ -51,7 +51,6 @@ export default {
     position: absolute;
     top: -72px;
     right: -72px;
-    cursor: pointer;
     @include rem(padding, $spacing-m);
     background-color: rgba($color-link-water, 64%);
     border-radius: $radius-full;

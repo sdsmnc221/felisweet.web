@@ -2,9 +2,9 @@
   <atom-wrapper tag="footer" flex flex-center flex-col class="site-footer">
     <logo-felisweet />
     <p class="links">
-      <button @click="openCredits">Crédits</button>
+      <button class="link" @click="openCredits">Crédits</button>
       <span>-</span>
-      <button @click="openMentions">Mentions légales</button>
+      <button class="link" @click="openMentions">Mentions légales</button>
     </p>
     <p class="copyright">
       <span>© 2022 FeliSweet.</span> <span>All rights reserved.</span>
@@ -92,7 +92,6 @@ export default {
         background: none;
         outline: none;
         border: none;
-        cursor: pointer;
         text-decoration: underline;
       }
     }
