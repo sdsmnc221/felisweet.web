@@ -88,3 +88,7 @@ sw.*
 
 # Vim swap files
 *.swp
+
+dist/*/*
+dist/_nuxt/image/
+._.DS_Store

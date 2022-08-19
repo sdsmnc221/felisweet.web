@@ -1,6 +1,6 @@
 <template>
   <atom-wrapper tag="main">
-    <scroll-reveal-wrapper top>
+    <scroll-reveal-wrapper>
       <atom-wrapper
         tag="section"
         full-height
@@ -17,7 +17,7 @@
         />
       </atom-wrapper>
     </scroll-reveal-wrapper>
-    <scroll-reveal-wrapper top>
+    <scroll-reveal-wrapper>
       <atom-wrapper
         ref="sectionProblematics"
         tag="section"
@@ -32,7 +32,7 @@
         <atom-image class="problematics-paw" src="/images/paw.svg" />
       </atom-wrapper>
     </scroll-reveal-wrapper>
-    <scroll-reveal-wrapper top>
+    <scroll-reveal-wrapper>
       <atom-wrapper
         tag="section"
         flex
@@ -56,7 +56,7 @@
         <bubble-image src="images/illus-services-bowl.svg" :size="148" />
       </atom-wrapper>
     </scroll-reveal-wrapper>
-    <scroll-reveal-wrapper top>
+    <scroll-reveal-wrapper>
       <atom-wrapper
         tag="section"
         flex
@@ -68,7 +68,7 @@
         <slider-reviews :reviews="reviews" />
       </atom-wrapper>
     </scroll-reveal-wrapper>
-    <scroll-reveal-wrapper top delay="0.8s">
+    <scroll-reveal-wrapper>
       <atom-wrapper tag="section" flex flex-center class="section-contact">
         <contact-banner :open-planning="openPlanning" />
       </atom-wrapper>
