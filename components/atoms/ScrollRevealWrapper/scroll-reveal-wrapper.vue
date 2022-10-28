@@ -28,7 +28,7 @@ export default {
           {
             autoAlpha: 1,
             y: 0,
-            ease: 'out.sine',
+            ease: 'sine.out',
           },
           '>'
         )

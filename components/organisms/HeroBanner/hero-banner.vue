@@ -1,5 +1,5 @@
 <template>
-  <atom-wrapper class="hero-banner">
+  <atom-wrapper class="hero-banner" ref="container">
     <hero-illus />
     <logo-felisweet />
     <atom-wrapper tag="h1" class="hero-text">
@@ -20,6 +20,14 @@ import HeroLogoFelisweet from '../../molecules/HeroLogoFelisweet'
 export default {
   name: 'HeroBanner',
   components: { AtomWrapper, HeroIllus, LogoFelisweet, HeroLogoFelisweet },
+  mounted() {
+    this.$gsap.to([...this.$refs.container.children], {
+      opacity: 1,
+      duration: 0.8,
+      ease: 'circ.in',
+      stagger: 0.8,
+    })
+  },
 }
 </script>
 
@@ -30,6 +38,10 @@ export default {
   align-items: center;
   flex-direction: column;
   margin-top: -$spacing-5xl;
+
+  > * {
+    opacity: 0;
+  }
 
   .hero-text {
     width: 100%;
