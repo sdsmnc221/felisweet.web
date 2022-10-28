@@ -1,8 +1,8 @@
 <template>
-  <atom-wrapper class="hero-banner" ref="container">
+  <atom-wrapper ref="container" class="hero-banner">
     <hero-illus />
     <logo-felisweet />
-    <atom-wrapper tag="h1" class="hero-text">
+    <atom-wrapper ref="smallContainer" tag="h1" class="hero-text">
       <hero-logo-felisweet />
       <span>C'est du <b>comportementalisme</b></span>
       <br />
@@ -21,12 +21,23 @@ export default {
   name: 'HeroBanner',
   components: { AtomWrapper, HeroIllus, LogoFelisweet, HeroLogoFelisweet },
   mounted() {
-    this.$gsap.to([...this.$refs.container.children], {
-      opacity: 1,
-      duration: 0.8,
-      ease: 'circ.in',
-      stagger: 0.8,
-    })
+    this.$gsap.set(
+      [...this.$refs.container.children, ...this.$refs.smallContainer.children],
+      {
+        opacity: 0,
+        yPercent: 480,
+      }
+    )
+    this.$gsap.to(
+      [...this.$refs.container.children, ...this.$refs.smallContainer.children],
+      {
+        opacity: 1,
+        yPercent: 0,
+        duration: 0.6,
+        ease: 'circ.in',
+        stagger: 0.2,
+      }
+    )
   },
 }
 </script>
@@ -38,10 +49,6 @@ export default {
   align-items: center;
   flex-direction: column;
   margin-top: -$spacing-5xl;
-
-  > * {
-    opacity: 0;
-  }
 
   .hero-text {
     width: 100%;
