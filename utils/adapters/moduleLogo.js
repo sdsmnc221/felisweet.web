@@ -6,7 +6,7 @@ export default async function ($prismic, $enhancedLinkSerializer, id) {
 
   if (data) {
     return {
-      image: imageAdapter(data.image),
+      image: imageAdapter(data.image, data.alt),
       link: $enhancedLinkSerializer(data.link),
       ...(data.size ? { size: data.size + 'vw' } : {}),
       noLink: data.noLink,
