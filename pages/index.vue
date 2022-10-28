@@ -8,7 +8,7 @@
       flex-center
       class="section-hero"
     >
-      <hero-banner />
+      <hero-banner v-bind="heroBanner" />
       <button-arrow
         ref="scrollDown"
         direction="down"
@@ -92,6 +92,8 @@ import PawsPattern from '../components/organisms/Paws-Pattern'
 import SliderReviews from '../components/organisms/SliderReviews'
 import ScrollRevealWrapper from '../components/atoms/ScrollRevealWrapper'
 
+import moduleLogoAdapter from '../utils/adapters/moduleLogo'
+
 export default {
   name: 'IndexPage',
   components: {
@@ -117,6 +119,52 @@ export default {
       type: String,
       default: null,
     },
+  },
+  async asyncData({ $prismic, $enhancedLinkSerializer, error }) {
+    const document = await $prismic.api.getSingle('home_page')
+    const moduleHeroBanner = await $prismic.api.getByID(
+      document?.data?.module_hero_banner?.id
+    )
+    const moduleLogoIllustration = await $prismic.api.getByID(
+      moduleHeroBanner?.data?.illustration_logo?.id
+    )
+    const moduleLogo = await $prismic.api.getByID(
+      moduleHeroBanner?.data?.module_logo?.id
+    )
+
+    if (document) {
+      const data = moduleHeroBanner?.data
+      return {
+        ...(data
+          ? {
+              heroBanner: {
+                illustration: data.illustration,
+                illustrationAlt: data.illustration_alt,
+                illustrationText: data.logo_text,
+                illustrationLogo:
+                  moduleLogoIllustration &&
+                  moduleLogoIllustration.data &&
+                  (await moduleLogoAdapter(
+                    $prismic,
+                    $enhancedLinkSerializer,
+                    moduleLogoIllustration.id
+                  )),
+                text: data.text,
+                logo:
+                  moduleLogo &&
+                  moduleLogo.data &&
+                  (await moduleLogoAdapter(
+                    $prismic,
+                    $enhancedLinkSerializer,
+                    moduleLogo.id
+                  )),
+              },
+            }
+          : {}),
+      }
+    } else {
+      error({ statusCode: 404, message: 'Page not found' })
+    }
   },
   data() {
     return {

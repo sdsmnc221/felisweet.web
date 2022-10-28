@@ -1,9 +1,7 @@
 <template>
-  <atom-wrapper tag="span" class="hero-logo-felisweet">
-    <em class="b">Hello,</em>
-    <br />
-    <em>nous sommes</em>
-    <logo-felisweet size="32vw" no-link />
+  <atom-wrapper tag="div" class="hero-logo-felisweet">
+    <div class="text" v-html="$prismic.asHTML(text)" />
+    <logo-felisweet v-bind="logo" size="32vw" />
   </atom-wrapper>
 </template>
 
@@ -14,51 +12,66 @@ import LogoFelisweet from '../../atoms/LogoFelisweet'
 export default {
   name: 'HeroLogoFelisweet',
   components: { AtomWrapper, LogoFelisweet },
+  props: {
+    logo: {
+      type: Object,
+      required: true,
+    },
+    text: {
+      type: Array,
+      required: true,
+    },
+  },
 }
 </script>
 
 <style lang="scss">
-.hero-logo-felisweet {
-  display: none !important;
+.hero-banner {
+  .hero-logo-felisweet {
+    display: none !important;
 
-  @media #{$mq-medium}, #{$mq-tablet} {
-    display: block !important;
-    text-align: center;
-    transform: scale(0.8) rotate(-8deg);
-    width: auto;
-    top: -72px;
-    left: 4vw;
+    @media #{$mq-medium}, #{$mq-tablet} {
+      display: block !important;
+      text-align: center;
+      transform: scale(0.8) rotate(-8deg);
+      width: auto;
+      top: -72px;
+      left: 4vw;
 
-    &::after {
-      content: '';
-      position: absolute;
-      display: block;
-      width: 160%;
-      height: 160%;
-      background-image: url('/images/bubble-logo.svg');
-      background-size: contain;
-      background-position: center;
-      background-repeat: no-repeat;
-      z-index: -1;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-    }
-
-    em {
-      font-family: $font-family-lucida;
-      color: $color-shakespear-blue;
-      font-weight: $weight-regular;
-      font-style: norma;
-      text-transform: none;
-      line-height: $font-size-heading-1;
-
-      &:first-of-type {
-        @include rem(font-size, $font-size-heading-1);
+      &::after {
+        content: '';
+        position: absolute;
+        display: block;
+        width: 160%;
+        height: 160%;
+        background-image: url('/images/bubble-logo.svg');
+        background-size: contain;
+        background-position: center;
+        background-repeat: no-repeat;
+        z-index: -1;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
       }
 
-      &:last-of-type {
-        @include rem(font-size, $font-size-heading-2);
+      .text {
+        p,
+        p strong {
+          font-family: $font-family-lucida !important;
+          color: $color-shakespear-blue;
+          font-weight: $weight-regular;
+          font-style: normal;
+          text-transform: none;
+          line-height: $font-size-heading-1;
+        }
+
+        > p:first-of-type strong {
+          @include rem(font-size, $font-size-heading-1);
+        }
+
+        > p:last-of-type strong {
+          @include rem(font-size, $font-size-heading-2);
+        }
       }
     }
   }

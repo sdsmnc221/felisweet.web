@@ -1,0 +1,20 @@
+{
+  "id": "home_page",
+  "label": "Home Page",
+  "repeatable": false,
+  "status": true,
+  "json": {
+    "Main": {
+      "module_hero_banner": {
+        "type": "Link",
+        "config": {
+          "label": "module hero banner",
+          "select": "document",
+          "customtypes": [
+            "module_hero_banner"
+          ]
+        }
+      }
+    }
+  }
+}

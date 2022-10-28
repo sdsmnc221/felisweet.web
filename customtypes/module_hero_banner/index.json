@@ -1,0 +1,63 @@
+{
+  "id": "module_hero_banner",
+  "label": "Module Hero Banner",
+  "repeatable": true,
+  "status": true,
+  "json": {
+    "Main": {
+      "illustration": {
+        "type": "Image",
+        "config": {
+          "label": "illustration",
+          "constraint": {},
+          "thumbnails": []
+        }
+      },
+      "illustration_alt": {
+        "type": "Text",
+        "config": {
+          "label": "illustration alt",
+          "placeholder": ""
+        }
+      },
+      "illustration_logo": {
+        "type": "Link",
+        "config": {
+          "label": "illustration logo",
+          "select": "document",
+          "customtypes": [
+            "module_logo"
+          ]
+        }
+      },
+      "logo_text": {
+        "type": "StructuredText",
+        "config": {
+          "label": "logo text",
+          "placeholder": "",
+          "allowTargetBlank": true,
+          "multi": "paragraph,strong"
+        }
+      },
+      "text": {
+        "type": "StructuredText",
+        "config": {
+          "label": "text",
+          "placeholder": "",
+          "allowTargetBlank": true,
+          "multi": "paragraph,strong"
+        }
+      },
+      "module_logo": {
+        "type": "Link",
+        "config": {
+          "label": "module logo",
+          "select": "document",
+          "customtypes": [
+            "module_logo"
+          ]
+        }
+      }
+    }
+  }
+}

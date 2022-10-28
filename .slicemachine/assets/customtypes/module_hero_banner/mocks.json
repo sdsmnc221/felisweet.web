@@ -1,0 +1,59 @@
+{
+  "id": "mock-doc-id",
+  "url": null,
+  "type": "module_hero_banner",
+  "href": null,
+  "tags": [],
+  "first_publication_date": "1970-01-01T00:00:01+0000",
+  "last_publication_date": "1970-01-01T00:00:01+0000",
+  "slugs": [],
+  "linked_documents": [],
+  "lang": "en-us",
+  "alternate_languages": [],
+  "data": {
+    "illustration": {
+      "dimensions": {
+        "width": 900,
+        "height": 500
+      },
+      "alt": null,
+      "copyright": null,
+      "url": "https://images.unsplash.com/photo-1544731612-de7f96afe55f"
+    },
+    "illustration_alt": "individual",
+    "illustration_logo": {
+      "id": "mock_document_id",
+      "link_type": "Document",
+      "type": "module_logo",
+      "tags": [],
+      "lang": "en-us",
+      "slug": null,
+      "first_publication_date": "1970-01-01T00:00:01+0000",
+      "last_publication_date": "1970-01-01T01:00:00+0000"
+    },
+    "logo_text": [
+      {
+        "type": "paragraph",
+        "text": "Incididunt laborum dolore quis quis consequat nisi laborum. Mollit minim laboris labore officia. Eu duis aliqua incididunt proident elit aute ut.",
+        "spans": []
+      }
+    ],
+    "text": [
+      {
+        "type": "paragraph",
+        "text": "Aute consectetur excepteur do reprehenderit aliquip sit amet est. Laborum proident dolore pariatur.",
+        "spans": []
+      }
+    ],
+    "module_logo": {
+      "id": "mock_document_id",
+      "link_type": "Document",
+      "type": "module_logo",
+      "tags": [],
+      "lang": "en-us",
+      "slug": null,
+      "first_publication_date": "1970-01-01T00:00:01+0000",
+      "last_publication_date": "1970-01-01T01:00:00+0000"
+    }
+  }
+}

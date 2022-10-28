@@ -1,7 +1,7 @@
 <template>
   <atom-wrapper tag="figure" class="hero-illus">
     <div class="circle" />
-    <atom-image src="/images/illus-hero.svg" alt="Hero's Illustration" />
+    <atom-image :src="illustration.url" :alt="illustrationAlt" />
   </atom-wrapper>
 </template>
 
@@ -12,6 +12,16 @@ import AtomWrapper from '../../atoms/AtomWrapper'
 export default {
   name: 'HeroIllus',
   components: { AtomWrapper, AtomImage },
+  props: {
+    illustration: {
+      type: Object,
+      required: true,
+    },
+    illustrationAlt: {
+      type: String,
+      required: true,
+    },
+  },
 }
 </script>
 

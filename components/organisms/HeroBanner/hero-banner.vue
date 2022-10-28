@@ -1,12 +1,13 @@
 <template>
   <atom-wrapper ref="container" class="hero-banner">
-    <hero-illus />
-    <logo-felisweet />
+    <hero-illus
+      :illustration="illustration"
+      :illustration-alt="illustrationAlt"
+    />
+    <logo-felisweet v-bind="logo" />
     <atom-wrapper ref="smallContainer" tag="h1" class="hero-text">
-      <hero-logo-felisweet />
-      <span>C'est du <b>comportementalisme</b></span>
-      <br />
-      <span>plein de <b>félin</b> et <b>câlin</b> !!!</span>
+      <hero-logo-felisweet :logo="illustrationLogo" :text="illustrationText" />
+      <div v-html="$prismic.asHTML(text)" />
     </atom-wrapper>
   </atom-wrapper>
 </template>
@@ -20,6 +21,32 @@ import HeroLogoFelisweet from '../../molecules/HeroLogoFelisweet'
 export default {
   name: 'HeroBanner',
   components: { AtomWrapper, HeroIllus, LogoFelisweet, HeroLogoFelisweet },
+  props: {
+    illustration: {
+      type: Object,
+      required: true,
+    },
+    illustrationAlt: {
+      type: String,
+      required: true,
+    },
+    illustrationText: {
+      type: Array,
+      required: true,
+    },
+    illustrationLogo: {
+      type: Object,
+      required: true,
+    },
+    text: {
+      type: Array,
+      required: true,
+    },
+    logo: {
+      type: Object,
+      required: true,
+    },
+  },
   mounted() {
     this.$gsap.to(
       [...this.$refs.container.children, ...this.$refs.smallContainer.children],
@@ -58,26 +85,28 @@ export default {
     width: 100%;
     text-align: center;
     font-family: $font-family-quicksand;
+    text-transform: uppercase;
     @include rem(margin-top, $spacing-s);
 
-    span {
-      display: inline-block;
+    div {
       text-transform: uppercase;
 
-      &:first-of-type,
-      &:first-of-type b {
-        @include rem(font-size, $font-size-body-m);
-        letter-spacing: 0.5px;
-      }
+      p {
+        &:first-of-type,
+        &:first-of-type strong {
+          @include rem(font-size, $font-size-body-m);
+          letter-spacing: 0.5px;
+        }
 
-      &:last-of-type,
-      &:last-of-type b {
-        @include rem(font-size, $font-size-body-l);
-        letter-spacing: 1px;
+        &:last-of-type,
+        &:last-of-type strong {
+          @include rem(font-size, $font-size-body-l);
+          letter-spacing: 1px;
+        }
       }
     }
 
-    b {
+    strong {
       font-weight: $weight-bold;
     }
   }
@@ -89,22 +118,24 @@ export default {
     .hero-text {
       width: 50vw;
 
-      span {
-        &:nth-of-type(2),
-        &:last-of-type {
-          @include rem(margin-left, $spacing-4xl);
-        }
+      div {
+        p {
+          &:nth-of-type(1),
+          &:last-of-type {
+            @include rem(margin-left, $spacing-4xl);
+          }
 
-        &:nth-of-type(2),
-        &:nth-last-of-type(2) b {
-          @include rem(font-size, $font-size-heading-5);
-          letter-spacing: 0.1px;
-        }
+          &:nth-of-type(1),
+          &:nth-last-of-type(2) strong {
+            @include rem(font-size, $font-size-heading-5);
+            letter-spacing: 0.1px;
+          }
 
-        &:last-of-type,
-        &:last-of-type b {
-          @include rem(font-size, $font-size-heading-4);
-          letter-spacing: 1px;
+          &:last-of-type,
+          &:last-of-type strong {
+            @include rem(font-size, $font-size-heading-4);
+            letter-spacing: 1px;
+          }
         }
       }
     }

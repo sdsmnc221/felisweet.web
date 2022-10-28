@@ -36,8 +36,7 @@ export default {
   },
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
-  plugins: ['~/plugins/gsap.js'],
-
+  plugins: ['~/plugins/gsap.js', '~/plugins/prismic/enhanced-link-serializer'],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,
@@ -47,15 +46,34 @@ export default {
     // https://go.nuxtjs.dev/eslint
     '@nuxtjs/eslint-module',
     '@nuxt/image',
+    '@nuxtjs/prismic',
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: ['@nuxtjs/style-resources'],
 
+  // Prismic @nuxtjs/prismic configuration: https://prismic.nuxtjs.org/configuration
+  prismic: {
+    endpoint: `https://${process.env.PRISMIC_REPOSITORY}.prismic.io/api/v2`,
+    modern: true,
+    apiOptions: {
+      routes: [
+        // Resolves the Homepage document to "/"
+        {
+          type: 'home_page',
+          path: '/',
+        },
+      ],
+    },
+  },
+
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
-    transpile: [
-      "gsap"
-    ]
+    transpile: ['gsap', '@prismicio/vue'],
+  },
+
+  // Environment variables, prefered over env property: https://nuxtjs.org/tutorials/moving-from-nuxtjs-dotenv-to-runtime-config/#introducing-the-nuxtjs-runtime-config
+  publicRuntimeConfig: {
+    prismicRepository: process.env.PRISMIC_REPOSITORY,
   },
 }

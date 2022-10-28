@@ -1,6 +1,7 @@
 <template>
   <nuxt-img
     :src="src"
+    :srcset="src"
     :sizes="sizes"
     :width="width"
     :height="height"
