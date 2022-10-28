@@ -1,8 +1,9 @@
 <template>
   <atom-wrapper tag="picture" class="logo-felisweet" :style="cssProps">
-    <nuxt-link to="/" class="link">
+    <nuxt-link v-if="!noLink" to="/" class="link">
       <atom-image src="/images/logo.svg" alt="FeliSweet's Logo" />
     </nuxt-link>
+    <atom-image v-else src="/images/logo.svg" alt="FeliSweet's Logo" />
   </atom-wrapper>
 </template>
 
@@ -17,6 +18,10 @@ export default {
     size: {
       type: String,
       default: '64vw',
+    },
+    noLink: {
+      type: Boolean,
+      default: false,
     },
   },
   computed: {

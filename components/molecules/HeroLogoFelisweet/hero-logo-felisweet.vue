@@ -3,7 +3,7 @@
     <em class="b">Hello,</em>
     <br />
     <em>nous sommes</em>
-    <logo-felisweet size="32vw" />
+    <logo-felisweet size="32vw" no-link />
   </atom-wrapper>
 </template>
 
