@@ -1,22 +1,23 @@
 <template>
   <atom-wrapper tag="main">
-    <scroll-reveal-wrapper>
-      <atom-wrapper
-        tag="section"
-        full-height
-        flex
-        flex-center
-        class="section-hero"
-      >
-        <hero-banner />
-        <button-arrow
-          direction="down"
-          :size="46"
-          :arrow-size="24"
-          :on-click="scrollDown"
-        />
-      </atom-wrapper>
-    </scroll-reveal-wrapper>
+    <atom-wrapper
+      ref="hero"
+      tag="section"
+      full-height
+      flex
+      flex-center
+      class="section-hero"
+    >
+      <hero-banner />
+      <button-arrow
+        ref="scrollDown"
+        direction="down"
+        :size="46"
+        :arrow-size="24"
+        :on-click="scrollDown"
+      />
+    </atom-wrapper>
+
     <scroll-reveal-wrapper>
       <atom-wrapper
         ref="sectionProblematics"
@@ -156,6 +157,14 @@ Merci Marie !!`,
       ],
     }
   },
+  mounted() {
+    this.$gsap.to([this.$refs.scrollDown.$el], {
+      opacity: 1,
+      startAt: { opacity: 0 },
+      duration: 2.4,
+      ease: 'circ.in',
+    })
+  },
   methods: {
     scrollDown() {
       this.$refs.sectionProblematics.scrollIntoView()
@@ -177,6 +186,7 @@ main {
       @include rem(bottom, $spacing-5xl);
       left: 50%;
       transform: translateX(-50%);
+      opacity: 0;
     }
   }
 

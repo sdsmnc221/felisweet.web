@@ -21,20 +21,13 @@ export default {
   name: 'HeroBanner',
   components: { AtomWrapper, HeroIllus, LogoFelisweet, HeroLogoFelisweet },
   mounted() {
-    this.$gsap.set(
-      [...this.$refs.container.children, ...this.$refs.smallContainer.children],
-      {
-        opacity: 0,
-        yPercent: 480,
-      }
-    )
     this.$gsap.to(
       [...this.$refs.container.children, ...this.$refs.smallContainer.children],
       {
         opacity: 1,
-        yPercent: 0,
-        duration: 0.6,
-        ease: 'circ.in',
+        y: 0,
+        duration: 0.8,
+        ease: 'sine.in',
         stagger: 0.2,
       }
     )
@@ -49,6 +42,17 @@ export default {
   align-items: center;
   flex-direction: column;
   margin-top: -$spacing-5xl;
+
+  > * {
+    opacity: 0;
+    transform: translateY(240px);
+
+    span:not(:first-of-type) {
+      opacity: 0;
+      transform: translateY(240px);
+      display: inline-block;
+    }
+  }
 
   .hero-text {
     width: 100%;
