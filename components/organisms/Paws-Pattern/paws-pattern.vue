@@ -23,14 +23,49 @@ export default {
       const { top, bottom } = this.getSectionTopBottom(heights, i)
 
       for (let j = 0; j < this.pawsPerSection; j++) {
-        const s = random(16, 32) + 'vw'
-        const l = random(0, 72) + 'vw'
-        const t = random(top, bottom) + 'px'
-        this.createPaw(s, l, t)
+        const otherPaws = [...document.querySelectorAll('.paw')]
+        let s, l, t, sInPx, lInPx
+
+        s = random(8, 16)
+        l = random(0, 100)
+        t = random(top, bottom)
+
+        sInPx = (s * window.innerWidth) / 100
+        lInPx = (l * window.innerWidth) / 100
+
+        while (
+          otherPaws.some((paw) => {
+            return this.overlapCheck(paw.getBoundingClientRect(), {
+              top: t,
+              bottom: t + sInPx,
+              left: lInPx,
+              right: lInPx + sInPx,
+            })
+          })
+        ) {
+          s = random(8, 16)
+          l = random(0, 100)
+          t = random(top, bottom)
+
+          sInPx = (s * window.innerWidth) / 100
+          lInPx = (l * window.innerWidth) / 100
+        }
+
+        this.createPaw(sInPx + 'px', lInPx + 'px', t + 'px')
       }
     }
   },
   methods: {
+    overlapCheck(rect1, rect2) {
+      const isOverlapping = !(
+        rect1.top > rect2.bottom ||
+        rect1.right < rect2.left ||
+        rect1.bottom < rect2.top ||
+        rect1.left > rect2.right
+      )
+
+      return isOverlapping
+    },
     createPaw(size, left, top) {
       const img = document.createElement('img')
       img.classList.add('paw')
