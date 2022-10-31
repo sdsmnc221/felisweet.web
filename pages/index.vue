@@ -46,7 +46,7 @@
           <bubble-image :src="services.image" />
         </h2>
         <service-block
-          v-for="(service, index) in services.blocks"
+          v-for="(service, index) in services.block"
           :key="'servive' + index"
           :title="service.title"
           :description="service.description"
@@ -64,8 +64,8 @@
         flex-col
         class="section-reviews"
       >
-        <h2><b>Les témoignages</b> :</h2>
-        <slider-reviews :reviews="reviews" />
+        <h2 v-html="reviews.title" />
+        <slider-reviews :reviews="reviews.block" />
       </atom-wrapper>
     </scroll-reveal-wrapper>
     <scroll-reveal-wrapper>
@@ -94,6 +94,7 @@ import ScrollRevealWrapper from '../components/atoms/ScrollRevealWrapper'
 import imageAdapter from '../utils/adapters/imageAdapter'
 import heroBannerAdapter from '../utils/adapters/heroBanner'
 import moduleServiceAdapter from '../utils/adapters/moduleService'
+import moduleReviewAdapter from '../utils/adapters/moduleReview'
 
 export default {
   name: 'IndexPage',
@@ -138,9 +139,8 @@ export default {
       (slice) => slice[1].slice_type === 'services_block'
     )[1]
     const moduleServices = servicesBlock?.items
-
     const services = {
-      blocks: [],
+      block: [],
       title: $prismic.asHTML(servicesBlock?.primary?.title),
       image: imageAdapter(servicesBlock?.primary?.image)?.filename,
     }
@@ -149,8 +149,22 @@ export default {
         $prismic,
         service?.module_service?.id
       )
-      if (moduleService) services.blocks.push(moduleService)
+      if (moduleService) services.block.push(moduleService)
     }
+
+    const reviewsBlock = Object.entries(document?.data?.slices).find(
+      (slice) => slice[1].slice_type === 'reviews_block'
+    )[1]
+    const moduleReviews = reviewsBlock?.items
+    const reviews = {
+      block: moduleReviews.map((review) =>
+        moduleReviewAdapter($prismic, review)
+      ),
+      title: $prismic.asHTML(reviewsBlock?.primary?.title),
+      detailLabel: reviewsBlock?.primary?.detail_label,
+      link: $enhancedLinkSerializer(reviewsBlock?.primary?.link),
+    }
+    console.log(reviews)
 
     if (document) {
       const data = moduleHeroBanner?.data
@@ -165,36 +179,12 @@ export default {
                 moduleLogoIllustration,
               }),
               services,
+              reviews,
             }
           : {}),
       }
     } else {
       error({ statusCode: 404, message: 'Page not found' })
-    }
-  },
-  data() {
-    return {
-      reviews: [
-        {
-          author: 'Adeline Trpette',
-          text: `Marie est une super personne qui aime les animaux par dessus tout et qui à un don pour communiquer avec eux.
-Heureusement qu’elle a été là pour habituer nos deux chats au harnais à leur début en extérieur ! Grâce à ses talents, ils l’ont très bien accepté 🙂
-Elle nous a aussi beaucoup aidé pour les problèmes de comportement de notre petit Abou qui faisait pipi hors de sa litière.
-Merci Marie !!`,
-        },
-        {
-          author: 'Jac Noirot',
-          text: `quel soulagement d avoir rencontré Nany Marie : disponible, douce, attentionnée,  ses conseils sont très utiles, je l appellerai de nouveau sans hésitation pour ses bons services !`,
-        },
-        {
-          author: 'Trương Thị Vân An ',
-          text: `Mon Robin m'a quitté pour aller vivre dans la forêt juste avant que je parte en vacances 😭. Mais il rentre quand même pour la nourriture. Un grand merci à Felisweet de s'occuper de lui la semaine où je n'étais pas chez moi. Elle a travaillé sur l'environnement (placement des gamelles, des friandises, des caméras) pour attirer Robin et lui faire revenir plus fréquemment dans la pièce. Très contente d'avoir faire confiance en elle 🥰.`,
-        },
-        {
-          author: 'Mel Sdz',
-          text: `Super expérience avec Marie Benedicte! Photos et vidéos tous les jours, mise en place d’une caméra afin de pouvoir voir nos chats pendant notre absence. Au top, je recommande !!`,
-        },
-      ],
     }
   },
   mounted() {
@@ -279,12 +269,15 @@ main {
     }
 
     h2 {
-      @include rem(font-size, $font-size-body-xl);
       @include rem(padding, 0 $spacing-2xl);
       @include rem(margin, $spacing-2xl 0 calc($spacing-2xl/2) 0);
-      text-align: center;
 
-      b {
+      p {
+        @include rem(font-size, $font-size-body-xl);
+        text-align: center;
+      }
+
+      strong {
         @include rem(font-size, $font-size-body-xl);
         font-weight: $weight-bold;
       }
@@ -344,7 +337,7 @@ main {
 
     .section-reviews {
       h2,
-      h2 b {
+      h2 p strong {
         @include rem(font-size, $font-size-heading-3);
       }
     }

@@ -51,6 +51,19 @@
         },
         "items": {}
       }
+    },
+    "ReviewsBlock": {
+      "default": {
+        "items": {
+          "review": {
+            "config": {
+              "patternType": "PARAGRAPH",
+              "blocks": 1
+            }
+          }
+        },
+        "primary": {}
+      }
     }
   }
 }

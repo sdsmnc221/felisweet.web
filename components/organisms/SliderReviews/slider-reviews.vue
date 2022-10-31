@@ -16,10 +16,8 @@
             '--visible': index === activeIndex,
           }"
         >
+          <div v-html="review.text" />
           <span>
-            <br />
-            {{ review.text }}
-            <br />
             <atom-image src="/images/double-quote.svg" class="reviews-quote" />
           </span>
           <span>- {{ review.author }}</span>
@@ -123,18 +121,27 @@ export default {
         transform: scale(1);
       }
 
+      div {
+        max-height: 40vh;
+        overflow-y: scroll;
+      }
+
+      p,
+      span {
+        font-family: $font-family-lucida;
+      }
+
       span {
         display: block;
-        position: relative;
-        font-family: $font-family-lucida;
+
         @include rem(font-size, $font-size-body-xs);
         @include rem(line-height, calc($font-size-body-xs * 1.2));
 
         .reviews-quote {
           width: 24px;
           position: absolute;
-          top: -4%;
-          left: -4%;
+          top: 30%;
+          left: 2%;
         }
 
         &:last-of-type {
@@ -154,11 +161,17 @@ export default {
     }
   }
 
-  @media #{$mq-medium}, #{$mq-tablet} {
+  @media #{$mq-medium} {
     .reviews {
       li {
         @include rem(padding, $spacing-3xl $spacing-2xl);
 
+        div {
+          max-height: auto;
+          overflow-y: visible;
+        }
+
+        p,
         span {
           @include rem(font-size, $font-size-body-s);
         }

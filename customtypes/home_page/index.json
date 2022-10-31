@@ -22,6 +22,9 @@
           "choices": {
             "services_block": {
               "type": "SharedSlice"
+            },
+            "reviews_block": {
+              "type": "SharedSlice"
             }
           }
         }

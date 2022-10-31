@@ -35,7 +35,7 @@ interface HomePageDocumentData {
  * Slice for *Home Page → Slice Zone*
  *
  */
-type HomePageDocumentDataSlicesSlice = ServicesBlockSlice;
+type HomePageDocumentDataSlicesSlice = ServicesBlockSlice | ReviewsBlockSlice;
 /**
  * Home Page document from Prismic
  *
@@ -242,6 +242,91 @@ interface ModuleServiceDocumentData {
 export type ModuleServiceDocument<Lang extends string = string> = prismicT.PrismicDocumentWithoutUID<Simplify<ModuleServiceDocumentData>, "module_service", Lang>;
 export type AllDocumentTypes = HomePageDocument | ModuleHeroBannerDocument | ModuleLogoDocument | ModuleServiceDocument;
 /**
+ * Primary content in ReviewsBlock → Primary
+ *
+ */
+interface ReviewsBlockSliceDefaultPrimary {
+    /**
+     * Title field in *ReviewsBlock → Primary*
+     *
+     * - **Field Type**: Rich Text
+     * - **Placeholder**: This is where it all begins...
+     * - **API ID Path**: reviews_block.primary.title
+     * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
+     *
+     */
+    title: prismicT.RichTextField;
+    /**
+     * Detail Label field in *ReviewsBlock → Primary*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: reviews_block.primary.detail_label
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    detail_label: prismicT.KeyTextField;
+    /**
+     * Link field in *ReviewsBlock → Primary*
+     *
+     * - **Field Type**: Link
+     * - **Placeholder**: *None*
+     * - **API ID Path**: reviews_block.primary.link
+     * - **Documentation**: https://prismic.io/docs/core-concepts/link-content-relationship
+     *
+     */
+    link: prismicT.LinkField;
+}
+/**
+ * Item in ReviewsBlock → Items
+ *
+ */
+export interface ReviewsBlockSliceDefaultItem {
+    /**
+     * Author field in *ReviewsBlock → Items*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: reviews_block.items[].author
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    author: prismicT.KeyTextField;
+    /**
+     * Review field in *ReviewsBlock → Items*
+     *
+     * - **Field Type**: Rich Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: reviews_block.items[].review
+     * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
+     *
+     */
+    review: prismicT.RichTextField;
+}
+/**
+ * Default variation for ReviewsBlock Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: `ReviewsBlock`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
+ *
+ */
+export type ReviewsBlockSliceDefault = prismicT.SharedSliceVariation<"default", Simplify<ReviewsBlockSliceDefaultPrimary>, Simplify<ReviewsBlockSliceDefaultItem>>;
+/**
+ * Slice variation for *ReviewsBlock*
+ *
+ */
+type ReviewsBlockSliceVariation = ReviewsBlockSliceDefault;
+/**
+ * ReviewsBlock Shared Slice
+ *
+ * - **API ID**: `reviews_block`
+ * - **Description**: `ReviewsBlock`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
+ *
+ */
+export type ReviewsBlockSlice = prismicT.SharedSlice<"reviews_block", ReviewsBlockSliceVariation>;
+/**
  * Primary content in ServicesBlock → Primary
  *
  */
@@ -311,6 +396,6 @@ declare module "@prismicio/client" {
         (repositoryNameOrEndpoint: string, options?: prismic.ClientConfig): prismic.Client<AllDocumentTypes>;
     }
     namespace Content {
-        export type { HomePageDocumentData, HomePageDocumentDataSlicesSlice, HomePageDocument, ModuleHeroBannerDocumentData, ModuleHeroBannerDocument, ModuleLogoDocumentData, ModuleLogoDocument, ModuleServiceDocumentData, ModuleServiceDocument, AllDocumentTypes, ServicesBlockSliceDefaultPrimary, ServicesBlockSliceDefaultItem, ServicesBlockSliceDefault, ServicesBlockSliceVariation, ServicesBlockSlice };
+        export type { HomePageDocumentData, HomePageDocumentDataSlicesSlice, HomePageDocument, ModuleHeroBannerDocumentData, ModuleHeroBannerDocument, ModuleLogoDocumentData, ModuleLogoDocument, ModuleServiceDocumentData, ModuleServiceDocument, AllDocumentTypes, ReviewsBlockSliceDefaultPrimary, ReviewsBlockSliceDefaultItem, ReviewsBlockSliceDefault, ReviewsBlockSliceVariation, ReviewsBlockSlice, ServicesBlockSliceDefaultPrimary, ServicesBlockSliceDefaultItem, ServicesBlockSliceDefault, ServicesBlockSliceVariation, ServicesBlockSlice };
     }
 }

@@ -1,0 +1,61 @@
+{
+  "id": "reviews_block",
+  "type": "SharedSlice",
+  "name": "ReviewsBlock",
+  "description": "ReviewsBlock",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "sktwi1xtmkfgx8626",
+      "description": "ReviewsBlock",
+      "primary": {
+        "title": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Title",
+            "placeholder": "This is where it all begins...",
+            "allowTargetBlank": true,
+            "multi": "heading2,paragraph,strong"
+          }
+        },
+        "detail_label": {
+          "type": "Text",
+          "config": {
+            "label": "Detail Label",
+            "placeholder": ""
+          }
+        },
+        "link": {
+          "type": "Link",
+          "config": {
+            "label": "Link",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "select": null
+          }
+        }
+      },
+      "items": {
+        "author": {
+          "type": "Text",
+          "config": {
+            "label": "Author",
+            "placeholder": ""
+          }
+        },
+        "review": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Review",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "multi": "paragraph,strong"
+          }
+        }
+      },
+      "imageUrl": "https://images.prismic.io/slice-machine/621a5ec4-0387-4bc5-9860-2dd46cbc07cd_default_ss.png?auto=compress,format"
+    }
+  ]
+}
