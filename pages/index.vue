@@ -66,6 +66,11 @@
       >
         <h2 v-html="reviews.title" />
         <slider-reviews :reviews="reviews.block" />
+        <p class="reviews-more" v-if="reviews.detailLabel && reviews.link">
+          <a class="link" target="_blank" :href="reviews.link.href">{{
+            reviews.detailLabel
+          }}</a>
+        </p>
       </atom-wrapper>
     </scroll-reveal-wrapper>
     <scroll-reveal-wrapper>
@@ -264,6 +269,8 @@ main {
   }
 
   .section-reviews {
+    @include rem(margin-bottom, $spacing-5xl);
+
     &.--flex {
       justify-content: flex-start;
     }
@@ -280,6 +287,16 @@ main {
       strong {
         @include rem(font-size, $font-size-body-xl);
         font-weight: $weight-bold;
+      }
+    }
+
+    .reviews-more {
+      position: absolute;
+      bottom: -10vh;
+      right: 20%;
+
+      a {
+        color: $color-shakespear-blue;
       }
     }
   }
