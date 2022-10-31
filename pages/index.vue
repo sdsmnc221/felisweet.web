@@ -92,7 +92,7 @@ import PawsPattern from '../components/organisms/Paws-Pattern'
 import SliderReviews from '../components/organisms/SliderReviews'
 import ScrollRevealWrapper from '../components/atoms/ScrollRevealWrapper'
 
-import moduleLogoAdapter from '../utils/adapters/moduleLogo'
+import heroBannerAdapter from '../utils/adapters/heroBanner'
 
 export default {
   name: 'IndexPage',
@@ -137,28 +137,13 @@ export default {
       return {
         ...(data
           ? {
-              heroBanner: {
-                illustration: data.illustration,
-                illustrationAlt: data.illustration_alt,
-                illustrationText: data.logo_text,
-                illustrationLogo:
-                  moduleLogoIllustration &&
-                  moduleLogoIllustration.data &&
-                  (await moduleLogoAdapter(
-                    $prismic,
-                    $enhancedLinkSerializer,
-                    moduleLogoIllustration.id
-                  )),
-                text: data.text,
-                logo:
-                  moduleLogo &&
-                  moduleLogo.data &&
-                  (await moduleLogoAdapter(
-                    $prismic,
-                    $enhancedLinkSerializer,
-                    moduleLogo.id
-                  )),
-              },
+              heroBanner: await heroBannerAdapter({
+                $prismic,
+                $enhancedLinkSerializer,
+                data,
+                moduleLogo,
+                moduleLogoIllustration,
+              }),
             }
           : {}),
       }
