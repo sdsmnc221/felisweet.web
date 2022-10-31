@@ -1,0 +1,37 @@
+[
+  {
+    "variation": "default",
+    "version": "sktwi1xtmkfgx8626",
+    "items": [
+      {
+        "module_service": {
+          "id": "mock_document_id",
+          "link_type": "Document",
+          "type": "module_service",
+          "tags": [],
+          "lang": "en-us",
+          "slug": null,
+          "first_publication_date": "1970-01-01T00:00:01+0000",
+          "last_publication_date": "1970-01-01T01:00:00+0000"
+        }
+      }
+    ],
+    "primary": {
+      "title": [
+        {
+          "type": "heading1",
+          "text": "Sight",
+          "spans": []
+        }
+      ],
+      "description": [
+        {
+          "type": "paragraph",
+          "text": "Nisi aliqua aliquip deserunt reprehenderit magna. Laboris dolore aliquip et ut proident duis mollit id magna sit voluptate ullamco elit. Ut proident minim anim sunt.",
+          "spans": []
+        }
+      ]
+    },
+    "slice_type": "services"
+  }
+]

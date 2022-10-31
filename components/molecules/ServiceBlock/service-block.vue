@@ -74,7 +74,7 @@ export default {
     top: -6px;
     z-index: -1;
 
-    b {
+    strong {
       font-weight: $weight-bold;
     }
   }

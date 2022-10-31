@@ -42,12 +42,11 @@
         class="section-services"
       >
         <h2>
-          On vous propose <br />
-          <b>nos services</b> :
-          <bubble-image src="/images/illus-services-house.svg" />
+          <div v-html="services.title" />
+          <bubble-image :src="services.image" />
         </h2>
         <service-block
-          v-for="(service, index) in services"
+          v-for="(service, index) in services.blocks"
           :key="'servive' + index"
           :title="service.title"
           :description="service.description"
@@ -92,7 +91,9 @@ import PawsPattern from '../components/organisms/Paws-Pattern'
 import SliderReviews from '../components/organisms/SliderReviews'
 import ScrollRevealWrapper from '../components/atoms/ScrollRevealWrapper'
 
+import imageAdapter from '../utils/adapters/imageAdapter'
 import heroBannerAdapter from '../utils/adapters/heroBanner'
+import moduleServiceAdapter from '../utils/adapters/moduleService'
 
 export default {
   name: 'IndexPage',
@@ -122,6 +123,7 @@ export default {
   },
   async asyncData({ $prismic, $enhancedLinkSerializer, error }) {
     const document = await $prismic.api.getSingle('home_page')
+
     const moduleHeroBanner = await $prismic.api.getByID(
       document?.data?.module_hero_banner?.id
     )
@@ -131,6 +133,24 @@ export default {
     const moduleLogo = await $prismic.api.getByID(
       moduleHeroBanner?.data?.module_logo?.id
     )
+
+    const servicesBlock = Object.entries(document?.data?.slices).find(
+      (slice) => slice[1].slice_type === 'services_block'
+    )[1]
+    const moduleServices = servicesBlock?.items
+
+    const services = {
+      blocks: [],
+      title: $prismic.asHTML(servicesBlock?.primary?.title),
+      image: imageAdapter(servicesBlock?.primary?.image)?.filename,
+    }
+    for (const service of moduleServices) {
+      const moduleService = await moduleServiceAdapter(
+        $prismic,
+        service?.module_service?.id
+      )
+      if (moduleService) services.blocks.push(moduleService)
+    }
 
     if (document) {
       const data = moduleHeroBanner?.data
@@ -144,6 +164,7 @@ export default {
                 moduleLogo,
                 moduleLogoIllustration,
               }),
+              services,
             }
           : {}),
       }
@@ -153,20 +174,6 @@ export default {
   },
   data() {
     return {
-      services: [
-        {
-          title: 'Comportements du chat',
-          description: `Vous rencontrez un comportement gênant de la part de votre chat ? On vous expliquera pourquoi ce comportement et que faire pour que cela ne se reproduise plus. Toutes nos techniques sont <b>en méthode positive avec de la bienveillance pour le chat mais aussi l’humain. Aucune punition, aucune immersion.</b> Tout se déroulera dans le respect du bien-être de votre boule de poils à 4 pattes.`,
-          imagePos: 'bottom',
-          imageSrc: '/images/illus-services-yarn.svg',
-        },
-        {
-          title: 'Cat-sitting',
-          description: `Vous ne pouvez pas être là pour vous occuper de votre loulou ? <b>On viendra une fois par jour tenir compagnie à votre chat.</b> On restera au moins une heure avec lui. On s’occupera de lui nettoyer ses litières en passant un coup de balais derrière, de lui changer son eau, de lui donner à manger. On aura de longue partie de jeux avec lui et des moments câlins.`,
-          imagePos: 'top',
-          imageSrc: '/images/illus-services-cat.svg',
-        },
-      ],
       reviews: [
         {
           author: 'Adeline Trpette',
@@ -238,14 +245,17 @@ main {
     }
 
     h2 {
-      @include rem(font-size, $font-size-body-xl);
       @include rem(padding, 0 $spacing-2xl);
       @include rem(margin, $spacing-2xl 0 calc($spacing-2xl/2) 0);
-      text-align: center;
-      position: relative;
-      font-weight: $weight-regular;
 
-      b {
+      position: relative;
+
+      p {
+        @include rem(font-size, $font-size-body-xl);
+        text-align: center;
+      }
+
+      strong {
         @include rem(font-size, $font-size-body-xl);
         font-weight: $weight-bold;
       }
@@ -309,9 +319,11 @@ main {
         top: -10vh;
         left: -16vw;
 
-        @include rem(font-size, $font-size-heading-3);
+        p {
+          @include rem(font-size, $font-size-heading-3);
+        }
 
-        b {
+        strong {
           @include rem(font-size, $font-size-heading-3);
         }
 

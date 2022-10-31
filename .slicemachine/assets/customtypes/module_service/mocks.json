@@ -1,0 +1,33 @@
+{
+  "id": "mock-doc-id",
+  "url": null,
+  "type": "module_service",
+  "href": null,
+  "tags": [],
+  "first_publication_date": "1970-01-01T00:00:01+0000",
+  "last_publication_date": "1970-01-01T00:00:01+0000",
+  "slugs": [],
+  "linked_documents": [],
+  "lang": "en-us",
+  "alternate_languages": [],
+  "data": {
+    "title": "magic",
+    "description": [
+      {
+        "type": "paragraph",
+        "text": "Nostrud excepteur commodo minim amet fugiat. Eu dolore non quis qui laborum culpa aliquip ea non eiusmod in sunt dolor. Ullamco aliqua velit eu occaecat nulla tempor sit elit nulla cillum do.",
+        "spans": []
+      }
+    ],
+    "image": {
+      "dimensions": {
+        "width": 900,
+        "height": 500
+      },
+      "alt": null,
+      "copyright": null,
+      "url": "https://images.unsplash.com/photo-1593642633279-1796119d5482"
+    },
+    "image_position": "map"
+  }
+}

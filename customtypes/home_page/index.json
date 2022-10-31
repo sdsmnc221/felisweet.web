@@ -14,6 +14,17 @@
             "module_hero_banner"
           ]
         }
+      },
+      "slices": {
+        "type": "Slices",
+        "fieldset": "Slice Zone",
+        "config": {
+          "choices": {
+            "services_block": {
+              "type": "SharedSlice"
+            }
+          }
+        }
       }
     }
   }

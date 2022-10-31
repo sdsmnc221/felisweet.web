@@ -19,7 +19,23 @@ interface HomePageDocumentData {
      *
      */
     module_hero_banner: prismicT.RelationField<"module_hero_banner">;
+    /**
+     * Slice Zone field in *Home Page*
+     *
+     * - **Field Type**: Slice Zone
+     * - **Placeholder**: *None*
+     * - **API ID Path**: home_page.slices[]
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/slices
+     *
+     */
+    slices: prismicT.SliceZone<HomePageDocumentDataSlicesSlice>;
 }
+/**
+ * Slice for *Home Page → Slice Zone*
+ *
+ */
+type HomePageDocumentDataSlicesSlice = ServicesBlockSlice;
 /**
  * Home Page document from Prismic
  *
@@ -167,12 +183,134 @@ interface ModuleLogoDocumentData {
  * @typeParam Lang - Language API ID of the document.
  */
 export type ModuleLogoDocument<Lang extends string = string> = prismicT.PrismicDocumentWithoutUID<Simplify<ModuleLogoDocumentData>, "module_logo", Lang>;
-export type AllDocumentTypes = HomePageDocument | ModuleHeroBannerDocument | ModuleLogoDocument;
+/** Content for Module Service documents */
+interface ModuleServiceDocumentData {
+    /**
+     * Title field in *Module Service*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: module_service.title
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    title: prismicT.KeyTextField;
+    /**
+     * Description field in *Module Service*
+     *
+     * - **Field Type**: Rich Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: module_service.description
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
+     *
+     */
+    description: prismicT.RichTextField;
+    /**
+     * Image field in *Module Service*
+     *
+     * - **Field Type**: Image
+     * - **Placeholder**: *None*
+     * - **API ID Path**: module_service.image
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/image
+     *
+     */
+    image: prismicT.ImageField<never>;
+    /**
+     * Image Position field in *Module Service*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: module_service.image_position
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    image_position: prismicT.KeyTextField;
+}
+/**
+ * Module Service document from Prismic
+ *
+ * - **API ID**: `module_service`
+ * - **Repeatable**: `true`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type ModuleServiceDocument<Lang extends string = string> = prismicT.PrismicDocumentWithoutUID<Simplify<ModuleServiceDocumentData>, "module_service", Lang>;
+export type AllDocumentTypes = HomePageDocument | ModuleHeroBannerDocument | ModuleLogoDocument | ModuleServiceDocument;
+/**
+ * Primary content in ServicesBlock → Primary
+ *
+ */
+interface ServicesBlockSliceDefaultPrimary {
+    /**
+     * Title field in *ServicesBlock → Primary*
+     *
+     * - **Field Type**: Rich Text
+     * - **Placeholder**: This is where it all begins...
+     * - **API ID Path**: services_block.primary.title
+     * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
+     *
+     */
+    title: prismicT.RichTextField;
+    /**
+     * Image field in *ServicesBlock → Primary*
+     *
+     * - **Field Type**: Image
+     * - **Placeholder**: *None*
+     * - **API ID Path**: services_block.primary.image
+     * - **Documentation**: https://prismic.io/docs/core-concepts/image
+     *
+     */
+    image: prismicT.ImageField<never>;
+}
+/**
+ * Item in ServicesBlock → Items
+ *
+ */
+export interface ServicesBlockSliceDefaultItem {
+    /**
+     * module service field in *ServicesBlock → Items*
+     *
+     * - **Field Type**: Content Relationship
+     * - **Placeholder**: *None*
+     * - **API ID Path**: services_block.items[].module_service
+     * - **Documentation**: https://prismic.io/docs/core-concepts/link-content-relationship
+     *
+     */
+    module_service: prismicT.RelationField<"module_service">;
+}
+/**
+ * Default variation for ServicesBlock Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: `ServicesBlock`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
+ *
+ */
+export type ServicesBlockSliceDefault = prismicT.SharedSliceVariation<"default", Simplify<ServicesBlockSliceDefaultPrimary>, Simplify<ServicesBlockSliceDefaultItem>>;
+/**
+ * Slice variation for *ServicesBlock*
+ *
+ */
+type ServicesBlockSliceVariation = ServicesBlockSliceDefault;
+/**
+ * ServicesBlock Shared Slice
+ *
+ * - **API ID**: `services_block`
+ * - **Description**: `ServicesBlock`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
+ *
+ */
+export type ServicesBlockSlice = prismicT.SharedSlice<"services_block", ServicesBlockSliceVariation>;
 declare module "@prismicio/client" {
     interface CreateClient {
         (repositoryNameOrEndpoint: string, options?: prismic.ClientConfig): prismic.Client<AllDocumentTypes>;
     }
     namespace Content {
-        export type { HomePageDocumentData, HomePageDocument, ModuleHeroBannerDocumentData, ModuleHeroBannerDocument, ModuleLogoDocumentData, ModuleLogoDocument, AllDocumentTypes };
+        export type { HomePageDocumentData, HomePageDocumentDataSlicesSlice, HomePageDocument, ModuleHeroBannerDocumentData, ModuleHeroBannerDocument, ModuleLogoDocumentData, ModuleLogoDocument, ModuleServiceDocumentData, ModuleServiceDocument, AllDocumentTypes, ServicesBlockSliceDefaultPrimary, ServicesBlockSliceDefaultItem, ServicesBlockSliceDefault, ServicesBlockSliceVariation, ServicesBlockSlice };
     }
 }

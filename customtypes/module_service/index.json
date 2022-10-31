@@ -1,0 +1,41 @@
+{
+  "id": "module_service",
+  "label": "Module Service",
+  "repeatable": true,
+  "status": true,
+  "json": {
+    "Main": {
+      "title": {
+        "type": "Text",
+        "config": {
+          "label": "Title",
+          "placeholder": ""
+        }
+      },
+      "description": {
+        "type": "StructuredText",
+        "config": {
+          "label": "Description",
+          "placeholder": "",
+          "allowTargetBlank": true,
+          "multi": "paragraph,strong"
+        }
+      },
+      "image": {
+        "type": "Image",
+        "config": {
+          "label": "Image",
+          "constraint": {},
+          "thumbnails": []
+        }
+      },
+      "image_position": {
+        "type": "Text",
+        "config": {
+          "label": "Image Position",
+          "placeholder": ""
+        }
+      }
+    }
+  }
+}
