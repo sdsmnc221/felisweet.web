@@ -35,7 +35,7 @@ interface HomePageDocumentData {
  * Slice for *Home Page → Slice Zone*
  *
  */
-type HomePageDocumentDataSlicesSlice = ServicesBlockSlice | ReviewsBlockSlice;
+type HomePageDocumentDataSlicesSlice = ServicesBlockSlice | ReviewsBlockSlice | ProblematicsBlockSlice;
 /**
  * Home Page document from Prismic
  *
@@ -242,6 +242,81 @@ interface ModuleServiceDocumentData {
 export type ModuleServiceDocument<Lang extends string = string> = prismicT.PrismicDocumentWithoutUID<Simplify<ModuleServiceDocumentData>, "module_service", Lang>;
 export type AllDocumentTypes = HomePageDocument | ModuleHeroBannerDocument | ModuleLogoDocument | ModuleServiceDocument;
 /**
+ * Primary content in ProblematicsBlock → Primary
+ *
+ */
+interface ProblematicsBlockSliceDefaultPrimary {
+    /**
+     * Text 1 field in *ProblematicsBlock → Primary*
+     *
+     * - **Field Type**: Rich Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: problematics_block.primary.text_1
+     * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
+     *
+     */
+    text_1: prismicT.RichTextField;
+    /**
+     * Text 2 field in *ProblematicsBlock → Primary*
+     *
+     * - **Field Type**: Rich Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: problematics_block.primary.text_2
+     * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
+     *
+     */
+    text_2: prismicT.RichTextField;
+    /**
+     * Illustration field in *ProblematicsBlock → Primary*
+     *
+     * - **Field Type**: Image
+     * - **Placeholder**: *None*
+     * - **API ID Path**: problematics_block.primary.illustration
+     * - **Documentation**: https://prismic.io/docs/core-concepts/image
+     *
+     */
+    illustration: prismicT.ImageField<never>;
+}
+/**
+ * Item in ProblematicsBlock → Items
+ *
+ */
+export interface ProblematicsBlockSliceDefaultItem {
+    /**
+     * Question field in *ProblematicsBlock → Items*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: problematics_block.items[].question
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    question: prismicT.KeyTextField;
+}
+/**
+ * Default variation for ProblematicsBlock Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: `ProblematicsBlock`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
+ *
+ */
+export type ProblematicsBlockSliceDefault = prismicT.SharedSliceVariation<"default", Simplify<ProblematicsBlockSliceDefaultPrimary>, Simplify<ProblematicsBlockSliceDefaultItem>>;
+/**
+ * Slice variation for *ProblematicsBlock*
+ *
+ */
+type ProblematicsBlockSliceVariation = ProblematicsBlockSliceDefault;
+/**
+ * ProblematicsBlock Shared Slice
+ *
+ * - **API ID**: `problematics_block`
+ * - **Description**: `ProblematicsBlock`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
+ *
+ */
+export type ProblematicsBlockSlice = prismicT.SharedSlice<"problematics_block", ProblematicsBlockSliceVariation>;
+/**
  * Primary content in ReviewsBlock → Primary
  *
  */
@@ -396,6 +471,6 @@ declare module "@prismicio/client" {
         (repositoryNameOrEndpoint: string, options?: prismic.ClientConfig): prismic.Client<AllDocumentTypes>;
     }
     namespace Content {
-        export type { HomePageDocumentData, HomePageDocumentDataSlicesSlice, HomePageDocument, ModuleHeroBannerDocumentData, ModuleHeroBannerDocument, ModuleLogoDocumentData, ModuleLogoDocument, ModuleServiceDocumentData, ModuleServiceDocument, AllDocumentTypes, ReviewsBlockSliceDefaultPrimary, ReviewsBlockSliceDefaultItem, ReviewsBlockSliceDefault, ReviewsBlockSliceVariation, ReviewsBlockSlice, ServicesBlockSliceDefaultPrimary, ServicesBlockSliceDefaultItem, ServicesBlockSliceDefault, ServicesBlockSliceVariation, ServicesBlockSlice };
+        export type { HomePageDocumentData, HomePageDocumentDataSlicesSlice, HomePageDocument, ModuleHeroBannerDocumentData, ModuleHeroBannerDocument, ModuleLogoDocumentData, ModuleLogoDocument, ModuleServiceDocumentData, ModuleServiceDocument, AllDocumentTypes, ProblematicsBlockSliceDefaultPrimary, ProblematicsBlockSliceDefaultItem, ProblematicsBlockSliceDefault, ProblematicsBlockSliceVariation, ProblematicsBlockSlice, ReviewsBlockSliceDefaultPrimary, ReviewsBlockSliceDefaultItem, ReviewsBlockSliceDefault, ReviewsBlockSliceVariation, ReviewsBlockSlice, ServicesBlockSliceDefaultPrimary, ServicesBlockSliceDefaultItem, ServicesBlockSliceDefault, ServicesBlockSliceVariation, ServicesBlockSlice };
     }
 }

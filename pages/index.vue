@@ -28,8 +28,8 @@
         flex-col
         class="section-problematics"
       >
-        <slider-questions />
-        <problematics-illus />
+        <slider-questions :questions="problematics.block" />
+        <problematics-illus :illustration="problematics.illustration" />
         <atom-image class="problematics-paw" src="/images/paw.svg" />
       </atom-wrapper>
     </scroll-reveal-wrapper>
@@ -140,6 +140,18 @@ export default {
       moduleHeroBanner?.data?.module_logo?.id
     )
 
+    const problematicsBlock = Object.entries(document?.data?.slices).find(
+      (slice) => slice[1].slice_type === 'problematics_block'
+    )[1]
+    const moduleProblematics = problematicsBlock?.items
+    const problematics = {
+      block: moduleProblematics.map(({ question }) => question),
+      text1: $prismic.asHTML(problematicsBlock?.primary?.text_1),
+      text2: $prismic.asHTML(problematicsBlock?.primary?.text_2),
+      illustration: imageAdapter(problematicsBlock?.primary?.illustration)
+        .filename,
+    }
+
     const servicesBlock = Object.entries(document?.data?.slices).find(
       (slice) => slice[1].slice_type === 'services_block'
     )[1]
@@ -169,7 +181,6 @@ export default {
       detailLabel: reviewsBlock?.primary?.detail_label,
       link: $enhancedLinkSerializer(reviewsBlock?.primary?.link),
     }
-    console.log(reviews)
 
     if (document) {
       const data = moduleHeroBanner?.data
@@ -183,6 +194,7 @@ export default {
                 moduleLogo,
                 moduleLogoIllustration,
               }),
+              problematics,
               services,
               reviews,
             }

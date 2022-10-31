@@ -25,6 +25,9 @@
             },
             "reviews_block": {
               "type": "SharedSlice"
+            },
+            "problematics_block": {
+              "type": "SharedSlice"
             }
           }
         }

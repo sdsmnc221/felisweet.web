@@ -1,7 +1,7 @@
 <template>
   <atom-wrapper class="problematics-illus">
     <atom-wrapper class="problematics-wrapper">
-      <atom-image src="/images/illus-problematics.svg" />
+      <atom-image :src="illustration" />
       <p>Alors on est là pour vous !</p>
       <h2>
         <b>FeliSweet</b> vous donne des <b>solutions</b> à (presque)
@@ -22,6 +22,12 @@ import AtomImage from '../../atoms/AtomImage'
 export default {
   name: 'ProblematicsIllus',
   components: { AtomWrapper, AtomImage },
+  props: {
+    illustration: {
+      type: String,
+      required: true,
+    },
+  },
 }
 </script>
 

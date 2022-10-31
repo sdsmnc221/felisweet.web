@@ -1,0 +1,53 @@
+{
+  "id": "problematics_block",
+  "type": "SharedSlice",
+  "name": "ProblematicsBlock",
+  "description": "ProblematicsBlock",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "sktwi1xtmkfgx8626",
+      "description": "ProblematicsBlock",
+      "primary": {
+        "text_1": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Text 1",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "multi": "paragraph,heading2,strong"
+          }
+        },
+        "text_2": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Text 2",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "multi": "paragraph,heading2,strong"
+          }
+        },
+        "illustration": {
+          "type": "Image",
+          "config": {
+            "label": "Illustration",
+            "constraint": {},
+            "thumbnails": []
+          }
+        }
+      },
+      "items": {
+        "question": {
+          "type": "Text",
+          "config": {
+            "label": "Question",
+            "placeholder": ""
+          }
+        }
+      },
+      "imageUrl": "https://images.prismic.io/slice-machine/621a5ec4-0387-4bc5-9860-2dd46cbc07cd_default_ss.png?auto=compress,format"
+    }
+  ]
+}

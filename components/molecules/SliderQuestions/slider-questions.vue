@@ -39,14 +39,15 @@ import ButtonArrow from '../../atoms/ButtonArrow'
 export default {
   name: 'SliderQuestions',
   components: { AtomWrapper, ButtonArrow },
+  props: {
+    questions: {
+      type: Array,
+      required: true,
+    },
+  },
   data() {
     return {
       activeIndex: 0,
-      questions: [
-        `Votre chat a un comportement qui vous gêne ?`,
-        `Personne ne peut être là pour s'occuper de votre chat durant votre absence ?`,
-        `Ou bien vous avez tout simplement une question, un besoin de conseil chat-chat-chat ?`,
-      ],
       gap: ['8px', '6px', '-20px'],
     }
   },

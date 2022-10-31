@@ -23,6 +23,20 @@
           "blocks": 1
         }
       }
+    },
+    "module_problematics": {
+      "text_1": {
+        "config": {
+          "patternType": "PARAGRAPH",
+          "blocks": 1
+        }
+      },
+      "text_2": {
+        "config": {
+          "patternType": "PARAGRAPH",
+          "blocks": 1
+        }
+      }
     }
   },
   "slices": {
@@ -63,6 +77,25 @@
           }
         },
         "primary": {}
+      }
+    },
+    "ProblematicsBlock": {},
+    "ProblematicsBlock": {
+      "default": {
+        "primary": {
+          "text_1": {
+            "config": {
+              "patternType": "PARAGRAPH",
+              "blocks": 1
+            }
+          },
+          "text_2": {
+            "config": {
+              "patternType": "PARAGRAPH",
+              "blocks": 1
+            }
+          }
+        }
       }
     }
   }
