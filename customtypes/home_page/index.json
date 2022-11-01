@@ -15,6 +15,16 @@
           ]
         }
       },
+      "site_footer": {
+        "type": "Link",
+        "config": {
+          "label": "site footer",
+          "select": "document",
+          "customtypes": [
+            "site_footer"
+          ]
+        }
+      },
       "slices": {
         "type": "Slices",
         "fieldset": "Slice Zone",

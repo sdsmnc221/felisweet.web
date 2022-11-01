@@ -1,6 +1,10 @@
 <template>
   <atom-wrapper tag="picture" class="logo-felisweet" :style="cssProps">
-    <nuxt-link v-if="!noLink && link" :to="link.href" class="link">
+    <nuxt-link
+      v-if="!noLink && link"
+      :to="link.href || link.field.url"
+      class="link"
+    >
       <atom-image :src="image.filename" :alt="image.alt" />
     </nuxt-link>
     <atom-image v-else :src="image.filename" :alt="image.alt" />

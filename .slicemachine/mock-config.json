@@ -37,7 +37,9 @@
           "blocks": 1
         }
       }
-    }
+    },
+    "site_footer": {},
+    "site_footerp": {}
   },
   "slices": {
     "Services": {
@@ -79,7 +81,6 @@
         "primary": {}
       }
     },
-    "ProblematicsBlock": {},
     "ProblematicsBlock": {
       "default": {
         "primary": {

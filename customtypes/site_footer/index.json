@@ -1,0 +1,68 @@
+{
+  "id": "site_footer",
+  "label": "Site Footer",
+  "repeatable": false,
+  "status": true,
+  "json": {
+    "Main": {
+      "credits_cta_label": {
+        "type": "Text",
+        "config": {
+          "label": "Credits CTA Label",
+          "placeholder": ""
+        }
+      },
+      "credits_content": {
+        "type": "StructuredText",
+        "config": {
+          "label": "Credits Content",
+          "placeholder": "",
+          "allowTargetBlank": true,
+          "multi": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
+        }
+      },
+      "legal_mention_cta_label": {
+        "type": "Text",
+        "config": {
+          "label": "Legal Mention CTA Label",
+          "placeholder": ""
+        }
+      },
+      "legal_mention_content": {
+        "type": "StructuredText",
+        "config": {
+          "label": "Legal Mention Content",
+          "placeholder": "",
+          "allowTargetBlank": true,
+          "multi": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
+        }
+      },
+      "module_logo": {
+        "type": "Link",
+        "config": {
+          "label": "Module Logo",
+          "select": "document",
+          "customtypes": [
+            "module_logo"
+          ]
+        }
+      },
+      "copyright_content": {
+        "type": "StructuredText",
+        "config": {
+          "label": "Copyright Content",
+          "placeholder": "",
+          "allowTargetBlank": true,
+          "multi": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
+        }
+      },
+      "planning_content": {
+        "type": "Text",
+        "config": {
+          "label": "Planning Content",
+          "placeholder": ""
+        }
+      }
+    }
+  }
+}

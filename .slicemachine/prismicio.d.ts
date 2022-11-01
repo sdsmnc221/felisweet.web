@@ -20,6 +20,17 @@ interface HomePageDocumentData {
      */
     module_hero_banner: prismicT.RelationField<"module_hero_banner">;
     /**
+     * site footer field in *Home Page*
+     *
+     * - **Field Type**: Content Relationship
+     * - **Placeholder**: *None*
+     * - **API ID Path**: home_page.site_footer
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/link-content-relationship
+     *
+     */
+    site_footer: prismicT.RelationField<"site_footer">;
+    /**
      * Slice Zone field in *Home Page*
      *
      * - **Field Type**: Slice Zone
@@ -240,7 +251,97 @@ interface ModuleServiceDocumentData {
  * @typeParam Lang - Language API ID of the document.
  */
 export type ModuleServiceDocument<Lang extends string = string> = prismicT.PrismicDocumentWithoutUID<Simplify<ModuleServiceDocumentData>, "module_service", Lang>;
-export type AllDocumentTypes = HomePageDocument | ModuleHeroBannerDocument | ModuleLogoDocument | ModuleServiceDocument;
+/** Content for Site Footer documents */
+interface SiteFooterDocumentData {
+    /**
+     * Credits CTA Label field in *Site Footer*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: site_footer.credits_cta_label
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    credits_cta_label: prismicT.KeyTextField;
+    /**
+     * Credits Content field in *Site Footer*
+     *
+     * - **Field Type**: Rich Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: site_footer.credits_content
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
+     *
+     */
+    credits_content: prismicT.RichTextField;
+    /**
+     * Legal Mention CTA Label field in *Site Footer*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: site_footer.legal_mention_cta_label
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    legal_mention_cta_label: prismicT.KeyTextField;
+    /**
+     * Legal Mention Content field in *Site Footer*
+     *
+     * - **Field Type**: Rich Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: site_footer.legal_mention_content
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
+     *
+     */
+    legal_mention_content: prismicT.RichTextField;
+    /**
+     * Module Logo field in *Site Footer*
+     *
+     * - **Field Type**: Content Relationship
+     * - **Placeholder**: *None*
+     * - **API ID Path**: site_footer.module_logo
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/link-content-relationship
+     *
+     */
+    module_logo: prismicT.RelationField<"module_logo">;
+    /**
+     * Copyright Content field in *Site Footer*
+     *
+     * - **Field Type**: Rich Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: site_footer.copyright_content
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
+     *
+     */
+    copyright_content: prismicT.RichTextField;
+    /**
+     * Planning Content field in *Site Footer*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: site_footer.planning_content
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    planning_content: prismicT.KeyTextField;
+}
+/**
+ * Site Footer document from Prismic
+ *
+ * - **API ID**: `site_footer`
+ * - **Repeatable**: `false`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type SiteFooterDocument<Lang extends string = string> = prismicT.PrismicDocumentWithoutUID<Simplify<SiteFooterDocumentData>, "site_footer", Lang>;
+export type AllDocumentTypes = HomePageDocument | ModuleHeroBannerDocument | ModuleLogoDocument | ModuleServiceDocument | SiteFooterDocument;
 /**
  * Primary content in ProblematicsBlock → Primary
  *
@@ -471,6 +572,6 @@ declare module "@prismicio/client" {
         (repositoryNameOrEndpoint: string, options?: prismic.ClientConfig): prismic.Client<AllDocumentTypes>;
     }
     namespace Content {
-        export type { HomePageDocumentData, HomePageDocumentDataSlicesSlice, HomePageDocument, ModuleHeroBannerDocumentData, ModuleHeroBannerDocument, ModuleLogoDocumentData, ModuleLogoDocument, ModuleServiceDocumentData, ModuleServiceDocument, AllDocumentTypes, ProblematicsBlockSliceDefaultPrimary, ProblematicsBlockSliceDefaultItem, ProblematicsBlockSliceDefault, ProblematicsBlockSliceVariation, ProblematicsBlockSlice, ReviewsBlockSliceDefaultPrimary, ReviewsBlockSliceDefaultItem, ReviewsBlockSliceDefault, ReviewsBlockSliceVariation, ReviewsBlockSlice, ServicesBlockSliceDefaultPrimary, ServicesBlockSliceDefaultItem, ServicesBlockSliceDefault, ServicesBlockSliceVariation, ServicesBlockSlice };
+        export type { HomePageDocumentData, HomePageDocumentDataSlicesSlice, HomePageDocument, ModuleHeroBannerDocumentData, ModuleHeroBannerDocument, ModuleLogoDocumentData, ModuleLogoDocument, ModuleServiceDocumentData, ModuleServiceDocument, SiteFooterDocumentData, SiteFooterDocument, AllDocumentTypes, ProblematicsBlockSliceDefaultPrimary, ProblematicsBlockSliceDefaultItem, ProblematicsBlockSliceDefault, ProblematicsBlockSliceVariation, ProblematicsBlockSlice, ReviewsBlockSliceDefaultPrimary, ReviewsBlockSliceDefaultItem, ReviewsBlockSliceDefault, ReviewsBlockSliceVariation, ReviewsBlockSlice, ServicesBlockSliceDefaultPrimary, ServicesBlockSliceDefaultItem, ServicesBlockSliceDefault, ServicesBlockSliceVariation, ServicesBlockSlice };
     }
 }

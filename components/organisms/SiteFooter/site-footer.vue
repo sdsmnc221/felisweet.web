@@ -1,14 +1,16 @@
 <template>
   <atom-wrapper tag="footer" flex flex-center flex-col class="site-footer">
-    <logo-felisweet />
+    <logo-felisweet v-if="footerLogo" v-bind="footerLogo" />
     <p class="links">
-      <button class="link" @click="openCredits">Crédits</button>
+      <button class="link" @click="openCredits">
+        {{ $store.state.footer.labels.credits }}
+      </button>
       <span>-</span>
-      <button class="link" @click="openMentions">Mentions légales</button>
+      <button class="link" @click="openMentions">
+        {{ $store.state.footer.labels.mentions }}
+      </button>
     </p>
-    <p class="copyright">
-      <span>© 2022 FeliSweet.</span> <span>All rights reserved.</span>
-    </p>
+    <div class="copyright" v-html="$store.state.footer.copyright" />
   </atom-wrapper>
 </template>
 
@@ -16,29 +18,38 @@
 import AtomWrapper from '../../atoms/AtomWrapper'
 import LogoFelisweet from '../../atoms/LogoFelisweet'
 
+import moduleLogoAdapter from '../../../utils/adapters/moduleLogo'
+
 export default {
   name: 'SiteFooter',
   components: { AtomWrapper, LogoFelisweet },
-  props: {
-    openPopup: {
-      type: Function,
-      default: null,
-    },
-    popupContentCredits: {
-      type: String,
-      default: null,
-    },
-    popupContentMentions: {
-      type: String,
-      default: null,
-    },
+  data() {
+    return {
+      footerLogo: null,
+    }
+  },
+  async fetch() {
+    const footerData = (await this.$prismic.api.getSingle('site_footer')).data
+
+    const footerLogo = await moduleLogoAdapter(
+      this.$prismic,
+      this.$enhancedLinkSerializer,
+      footerData.module_logo.id
+    )
+    this.footerLogo = footerLogo
   },
   methods: {
     openCredits() {
-      this.openPopup(this.popupContentCredits)
+      this.$store.dispatch(
+        'openPopup',
+        this.$store.state.footer.popupContentHTML.credits
+      )
     },
     openMentions() {
-      this.openPopup(this.popupContentMentions)
+      this.$store.dispatch(
+        'openPopup',
+        this.$store.state.footer.popupContentHTML.mentions
+      )
     },
   },
 }
@@ -59,6 +70,13 @@ export default {
     color: $color-nepal-blue;
     @include rem(font-size, $font-size-body-xs);
     @include rem(line-height, $font-size-body-m);
+  }
+
+  button {
+    background: none;
+    outline: none;
+    border: none;
+    text-decoration: underline;
   }
 
   @media #{$mq-medium}, #{$mq-tablet} {
@@ -89,10 +107,6 @@ export default {
 
       button {
         display: block;
-        background: none;
-        outline: none;
-        border: none;
-        text-decoration: underline;
       }
     }
 
