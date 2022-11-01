@@ -11,19 +11,19 @@
   "lang": "en-us",
   "alternate_languages": [],
   "data": {
-    "credits_cta_label": "glass",
+    "credits_cta_label": "chose",
     "credits_content": [
       {
         "type": "paragraph",
-        "text": "Et cillum Lorem elit est sit enim reprehenderit elit ex proident. Irure excepteur pariatur esse. Nostrud aliqua culpa laboris laborum anim aute aliqua cupidatat est pariatur do exercitation adipisicing occaecat non.",
+        "text": "Ad nulla reprehenderit adipisicing velit ad est minim adipisicing est. Id consectetur voluptate irure aliquip aliquip veniam. Voluptate do aliqua labore proident Lorem elit.",
         "spans": []
       }
     ],
-    "legal_mention_cta_label": "return",
+    "legal_mention_cta_label": "uncle",
     "legal_mention_content": [
       {
         "type": "paragraph",
-        "text": "Occaecat ipsum tempor minim est commodo non.",
+        "text": "Ipsum sint magna qui nulla aliqua deserunt duis sint ex in do. Nostrud laborum adipisicing eu in.",
         "spans": []
       }
     ],
@@ -40,10 +40,10 @@
     "copyright_content": [
       {
         "type": "paragraph",
-        "text": "Consequat ad consectetur enim aliqua non deserunt commodo ut et ad incididunt ipsum laborum. Veniam duis laboris laborum aute mollit labore velit excepteur. Elit laboris proident veniam commodo.",
+        "text": "Non est proident ad pariatur incididunt non et aliquip.",
         "spans": []
       }
     ],
-    "planning_content": "shelter"
+    "planning_iframe": "in"
   }
 }

@@ -443,16 +443,16 @@ interface SiteFooterDocumentData {
      */
     copyright_content: prismicT.RichTextField;
     /**
-     * Planning Content field in *Site Footer*
+     * Planning Iframe field in *Site Footer*
      *
      * - **Field Type**: Text
      * - **Placeholder**: *None*
-     * - **API ID Path**: site_footer.planning_content
+     * - **API ID Path**: site_footer.planning_iframe
      * - **Tab**: Main
      * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
      *
      */
-    planning_content: prismicT.KeyTextField;
+    planning_iframe: prismicT.KeyTextField;
 }
 /**
  * Site Footer document from Prismic

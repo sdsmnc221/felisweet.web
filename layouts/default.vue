@@ -63,6 +63,7 @@ export default {
         'openPopup',
         this.$store.state.footer.popupContentHTML.planning
       )
+      console.log(this.$store.state.footer)
     },
     closePopup() {
       this.$store.dispatch('closePopup')
