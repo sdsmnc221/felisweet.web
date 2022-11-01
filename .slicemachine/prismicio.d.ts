@@ -20,6 +20,17 @@ interface HomePageDocumentData {
      */
     module_hero_banner: prismicT.RelationField<"module_hero_banner">;
     /**
+     * module contact banner field in *Home Page*
+     *
+     * - **Field Type**: Content Relationship
+     * - **Placeholder**: *None*
+     * - **API ID Path**: home_page.module_contact_banner
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/link-content-relationship
+     *
+     */
+    module_contact_banner: prismicT.RelationField<"module_contact_banner">;
+    /**
      * site footer field in *Home Page*
      *
      * - **Field Type**: Content Relationship
@@ -57,6 +68,118 @@ type HomePageDocumentDataSlicesSlice = ServicesBlockSlice | ReviewsBlockSlice | 
  * @typeParam Lang - Language API ID of the document.
  */
 export type HomePageDocument<Lang extends string = string> = prismicT.PrismicDocumentWithoutUID<Simplify<HomePageDocumentData>, "home_page", Lang>;
+/** Content for Module Contact Banner documents */
+interface ModuleContactBannerDocumentData {
+    /**
+     * Title field in *Module Contact Banner*
+     *
+     * - **Field Type**: Rich Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: module_contact_banner.title
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
+     *
+     */
+    title: prismicT.RichTextField;
+    /**
+     * Email Label field in *Module Contact Banner*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: module_contact_banner.email_label
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    email_label: prismicT.KeyTextField;
+    /**
+     * email field in *Module Contact Banner*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: module_contact_banner.email
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    email: prismicT.KeyTextField;
+    /**
+     * Tel Label field in *Module Contact Banner*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: module_contact_banner.tel_label
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    tel_label: prismicT.KeyTextField;
+    /**
+     * Tel field in *Module Contact Banner*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: module_contact_banner.tel
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    tel: prismicT.KeyTextField;
+    /**
+     * Contact Note field in *Module Contact Banner*
+     *
+     * - **Field Type**: Rich Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: module_contact_banner.contact_note
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
+     *
+     */
+    contact_note: prismicT.RichTextField;
+    /**
+     * Contact Planning CTA Label field in *Module Contact Banner*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: module_contact_banner.contact_planning_cta_label
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    contact_planning_cta_label: prismicT.KeyTextField;
+    /**
+     * Illustration Head field in *Module Contact Banner*
+     *
+     * - **Field Type**: Image
+     * - **Placeholder**: *None*
+     * - **API ID Path**: module_contact_banner.illustration_head
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/image
+     *
+     */
+    illustration_head: prismicT.ImageField<never>;
+    /**
+     * Illustration Foot field in *Module Contact Banner*
+     *
+     * - **Field Type**: Image
+     * - **Placeholder**: *None*
+     * - **API ID Path**: module_contact_banner.illustration_foot
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/image
+     *
+     */
+    illustration_foot: prismicT.ImageField<never>;
+}
+/**
+ * Module Contact Banner document from Prismic
+ *
+ * - **API ID**: `module_contact_banner`
+ * - **Repeatable**: `true`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type ModuleContactBannerDocument<Lang extends string = string> = prismicT.PrismicDocumentWithoutUID<Simplify<ModuleContactBannerDocumentData>, "module_contact_banner", Lang>;
 /** Content for Module Hero Banner documents */
 interface ModuleHeroBannerDocumentData {
     /**
@@ -341,7 +464,7 @@ interface SiteFooterDocumentData {
  * @typeParam Lang - Language API ID of the document.
  */
 export type SiteFooterDocument<Lang extends string = string> = prismicT.PrismicDocumentWithoutUID<Simplify<SiteFooterDocumentData>, "site_footer", Lang>;
-export type AllDocumentTypes = HomePageDocument | ModuleHeroBannerDocument | ModuleLogoDocument | ModuleServiceDocument | SiteFooterDocument;
+export type AllDocumentTypes = HomePageDocument | ModuleContactBannerDocument | ModuleHeroBannerDocument | ModuleLogoDocument | ModuleServiceDocument | SiteFooterDocument;
 /**
  * Primary content in ProblematicsBlock → Primary
  *
@@ -572,6 +695,6 @@ declare module "@prismicio/client" {
         (repositoryNameOrEndpoint: string, options?: prismic.ClientConfig): prismic.Client<AllDocumentTypes>;
     }
     namespace Content {
-        export type { HomePageDocumentData, HomePageDocumentDataSlicesSlice, HomePageDocument, ModuleHeroBannerDocumentData, ModuleHeroBannerDocument, ModuleLogoDocumentData, ModuleLogoDocument, ModuleServiceDocumentData, ModuleServiceDocument, SiteFooterDocumentData, SiteFooterDocument, AllDocumentTypes, ProblematicsBlockSliceDefaultPrimary, ProblematicsBlockSliceDefaultItem, ProblematicsBlockSliceDefault, ProblematicsBlockSliceVariation, ProblematicsBlockSlice, ReviewsBlockSliceDefaultPrimary, ReviewsBlockSliceDefaultItem, ReviewsBlockSliceDefault, ReviewsBlockSliceVariation, ReviewsBlockSlice, ServicesBlockSliceDefaultPrimary, ServicesBlockSliceDefaultItem, ServicesBlockSliceDefault, ServicesBlockSliceVariation, ServicesBlockSlice };
+        export type { HomePageDocumentData, HomePageDocumentDataSlicesSlice, HomePageDocument, ModuleContactBannerDocumentData, ModuleContactBannerDocument, ModuleHeroBannerDocumentData, ModuleHeroBannerDocument, ModuleLogoDocumentData, ModuleLogoDocument, ModuleServiceDocumentData, ModuleServiceDocument, SiteFooterDocumentData, SiteFooterDocument, AllDocumentTypes, ProblematicsBlockSliceDefaultPrimary, ProblematicsBlockSliceDefaultItem, ProblematicsBlockSliceDefault, ProblematicsBlockSliceVariation, ProblematicsBlockSlice, ReviewsBlockSliceDefaultPrimary, ReviewsBlockSliceDefaultItem, ReviewsBlockSliceDefault, ReviewsBlockSliceVariation, ReviewsBlockSlice, ServicesBlockSliceDefaultPrimary, ServicesBlockSliceDefaultItem, ServicesBlockSliceDefault, ServicesBlockSliceVariation, ServicesBlockSlice };
     }
 }

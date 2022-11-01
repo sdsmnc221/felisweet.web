@@ -1,0 +1,79 @@
+{
+  "id": "module_contact_banner",
+  "label": "Module Contact Banner",
+  "repeatable": true,
+  "status": true,
+  "json": {
+    "Main": {
+      "title": {
+        "type": "StructuredText",
+        "config": {
+          "label": "Title",
+          "placeholder": "",
+          "allowTargetBlank": true,
+          "multi": "paragraph,heading2,strong"
+        }
+      },
+      "email_label": {
+        "type": "Text",
+        "config": {
+          "label": "Email Label",
+          "placeholder": ""
+        }
+      },
+      "email": {
+        "type": "Text",
+        "config": {
+          "label": "email",
+          "placeholder": ""
+        }
+      },
+      "tel_label": {
+        "type": "Text",
+        "config": {
+          "label": "Tel Label",
+          "placeholder": ""
+        }
+      },
+      "tel": {
+        "type": "Text",
+        "config": {
+          "label": "Tel",
+          "placeholder": ""
+        }
+      },
+      "contact_note": {
+        "type": "StructuredText",
+        "config": {
+          "label": "Contact Note",
+          "placeholder": "",
+          "allowTargetBlank": true,
+          "multi": "paragraph,strong"
+        }
+      },
+      "contact_planning_cta_label": {
+        "type": "Text",
+        "config": {
+          "label": "Contact Planning CTA Label",
+          "placeholder": ""
+        }
+      },
+      "illustration_head": {
+        "type": "Image",
+        "config": {
+          "label": "Illustration Head",
+          "constraint": {},
+          "thumbnails": []
+        }
+      },
+      "illustration_foot": {
+        "type": "Image",
+        "config": {
+          "label": "Illustration Foot",
+          "constraint": {},
+          "thumbnails": []
+        }
+      }
+    }
+  }
+}

@@ -66,7 +66,7 @@
       >
         <h2 v-html="reviews.title" />
         <slider-reviews :reviews="reviews.block" />
-        <p class="reviews-more" v-if="reviews.detailLabel && reviews.link">
+        <p v-if="reviews.detailLabel && reviews.link" class="reviews-more">
           <a class="link" target="_blank" :href="reviews.link.href">{{
             reviews.detailLabel
           }}</a>
@@ -75,7 +75,7 @@
     </scroll-reveal-wrapper>
     <scroll-reveal-wrapper>
       <atom-wrapper tag="section" flex flex-center class="section-contact">
-        <contact-banner :open-planning="openPlanning" />
+        <contact-banner :data="contactBanner" :open-planning="openPlanning" />
       </atom-wrapper>
     </scroll-reveal-wrapper>
     <paws-pattern :paws-per-section="6" />
@@ -97,9 +97,10 @@ import SliderReviews from '../components/organisms/SliderReviews'
 import ScrollRevealWrapper from '../components/atoms/ScrollRevealWrapper'
 
 import imageAdapter from '../utils/adapters/imageAdapter'
-import heroBannerAdapter from '../utils/adapters/heroBanner'
+import moduleHeroBannerAdapter from '../utils/adapters/heroBanner'
 import moduleServiceAdapter from '../utils/adapters/moduleService'
 import moduleReviewAdapter from '../utils/adapters/moduleReview'
+import moduleContactBannerAdapter from '../utils/adapters/contactBanner'
 
 export default {
   name: 'IndexPage',
@@ -182,12 +183,16 @@ export default {
       link: $enhancedLinkSerializer(reviewsBlock?.primary?.link),
     }
 
+    const moduleContactBanner = await $prismic.api.getByID(
+      document?.data?.module_contact_banner?.id
+    )
+
     if (document) {
       const data = moduleHeroBanner?.data
       return {
         ...(data
           ? {
-              heroBanner: await heroBannerAdapter({
+              heroBanner: await moduleHeroBannerAdapter({
                 $prismic,
                 $enhancedLinkSerializer,
                 data,
@@ -197,6 +202,10 @@ export default {
               problematics,
               services,
               reviews,
+              contactBanner: moduleContactBannerAdapter(
+                $prismic,
+                moduleContactBanner
+              ),
             }
           : {}),
       }

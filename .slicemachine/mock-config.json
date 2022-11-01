@@ -39,7 +39,21 @@
       }
     },
     "site_footer": {},
-    "site_footerp": {}
+    "site_footerp": {},
+    "contact_banner": {
+      "title": {
+        "config": {
+          "patternType": "PARAGRAPH",
+          "blocks": 1
+        }
+      },
+      "contact_note": {
+        "config": {
+          "patternType": "PARAGRAPH",
+          "blocks": 1
+        }
+      }
+    }
   },
   "slices": {
     "Services": {

@@ -1,34 +1,22 @@
 <template>
   <atom-wrapper class="contact-banner">
     <atom-wrapper class="contact-head">
-      <atom-image src="/images/illus-contact-head.svg" />
-      <h2>
-        N'hésitez pas <br />
-        à nous contacter <br />
-        pour un rendez-vous <br />
-        ou plus de renseignements.
-      </h2>
+      <atom-image :src="data.illustrations.head" />
+      <h2 v-html="data.title" />
     </atom-wrapper>
     <atom-wrapper class="contact-foot" flex flex-center flex-col>
-      <atom-image src="/images/illus-contact-foot.svg" />
+      <atom-image :src="data.illustrations.foot" />
       <p class="contact-text">
-        Écrivez à :
-        <a href="mailto:mb.siruguet@felisweet.com" class="link"
-          >mb.siruguet@felisweet.com</a
-        >
+        {{ data.email.label }}
+        <a :href="data.email.link" class="link">{{ data.email.content }}</a>
         <br />
-        Ou téléphonez au :
-        <a href="tel: +33675561587" class="link">06 76 56 15 87</a>
+        {{ data.tel.label }}
+        <a :href="data.tel.link" class="link">{{ data.tel.content }}</a>
       </p>
       <button class="contact-planning link" @click="openPlanning">
-        Vérifier le planning !
+        {{ data.contactPlanningLabel }}
       </button>
-      <p class="contact-note">
-        On est disponible autour de la commune <br />
-        de Sainte-Geneviève-des-Bois en <br />
-        fonction de votre localisation <br />
-        sur toute Île-de-France.
-      </p>
+      <div class="contact-note" v-html="data.contactNote"></div>
     </atom-wrapper>
   </atom-wrapper>
 </template>
@@ -44,6 +32,10 @@ export default {
     openPlanning: {
       type: Function,
       default: () => {},
+    },
+    data: {
+      type: Object,
+      required: true,
     },
   },
 }
@@ -62,8 +54,10 @@ export default {
     position: relative;
 
     h2 {
-      @include rem(font-size, $font-size-body-l);
-      font-weight: $weight-bold;
+      p {
+        @include rem(font-size, $font-size-body-l);
+        font-weight: $weight-bold;
+      }
       position: absolute;
       text-align: center;
       bottom: 10px;
@@ -137,13 +131,15 @@ export default {
     }
 
     .contact-note {
-      @include rem(font-size, $font-size-body-xxs);
+      p {
+        @include rem(font-size, $font-size-body-xxs);
+        color: $color-white;
+        text-align: center;
+      }
       position: absolute;
       left: 50%;
       transform: translateX(-50%);
       bottom: 36%;
-      color: $color-white;
-      text-align: center;
     }
   }
 
@@ -153,7 +149,9 @@ export default {
       width: 64vw;
 
       h2 {
-        @include rem(font-size, $font-size-heading-4);
+        p {
+          @include rem(font-size, $font-size-heading-4);
+        }
         width: 100%;
         bottom: 8vh;
       }
@@ -177,7 +175,7 @@ export default {
         top: 36%;
       }
 
-      .contact-note {
+      .contact-note p {
         @include rem(font-size, $font-size-body-xs);
       }
     }
@@ -189,7 +187,9 @@ export default {
       width: 72vw;
 
       h2 {
-        @include rem(font-size, $font-size-heading-4);
+        p {
+          @include rem(font-size, $font-size-heading-4);
+        }
         width: 100%;
         bottom: 4vh;
       }
@@ -213,7 +213,7 @@ export default {
         top: 34%;
       }
 
-      .contact-note {
+      .contact-note p {
         @include rem(font-size, $font-size-body-xs);
       }
     }

@@ -15,6 +15,16 @@
           ]
         }
       },
+      "module_contact_banner": {
+        "type": "Link",
+        "config": {
+          "label": "module contact banner",
+          "select": "document",
+          "customtypes": [
+            "module_contact_banner"
+          ]
+        }
+      },
       "site_footer": {
         "type": "Link",
         "config": {
