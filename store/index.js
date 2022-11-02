@@ -46,7 +46,6 @@ export const mutations = {
 export const actions = {
   async fetchFooter({ commit }, $prismic) {
     const footerData = (await $prismic.api.getSingle('site_footer')).data
-    console.log(footerData)
     const footer = {
       labels: {
         credits: footerData.credits_cta_label,
