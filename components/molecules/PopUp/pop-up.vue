@@ -1,6 +1,6 @@
 <template>
   <atom-wrapper class="pop-up">
-    <slot name="content">Some contentr</slot>
+    <slot name="content"></slot>
     <bubble-image
       class="close-btn link"
       src="/images/close.svg"
@@ -76,7 +76,7 @@ export default {
   .popup-content {
     width: 100%;
     height: 100%;
-    overflow: hidden;
+    overflow: scroll;
 
     iframe {
       width: 100%;
