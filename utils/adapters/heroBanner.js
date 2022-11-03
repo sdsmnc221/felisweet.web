@@ -1,4 +1,5 @@
 import moduleLogoAdapter from './moduleLogo'
+import imageAdapter from './imageAdapter'
 
 const adapter = async ({
   $prismic,
@@ -28,6 +29,7 @@ const adapter = async ({
         $enhancedLinkSerializer,
         moduleLogo.id
       )),
+    bubbleChat: imageAdapter(data.bubble_chat),
   }
 }
 

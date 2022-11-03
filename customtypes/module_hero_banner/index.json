@@ -57,6 +57,14 @@
             "module_logo"
           ]
         }
+      },
+      "bubble_chat": {
+        "type": "Image",
+        "config": {
+          "label": "bubble chat",
+          "constraint": {},
+          "thumbnails": []
+        }
       }
     }
   }

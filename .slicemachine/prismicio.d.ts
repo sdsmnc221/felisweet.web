@@ -248,6 +248,17 @@ interface ModuleHeroBannerDocumentData {
      *
      */
     module_logo: prismicT.RelationField<"module_logo">;
+    /**
+     * bubble chat field in *Module Hero Banner*
+     *
+     * - **Field Type**: Image
+     * - **Placeholder**: *None*
+     * - **API ID Path**: module_hero_banner.bubble_chat
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/image
+     *
+     */
+    bubble_chat: prismicT.ImageField<never>;
 }
 /**
  * Module Hero Banner document from Prismic

@@ -1,5 +1,5 @@
 <template>
-  <atom-wrapper tag="div" class="hero-logo-felisweet">
+  <atom-wrapper tag="div" class="hero-logo-felisweet" :style="css">
     <div class="text" v-html="$prismic.asHTML(text)" />
     <logo-felisweet v-bind="logo" size="32vw" />
   </atom-wrapper>
@@ -21,6 +21,18 @@ export default {
       type: Array,
       required: true,
     },
+    bubbleChat: {
+      type: Object,
+      required: true,
+    },
+  },
+  computed: {
+    css() {
+      console.log(this.bubbleChat)
+      return {
+        '--bubble-chat': `url(${this.bubbleChat.filename})`,
+      }
+    },
   },
 }
 </script>
@@ -38,13 +50,17 @@ export default {
       top: -72px;
       left: 4vw;
 
+      .logo-felisweet {
+        transform: translateX(16px);
+      }
+
       &::after {
         content: '';
         position: absolute;
         display: block;
-        width: 160%;
-        height: 160%;
-        background-image: url('/images/bubble-logo.svg');
+        width: 200%;
+        height: 196%;
+        background-image: var(--bubble-chat);
         background-size: contain;
         background-position: center;
         background-repeat: no-repeat;
@@ -71,7 +87,31 @@ export default {
 
         > p:last-of-type strong {
           @include rem(font-size, $font-size-heading-2);
+          letter-spacing: 0;
         }
+
+        > p:first-of-type {
+          transform: scale(1.2) translateX(-6px);
+        }
+
+        > p:last-of-type {
+          transform: scale(1.2) translateX(-6px);
+        }
+      }
+    }
+
+    @media #{$mq-xlarge} {
+      &::after {
+        width: 200%;
+        height: 228%;
+      }
+
+      > p:first-of-type {
+        transform: scale(1.2) translateX(-6px);
+      }
+
+      > p:last-of-type {
+        transform: scale(1.4) translateX(-6px);
       }
     }
   }

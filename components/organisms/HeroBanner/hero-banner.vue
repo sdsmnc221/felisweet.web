@@ -11,8 +11,13 @@
         ref="heroLogo"
         :logo="illustrationLogo"
         :text="illustrationText"
+        :bubble-chat="bubbleChat"
       />
-      <div ref="heroText" v-html="$prismic.asHTML(text)" />
+      <div
+        ref="heroText"
+        class="hero-baseline"
+        v-html="$prismic.asHTML(text)"
+      />
     </atom-wrapper>
   </atom-wrapper>
 </template>
@@ -48,6 +53,10 @@ export default {
       required: true,
     },
     logo: {
+      type: Object,
+      required: true,
+    },
+    bubbleChat: {
       type: Object,
       required: true,
     },
@@ -177,21 +186,57 @@ export default {
 
           &:nth-of-type(1),
           &:nth-last-of-type(2) strong {
-            @include rem(font-size, $font-size-heading-5);
+            @include rem(font-size, $font-size-heading-4);
             letter-spacing: 0.1px;
           }
 
           &:last-of-type,
           &:last-of-type strong {
-            @include rem(font-size, $font-size-heading-4);
-            letter-spacing: 1px;
+            @include rem(font-size, $font-size-heading-3);
+            letter-spacing: 2px;
           }
+        }
+      }
+
+      .hero-baseline {
+        p:first-of-type {
+          @include rem(margin-top, $spacing-xl);
         }
       }
     }
 
     & > .logo-felisweet {
       display: none;
+    }
+  }
+
+  @media #{$mq-xlarge} {
+    .hero-text {
+      .logo-felisweet {
+        @include rem(margin-bottom, $spacing-l);
+      }
+
+      div {
+        p {
+          &:nth-of-type(1),
+          &:nth-last-of-type(2) strong {
+            @include rem(font-size, $font-size-heading-3);
+            letter-spacing: 0.1px;
+          }
+
+          &:last-of-type,
+          &:last-of-type strong {
+            @include rem(font-size, $font-size-heading-2);
+            letter-spacing: 2px;
+          }
+        }
+      }
+
+      .hero-baseline {
+        p:first-of-type {
+          @include rem(margin-top, $spacing-3xl);
+        }
+      }
     }
   }
 }
