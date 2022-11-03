@@ -1,13 +1,18 @@
 <template>
   <atom-wrapper ref="container" class="hero-banner">
     <hero-illus
+      ref="heroIllus"
       :illustration="illustration"
       :illustration-alt="illustrationAlt"
     />
-    <logo-felisweet v-bind="logo" />
+    <logo-felisweet ref="logo" v-bind="logo" />
     <atom-wrapper ref="smallContainer" tag="h1" class="hero-text">
-      <hero-logo-felisweet :logo="illustrationLogo" :text="illustrationText" />
-      <div v-html="$prismic.asHTML(text)" />
+      <hero-logo-felisweet
+        ref="heroLogo"
+        :logo="illustrationLogo"
+        :text="illustrationText"
+      />
+      <div ref="heroText" v-html="$prismic.asHTML(text)" />
     </atom-wrapper>
   </atom-wrapper>
 </template>
@@ -48,16 +53,61 @@ export default {
     },
   },
   mounted() {
-    this.$gsap.to(
-      [...this.$refs.container.children, ...this.$refs.smallContainer.children],
-      {
+    this.$gsap.set([...this.$refs.heroText.querySelectorAll('p')], {
+      opacity: 0,
+      y: 240,
+    })
+
+    this.$gsap
+      .timeline()
+      .addLabel('start', 0)
+      .to(this.$refs.heroIllus.$el, {
         opacity: 1,
         y: 0,
-        duration: 0.8,
-        ease: 'sine.in',
-        stagger: 0.2,
-      }
-    )
+        duration: 2.4,
+        ease: 'circ.in',
+      })
+      .to(
+        this.$refs.logo.$el,
+        {
+          opacity: 1,
+          y: 0,
+          duration: 1.6,
+          ease: 'circ.in',
+        },
+        '>+=1.6'
+      )
+      .to(
+        this.$refs.smallContainer,
+        {
+          opacity: 1,
+          y: 0,
+          duration: 1.6,
+          ease: 'circ.in',
+        },
+        'start+=4'
+      )
+      .to(
+        this.$refs.heroLogo.$el,
+        {
+          opacity: 1,
+          y: 0,
+          duration: 1.6,
+          ease: 'circ.in',
+        },
+        '>+=1.2'
+      )
+      .to(
+        [...this.$refs.heroText.querySelectorAll('p')],
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.8,
+          ease: 'circ.in',
+          stagger: 0.8,
+        },
+        '<-=1'
+      )
   },
 }
 </script>

@@ -216,9 +216,10 @@ export default {
   mounted() {
     this.$gsap.to([this.$refs.scrollDown.$el], {
       opacity: 1,
-      startAt: { opacity: 0 },
+      scale: 1,
       duration: 2.4,
       ease: 'circ.in',
+      delay: 6.4,
     })
   },
   methods: {
@@ -241,7 +242,7 @@ main {
       position: absolute;
       @include rem(bottom, $spacing-5xl);
       left: 50%;
-      transform: translateX(-50%);
+      transform: translateX(-50%) scale(0);
       opacity: 0;
     }
   }

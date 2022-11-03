@@ -1937,9 +1937,9 @@ export default {
           opacity: 1,
           scale: 1,
           ease: 'circ.in',
-          duration: 2.4,
+          duration: 1.6,
         },
-        'start'
+        'start-=0.8'
       )
       .addLabel('Marie', '>')
       .to(
