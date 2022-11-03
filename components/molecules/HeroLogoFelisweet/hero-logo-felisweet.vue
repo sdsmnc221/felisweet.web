@@ -28,7 +28,6 @@ export default {
   },
   computed: {
     css() {
-      console.log(this.bubbleChat)
       return {
         '--bubble-chat': `url(${this.bubbleChat.filename})`,
       }
