@@ -65,12 +65,11 @@
         class="section-reviews"
       >
         <h2 v-html="reviews.title" />
-        <slider-reviews :reviews="reviews.block" />
-        <p v-if="reviews.detailLabel && reviews.link" class="reviews-more">
-          <a class="link" target="_blank" :href="reviews.link.href">{{
-            reviews.detailLabel
-          }}</a>
-        </p>
+        <slider-reviews
+          :reviews="reviews.block"
+          :reviews-label="reviews.detailLabel"
+          :reviews-link="reviews.link"
+        />
       </atom-wrapper>
     </scroll-reveal-wrapper>
     <scroll-reveal-wrapper>
@@ -376,8 +375,10 @@ main {
 
     .section-reviews {
       h2,
+      h2 p,
       h2 p strong {
-        @include rem(font-size, $font-size-heading-3);
+        @include rem(font-size, $font-size-heading-2);
+        @include rem(margin-bottom, $spacing-xl);
       }
     }
   }

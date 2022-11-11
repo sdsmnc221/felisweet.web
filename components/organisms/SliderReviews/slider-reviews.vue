@@ -2,8 +2,8 @@
   <atom-wrapper class="slider-reviews" flex flex-center flex-row>
     <button-arrow
       direction="left"
-      :size="26"
-      :arrow-size="13"
+      :size="32"
+      :arrow-size="16"
       :on-click="prevQuestion"
     />
     <atom-wrapper class="reviews">
@@ -16,11 +16,15 @@
             '--visible': index === activeIndex,
           }"
         >
+          <atom-image src="/images/double-quote.svg" class="reviews-quote" />
+          <atom-image src="/images/double-quote.svg" class="reviews-quote" />
           <div v-html="review.text" />
-          <span>
-            <atom-image src="/images/double-quote.svg" class="reviews-quote" />
-          </span>
-          <span>- {{ review.author }}</span>
+          <span class="reviews-author">- {{ review.author }} - </span>
+          <p v-if="reviewsLabel && reviewsLink" class="reviews-more">
+            <a class="link" target="_blank" :href="reviewsLink.href">{{
+              reviewsLabel
+            }}</a>
+          </p>
           <atom-image src="/images/illus-temoins.svg" class="reviews-cat" />
         </li>
       </ul>
@@ -28,8 +32,8 @@
 
     <button-arrow
       direction="right"
-      :size="26"
-      :arrow-size="13"
+      :size="32"
+      :arrow-size="16"
       :on-click="nextQuestion"
     />
   </atom-wrapper>
@@ -47,6 +51,14 @@ export default {
     reviews: {
       type: Array,
       default: () => [],
+    },
+    reviewsLabel: {
+      type: String,
+      default: null,
+    },
+    reviewsLink: {
+      type: Object,
+      default: null,
     },
   },
   data() {
@@ -84,8 +96,9 @@ export default {
   .reviews {
     position: relative;
     width: 64vw;
-    height: 40vh;
-    @include rem(margin, $spacing-2xl $spacing-l);
+    min-height: 40vh;
+    @include rem(margin, $spacing-l);
+    @include rem(margin-bottom, $spacing-5xl * 2);
 
     ul {
       list-style-type: none;
@@ -94,6 +107,8 @@ export default {
       transform: translate(0, -50%);
       display: flex;
       transition: all ease 0.64s;
+      align-items: center;
+      @include rem(margin, $spacing-5xl 0);
     }
 
     li {
@@ -124,11 +139,32 @@ export default {
       div {
         max-height: 40vh;
         overflow-y: scroll;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
       }
 
       p,
       span {
         font-family: $font-family-lucida;
+        word-break: break-word;
+        white-space: pre-line;
+      }
+
+      .reviews-quote {
+        width: 20%;
+        position: absolute;
+        top: -20%;
+        left: 12%;
+
+        &:nth-of-type(2) {
+          transform: scale(-1);
+          bottom: 0;
+          right: 0;
+          top: auto;
+          left: auto;
+        }
       }
 
       span {
@@ -136,18 +172,49 @@ export default {
 
         @include rem(font-size, $font-size-body-xs);
         @include rem(line-height, calc($font-size-body-xs * 1.2));
+      }
 
-        .reviews-quote {
-          width: 24px;
+      .reviews-author {
+        position: absolute;
+        bottom: 0;
+        left: $spacing-2xl;
+      }
+
+      .reviews-more {
+        position: absolute;
+        bottom: -16px;
+        right: 30px;
+        @include rem(padding, $spacing-s/2 $spacing-xl);
+        background-color: transparentize($color-light-blue, 0.16);
+        border-radius: 32px;
+
+        &::after {
+          content: '';
           position: absolute;
-          top: 30%;
-          left: 2%;
+          display: block;
+          width: calc(100% + 16px);
+          height: calc(100% + 16px);
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          opacity: 0;
+          transition: all 0.64s ease;
+          border-radius: 32px;
+          border: 2px dashed transparent;
+          pointer-events: none;
         }
 
-        &:last-of-type {
-          @include rem(margin-top, $spacing-l);
-          width: 100%;
-          text-align: right;
+        &:hover {
+          a {
+            color: $color-link-water;
+          }
+          background-color: $color-shakespear-blue;
+
+          &::after {
+            opacity: 1;
+            border: 2px dashed $color-link-water;
+            transform: translate(-50%, -50%);
+          }
         }
       }
 
@@ -164,26 +231,43 @@ export default {
   @media #{$mq-medium} {
     .reviews {
       li {
-        @include rem(padding, $spacing-3xl $spacing-2xl);
+        @include rem(padding, $spacing-2xl);
 
         div {
-          max-height: auto;
-          overflow-y: visible;
+          overflow: visible;
+          @include rem(margin, $spacing-3xl 0 $spacing-4xl 0);
+        }
+
+        p {
+          &:first-child {
+            @include rem(margin-top, $spacing-2xl);
+          }
+
+          @include rem(margin-top, $spacing-l);
         }
 
         p,
         span {
-          @include rem(font-size, $font-size-body-s);
+          @include rem(font-size, $font-size-body-m);
+        }
+
+        .reviews-author {
+          @include rem(font-size, $font-size-heading-2);
         }
 
         .reviews-quote {
-          top: 0;
-          left: 0;
+          top: -12%;
+          left: 4%;
+
+          &:nth-of-type(2) {
+            bottom: -12%;
+            right: 4%;
+          }
         }
 
         .reviews-cat {
           width: 32vw;
-          top: -64px;
+          top: -80px;
         }
       }
     }
