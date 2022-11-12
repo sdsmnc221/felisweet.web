@@ -290,7 +290,7 @@ main {
   }
 
   .section-reviews {
-    @include rem(margin-bottom, $spacing-5xl);
+    // @include rem(margin-bottom, $spacing-l);
 
     &.--flex {
       justify-content: flex-start;

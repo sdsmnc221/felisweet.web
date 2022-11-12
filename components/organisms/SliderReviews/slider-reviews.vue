@@ -18,7 +18,9 @@
         >
           <atom-image src="/images/double-quote.svg" class="reviews-quote" />
           <atom-image src="/images/double-quote.svg" class="reviews-quote" />
-          <div v-html="review.text" />
+          <div class="reviews-content">
+            <div v-html="review.text" />
+          </div>
           <span class="reviews-author">- {{ review.author }} - </span>
           <p v-if="reviewsLabel && reviewsLink" class="reviews-more">
             <a class="link" target="_blank" :href="reviewsLink.href">{{
@@ -98,7 +100,7 @@ export default {
     width: 64vw;
     min-height: 40vh;
     @include rem(margin, $spacing-l);
-    @include rem(margin-bottom, $spacing-5xl * 2);
+    @include rem(margin-bottom, $spacing-5xl);
 
     ul {
       list-style-type: none;
@@ -107,8 +109,8 @@ export default {
       transform: translate(0, -50%);
       display: flex;
       transition: all ease 0.64s;
-      align-items: center;
-      @include rem(margin, $spacing-5xl 0);
+      align-items: stretch;
+      @include rem(margin, $spacing-2xl 0);
     }
 
     li {
@@ -136,17 +138,46 @@ export default {
         transform: scale(1);
       }
 
-      div {
+      div.reviews-content {
         max-height: 40vh;
         overflow-y: scroll;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
+
+        position: relative;
+
+        div {
+          background: white;
+          width: 100%;
+          height: 40vh;
+          display: flex;
+          flex-direction: column;
+          justify-content: flex-start;
+          align-items: center;
+        }
+
+        &::after {
+          content: '';
+          position: absolute;
+          bottom: -40px;
+          width: 100%;
+          height: 120px;
+          background: linear-gradient(transparent, white);
+          pointer-events: none;
+        }
+
+        &::before {
+          content: '';
+          position: absolute;
+          top: -40px;
+          width: 100%;
+          height: 120px;
+          background: linear-gradient(white, transparent);
+          pointer-events: none;
+        }
       }
 
       p,
       span {
+        text-align: center;
         font-family: $font-family-lucida;
         word-break: break-word;
         white-space: pre-line;
@@ -157,13 +188,16 @@ export default {
         position: absolute;
         top: -20%;
         left: 12%;
+        display: none;
 
         &:nth-of-type(2) {
-          transform: scale(-1);
-          bottom: 0;
-          right: 0;
+          transform: scale(-1.4);
+          bottom: -12px;
+          right: 12px;
           top: auto;
           left: auto;
+          display: block;
+          pointer-events: none;
         }
       }
 
@@ -175,18 +209,20 @@ export default {
       }
 
       .reviews-author {
-        position: absolute;
-        bottom: 0;
-        left: $spacing-2xl;
+        position: relative;
+        @include rem(margin-top, $spacing-l);
+        white-space: nowrap;
       }
 
       .reviews-more {
         position: absolute;
         bottom: -16px;
-        right: 30px;
+        right: 50%;
+        transform: translateX(50%);
         @include rem(padding, $spacing-s/2 $spacing-xl);
         background-color: transparentize($color-light-blue, 0.16);
         border-radius: 32px;
+        white-space: nowrap;
 
         &::after {
           content: '';
@@ -230,12 +266,28 @@ export default {
 
   @media #{$mq-medium} {
     .reviews {
+      @include rem(margin-bottom, $spacing-5xl * 3);
+
+      ul {
+        align-items: center;
+        @include rem(margin, $spacing-5xl 0);
+      }
+
       li {
         @include rem(padding, $spacing-2xl);
 
-        div {
+        div.reviews-content {
           overflow: visible;
           @include rem(margin, $spacing-3xl 0 $spacing-4xl 0);
+
+          div {
+            background-color: transparent;
+            justify-content: center;
+          }
+          &::after,
+          &::before {
+            display: none;
+          }
         }
 
         p {
@@ -248,6 +300,7 @@ export default {
 
         p,
         span {
+          text-align: left;
           @include rem(font-size, $font-size-body-m);
         }
 
@@ -255,13 +308,29 @@ export default {
           @include rem(font-size, $font-size-heading-2);
         }
 
+        .reviews-more {
+          bottom: -16px;
+          right: 30px;
+          transform: translateX(0);
+        }
+
+        .reviews-author {
+          position: absolute;
+          bottom: 0;
+          left: $spacing-2xl;
+        }
+
         .reviews-quote {
           top: -12%;
           left: 4%;
+          display: block;
 
           &:nth-of-type(2) {
             bottom: -12%;
             right: 4%;
+            transform: scale(-1);
+            top: auto;
+            left: auto;
           }
         }
 
