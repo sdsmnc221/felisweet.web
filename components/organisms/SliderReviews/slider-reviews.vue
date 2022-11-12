@@ -27,7 +27,149 @@
               reviewsLabel
             }}</a>
           </p>
-          <atom-image src="/images/illus-temoins.svg" class="reviews-cat" />
+          <svg
+            ref="svg"
+            class="reviews-cat"
+            version="1.1"
+            xmlns="http://www.w3.org/2000/svg"
+            xmlns:xlink="http://www.w3.org/1999/xlink"
+            x="0px"
+            y="0px"
+            viewBox="0 0 545 125.7"
+            style="enable-background: new 0 0 545 125.7"
+            xml:space="preserve"
+          >
+            <g>
+              <path
+                id="Tail"
+                d="M521.4,80.4H521C496.3,80.6,420.4,83,420.4,83l-28.9-1.5c0,0,4.8,10.6,16.1,12.7c0.1,0,0.3,0.1,0.4,0.1
+		c13.4,2.3,58.8,9.4,58.8,9.4L530.3,93C530.3,93,545.3,80.4,521.4,80.4z"
+              />
+              <path class="st0" d="M272.4,114.2c-18.6-1.3-63.6,6.2-74.9-12.8" />
+              <path
+                class="st0"
+                d="M451.4,75.4c-6.2-2.5-14-4-20.6-3.2c-9.3,1.2-8.2,1.3-43.5-3.5l9.4,14.7l3,0.1c12.9,0.2,25.8,2.1,38.7,2.1
+		C445.8,85.6,469.9,82.9,451.4,75.4z"
+              />
+              <path
+                class="st0"
+                d="M229.2,84.9c-11.6-6.2-25.7,3.4-34.5-4.7c-17.8-11.2-21.4-32.8-23.8-52.3c-4.4,0.8-8.6,1.5-12.5,2.2
+		c-19-0.1-42.2,90.5-42.2,90.5s133.7,4.7,146,4.6c12.3-0.1,10.2-11,10.2-11c3.7,0,7.3,0,11,0c-10.1-7.7-20.2-15.4-31.2-18.5
+		C244.1,92.2,236.1,90.2,229.2,84.9z"
+              />
+              <path
+                class="st1"
+                d="M408.3,89.3c-9.6-4.8-14.5-11.9-21.3-22.1c-30.8-73.3-150.8-50.8-216-39.3c2.5,19.5,6,41.1,23.9,52.3
+		c7.9,7.3,19.7,0.8,29,2.8c11.4,2.5,22,9.4,32.5,14.2c6.4,2.9,21.4,17,27.2,17c41,0.3,82.6,2.8,123.7,2
+		C403.2,106.4,407.9,98.3,408.3,89.3z"
+              />
+              <path
+                class="st0"
+                d="M453.9,96.8c-23.3-0.7-36.6-3-45.7-7.5c-0.4,9-5.1,17.1-1.1,27c13-0.2,26-0.8,38.9-1.9
+		C501.4,109.7,464.9,98.5,453.9,96.8z"
+              />
+              <path class="st0" d="M272.4,114.2c-18.6-1.3-63.6,6.2-74.9-12.8" />
+              <path
+                class="st1"
+                d="M40.1,16C34.1-6.3,25.8,1,23.2,4.4c-8.1,12.7-11.2,47.1-6.6,75C48.7,74.9,77.8,48.9,86,18.8l-0.1-0.5
+		C65.4,17.7,44.6,16.9,40.1,16z"
+              />
+              <path
+                class="st0"
+                d="M85.9,18.3l0.1,0.5c0-0.1,0.1-0.3,0.1-0.5H85.9z"
+              />
+              <path
+                class="st0"
+                d="M86,18.8c-8.2,30.2-37.4,56.1-69.5,60.6c1.5,9.3,3.9,17.8,7.1,24.6s7.3,11.6,12.4,13.8
+		c23.1,10.2,65.1,8.5,88.9,2.7c15.3-3.8,25.7-18.9,30.4-34.1C120.1,84.6,93.3,52.7,86,18.8z"
+              />
+              <path
+                class="st1"
+                d="M158.5,48.8c-0.8-14.2-2-29.3-5.9-43c-8.1-14.4-21.3,13.5-21.3,13.5s-22.4-0.4-45.2-1.1c0,0.2-0.1,0.3-0.1,0.5
+		c7.3,34,34.1,65.8,69.4,67.5c1.1-3.5,1.9-7,2.4-10.6C159,66.8,159.2,57.8,158.5,48.8z"
+              />
+              <line
+                id="Whisker1"
+                class="st2"
+                x1="153.7"
+                y1="66.4"
+                x2="175.5"
+                y2="66.6"
+              />
+              <line
+                id="Whisker2"
+                class="st2"
+                x1="154.5"
+                y1="72.5"
+                x2="176.3"
+                y2="72.6"
+              />
+              <line
+                id="Whisker3"
+                class="st2"
+                x1="153.6"
+                y1="77.2"
+                x2="176.9"
+                y2="77.1"
+              />
+              <line
+                id="Whisker4"
+                class="st2"
+                x1="0.4"
+                y1="65.3"
+                x2="21.2"
+                y2="65.4"
+              />
+              <line
+                id="Whisker5"
+                class="st2"
+                x1="1"
+                y1="69.9"
+                x2="20.3"
+                y2="70.2"
+              />
+              <line
+                id="Whisker6"
+                class="st2"
+                x1="1.6"
+                y1="74.4"
+                x2="22.4"
+                y2="74.5"
+              />
+              <path
+                class="st3"
+                d="M70.9,80.4c0,0,7.6-1,13.2-4.8c1.7,1.3,7,6.8,11.6,6.2"
+              />
+              <path
+                class="st4"
+                d="M84.2,76.4c-2.3-0.1-4.7-1.8-6.6-6.4c-3-7,8.7-5,12.1-3.5C93.5,68.3,89.3,76.6,84.2,76.4z"
+              />
+              <line
+                id="Eye2"
+                class="st5"
+                x1="109"
+                y1="53.9"
+                x2="130.5"
+                y2="54.1"
+              />
+              <line
+                id="Eye1"
+                class="st5"
+                x1="38"
+                y1="52.5"
+                x2="61.1"
+                y2="52.5"
+              />
+              <path
+                class="st0"
+                d="M139.9,20.5c0,0,3.1-11.2,6.4-10.1c1.9,2.8,4,7.2,4.4,10.2C147.1,21,143.5,20.9,139.9,20.5z"
+              />
+              <path
+                class="st0"
+                d="M25.2,18.2c0,0-0.2-13.8,3.1-11.2c3.6,4.1,5.7,8.5,6.1,11.5C32.9,18.7,25.2,18.2,25.2,18.2z"
+              />
+            </g>
+          </svg>
         </li>
       </ul>
     </atom-wrapper>
@@ -76,6 +218,34 @@ export default {
         })), -50%)`,
       }
     },
+  },
+  mounted() {
+    const refs = this.$refs.svg
+    this.$gsap
+      .timeline()
+      .to(
+        refs.map((ref) => ref.querySelector('#Tail')),
+        {
+          skewX: 'random(-16, 16)',
+          skewY: 'random(-16, 16)',
+          repeat: -1,
+          repeatRefresh: true,
+          yoyo: true,
+          duration: 0.8,
+          stagger: 0.2,
+          ease: 'circ.in',
+        }
+      )
+      .to([...refs.map((ref) => ref.querySelectorAll('[id^=Whisker]'))], {
+        skewX: 'random(-16, 16)',
+        skewY: 'random(-16, 16)',
+        rotate: 'random(-32, 32)',
+        repeat: -1,
+        repeatRefresh: true,
+        yoyo: true,
+        duration: 0.6,
+        ease: 'circ.in',
+      })
   },
   methods: {
     prevQuestion() {
@@ -139,15 +309,14 @@ export default {
       }
 
       div.reviews-content {
+        position: relative;
         max-height: 40vh;
         overflow-y: scroll;
 
-        position: relative;
-
         div {
           background: white;
+          overflow-y: scroll;
           width: 100%;
-          height: 40vh;
           display: flex;
           flex-direction: column;
           justify-content: flex-start;
@@ -157,7 +326,7 @@ export default {
         &::after {
           content: '';
           position: absolute;
-          bottom: -40px;
+          bottom: -$spacing-5xl * 1.2;
           width: 100%;
           height: 120px;
           background: linear-gradient(transparent, white);
@@ -167,9 +336,9 @@ export default {
         &::before {
           content: '';
           position: absolute;
-          top: -40px;
+          top: -$spacing-5xl * 1.2;
           width: 100%;
-          height: 120px;
+          height: 100%;
           background: linear-gradient(white, transparent);
           pointer-events: none;
         }
@@ -266,6 +435,7 @@ export default {
 
   @media #{$mq-medium} {
     .reviews {
+      @include rem(margin-top, $spacing-2xl);
       @include rem(margin-bottom, $spacing-5xl * 3);
 
       ul {
@@ -277,22 +447,22 @@ export default {
         @include rem(padding, $spacing-2xl);
 
         div.reviews-content {
-          overflow: visible;
+          overflow-y: scroll;
           @include rem(margin, $spacing-3xl 0 $spacing-4xl 0);
 
           div {
-            background-color: transparent;
             justify-content: center;
-          }
-          &::after,
-          &::before {
-            display: none;
+            align-items: flex-start;
+            @include rem(padding-bottom, $spacing-xl);
           }
         }
 
         p {
           &:first-child {
             @include rem(margin-top, $spacing-2xl);
+          }
+          &:last-child {
+            @include rem(margin-bottom, $spacing-xl);
           }
 
           @include rem(margin-top, $spacing-l);
@@ -340,6 +510,41 @@ export default {
         }
       }
     }
+  }
+
+  .st0 {
+    fill: #ffffff;
+    stroke: #000000;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+  .st1 {
+    stroke: #000000;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+  .st2 {
+    fill: none;
+    stroke: #231f20;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+  .st3 {
+    fill: none;
+    stroke: #000000;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+  .st4 {
+    fill: #e0aaaa;
+    stroke: #000000;
+    stroke-miterlimit: 10;
+  }
+  .st5 {
+    fill: none;
+    stroke: #ffffff;
+    stroke-linecap: round;
+    stroke-linejoin: round;
   }
 }
 </style>
