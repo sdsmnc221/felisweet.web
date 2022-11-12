@@ -322,26 +322,6 @@ export default {
           justify-content: flex-start;
           align-items: center;
         }
-
-        &::after {
-          content: '';
-          position: absolute;
-          bottom: -$spacing-5xl * 1.2;
-          width: 100%;
-          height: 120px;
-          background: linear-gradient(transparent, white);
-          pointer-events: none;
-        }
-
-        &::before {
-          content: '';
-          position: absolute;
-          top: -$spacing-5xl * 1.2;
-          width: 100%;
-          height: 100%;
-          background: linear-gradient(white, transparent);
-          pointer-events: none;
-        }
       }
 
       p,
