@@ -16,8 +16,48 @@
             '--visible': index === activeIndex,
           }"
         >
-          <atom-image src="/images/double-quote.svg" class="reviews-quote" />
-          <atom-image src="/images/double-quote.svg" class="reviews-quote" />
+          <svg
+            ref="quote1"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 52.74 32.29"
+            class="reviews-quote"
+          >
+            <path
+              class="d"
+              d="M21.1,17.8c-0.5,0.3-1.1,0.6-1.8,0.7s-1.3,0.2-1.8,0.2c-1.5,0-2.6-0.4-3.5-1.2c-0.9-0.8-1.4-1.6-1.4-2.4
+	c0-1.2,0.3-2.2,1-3c0.7-0.8,1.5-1.5,2.6-2.1c0.9-0.4,1.9-0.9,3.1-1.3c1.2-0.4,1.9-1.6,1.9-3.5s-0.5-3.2-1.6-4S17.5,0,16.6,0
+	c-2.8,0-5.5,1-8,2.9C6,4.8,4,7.2,2.4,10C0.8,12.9,0,15.7,0,18.6c0,4.1,1.1,7.4,3.3,9.9c2.2,2.5,5.1,3.7,8.8,3.7c3.2,0,6.1-1,8.5-2.9
+	c2.5-1.9,3.7-4.2,3.7-6.9c0-1.5-0.3-2.5-0.9-3.2C22.8,18.6,22,18.1,21.1,17.8z"
+            />
+            <path
+              class="d"
+              d="M40.5,32.3c3.2,0,6.1-1,8.5-2.9c2.5-1.9,3.7-4.2,3.7-6.9c0-1.5-0.3-2.5-0.9-3.2c-0.6-0.7-1.4-1.2-2.3-1.5
+	c-0.5,0.3-1.1,0.6-1.8,0.7s-1.3,0.2-1.8,0.2c-1.5,0-2.6-0.4-3.5-1.2c-0.9-0.8-1.3-1.6-1.3-2.4c0-1.2,0.3-2.2,1-3
+	c0.7-0.8,1.5-1.5,2.6-2.1c0.9-0.4,1.9-0.9,3.2-1.3C49,8.2,49.7,7,49.7,5.1s-0.5-3.2-1.6-4C47,0.4,46,0,45,0c-2.8,0-5.5,1-8,2.9
+	c-2.5,1.9-4.6,4.3-6.2,7.1c-1.6,2.8-2.4,5.7-2.4,8.6c0,4.1,1.1,7.4,3.3,9.9C33.9,31,36.8,32.3,40.5,32.3z"
+            />
+          </svg>
+          <svg
+            ref="quote2"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 52.74 32.29"
+            class="reviews-quote"
+          >
+            <path
+              class="d"
+              d="M21.1,17.8c-0.5,0.3-1.1,0.6-1.8,0.7s-1.3,0.2-1.8,0.2c-1.5,0-2.6-0.4-3.5-1.2c-0.9-0.8-1.4-1.6-1.4-2.4
+	c0-1.2,0.3-2.2,1-3c0.7-0.8,1.5-1.5,2.6-2.1c0.9-0.4,1.9-0.9,3.1-1.3c1.2-0.4,1.9-1.6,1.9-3.5s-0.5-3.2-1.6-4S17.5,0,16.6,0
+	c-2.8,0-5.5,1-8,2.9C6,4.8,4,7.2,2.4,10C0.8,12.9,0,15.7,0,18.6c0,4.1,1.1,7.4,3.3,9.9c2.2,2.5,5.1,3.7,8.8,3.7c3.2,0,6.1-1,8.5-2.9
+	c2.5-1.9,3.7-4.2,3.7-6.9c0-1.5-0.3-2.5-0.9-3.2C22.8,18.6,22,18.1,21.1,17.8z"
+            />
+            <path
+              class="d"
+              d="M40.5,32.3c3.2,0,6.1-1,8.5-2.9c2.5-1.9,3.7-4.2,3.7-6.9c0-1.5-0.3-2.5-0.9-3.2c-0.6-0.7-1.4-1.2-2.3-1.5
+	c-0.5,0.3-1.1,0.6-1.8,0.7s-1.3,0.2-1.8,0.2c-1.5,0-2.6-0.4-3.5-1.2c-0.9-0.8-1.3-1.6-1.3-2.4c0-1.2,0.3-2.2,1-3
+	c0.7-0.8,1.5-1.5,2.6-2.1c0.9-0.4,1.9-0.9,3.2-1.3C49,8.2,49.7,7,49.7,5.1s-0.5-3.2-1.6-4C47,0.4,46,0,45,0c-2.8,0-5.5,1-8,2.9
+	c-2.5,1.9-4.6,4.3-6.2,7.1c-1.6,2.8-2.4,5.7-2.4,8.6c0,4.1,1.1,7.4,3.3,9.9C33.9,31,36.8,32.3,40.5,32.3z"
+            />
+          </svg>
           <div class="reviews-content">
             <div v-html="review.text" />
           </div>
@@ -184,13 +224,13 @@
 </template>
 
 <script>
-import AtomImage from '../../atoms/AtomImage'
+import { shuffle } from 'lodash'
 import AtomWrapper from '../../atoms/AtomWrapper'
 import ButtonArrow from '../../atoms/ButtonArrow'
 
 export default {
   name: 'SliderReviews',
-  components: { AtomWrapper, ButtonArrow, AtomImage },
+  components: { AtomWrapper, ButtonArrow },
   props: {
     reviews: {
       type: Array,
@@ -223,6 +263,7 @@ export default {
     const refs = this.$refs.svg
     this.$gsap
       .timeline()
+      .addLabel('start', 0)
       .to(
         refs.map((ref) => ref.querySelector('#Tail')),
         {
@@ -234,18 +275,39 @@ export default {
           duration: 0.8,
           stagger: 0.2,
           ease: 'circ.in',
-        }
+        },
+        'start'
       )
-      .to([...refs.map((ref) => ref.querySelectorAll('[id^=Whisker]'))], {
-        skewX: 'random(-16, 16)',
-        skewY: 'random(-16, 16)',
-        rotate: 'random(-32, 32)',
-        repeat: -1,
-        repeatRefresh: true,
-        yoyo: true,
-        duration: 0.6,
-        ease: 'circ.in',
-      })
+      .to(
+        [...refs.map((ref) => ref.querySelectorAll('[id^=Whisker]'))],
+        {
+          skewX: 'random(-16, 16)',
+          skewY: 'random(-16, 16)',
+          rotate: 'random(-32, 32)',
+          repeat: -1,
+          repeatRefresh: true,
+          yoyo: true,
+          duration: 0.6,
+          ease: 'circ.in',
+        },
+        'start'
+      )
+      .to(
+        shuffle([
+          ...this.$refs.quote1.map((ref) => ref.querySelectorAll('path')),
+          ...this.$refs.quote2.map((ref) => ref.querySelectorAll('path')),
+        ]),
+        {
+          opacity: 0.8,
+          repeat: -1,
+          repeatRefresh: true,
+          yoyo: true,
+          duration: 0.6,
+          ease: 'circ.in',
+          stagger: 0.2,
+        },
+        'start'
+      )
   },
   methods: {
     prevQuestion() {
@@ -347,6 +409,10 @@ export default {
           left: auto;
           display: block;
           pointer-events: none;
+        }
+
+        path {
+          opacity: 0.2;
         }
       }
 
@@ -525,6 +591,9 @@ export default {
     stroke: #ffffff;
     stroke-linecap: round;
     stroke-linejoin: round;
+  }
+  .d {
+    fill: #2381a0;
   }
 }
 </style>
