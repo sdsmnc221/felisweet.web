@@ -376,7 +376,6 @@ export default {
         overflow-y: scroll;
 
         div {
-          background: white;
           overflow-y: scroll;
           width: 100%;
           display: flex;
@@ -479,6 +478,13 @@ export default {
     }
   }
 
+  @media #{$mq-xlarge} {
+    .reviews-more {
+      right: 72px !important;
+      transform: translateX(0) scale(1.4) !important;
+    }
+  }
+
   @media #{$mq-medium} {
     .reviews {
       @include rem(margin-top, $spacing-2xl);
@@ -540,6 +546,7 @@ export default {
           top: -12%;
           left: 4%;
           display: block;
+          overflow: hidden;
 
           &:nth-of-type(2) {
             bottom: -12%;
