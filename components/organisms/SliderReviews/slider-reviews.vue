@@ -433,7 +433,7 @@ export default {
         bottom: -16px;
         right: 50%;
         transform: translateX(50%);
-        @include rem(padding, $spacing-s/2 $spacing-xl);
+        @include rem(padding, calc($spacing-s / 2) $spacing-xl);
         background-color: transparentize($color-light-blue, 0.16);
         border-radius: 32px;
         white-space: nowrap;
