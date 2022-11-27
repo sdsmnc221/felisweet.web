@@ -17,7 +17,7 @@
           >
             <template #content>
               <div
-                class="popup-content"
+                :class="`popup-content ${$store.state.page.popupType}`"
                 v-html="$store.state.page.popupContent"
               />
             </template>
@@ -59,10 +59,10 @@ export default {
       // console.log(e)
     },
     openPopup() {
-      this.$store.dispatch(
-        'openPopup',
-        this.$store.state.footer.popupContentHTML.planning
-      )
+      this.$store.dispatch('openPopup', {
+        popupContent: this.$store.state.footer.popupContentHTML.planning,
+        popupType: 'planning',
+      })
     },
     closePopup() {
       this.$store.dispatch('closePopup')

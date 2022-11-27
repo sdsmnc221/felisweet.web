@@ -8,6 +8,7 @@ export const state = () => ({
   page: {
     displayPopup: false,
     popupContent: '',
+    popupType: '',
   },
 })
 
@@ -30,13 +31,15 @@ export const mutations = {
   SET_FOOTER_LOGO(state, footerLogo) {
     state.footer.logo = footerLogo
   },
-  OPEN_POPUP(state, popupContent) {
+  OPEN_POPUP(state, { popupContent, popupType }) {
     state.page.displayPopup = true
     state.page.popupContent = popupContent
+    state.page.popupType = popupType
   },
   CLOSE_POPUP(state) {
     state.page.displayPopup = false
     state.page.popupContent = ''
+    state.page.popupType = ''
   },
   SET_ERROR(state, error) {
     state.footer = error
@@ -71,8 +74,8 @@ export const actions = {
 
     commit('SET_FOOTER_LOGO', footerLogo)
   },
-  openPopup({ commit }, popupContent) {
-    commit('OPEN_POPUP', popupContent)
+  openPopup({ commit }, { popupContent, popupType }) {
+    commit('OPEN_POPUP', { popupContent, popupType })
   },
   closePopup({ commit }) {
     commit('CLOSE_POPUP')

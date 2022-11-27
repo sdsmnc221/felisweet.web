@@ -40,16 +40,16 @@ export default {
   },
   methods: {
     openCredits() {
-      this.$store.dispatch(
-        'openPopup',
-        this.$store.state.footer.popupContentHTML.credits
-      )
+      this.$store.dispatch('openPopup', {
+        popupContent: this.$store.state.footer.popupContentHTML.credits,
+        popupType: 'credits',
+      })
     },
     openMentions() {
-      this.$store.dispatch(
-        'openPopup',
-        this.$store.state.footer.popupContentHTML.mentions
-      )
+      this.$store.dispatch('openPopup', {
+        popupContent: this.$store.state.footer.popupContentHTML.mentions,
+        popupType: 'legals',
+      })
     },
   },
 }
