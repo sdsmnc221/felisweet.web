@@ -179,5 +179,15 @@ export default {
       }
     }
   }
+
+  @media #{$mq-large} {
+    .questions {
+      ul {
+        li {
+          padding: 0 12%;
+        }
+      }
+    }
+  }
 }
 </style>
