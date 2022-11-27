@@ -1131,7 +1131,7 @@ export default {
       text-decoration: none;
       font-weight: $weight-bold;
       position: absolute;
-      top: 32%;
+      top: 30%;
       left: 50%;
       transform: translateX(-50%);
       border-radius: 20px;
