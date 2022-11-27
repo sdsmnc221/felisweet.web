@@ -382,5 +382,21 @@ main {
       }
     }
   }
+
+  @media #{$mq-xlarge} {
+    .section-services {
+      h2 {
+        margin-bottom: $spacing-4xl;
+
+        p {
+          @include rem(font-size, $font-size-heading-2);
+        }
+
+        strong {
+          @include rem(font-size, $font-size-heading-2);
+        }
+      }
+    }
+  }
 }
 </style>

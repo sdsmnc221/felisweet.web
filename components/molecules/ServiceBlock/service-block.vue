@@ -81,6 +81,10 @@ export default {
 
   .bubble-image {
     position: absolute;
+    img {
+      animation: rotating 16s linear infinite;
+      transform-origin: center;
+    }
 
     &.--top {
       top: -24px;
@@ -130,6 +134,26 @@ export default {
 
     h3 {
       @include rem(font-size, $font-size-body-l);
+    }
+  }
+
+  @media #{$mq-xlarge} {
+    h3,
+    h3 p {
+      @include rem(font-size, $font-size-heading-3);
+    }
+
+    p {
+      @include rem(padding, $font-size-heading-4);
+    }
+  }
+
+  @keyframes rotating {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
     }
   }
 }
