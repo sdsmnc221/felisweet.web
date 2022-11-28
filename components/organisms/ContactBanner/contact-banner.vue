@@ -966,6 +966,21 @@
       <button class="contact-planning link" @click="openPlanning">
         {{ data.contactPlanningLabel }}
       </button>
+      <div class="contact-social-media">
+        <atom-image class="social-cats" src="/images/social-cats.png" />
+        <a class="link" href="/" target="_blank">
+          <bubble-image src="/images/icons8-facebook.svg" :size="148" />
+        </a>
+        <a class="link" href="/" target="_blank">
+          <bubble-image src="/images/icons8-instagram.svg" :size="148" />
+        </a>
+        <a class="link" href="/" target="_blank">
+          <bubble-image src="/images/icons8-linkedin.svg" :size="148" />
+        </a>
+        <a class="link qr" href="/" target="_blank">
+          <bubble-image src="/images/qr.svg" :size="72" />
+        </a>
+      </div>
       <div class="contact-note" v-html="data.contactNote"></div>
     </atom-wrapper>
   </atom-wrapper>
@@ -973,11 +988,12 @@
 
 <script>
 import AtomImage from '../../atoms/AtomImage'
+import BubbleImage from '../../atoms/BubbleImage'
 import AtomWrapper from '../../atoms/AtomWrapper'
 
 export default {
   name: 'ContactBanner',
-  components: { AtomWrapper, AtomImage },
+  components: { AtomWrapper, AtomImage, BubbleImage },
   props: {
     openPlanning: {
       type: Function,
@@ -1174,6 +1190,46 @@ export default {
       transform: translateX(-50%);
       bottom: 36%;
     }
+
+    .contact-social-media {
+      position: absolute;
+      bottom: 3.2vh;
+      right: 0;
+      text-align: right;
+
+      .atom-image {
+        width: 24%;
+      }
+
+      a {
+        display: block;
+        position: absolute;
+
+        &:nth-of-type(1) {
+          bottom: 0;
+          right: 28%;
+        }
+
+        &:nth-of-type(2) {
+          bottom: 0;
+          right: 20%;
+        }
+
+        &:nth-of-type(3) {
+          bottom: 0;
+          right: 0;
+        }
+
+        &.qr {
+          bottom: 0;
+          left: 6%;
+
+          .atom-image {
+            width: 100%;
+          }
+        }
+      }
+    }
   }
 
   @media #{$mq-medium} {
@@ -1210,6 +1266,44 @@ export default {
 
       .contact-note p {
         @include rem(font-size, $font-size-body-xs);
+      }
+
+      .contact-social-media {
+        bottom: -4.8vh;
+
+        .atom-image,
+        .social-cats {
+          width: 32%;
+        }
+
+        a {
+          &:nth-of-type(1) {
+            top: 32%;
+            right: 28%;
+          }
+
+          &:nth-of-type(2) {
+            top: 0;
+            right: 20%;
+          }
+
+          &:nth-of-type(3) {
+            top: 44%;
+            right: 2%;
+          }
+
+          &.qr {
+            top: -10%;
+            right: 6%;
+            bottom: auto;
+            left: auto;
+            transform: rotate(24deg) scale(0.72) !important;
+
+            .atom-image {
+              width: 100%;
+            }
+          }
+        }
       }
     }
   }
@@ -1305,6 +1399,20 @@ export default {
 
       .contact-note p {
         @include rem(font-size, $font-size-body-m);
+      }
+
+      .contact-social-media {
+        a {
+          &.qr {
+            top: -2%;
+            right: 6%;
+            transform: rotate(0) scale(1);
+
+            .atom-image {
+              width: 100%;
+            }
+          }
+        }
       }
     }
   }

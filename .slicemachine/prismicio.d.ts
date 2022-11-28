@@ -57,7 +57,7 @@ interface HomePageDocumentData {
  * Slice for *Home Page → Slice Zone*
  *
  */
-type HomePageDocumentDataSlicesSlice = ServicesBlockSlice | ReviewsBlockSlice | ProblematicsBlockSlice;
+type HomePageDocumentDataSlicesSlice = ServicesBlockSlice | ReviewsBlockSlice | ProblematicsBlockSlice | SocialMediaBlockSlice;
 /**
  * Home Page document from Prismic
  *
@@ -169,7 +169,23 @@ interface ModuleContactBannerDocumentData {
      *
      */
     illustration_foot: prismicT.ImageField<never>;
+    /**
+     * Slice Zone field in *Module Contact Banner*
+     *
+     * - **Field Type**: Slice Zone
+     * - **Placeholder**: *None*
+     * - **API ID Path**: module_contact_banner.slices[]
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/slices
+     *
+     */
+    slices: prismicT.SliceZone<ModuleContactBannerDocumentDataSlicesSlice>;
 }
+/**
+ * Slice for *Module Contact Banner → Slice Zone*
+ *
+ */
+type ModuleContactBannerDocumentDataSlicesSlice = never;
 /**
  * Module Contact Banner document from Prismic
  *
@@ -385,6 +401,52 @@ interface ModuleServiceDocumentData {
  * @typeParam Lang - Language API ID of the document.
  */
 export type ModuleServiceDocument<Lang extends string = string> = prismicT.PrismicDocumentWithoutUID<Simplify<ModuleServiceDocumentData>, "module_service", Lang>;
+/** Content for Module Social Media documents */
+interface ModuleSocialMediaDocumentData {
+    /**
+     * Title field in *Module Social Media*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: module_social_media.title
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    title: prismicT.KeyTextField;
+    /**
+     * Link field in *Module Social Media*
+     *
+     * - **Field Type**: Link
+     * - **Placeholder**: *None*
+     * - **API ID Path**: module_social_media.link
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/link-content-relationship
+     *
+     */
+    link: prismicT.LinkField;
+    /**
+     * Icon field in *Module Social Media*
+     *
+     * - **Field Type**: Image
+     * - **Placeholder**: *None*
+     * - **API ID Path**: module_social_media.icon
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/image
+     *
+     */
+    icon: prismicT.ImageField<never>;
+}
+/**
+ * Module Social Media document from Prismic
+ *
+ * - **API ID**: `module_social_media`
+ * - **Repeatable**: `true`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type ModuleSocialMediaDocument<Lang extends string = string> = prismicT.PrismicDocumentWithoutUID<Simplify<ModuleSocialMediaDocumentData>, "module_social_media", Lang>;
 /** Content for Site Footer documents */
 interface SiteFooterDocumentData {
     /**
@@ -475,7 +537,7 @@ interface SiteFooterDocumentData {
  * @typeParam Lang - Language API ID of the document.
  */
 export type SiteFooterDocument<Lang extends string = string> = prismicT.PrismicDocumentWithoutUID<Simplify<SiteFooterDocumentData>, "site_footer", Lang>;
-export type AllDocumentTypes = HomePageDocument | ModuleContactBannerDocument | ModuleHeroBannerDocument | ModuleLogoDocument | ModuleServiceDocument | SiteFooterDocument;
+export type AllDocumentTypes = HomePageDocument | ModuleContactBannerDocument | ModuleHeroBannerDocument | ModuleLogoDocument | ModuleServiceDocument | ModuleSocialMediaDocument | SiteFooterDocument;
 /**
  * Primary content in ProblematicsBlock → Primary
  *
@@ -701,11 +763,66 @@ type ServicesBlockSliceVariation = ServicesBlockSliceDefault;
  *
  */
 export type ServicesBlockSlice = prismicT.SharedSlice<"services_block", ServicesBlockSliceVariation>;
+/**
+ * Primary content in SocialMediaBlock → Primary
+ *
+ */
+interface SocialMediaBlockSliceDefaultPrimary {
+    /**
+     * Title field in *SocialMediaBlock → Primary*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: social_media_block.primary.title
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    title: prismicT.KeyTextField;
+}
+/**
+ * Item in SocialMediaBlock → Items
+ *
+ */
+export interface SocialMediaBlockSliceDefaultItem {
+    /**
+     * Module Social Media field in *SocialMediaBlock → Items*
+     *
+     * - **Field Type**: Content Relationship
+     * - **Placeholder**: *None*
+     * - **API ID Path**: social_media_block.items[].module_social_media
+     * - **Documentation**: https://prismic.io/docs/core-concepts/link-content-relationship
+     *
+     */
+    module_social_media: prismicT.RelationField<"module_social_media">;
+}
+/**
+ * Default variation for SocialMediaBlock Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: `SocialMediaBlock`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
+ *
+ */
+export type SocialMediaBlockSliceDefault = prismicT.SharedSliceVariation<"default", Simplify<SocialMediaBlockSliceDefaultPrimary>, Simplify<SocialMediaBlockSliceDefaultItem>>;
+/**
+ * Slice variation for *SocialMediaBlock*
+ *
+ */
+type SocialMediaBlockSliceVariation = SocialMediaBlockSliceDefault;
+/**
+ * SocialMediaBlock Shared Slice
+ *
+ * - **API ID**: `social_media_block`
+ * - **Description**: `SocialMediaBlock`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
+ *
+ */
+export type SocialMediaBlockSlice = prismicT.SharedSlice<"social_media_block", SocialMediaBlockSliceVariation>;
 declare module "@prismicio/client" {
     interface CreateClient {
         (repositoryNameOrEndpoint: string, options?: prismic.ClientConfig): prismic.Client<AllDocumentTypes>;
     }
     namespace Content {
-        export type { HomePageDocumentData, HomePageDocumentDataSlicesSlice, HomePageDocument, ModuleContactBannerDocumentData, ModuleContactBannerDocument, ModuleHeroBannerDocumentData, ModuleHeroBannerDocument, ModuleLogoDocumentData, ModuleLogoDocument, ModuleServiceDocumentData, ModuleServiceDocument, SiteFooterDocumentData, SiteFooterDocument, AllDocumentTypes, ProblematicsBlockSliceDefaultPrimary, ProblematicsBlockSliceDefaultItem, ProblematicsBlockSliceDefault, ProblematicsBlockSliceVariation, ProblematicsBlockSlice, ReviewsBlockSliceDefaultPrimary, ReviewsBlockSliceDefaultItem, ReviewsBlockSliceDefault, ReviewsBlockSliceVariation, ReviewsBlockSlice, ServicesBlockSliceDefaultPrimary, ServicesBlockSliceDefaultItem, ServicesBlockSliceDefault, ServicesBlockSliceVariation, ServicesBlockSlice };
+        export type { HomePageDocumentData, HomePageDocumentDataSlicesSlice, HomePageDocument, ModuleContactBannerDocumentData, ModuleContactBannerDocumentDataSlicesSlice, ModuleContactBannerDocument, ModuleHeroBannerDocumentData, ModuleHeroBannerDocument, ModuleLogoDocumentData, ModuleLogoDocument, ModuleServiceDocumentData, ModuleServiceDocument, ModuleSocialMediaDocumentData, ModuleSocialMediaDocument, SiteFooterDocumentData, SiteFooterDocument, AllDocumentTypes, ProblematicsBlockSliceDefaultPrimary, ProblematicsBlockSliceDefaultItem, ProblematicsBlockSliceDefault, ProblematicsBlockSliceVariation, ProblematicsBlockSlice, ReviewsBlockSliceDefaultPrimary, ReviewsBlockSliceDefaultItem, ReviewsBlockSliceDefault, ReviewsBlockSliceVariation, ReviewsBlockSlice, ServicesBlockSliceDefaultPrimary, ServicesBlockSliceDefaultItem, ServicesBlockSliceDefault, ServicesBlockSliceVariation, ServicesBlockSlice, SocialMediaBlockSliceDefaultPrimary, SocialMediaBlockSliceDefaultItem, SocialMediaBlockSliceDefault, SocialMediaBlockSliceVariation, SocialMediaBlockSlice };
     }
 }

@@ -53,7 +53,9 @@
           "blocks": 1
         }
       }
-    }
+    },
+    "module_contact_banner": {},
+    "module_social_media": {}
   },
   "slices": {
     "Services": {
@@ -111,6 +113,12 @@
             }
           }
         }
+      }
+    },
+    "SocialMediaBlock": {
+      "default": {
+        "primary": {},
+        "items": {}
       }
     }
   }

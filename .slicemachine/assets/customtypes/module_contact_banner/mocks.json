@@ -1,7 +1,7 @@
 {
   "id": "mock-doc-id",
   "url": null,
-  "type": "contact_banner",
+  "type": "module_contact_banner",
   "href": null,
   "tags": [],
   "first_publication_date": "1970-01-01T00:00:01+0000",
@@ -14,22 +14,22 @@
     "title": [
       {
         "type": "paragraph",
-        "text": "Id aute amet et sint eu cillum. Id exercitation laboris ullamco.",
+        "text": "Irure laboris sunt consectetur. Voluptate deserunt eiusmod ullamco do in.",
         "spans": []
       }
     ],
-    "email_label": "fence",
-    "email": "one",
-    "tel_label": "theory",
-    "tel": "biggest",
+    "email_label": "tip",
+    "email": "drop",
+    "tel_label": "porch",
+    "tel": "onto",
     "contact_note": [
       {
         "type": "paragraph",
-        "text": "Id laborum nisi labore deserunt do amet labore amet enim laborum et cillum deserunt esse officia. Occaecat fugiat proident nisi qui exercitation id occaecat elit incididunt consequat eiusmod irure reprehenderit pariatur adipisicing.",
+        "text": "Magna ut exercitation officia ut Lorem esse irure cupidatat nostrud reprehenderit nulla consectetur elit.",
         "spans": []
       }
     ],
-    "contact_planning_cta_label": "handsome",
+    "contact_planning_cta_label": "clothing",
     "illustration_head": {
       "dimensions": {
         "width": 900,
@@ -37,7 +37,7 @@
       },
       "alt": null,
       "copyright": null,
-      "url": "https://images.unsplash.com/photo-1596195689404-24d8a8d1c6ea"
+      "url": "https://images.unsplash.com/photo-1587613865763-4b8b0d19e8ab"
     },
     "illustration_foot": {
       "dimensions": {
@@ -46,7 +46,8 @@
       },
       "alt": null,
       "copyright": null,
-      "url": "https://images.unsplash.com/photo-1587613865763-4b8b0d19e8ab"
-    }
+      "url": "https://images.unsplash.com/photo-1537498425277-c283d32ef9db"
+    },
+    "slices": []
   }
 }

@@ -48,6 +48,9 @@
             },
             "problematics_block": {
               "type": "SharedSlice"
+            },
+            "social_media_block": {
+              "type": "SharedSlice"
             }
           }
         }

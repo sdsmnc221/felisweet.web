@@ -1,0 +1,34 @@
+{
+  "id": "module_social_media",
+  "label": "Module Social Media",
+  "repeatable": true,
+  "status": true,
+  "json": {
+    "Main": {
+      "title": {
+        "type": "Text",
+        "config": {
+          "label": "Title",
+          "placeholder": ""
+        }
+      },
+      "link": {
+        "type": "Link",
+        "config": {
+          "label": "Link",
+          "placeholder": "",
+          "allowTargetBlank": true,
+          "select": null
+        }
+      },
+      "icon": {
+        "type": "Image",
+        "config": {
+          "label": "Icon",
+          "constraint": {},
+          "thumbnails": []
+        }
+      }
+    }
+  }
+}

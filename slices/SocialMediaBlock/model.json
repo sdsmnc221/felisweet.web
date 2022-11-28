@@ -1,0 +1,37 @@
+{
+  "id": "social_media_block",
+  "type": "SharedSlice",
+  "name": "SocialMediaBlock",
+  "description": "SocialMediaBlock",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "sktwi1xtmkfgx8626",
+      "description": "SocialMediaBlock",
+      "primary": {
+        "title": {
+          "type": "Text",
+          "config": {
+            "label": "Title",
+            "placeholder": ""
+          }
+        }
+      },
+      "items": {
+        "module_social_media": {
+          "type": "Link",
+          "config": {
+            "label": "Module Social Media",
+            "select": "document",
+            "customtypes": [
+              "module_social_media"
+            ]
+          }
+        }
+      },
+      "imageUrl": "https://images.prismic.io/slice-machine/621a5ec4-0387-4bc5-9860-2dd46cbc07cd_default_ss.png?auto=compress,format"
+    }
+  ]
+}
