@@ -969,13 +969,13 @@
       <div class="contact-social-media">
         <atom-image class="social-cats" src="/images/social-cats.png" />
         <a class="link" href="/" target="_blank">
-          <bubble-image src="/images/icons8-facebook.svg" :size="148" />
+          <bubble-image src="/images/icons8-facebook.svg" :size="50" />
         </a>
         <a class="link" href="/" target="_blank">
-          <bubble-image src="/images/icons8-instagram.svg" :size="148" />
+          <bubble-image src="/images/icons8-instagram.svg" :size="50" />
         </a>
         <a class="link" href="/" target="_blank">
-          <bubble-image src="/images/icons8-linkedin.svg" :size="148" />
+          <bubble-image src="/images/icons8-linkedin.svg" :size="50" />
         </a>
         <a class="link qr" href="/" target="_blank">
           <bubble-image src="/images/qr.svg" :size="72" />
@@ -1198,7 +1198,7 @@ export default {
       text-align: right;
 
       .atom-image {
-        width: 24%;
+        width: 100%;
       }
 
       a {
@@ -1271,7 +1271,6 @@ export default {
       .contact-social-media {
         bottom: -4.8vh;
 
-        .atom-image,
         .social-cats {
           width: 32%;
         }
@@ -1280,16 +1279,22 @@ export default {
           &:nth-of-type(1) {
             top: 32%;
             right: 28%;
+            bottom: auto;
+            left: auto;
           }
 
           &:nth-of-type(2) {
-            top: 0;
+            top: -2%;
             right: 20%;
+            bottom: auto;
+            left: auto;
           }
 
           &:nth-of-type(3) {
             top: 44%;
             right: 2%;
+            bottom: auto;
+            left: auto;
           }
 
           &.qr {
@@ -1297,7 +1302,7 @@ export default {
             right: 6%;
             bottom: auto;
             left: auto;
-            transform: rotate(24deg) scale(0.72) !important;
+            transform: rotate(24deg) scale(0.72);
 
             .atom-image {
               width: 100%;
@@ -1403,6 +1408,13 @@ export default {
 
       .contact-social-media {
         a {
+          &:nth-of-type(2) {
+            top: 0;
+            right: 20%;
+            bottom: auto;
+            left: auto;
+          }
+
           &.qr {
             top: -2%;
             right: 6%;
