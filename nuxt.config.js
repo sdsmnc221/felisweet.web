@@ -37,6 +37,7 @@ export default {
           "window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-3JPVPQLE3E');",
       },
     ],
+    __dangerouslyDisableSanitizers: ['script'],
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css

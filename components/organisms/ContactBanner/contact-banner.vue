@@ -1208,6 +1208,10 @@ export default {
       right: 0;
       text-align: right;
 
+      > * {
+        z-index: 2;
+      }
+
       .atom-image {
         width: 100%;
       }
@@ -1223,11 +1227,11 @@ export default {
           animation-delay: calc(random(3) / 10) + s;
         }
 
-        &:nth-of-type(1) {
+        &:nth-of-type(2) {
           animation-delay: calc(random(3) / 10) + s;
         }
 
-        &:nth-of-type(1) {
+        &:nth-of-type(3) {
           animation-delay: calc(random(3) / 10) + s;
         }
       }
