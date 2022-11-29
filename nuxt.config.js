@@ -33,11 +33,8 @@ export default {
       },
       {
         type: 'text/javascript',
-        innerHTML: `window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-
-        gtag('config', 'G-3JPVPQLE3E');`,
+        innerHTML:
+          "window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-3JPVPQLE3E');",
       },
     ],
   },

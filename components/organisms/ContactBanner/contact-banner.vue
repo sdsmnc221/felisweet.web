@@ -1558,7 +1558,7 @@ export default {
       transform: scale(1);
     }
     50% {
-      transform: scale(0.72);
+      transform: scale(0.84);
     }
   }
 }
