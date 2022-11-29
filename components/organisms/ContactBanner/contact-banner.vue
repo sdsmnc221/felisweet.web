@@ -1221,7 +1221,7 @@ export default {
       }
 
       a:not(.qr) {
-        animation: pop 0.72s infinite;
+        animation: pop 1.6s infinite;
 
         &:nth-of-type(1) {
           animation-delay: calc(random(3) / 10) + s;
