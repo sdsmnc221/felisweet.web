@@ -10,6 +10,7 @@ export const state = () => ({
     popupContent: '',
     popupType: '',
   },
+  isMobile: false,
 })
 
 export const getters = {
@@ -43,6 +44,9 @@ export const mutations = {
   },
   SET_ERROR(state, error) {
     state.footer = error
+  },
+  DETECT_MOBILE(state, { isMobile }) {
+    state.isMobile = isMobile
   },
 }
 
@@ -79,5 +83,13 @@ export const actions = {
   },
   closePopup({ commit }) {
     commit('CLOSE_POPUP')
+  },
+  detectMobile({ commit }, { navigator }) {
+    commit('DETECT_MOBILE', {
+      isMobile:
+        /Android|webOS|iPhone|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+          navigator.userAgent
+        ),
+    })
   },
 }

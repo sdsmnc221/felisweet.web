@@ -969,13 +969,22 @@
       <div class="contact-social-media">
         <atom-image class="social-cats" src="/images/social-cats.png" />
         <a class="link" href="/" target="_blank">
-          <bubble-image src="/images/icons8-facebook.svg" :size="50" />
+          <bubble-image
+            src="/images/icons8-facebook.svg"
+            :size="$store.state.isMobile ? 32 : 50"
+          />
         </a>
         <a class="link" href="/" target="_blank">
-          <bubble-image src="/images/icons8-instagram.svg" :size="50" />
+          <bubble-image
+            src="/images/icons8-instagram.svg"
+            :size="$store.state.isMobile ? 32 : 50"
+          />
         </a>
         <a class="link" href="/" target="_blank">
-          <bubble-image src="/images/icons8-linkedin.svg" :size="50" />
+          <bubble-image
+            src="/images/icons8-linkedin.svg"
+            :size="$store.state.isMobile ? 32 : 50"
+          />
         </a>
         <a class="link qr" href="/" target="_blank">
           <bubble-image src="/images/qr.svg" :size="72" />
@@ -1192,6 +1201,8 @@ export default {
     }
 
     .contact-social-media {
+      width: 100%;
+      height: 100%;
       position: absolute;
       bottom: 3.2vh;
       right: 0;
@@ -1201,23 +1212,43 @@ export default {
         width: 100%;
       }
 
+      .social-cats {
+        display: none;
+      }
+
+      a:not(.qr) {
+        animation: pop 0.72s infinite;
+
+        &:nth-of-type(1) {
+          animation-delay: calc(random(3) / 10) + s;
+        }
+
+        &:nth-of-type(1) {
+          animation-delay: calc(random(3) / 10) + s;
+        }
+
+        &:nth-of-type(1) {
+          animation-delay: calc(random(3) / 10) + s;
+        }
+      }
+
       a {
         display: block;
         position: absolute;
 
         &:nth-of-type(1) {
           bottom: 0;
-          right: 28%;
+          right: 6%;
         }
 
         &:nth-of-type(2) {
           bottom: 0;
-          right: 20%;
+          right: 16%;
         }
 
         &:nth-of-type(3) {
           bottom: 0;
-          right: 0;
+          right: 26%;
         }
 
         &.qr {
@@ -1269,10 +1300,13 @@ export default {
       }
 
       .contact-social-media {
-        bottom: -4.8vh;
+        width: 100%;
+        height: 50%;
+        bottom: 0;
 
         .social-cats {
           width: 32%;
+          display: inline-block;
         }
 
         a {
@@ -1516,6 +1550,16 @@ export default {
   }
   .st27 {
     fill: #e3c8c4;
+  }
+
+  @keyframes pop {
+    0%,
+    100% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(0.72);
+    }
   }
 }
 </style>
