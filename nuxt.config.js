@@ -28,13 +28,13 @@ export default {
     link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
     script: [
       {
-        src: 'https://www.googletagmanager.com/gtag/js?id=G-3JPVPQLE3E',
+        src: 'https://www.googletagmanager.com/gtag/js?id=G-NK1FV281C6',
         async: true,
       },
       {
         type: 'text/javascript',
         innerHTML:
-          "window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-3JPVPQLE3E');",
+          "window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-NK1FV281C6');",
       },
     ],
     __dangerouslyDisableSanitizers: ['script'],
