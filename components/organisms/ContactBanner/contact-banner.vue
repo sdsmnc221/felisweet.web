@@ -972,16 +972,14 @@
           v-for="item of data.socialMedia"
           :key="item.title"
           class="link"
+          :class="{ qr: isQR(item) }"
           :href="item.link.url"
           :target="item.link.target"
         >
           <bubble-image
             :src="item.icon.filename"
-            :size="$store.state.isMobile ? 32 : 50"
+            :size="isQR(item) ? 72 : $store.state.isMobile ? 32 : 50"
           />
-        </a>
-        <a class="link qr" href="/" target="_blank">
-          <bubble-image src="/images/qr.svg" :size="72" />
         </a>
       </div>
       <div class="contact-note" v-html="data.contactNote"></div>
@@ -1084,6 +1082,11 @@ export default {
         },
         'start'
       )
+  },
+  methods: {
+    isQR(item) {
+      return item.title.includes('QR')
+    },
   },
 }
 </script>
