@@ -968,21 +968,15 @@
       </button>
       <div class="contact-social-media">
         <atom-image class="social-cats" src="/images/social-cats.png" />
-        <a class="link" href="/" target="_blank">
+        <a
+          v-for="item of data.socialMedia"
+          :key="item.title"
+          class="link"
+          :href="item.link.url"
+          :target="item.link.target"
+        >
           <bubble-image
-            src="/images/icons8-facebook.svg"
-            :size="$store.state.isMobile ? 32 : 50"
-          />
-        </a>
-        <a class="link" href="/" target="_blank">
-          <bubble-image
-            src="/images/icons8-instagram.svg"
-            :size="$store.state.isMobile ? 32 : 50"
-          />
-        </a>
-        <a class="link" href="/" target="_blank">
-          <bubble-image
-            src="/images/icons8-linkedin.svg"
+            :src="item.icon.filename"
             :size="$store.state.isMobile ? 32 : 50"
           />
         </a>

@@ -1,7 +1,7 @@
 import imageAdapter from './imageAdapter'
 
-export default function ($prismic, module) {
-  const data = module?.data
+export default function ($prismic, moduleContactBanner, moduleSocialMedia) {
+  const data = moduleContactBanner?.data
   return {
     title: $prismic.asHTML(data.title),
     email: {
@@ -20,5 +20,10 @@ export default function ($prismic, module) {
       head: imageAdapter(data.illustration_head).filename,
       foot: imageAdapter(data.illustration_foot).filename,
     },
+    socialMedia: moduleSocialMedia.map(({ data: socialMedia }) => ({
+      title: socialMedia.title,
+      link: socialMedia.link,
+      icon: imageAdapter(socialMedia.icon),
+    })),
   }
 }

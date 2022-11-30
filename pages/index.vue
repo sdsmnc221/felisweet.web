@@ -182,6 +182,19 @@ export default {
       link: $enhancedLinkSerializer(reviewsBlock?.primary?.link),
     }
 
+    const socialMediaBlock = Object.entries(document?.data?.slices).find(
+      (slice) => slice[1].slice_type === 'social_media_block'
+    )[1]
+    const moduleSocialMedia = []
+    if (socialMediaBlock) {
+      for (const item of socialMediaBlock.items) {
+        const socialMedia = await $prismic.api.getByID(
+          item.module_social_media.id
+        )
+        moduleSocialMedia.push(socialMedia)
+      }
+    }
+
     const moduleContactBanner = await $prismic.api.getByID(
       document?.data?.module_contact_banner?.id
     )
@@ -203,7 +216,8 @@ export default {
               reviews,
               contactBanner: moduleContactBannerAdapter(
                 $prismic,
-                moduleContactBanner
+                moduleContactBanner,
+                moduleSocialMedia
               ),
             }
           : {}),
