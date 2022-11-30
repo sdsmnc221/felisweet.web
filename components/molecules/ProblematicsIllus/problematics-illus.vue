@@ -589,11 +589,8 @@ c3.9,8.5,11.5,17.4,20.1,25.6c20.9-19.9,24.6-28.4,24.6-31.9c-3.9-1.6-22.9-8.9-35.
           d="M173,868.2c0,0,0.7,4.5,9.9,1.8c9.7-3.6-1.8,10.2-1.8,10.2l-15.4,4l2.2-13L173,868.2z"
         />
       </svg>
-      <p>Alors on est là pour vous !</p>
-      <h2>
-        <b>FeliSweet</b> vous donne des <b>solutions</b> à (presque)
-        <b>tous vos problèmes félins</b> !
-      </h2>
+      <div v-html="content[0]" />
+      <h2 v-html="content[1]" />
     </atom-wrapper>
     <atom-image
       ref="cat"
@@ -613,6 +610,10 @@ export default {
   props: {
     illustration: {
       type: String,
+      required: true,
+    },
+    content: {
+      type: Array,
       required: true,
     },
   },
@@ -729,20 +730,23 @@ export default {
     overflow: visible;
   }
 
-  p,
+  div,
   h2 {
     position: absolute;
     color: $color-white;
   }
 
-  p {
+  div {
     width: 24%;
     top: 46%;
     left: 16%;
     transform: rotate(-3.2deg);
     text-transform: uppercase;
-    text-align: center;
-    @include rem(font-size, $font-size-body-xs);
+
+    p {
+      text-align: center;
+      @include rem(font-size, $font-size-body-xs);
+    }
   }
 
   h2 {
@@ -752,8 +756,9 @@ export default {
     text-align: center;
     transform: rotate(-20deg);
 
-    b {
+    strong {
       font-weight: $weight-bold;
+      display: block;
     }
   }
 
@@ -771,12 +776,12 @@ export default {
       width: 50%;
     }
 
-    p {
+    div p {
       @include rem(font-size, $font-size-body-s);
     }
 
-    h2,
-    b {
+    h2 p,
+    h2 p strong {
       @include rem(font-size, $font-size-body-m);
       right: 40%;
       top: 60%;
@@ -792,27 +797,34 @@ export default {
   }
 
   @media #{$mq-medium} {
-    p {
+    div p {
       @include rem(font-size, $font-size-body-l);
       transform: translateY(12px);
     }
 
-    h2,
-    b {
+    h2 p,
+    h2 p strong {
       @include rem(font-size, $font-size-body-l);
+    }
+
+    h2 p {
+      transform: translate(-14px);
     }
   }
 
   @media #{$mq-xlarge} {
-    p {
+    div p {
       @include rem(font-size, $font-size-body-xl);
       transform: translateY(12px);
     }
 
-    h2,
-    b {
-      transform: translate(-12px, 32px) rotate(-20deg);
+    h2 p,
+    h2 p strong {
       @include rem(font-size, $font-size-body-xl);
+    }
+
+    h2 p {
+      transform: translate(-24px, 32px);
     }
   }
 

@@ -29,7 +29,10 @@
         class="section-problematics"
       >
         <slider-questions :questions="problematics.block" />
-        <problematics-illus :illustration="problematics.illustration" />
+        <problematics-illus
+          :illustration="problematics.illustration"
+          :content="[problematics.text1, problematics.text2]"
+        />
         <atom-image class="problematics-paw" src="/images/paw.svg" />
       </atom-wrapper>
     </scroll-reveal-wrapper>
