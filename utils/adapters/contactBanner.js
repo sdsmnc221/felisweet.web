@@ -19,6 +19,7 @@ export default function ($prismic, moduleContactBanner, moduleSocialMedia) {
     illustrations: {
       head: imageAdapter(data.illustration_head).filename,
       foot: imageAdapter(data.illustration_foot).filename,
+      socialCats: imageAdapter(data.illustration_social_cats).filename,
     },
     socialMedia: moduleSocialMedia.map(({ data: socialMedia }) => ({
       title: socialMedia.title,

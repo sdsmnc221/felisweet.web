@@ -170,6 +170,17 @@ interface ModuleContactBannerDocumentData {
      */
     illustration_foot: prismicT.ImageField<never>;
     /**
+     * Illustration Social Cats field in *Module Contact Banner*
+     *
+     * - **Field Type**: Image
+     * - **Placeholder**: *None*
+     * - **API ID Path**: module_contact_banner.illustration_social_cats
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/image
+     *
+     */
+    illustration_social_cats: prismicT.ImageField<never>;
+    /**
      * Slice Zone field in *Module Contact Banner*
      *
      * - **Field Type**: Slice Zone

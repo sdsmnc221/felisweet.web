@@ -967,7 +967,7 @@
         {{ data.contactPlanningLabel }}
       </button>
       <div class="contact-social-media">
-        <atom-image class="social-cats" src="/images/social-cats.png" />
+        <atom-image class="social-cats" :src="data.illustrations.socialCats" />
         <a
           v-for="item of data.socialMedia"
           :key="item.title"

@@ -74,6 +74,14 @@
           "thumbnails": []
         }
       },
+      "illustration_social_cats": {
+        "type": "Image",
+        "config": {
+          "label": "Illustration Social Cats",
+          "constraint": {},
+          "thumbnails": []
+        }
+      },
       "slices": {
         "type": "Slices",
         "fieldset": "Slice Zone",
