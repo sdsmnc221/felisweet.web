@@ -1159,6 +1159,7 @@ export default {
       border-radius: 20px;
       border: 2px dashed transparent;
       letter-spacing: 0.6px;
+      z-index: 3;
 
       &:after {
         content: '';
