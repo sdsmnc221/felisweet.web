@@ -230,7 +230,6 @@ export default {
     }
   },
   mounted() {
-    this.$store.dispatch('detectMobile', { navigator: window.navigator })
     this.$gsap.to([this.$refs.scrollDown.$el], {
       opacity: 1,
       scale: 1,

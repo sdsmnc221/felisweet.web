@@ -1,7 +1,7 @@
 <template>
   <div>
     <transition v-if="!loading">
-      <div @scroll.passive="handleScroll">
+      <div @scroll.passive="handleScroll" class="container">
         <site-header v-bind="$store.state.header" />
         <nuxt-child
           :open-popup="openPopup"
@@ -24,7 +24,7 @@
           </pop-up>
         </Transition>
         <site-footer />
-        <dot-cursor />
+        <dot-cursor v-if="$route.name !== 'noel2022'" />
       </div>
     </transition>
     <transition name="fade">
@@ -52,12 +52,21 @@ export default {
   },
   mounted() {
     setTimeout(() => (this.loading = false), 1200)
-    window.addEventListener('scroll', this.handleScroll)
+
+    this.$store.dispatch('detectMobile', { navigator: window.navigator })
+    this.$store.dispatch('detectOrientation', {
+      innerWidth: window.innerWidth,
+      innerHeight: window.innerHeight,
+    })
+    window.addEventListener('resize', () => {
+      this.$store.dispatch('detectMobile', { navigator: window.navigator })
+      this.$store.dispatch('detectOrientation', {
+        innerWidth: window.innerWidth,
+        innerHeight: window.innerHeight,
+      })
+    })
   },
   methods: {
-    handleScroll(e) {
-      // console.log(e)
-    },
     openPopup() {
       this.$store.dispatch('openPopup', {
         popupContent: this.$store.state.footer.popupContentHTML.planning,
@@ -72,6 +81,21 @@ export default {
 </script>
 
 <style lang="scss">
+*,
+*::after,
+*::before {
+  -webkit-tap-highlight-color: transparent;
+  box-sizing: border-box;
+  user-select: none;
+}
+
+.container {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
 .fade-enter-active,
 .fade-leave-active {
   transition: all 0.64s ease;

@@ -11,6 +11,7 @@ export const state = () => ({
     popupType: '',
   },
   isMobile: false,
+  isLandscape: false,
 })
 
 export const getters = {
@@ -47,6 +48,9 @@ export const mutations = {
   },
   DETECT_MOBILE(state, { isMobile }) {
     state.isMobile = isMobile
+  },
+  DETECT_ORIENTATION(state, { isLandscape }) {
+    state.isLandscape = isLandscape
   },
 }
 
@@ -90,6 +94,11 @@ export const actions = {
         /Android|webOS|iPhone|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
           navigator.userAgent
         ),
+    })
+  },
+  detectOrientation({ commit }, { innerWidth, innerHeight }) {
+    commit('DETECT_ORIENTATION', {
+      isLandscape: innerWidth > innerHeight,
     })
   },
 }
