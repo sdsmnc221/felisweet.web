@@ -10,6 +10,7 @@ module.exports = {
   },
   extends: ['@nuxtjs', 'plugin:nuxt/recommended', 'prettier'],
   plugins: [],
+  ignorePatterns: ['/utils/scratch.js'],
   // add your custom rules here
   rules: {
     'vue/multi-word-component-names': [
