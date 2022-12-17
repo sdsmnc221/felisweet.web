@@ -12,7 +12,11 @@
           <noel-marie />
         </noel-frame>
       </section>
-      <section><noel-frame>Section 3</noel-frame></section>
+      <section>
+        <noel-frame>
+          <noel-illustration />
+        </noel-frame>
+      </section>
       <section><noel-frame>Section 4</noel-frame></section>
       <section>
         <noel-frame>
@@ -34,6 +38,7 @@ import AtomWrapper from '../components/atoms/AtomWrapper'
 import NoelFrame from '../components/noel/NoelFrame'
 import NoelMiaou from '../components/noel/NoelMiaou'
 import NoelMarie from '../components/noel/NoelMarie'
+import NoelIllustration from '../components/noel/NoelIllustration'
 
 export default {
   name: 'IndexPage',
@@ -42,6 +47,7 @@ export default {
     NoelFrame,
     NoelMiaou,
     NoelMarie,
+    NoelIllustration,
   },
   created() {
     this.$gsap.registerPlugin(ScrollTrigger)
