@@ -3,29 +3,24 @@
     <div class="sections">
       <div class="bg"></div>
       <section>
-        <noel-frame without-long-ball>
+        <noel-frame ref="frame0" without-long-ball>
           <noel-miaou />
         </noel-frame>
       </section>
       <section>
-        <noel-frame>
+        <noel-frame ref="frame1">
           <noel-marie />
         </noel-frame>
       </section>
       <section>
-        <noel-frame>
+        <noel-frame ref="frame2">
           <noel-illustration />
         </noel-frame>
       </section>
-      <section><noel-frame>Section 4</noel-frame></section>
+      <section><noel-frame ref="frame3">Section 4</noel-frame></section>
       <section>
-        <noel-frame>
-          <iframe
-            ref="iframe"
-            allowfullscreen="allowfullscreen"
-            scrolling="no"
-            src="https://heyzine.com/flip-book/017363908b.html"
-          />
+        <noel-frame ref="frame4">
+          <noel-ebook />
         </noel-frame>
       </section>
     </div>
@@ -39,6 +34,7 @@ import NoelFrame from '../components/noel/NoelFrame'
 import NoelMiaou from '../components/noel/NoelMiaou'
 import NoelMarie from '../components/noel/NoelMarie'
 import NoelIllustration from '../components/noel/NoelIllustration'
+import NoelEbook from '../components/noel/NoelEbook'
 
 export default {
   name: 'IndexPage',
@@ -48,15 +44,17 @@ export default {
     NoelMiaou,
     NoelMarie,
     NoelIllustration,
+    NoelEbook,
   },
   created() {
     this.$gsap.registerPlugin(ScrollTrigger)
   },
   mounted() {
-    const duration = 3.2
-
     const sections = this.$gsap.utils.toArray('section')
     const bg = document.body.querySelector('.sections .bg')
+
+    const duration = 3.2
+    const sectionIncrement = duration / (sections.length - 1)
 
     // const sectionIncrement = duration / (sections.length - 1)
     const tl = this.$gsap.timeline({
@@ -78,6 +76,83 @@ export default {
         this.$gsap.to(bg, { xPercent: -tl.progress() * 100 })
       },
     })
+
+    // everything below this is just for the fading/scaling up which is NOT scrubbed - it's all dynamic, triggered when each section enters/leaves so that the fading/scaling occurs at a consistent rate no matter how fast you scroll!
+    sections.forEach((section, index) => {
+      const noelFrame = section.querySelector('.noel-frame')
+      const tween = this.$gsap.fromTo(
+        noelFrame,
+        { opacity: 0, scale: 0.64, yPercent: 32, perspective: '32vw' },
+        {
+          opacity: 1,
+          scale: 1,
+          yPercent: 0,
+          perspective: 0,
+          duration: 1.6,
+          force3D: true,
+          paused: true,
+          ease: 'circ.in',
+          onComplete: () => {
+            const ref = this.$refs['frame' + index]
+            const slot = ref?.$slots?.default
+            if (slot && slot[0]?.componentInstance?.startTL)
+              slot[0].componentInstance.startTL()
+          },
+          onReverseComplete: () => {
+            const ref = this.$refs['frame' + index]
+            const slot = ref?.$slots?.default
+            if (slot && slot[0]?.componentInstance?.resetTL)
+              slot[0].componentInstance.resetTL()
+          },
+        }
+      )
+      addSectionCallbacks(tl, {
+        start: sectionIncrement * (index - 0.99),
+        end: sectionIncrement * (index + 0.99),
+        onEnter: () => tween.play(),
+        onLeave: () => tween.reverse(),
+        onEnterBack: () => tween.play(),
+        onLeaveBack: () => tween.reverse(),
+      })
+
+      if (index === 0) tween.play()
+      // index || tween.progress(1) // the first tween should be at its end (already faded/scaled in)
+    })
+
+    // helper function that lets us define a section in a timeline that spans between two times (start/end) and lets us add onEnter/onLeave/onEnterBack/onLeaveBack callbacks
+    function addSectionCallbacks(
+      timeline,
+      { start, end, param, onEnter, onLeave, onEnterBack, onLeaveBack }
+    ) {
+      const trackDirection = (animation) => {
+        // just adds a "direction" property to the animation that tracks the moment-by-moment playback direction (1 = forward, -1 = backward)
+        const onUpdate = animation.eventCallback('onUpdate') // in case it already has an onUpdate
+        let prevTime = animation.time()
+        animation.direction = animation.reversed() ? -1 : 1
+        animation.eventCallback('onUpdate', () => {
+          const time = animation.time()
+          if (prevTime !== time) {
+            animation.direction = time < prevTime ? -1 : 1
+            prevTime = time
+          }
+          onUpdate && onUpdate.call(animation)
+        })
+      }
+      const empty = (v) => v // in case one of the callbacks isn't defined
+      timeline.direction || trackDirection(timeline) // make sure direction tracking is enabled on the timeline
+      start >= 0 &&
+        timeline.add(
+          () =>
+            ((timeline.direction < 0 ? onLeaveBack : onEnter) || empty)(param),
+          start
+        )
+      end <= timeline.duration() &&
+        timeline.add(
+          () =>
+            ((timeline.direction < 0 ? onEnterBack : onLeave) || empty)(param),
+          end
+        )
+    }
   },
 }
 </script>

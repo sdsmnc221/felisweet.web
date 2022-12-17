@@ -2647,7 +2647,7 @@
         </g>
       </g>
     </svg>
-    <slot></slot>
+    <slot ref="slot"></slot>
   </atom-wrapper>
 </template>
 
@@ -2716,15 +2716,6 @@ export default {
     left: 50%;
     transform: translate(-50%, -50%);
     z-index: 0;
-  }
-
-  iframe {
-    position: relative;
-    z-index: 1;
-    flex: 1;
-    align-self: stretch;
-    height: 100%;
-    border: none;
   }
 
   .q {
