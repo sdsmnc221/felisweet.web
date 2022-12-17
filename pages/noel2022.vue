@@ -160,7 +160,7 @@ export default {
 <style lang="scss">
 *,
 body {
-  cursor: url('/images/noel-cursor.png'), default;
+  cursor: url('/images/noel-cursor.png');
 }
 body {
   overflow-x: hidden;

@@ -50,8 +50,14 @@ export default {
       )
       .fromTo(
         this.$refs.iframe,
-        { opacity: 0, scale: 0 },
-        { opacity: 1, scale: 1, duration: 2.4, ease: 'circ.in' },
+        { opacity: 0, scale: 0, pointerEvents: 'none' },
+        {
+          opacity: 1,
+          scale: 1,
+          duration: 2.4,
+          ease: 'circ.in',
+          pointerEvents: 'auto',
+        },
         '>'
       )
   },
@@ -93,6 +99,7 @@ export default {
     height: 100%;
     border: none;
     opacity: 0;
+    pointer-events: none;
   }
 }
 </style>
