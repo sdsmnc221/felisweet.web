@@ -10,6 +10,7 @@
 
 <script>
 import { Draggable } from 'gsap/Draggable'
+import { randomNumberInRange } from '../../../utils'
 import NoelGlobe from './noel-globe.vue'
 
 export default {
@@ -30,6 +31,8 @@ export default {
     const mimoso = this.$refs.mimoso
     const wish = this.$refs.wish
     const ball = this.$refs.ball
+
+    const speed = 0.64
 
     this.$gsap.timeline().to(
       this.$refs.ball,
@@ -55,12 +58,20 @@ export default {
       },
       onDrag: (pointerEvents) => {
         this.$gsap.to(zigpo, {
-          x: pointerEvents.pageX || pointerEvents.targetTouches[0].pageX / 4,
-          y: -pointerEvents.pageY || -pointerEvents.targetTouches[0].pageY / 8,
+          x:
+            randomNumberInRange(-1.2, 1.2) * pointerEvents.pageX ||
+            pointerEvents.targetTouches[0].pageX * speed,
+          y:
+            randomNumberInRange(-1.2, 1.2) * pointerEvents.pageY ||
+            pointerEvents.targetTouches[0].pageY * speed,
         })
         this.$gsap.to(mimoso, {
-          x: -pointerEvents.pageX || -pointerEvents.targetTouches[0].pageX / 4,
-          y: -pointerEvents.pageY || -pointerEvents.targetTouches[0].pageY / 8,
+          x:
+            -randomNumberInRange(-1.2, 1.2) * pointerEvents.pageX ||
+            pointerEvents.targetTouches[0].pageX * speed,
+          y:
+            randomNumberInRange(-1.2, 1.2) * pointerEvents.pageY ||
+            pointerEvents.targetTouches[0].pageY * speed,
         })
       },
       onRelease: () => {
