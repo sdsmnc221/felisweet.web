@@ -2757,5 +2757,9 @@ export default {
   .ac {
     clip-path: url(#d);
   }
+
+  @media #{$mq-mobile-tablet} and (orientation:landscape) {
+    height: 100vh;
+  }
 }
 </style>

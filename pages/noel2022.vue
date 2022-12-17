@@ -24,6 +24,7 @@
         </noel-frame>
       </section>
     </div>
+    <div ref="cursor" class="cursor"></div>
   </atom-wrapper>
 </template>
 
@@ -50,6 +51,10 @@ export default {
     this.$gsap.registerPlugin(ScrollTrigger)
   },
   mounted() {
+    window.addEventListener('mousemove', (e) => {
+      this.$refs.cursor.style.left = e.clientX - 48 / 2 + 'px'
+      this.$refs.cursor.style.top = e.clientY - 48 / 2 + 'px'
+    })
     const sections = this.$gsap.utils.toArray('section')
     const bg = document.body.querySelector('.sections .bg')
 
@@ -158,13 +163,18 @@ export default {
 </script>
 
 <style lang="scss">
+html {
+  cursor: none;
+}
 *,
 body {
-  cursor: url('/images/noel-cursor.png');
+  cursor: none !important;
 }
+
 body {
   overflow-x: hidden;
   overflow-y: scroll;
+  position: relative;
 }
 main.atom-wrapper {
   width: auto;
@@ -173,6 +183,17 @@ main.atom-wrapper {
   display: flex;
   justify-content: center;
   align-items: center;
+
+  .cursor {
+    display: block;
+    position: absolute;
+    width: 48px;
+    height: 48px;
+    background-image: url('/images/noel-cursor.png');
+    z-index: 99;
+    mix-blend-mode: normal;
+    transition: none;
+  }
 
   .sections {
     display: flex;
@@ -241,6 +262,10 @@ main.atom-wrapper {
 @media #{$mq-mobile-tablet} and (orientation:landscape) {
   footer {
     display: none !important;
+  }
+
+  .cursor {
+    display: none;
   }
 }
 </style>

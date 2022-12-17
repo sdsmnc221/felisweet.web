@@ -1,7 +1,11 @@
 <template>
   <div ref="main" class="noel-marie">
     <img ref="marie" class="marie" src="/images/noel-marie-2.png" alt="" />
-    <canvas width="640px" height="640px" ref="canvas"></canvas>
+    <canvas
+      ref="canvas"
+      :width="$store.state.isMobile ? '320px' : '640px'"
+      :height="$store.state.isMobile ? '320px' : '640px'"
+    ></canvas>
   </div>
 </template>
 
