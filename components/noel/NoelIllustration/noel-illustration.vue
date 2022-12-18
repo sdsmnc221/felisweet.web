@@ -71,11 +71,18 @@ export default {
       const gifts = [this.$refs.giftL, this.$refs.giftR]
       const illus = this.$refs.illustration
       const quote = this.$refs.quote
+      const instruction = this.$refs.instruction
 
       this.$refs.illustration.style.animation = 'none'
 
       this.$gsap
         .timeline()
+        .to(instruction, {
+          opacity: 0,
+          scale: 0,
+          ease: 'circ.in',
+          duration: 1.2,
+        })
         .to(
           gifts,
           {
