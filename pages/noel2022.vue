@@ -38,7 +38,11 @@
         </div>
         <div ref="cursor" class="cursor"></div>
         <transition name="fade">
-          <noel-indication v-if="indicationActive" :text="indicationText" />
+          <noel-indication
+            v-if="indicationActive"
+            :text="indicationText"
+            :small="indicationSmall"
+          />
         </transition>
       </div>
     </transition>
@@ -80,6 +84,7 @@ export default {
     return {
       indicationActive: false,
       indicationText: '',
+      indicationSmall: false,
       showWish: false,
     }
   },
@@ -206,22 +211,23 @@ export default {
     }
   },
   methods: {
-    setIndication(activeState, text = '') {
+    setIndication(activeState, text = '', smallState = false) {
       this.indicationActive = activeState
       this.indicationText = text
+      this.indicationSmall = smallState
     },
     countdown() {
       setTimeout(() => {
-        this.setIndication(true, '3')
+        this.setIndication(true, '3', true)
 
         setTimeout(() => {
-          this.setIndication(true, '2')
+          this.setIndication(true, '2', true)
 
           setTimeout(() => {
-            this.setIndication(true, '1')
+            this.setIndication(true, '1', true)
 
             setTimeout(() => {
-              this.setIndication(true, 'MAGIE !!!')
+              this.setIndication(true, 'MAGIE !!!', true)
 
               setTimeout(() => {
                 this.setIndication(false)
@@ -264,7 +270,7 @@ main.atom-wrapper {
     width: 48px;
     height: 48px;
     background-image: url('/images/noel-cursor.png');
-    z-index: 99;
+    z-index: 999;
     mix-blend-mode: normal;
     transition: none;
   }

@@ -1,5 +1,5 @@
 <template>
-  <div ref="main" class="noel-indication">
+  <div ref="main" class="noel-indication" :class="{ '--small': small }">
     <p>{{ text }}</p>
   </div>
 </template>
@@ -11,6 +11,10 @@ export default {
     text: {
       type: String,
       required: true,
+    },
+    small: {
+      type: Boolean,
+      default: false,
     },
   },
   mounted() {
@@ -36,6 +40,30 @@ export default {
   align-items: center;
   background-color: transparentize($color: #000000, $amount: 0.32);
   z-index: 99;
+  transition: all ease-in-out 0.64s, height linear 0;
+
+  &.--small {
+    background-color: transparentize($color: #000000, $amount: 1);
+
+    &::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      border-radius: 100%;
+      width: 240px;
+      height: 240px;
+      background-color: transparentize($color: #000000, $amount: 0.32);
+      z-index: 0;
+    }
+
+    p {
+      font-size: 3.2rem;
+      position: relative;
+      z-index: 1;
+    }
+  }
 
   p {
     font-size: 1.6rem;
