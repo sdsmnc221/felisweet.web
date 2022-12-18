@@ -77,12 +77,16 @@ export default {
 
       this.$gsap
         .timeline()
-        .to(instruction, {
-          opacity: 0,
-          scale: 0,
-          ease: 'circ.in',
-          duration: 1.2,
-        })
+        .to(
+          instruction,
+          {
+            opacity: 0,
+            scale: 0,
+            ease: 'circ.in',
+            duration: 1.2,
+          },
+          0
+        )
         .to(
           gifts,
           {
