@@ -27,10 +27,12 @@ export default {
     const svgFrame = this.$refs.main.parentNode.querySelector('svg')
     const { height } = svgFrame.getBoundingClientRect()
 
-    this.$gsap.set(this.$refs.iframe, {
-      width: 'auto',
-      height: (height * 72) / 100 + 'px',
-    })
+    if (!this.$store.state.isMobile)
+      this.$gsap.set(this.$refs.iframe, {
+        width: 'auto',
+        height: (height * 72) / 100 + 'px',
+      })
+
     this.tl = this.$gsap
       .timeline({ paused: true })
       .to(
