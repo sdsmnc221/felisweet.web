@@ -296,18 +296,22 @@ export default {
       setTimeout(() => this.setIndication(false), 2400)
     },
     left({ index }) {
-      window.scrollTo({
-        left: 0,
-        top: window.scrollY - 10 * (index + 1 - 1),
-        behavior: 'smooth',
-      })
+      if (index > 0) {
+        window.scrollTo({
+          left: 0,
+          top: window.scrollY - 10 * (index + 1 - 1),
+          behavior: 'smooth',
+        })
+      }
     },
     right({ index }) {
-      window.scrollTo({
-        left: 0,
-        top: window.scrollY + 10 * (index + 1),
-        behavior: 'smooth',
-      })
+      if (index < 4) {
+        window.scrollTo({
+          left: 0,
+          top: window.scrollY + 10 * (index + 1),
+          behavior: 'smooth',
+        })
+      }
     },
   },
 }
