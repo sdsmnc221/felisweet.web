@@ -38,7 +38,7 @@ import NoelIllustration from '../components/noel/NoelIllustration'
 import NoelEbook from '../components/noel/NoelEbook'
 
 export default {
-  name: 'IndexPage',
+  name: 'Noel2022Page',
   components: {
     AtomWrapper,
     NoelFrame,
@@ -64,7 +64,7 @@ export default {
     // const sectionIncrement = duration / (sections.length - 1)
     const tl = this.$gsap.timeline({
       scrollTrigger: {
-        trigger: document.body,
+        trigger: document.body.querySelector('#__nuxt'),
         pin: true,
         scrub: true,
         // snap: 1 / (sections.length - 1),
@@ -163,13 +163,13 @@ export default {
 </script>
 
 <style lang="scss">
-html {
-  cursor: none;
-}
-*,
-body {
-  cursor: none !important;
-}
+// html {
+//   cursor: none;
+// }
+// *,
+// body {
+//   cursor: none !important;
+// }
 
 body {
   overflow-x: hidden;
@@ -264,7 +264,7 @@ main.atom-wrapper {
     display: none !important;
   }
 
-  .cursor {
+  main.atom-wrapper .cursor {
     display: none;
   }
 }

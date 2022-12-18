@@ -24,7 +24,7 @@ body {
   font-weight: $weight-regular;
   @include rem(font-size, $font-size-root);
   transition: all ease 0.64s;
-  cursor: none;
+  cursor: none !important;
 }
 
 body {
