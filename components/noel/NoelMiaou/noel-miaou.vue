@@ -5,6 +5,12 @@
     <img ref="mimoso" class="mimoso" src="/images/noel-mimoso.svg" alt="" />
     <img ref="zigpo" class="zigpo" src="/images/noel-zigpo.svg" alt="" />
     <img ref="ball" class="ball" src="/images/noel-ball.svg" alt="" />
+    <img
+      ref="instruction"
+      class="instruction"
+      src="/images/noel-section1-instruction.png"
+      alt=""
+    />
   </div>
 </template>
 
@@ -16,10 +22,17 @@ import NoelGlobe from './noel-globe.vue'
 export default {
   name: 'NoelMiaou',
   components: { NoelGlobe },
+  props: {
+    showWish: {
+      type: Boolean,
+      required: true,
+    },
+  },
   data() {
     return {
       shakeTL: null,
       dragTL: null,
+      tl: null,
     }
   },
   created() {
@@ -29,25 +42,61 @@ export default {
     const globe = this.$refs.globe.$el
     const zigpo = this.$refs.zigpo
     const mimoso = this.$refs.mimoso
-    const wish = this.$refs.wish
-    const ball = this.$refs.ball
 
     const speed = 0.64
     const shift = 1.2
 
-    this.$gsap.timeline().to(
-      this.$refs.ball,
-      {
-        rotate: 'random(-72, 72)',
-        xPercent: 'random(-120, 120)',
-        repeat: -1,
-        repeatRefresh: true,
-        yoyo: true,
-        duration: 0.8,
-        ease: 'circ.in',
-      },
-      0
-    )
+    this.tl = this.$gsap
+      .timeline({ paused: true })
+      .addLabel('start', 0)
+      .to(
+        this.$refs.ball,
+        {
+          rotate: 'random(-72, 72)',
+          xPercent: 'random(-120, 120)',
+          repeat: -1,
+          repeatRefresh: true,
+          yoyo: true,
+          duration: 0.8,
+          ease: 'circ.in',
+        },
+        0
+      )
+      .fromTo(
+        [
+          this.$refs.mimoso,
+          this.$refs.zigpo,
+          this.$refs.globe.$el,
+          this.$refs.ball,
+        ],
+        {
+          opacity: 0,
+          scale: 0.64,
+        },
+        {
+          opacity: 1,
+
+          scale: 1,
+          duration: 1.6,
+          stagger: 0.48,
+          ease: 'circ.in',
+        }
+      )
+
+      .fromTo(
+        this.$refs.instruction,
+        {
+          opacity: 0,
+          scale: 0.64,
+        },
+        {
+          opacity: 1,
+          scale: 1,
+          duration: 1.2,
+          ease: 'circ.in',
+        },
+        '7.2'
+      )
 
     this.dragTL = Draggable.create(globe, {
       bounds: this.$refs.main,
@@ -56,6 +105,7 @@ export default {
       force3D: false,
       onDragStart: () => {
         this.shake(globe)
+        this.$emit('shakeGlobe')
       },
       onDrag: (pointerEvents) => {
         this.$gsap.to(zigpo, {
@@ -78,6 +128,8 @@ export default {
             (pointerEvents.pageY || pointerEvents.targetTouches[0].pageY) *
             speed,
         })
+
+        if (this.showWish) this.release(pointerEvents)
       },
       onRelease: () => {
         if (this.shakeTL) {
@@ -88,79 +140,6 @@ export default {
         if (this.dragTL) {
           this.dragTL[0].kill()
           this.dragTL = null
-        }
-
-        this.$gsap.to(globe, {
-          rotate: 0,
-          top: '50%',
-          left: '50%',
-          xPercent: -50,
-          yPercent: -30,
-          x: 0,
-          y: 0,
-          ease: 'circ.in',
-          duration: shift,
-        })
-        this.$gsap.to(zigpo, {
-          xPercent: 0,
-          yPercent: 0,
-          x: 0,
-          y: 0,
-          top: '68%',
-          right: '32%',
-          ease: 'circ.in',
-          duration: shift,
-        })
-        this.$gsap.to(mimoso, {
-          xPercent: 0,
-          yPercent: 0,
-          x: 0,
-          y: 0,
-          top: '56%',
-          left: '36%',
-          ease: 'circ.in',
-          duration: shift,
-        })
-
-        if (this.$store.state.isMobile) {
-          this.$gsap
-            .timeline()
-            .to(
-              [mimoso, zigpo, ball, globe],
-              {
-                opacity: 0,
-                duration: shift,
-                ease: 'circ.in',
-                stagger: 0.32,
-              },
-              0
-            )
-            .to(
-              wish,
-              {
-                opacity: 1,
-                scale: 1.4,
-                y: 0,
-                x: 0,
-                xPercent: -50,
-                yPercent: -50,
-                top: '50%',
-                left: '50%',
-                duration: 2.4,
-                ease: 'circ.in',
-              },
-              '>'
-            )
-        } else {
-          this.$gsap.to(wish, {
-            opacity: 1,
-            scale: 1,
-            y: 0,
-            x: 0,
-            xPercent: -50,
-            duration: 2.4,
-            ease: 'circ.in',
-          })
         }
       },
     })
@@ -177,6 +156,101 @@ export default {
         duration: 0.2,
         ease: 'sine.inOut',
       })
+    },
+    release(e) {
+      if (this.dragTL) this.dragTL[0].endDrag(e)
+
+      const globe = this.$refs.globe.$el
+      const zigpo = this.$refs.zigpo
+      const mimoso = this.$refs.mimoso
+      const wish = this.$refs.wish
+      const ball = this.$refs.ball
+      const instruction = this.$refs.instruction
+
+      this.$gsap.to(instruction, {
+        opacity: 0,
+        scale: 0,
+        ease: 'circ.in',
+        duration: 1.2,
+      })
+      this.$gsap.to(globe, {
+        rotate: 0,
+        top: '50%',
+        left: '50%',
+        xPercent: -50,
+        yPercent: -30,
+        x: 0,
+        y: 0,
+        ease: 'circ.in',
+        duration: 1.2,
+      })
+      this.$gsap.to(zigpo, {
+        xPercent: 0,
+        yPercent: 0,
+        x: 0,
+        y: 0,
+        top: '68%',
+        right: '32%',
+        ease: 'circ.in',
+        duration: 1.2,
+      })
+      this.$gsap.to(mimoso, {
+        xPercent: 0,
+        yPercent: 0,
+        x: 0,
+        y: 0,
+        top: '56%',
+        left: '36%',
+        ease: 'circ.in',
+        duration: 1.2,
+      })
+
+      if (this.$store.state.isMobile) {
+        this.$gsap
+          .timeline()
+          .to(
+            [mimoso, zigpo, ball, globe],
+            {
+              opacity: 0,
+              duration: 1.2,
+              ease: 'circ.in',
+              stagger: 0.32,
+            },
+            0
+          )
+          .to(
+            wish,
+            {
+              opacity: 1,
+              scale: 1.4,
+              y: 0,
+              x: 0,
+              xPercent: -50,
+              yPercent: -50,
+              top: '50%',
+              left: '50%',
+              duration: 2.4,
+              ease: 'circ.in',
+            },
+            '>'
+          )
+      } else {
+        this.$gsap.to(wish, {
+          opacity: 1,
+          scale: 1,
+          y: 0,
+          x: 0,
+          xPercent: -50,
+          duration: 2.4,
+          ease: 'circ.in',
+        })
+      }
+    },
+    startTL() {
+      if (this.tl) this.tl.play()
+    },
+    resetTL() {
+      if (this.tl) this.tl.reverse()
     },
   },
 }
@@ -233,6 +307,34 @@ export default {
     height: 6%;
     top: 74%;
     left: 46%;
+  }
+
+  .instruction {
+    position: absolute;
+    top: 0%;
+    left: 50%;
+    transform: translateX(-50%);
+    height: 32%;
+    width: auto;
+    animation: tilt-shaking 0.6s linear infinite;
+  }
+
+  @keyframes tilt-shaking {
+    0% {
+      transform: translateX(-50%) rotate(0deg);
+    }
+    25% {
+      transform: translateX(-50%) rotate(5deg);
+    }
+    50% {
+      transform: translateX(-50%) rotate(0eg);
+    }
+    75% {
+      transform: translateX(-50%) rotate(-5deg);
+    }
+    100% {
+      transform: translateX(-50%) rotate(0deg);
+    }
   }
 
   @media #{$mq-mobile-tablet} and (orientation:landscape) {

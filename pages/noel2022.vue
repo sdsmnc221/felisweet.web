@@ -6,12 +6,13 @@
           !$store.state.isMobile ||
           ($store.state.isMobile && $store.state.isLandscape)
         "
+        class="sections-container"
       >
         <div class="sections">
           <div class="bg"></div>
           <section>
             <noel-frame ref="frame0" without-long-ball>
-              <noel-miaou />
+              <noel-miaou :show-wish="showWish" @shakeGlobe="countdown" />
             </noel-frame>
           </section>
           <section>
@@ -79,6 +80,7 @@ export default {
     return {
       indicationActive: false,
       indicationText: '',
+      showWish: false,
     }
   },
   created() {
@@ -97,7 +99,7 @@ export default {
       )
 
       setTimeout(() => this.setIndication(false), 4800)
-    }, 1600)
+    }, 7200)
 
     const sections = this.$gsap.utils.toArray('section')
     const bg = document.body.querySelector('.sections .bg')
@@ -208,6 +210,28 @@ export default {
       this.indicationActive = activeState
       this.indicationText = text
     },
+    countdown() {
+      setTimeout(() => {
+        this.setIndication(true, '3')
+
+        setTimeout(() => {
+          this.setIndication(true, '2')
+
+          setTimeout(() => {
+            this.setIndication(true, '1')
+
+            setTimeout(() => {
+              this.setIndication(true, 'MAGIE !!!')
+
+              setTimeout(() => {
+                this.setIndication(false)
+                this.showWish = true
+              }, 1000)
+            }, 1000)
+          }, 1000)
+        }, 1000)
+      }, 1000)
+    },
   },
 }
 </script>
@@ -243,6 +267,12 @@ main.atom-wrapper {
     z-index: 99;
     mix-blend-mode: normal;
     transition: none;
+  }
+
+  .sections-container {
+    display: flex;
+    flex: 1;
+    align-self: stretch;
   }
 
   .sections {
