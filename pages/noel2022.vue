@@ -134,6 +134,7 @@ export default {
   },
   methods: {
     render() {
+      console.log(this.$store.state)
       if (this.$store.state.isMobile && !this.$store.state.isLandscape) return
 
       setTimeout(() => {
