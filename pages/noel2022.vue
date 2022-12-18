@@ -325,8 +325,11 @@ body {
 
 body {
   overflow-x: hidden;
-  overflow-y: hidden !important;
+  overflow-y: scroll;
   position: relative;
+}
+#__nuxt {
+  overflow: hidden !important;
 }
 main.atom-wrapper {
   width: auto;

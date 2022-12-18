@@ -93,6 +93,9 @@ export const actions = {
       isMobile:
         /Android|webOS|iPhone|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
           navigator.userAgent
+        ) ||
+        /(ipad|tablet|(android(?!.*mobile))|(windows(?!.*phone)(.*touch))|kindle|playbook|silk|(puffin(?!.*(IP|AP|WP))))/.test(
+          navigator.userAgent.toLowerCase()
         ),
     })
   },
