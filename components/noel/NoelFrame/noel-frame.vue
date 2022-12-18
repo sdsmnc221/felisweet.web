@@ -2648,15 +2648,38 @@
       </g>
     </svg>
     <slot ref="slot"></slot>
+    <button-arrow
+      v-if="index !== 0"
+      ref="scrollLeft"
+      class="scroll-left"
+      direction="left"
+      :size="48"
+      :arrow-size="24"
+      :on-click="scrollLeft"
+    />
+    <button-arrow
+      v-if="index !== 4"
+      ref="scrollRight"
+      class="scroll-right"
+      direction="right"
+      :size="48"
+      :arrow-size="24"
+      :on-click="scrollRight"
+    />
   </atom-wrapper>
 </template>
 
 <script>
 import AtomWrapper from '../../atoms/AtomWrapper'
+import ButtonArrow from '../../atoms/ButtonArrow/button-arrow.vue'
 export default {
   name: 'NoelFrame',
-  components: { AtomWrapper },
+  components: { AtomWrapper, ButtonArrow },
   props: {
+    index: {
+      type: Number,
+      required: true,
+    },
     withoutLongBall: {
       type: Boolean,
       default: false,
@@ -2698,6 +2721,14 @@ export default {
         'start'
       )
   },
+  methods: {
+    scrollLeft() {
+      this.$emit('left', { index: this.index })
+    },
+    scrollRight() {
+      this.$emit('right', { index: this.index })
+    },
+  },
 }
 </script>
 
@@ -2710,6 +2741,22 @@ export default {
   justify-content: center;
   align-items: flex-start;
   position: relative;
+
+  .scroll-left {
+    position: absolute;
+    top: 50%;
+    left: 6%;
+    transform: translateY(-50%);
+    z-index: 9;
+  }
+
+  .scroll-right {
+    position: absolute;
+    top: 50%;
+    right: 6%;
+    transform: translateY(-50%);
+    z-index: 9;
+  }
 
   svg {
     padding: 32px;

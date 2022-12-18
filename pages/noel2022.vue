@@ -11,27 +11,40 @@
         <div class="sections">
           <div class="bg"></div>
           <section>
-            <noel-frame ref="frame0" without-long-ball>
+            <noel-frame
+              ref="frame0"
+              :index="0"
+              without-long-ball
+              @left="left"
+              @right="right"
+            >
               <noel-miaou :show-wish="showWish" @shakeGlobe="countdown" />
             </noel-frame>
           </section>
           <section>
-            <noel-frame ref="frame1">
+            <noel-frame ref="frame1" :index="1" @left="left" @right="right">
               <noel-marie @showTitle="showTitle1" />
             </noel-frame>
           </section>
           <section>
-            <noel-frame ref="frame2">
+            <noel-frame ref="frame2" :index="2" @left="left" @right="right">
               <noel-illustration @showTitle="showTitle2" />
             </noel-frame>
           </section>
           <section>
-            <noel-frame ref="frame3" without-balls without-long-ball>
+            <noel-frame
+              ref="frame3"
+              :index="3"
+              without-balls
+              without-long-ball
+              @left="left"
+              @right="right"
+            >
               <noel-mission-catmas />
             </noel-frame>
           </section>
           <section>
-            <noel-frame ref="frame4">
+            <noel-frame ref="frame4" :index="4" @left="left" @right="right">
               <noel-ebook />
             </noel-frame>
           </section>
@@ -86,13 +99,14 @@ export default {
       indicationText: '',
       indicationSmall: false,
       showWish: false,
+      tl: null,
     }
   },
   created() {
     this.$gsap.registerPlugin(ScrollTrigger)
   },
   mounted() {
-    // window.addEventListener('resize', this.render)
+    window.addEventListener('resize', this.render)
 
     window.addEventListener('mousemove', (e) => {
       if (this.$refs.cursor) {
@@ -123,23 +137,23 @@ export default {
       const sectionIncrement = duration / (sections.length - 1)
 
       // const sectionIncrement = duration / (sections.length - 1)
-      const tl = this.$gsap.timeline({
+      this.tl = this.$gsap.timeline({
         scrollTrigger: {
           trigger: document.body.querySelector('#__nuxt'),
           pin: true,
           scrub: true,
-          // snap: 1 / (sections.length - 1),
+          snap: 1 / (sections.length - 1),
           start: 'top top',
           end: '+=' + window.innerWidth,
         },
       })
 
-      tl.to(sections, {
+      this.tl.to(sections, {
         xPercent: -100 * (sections.length - 1),
         duration,
         ease: 'none',
         onUpdate: () => {
-          this.$gsap.to(bg, { xPercent: -tl.progress() * 100 })
+          this.$gsap.to(bg, { xPercent: -this.tl.progress() * 100 })
         },
       })
 
@@ -172,7 +186,7 @@ export default {
             },
           }
         )
-        addSectionCallbacks(tl, {
+        addSectionCallbacks(this.tl, {
           start: sectionIncrement * (index - 0.99),
           end: sectionIncrement * (index + 0.99),
           onEnter: () => tween.play(),
@@ -264,22 +278,37 @@ export default {
 
       setTimeout(() => this.setIndication(false), 2400)
     },
+    left({ index }) {
+      window.scrollTo({
+        left: 0,
+        top: window.scrollY - 10 * (index + 1 - 1),
+        behavior: 'smooth',
+      })
+    },
+    right({ index }) {
+      window.scrollTo({
+        left: 0,
+        top: window.scrollY + 10 * (index + 1),
+        behavior: 'smooth',
+      })
+    },
   },
 }
 </script>
 
 <style lang="scss">
-// html {
-//   cursor: none;
-// }
-// *,
-// body {
-//   cursor: none !important;
-// }
+html {
+  cursor: none;
+}
+*,
+body {
+  cursor: none !important;
+  transition: none;
+}
 
 body {
   overflow-x: hidden;
-  overflow-y: scroll;
+  overflow-y: hidden !important;
   position: relative;
 }
 main.atom-wrapper {
