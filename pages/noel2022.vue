@@ -299,7 +299,7 @@ export default {
       if (index > 0) {
         window.scrollTo({
           left: 0,
-          top: window.scrollY - 10 * (index + 1 - 1),
+          top: window.scrollY - 10,
           behavior: 'smooth',
         })
       }
@@ -308,7 +308,7 @@ export default {
       if (index < 4) {
         window.scrollTo({
           left: 0,
-          top: window.scrollY + 10 * (index + 1),
+          top: window.scrollY + 10,
           behavior: 'smooth',
         })
       }
