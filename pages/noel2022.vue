@@ -176,9 +176,9 @@ export default {
           start: sectionIncrement * (index - 0.99),
           end: sectionIncrement * (index + 0.99),
           onEnter: () => tween.play(),
-          onLeave: () => tween.reverse(),
-          onEnterBack: () => tween.play(),
-          onLeaveBack: () => tween.reverse(),
+          // onLeave: () => tween.reverse(),
+          // onEnterBack: () => tween.play(),
+          // onLeaveBack: () => tween.reverse(),
         })
 
         if (index === 0) tween.play()
