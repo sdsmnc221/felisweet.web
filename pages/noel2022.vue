@@ -92,7 +92,7 @@ export default {
     this.$gsap.registerPlugin(ScrollTrigger)
   },
   mounted() {
-    window.addEventListener('resize', this.render)
+    // window.addEventListener('resize', this.render)
 
     window.addEventListener('mousemove', (e) => {
       if (this.$refs.cursor) {
