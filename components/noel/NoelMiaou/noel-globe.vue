@@ -2041,5 +2041,16 @@ export default {
       clip-path: url(#aA);
     }
   }
+
+  @media #{$mq-mobile-tablet} and (orientation:landscape) {
+    .sweety {
+      top: 0;
+      right: 42%;
+    }
+
+    .star {
+      right: 40%;
+    }
+  }
 }
 </style>

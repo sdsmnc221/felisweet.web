@@ -33,6 +33,7 @@ export default {
     const ball = this.$refs.ball
 
     const speed = 0.64
+    const shift = 1.2
 
     this.$gsap.timeline().to(
       this.$refs.ball,
@@ -59,19 +60,23 @@ export default {
       onDrag: (pointerEvents) => {
         this.$gsap.to(zigpo, {
           x:
-            randomNumberInRange(-1.2, 1.2) * pointerEvents.pageX ||
-            pointerEvents.targetTouches[0].pageX * speed,
+            randomNumberInRange(-shift, shift) *
+            (pointerEvents.pageX || pointerEvents.targetTouches[0].pageX) *
+            speed,
           y:
-            randomNumberInRange(-1.2, 1.2) * pointerEvents.pageY ||
-            pointerEvents.targetTouches[0].pageY * speed,
+            randomNumberInRange(-shift, shift) *
+            (pointerEvents.pageY || pointerEvents.targetTouches[0].pageY) *
+            speed,
         })
         this.$gsap.to(mimoso, {
           x:
-            -randomNumberInRange(-1.2, 1.2) * pointerEvents.pageX ||
-            pointerEvents.targetTouches[0].pageX * speed,
+            -randomNumberInRange(-shift, shift) *
+            (pointerEvents.pageX || pointerEvents.targetTouches[0].pageX) *
+            speed,
           y:
-            randomNumberInRange(-1.2, 1.2) * pointerEvents.pageY ||
-            pointerEvents.targetTouches[0].pageY * speed,
+            randomNumberInRange(-shift, shift) *
+            (pointerEvents.pageY || pointerEvents.targetTouches[0].pageY) *
+            speed,
         })
       },
       onRelease: () => {
@@ -94,7 +99,7 @@ export default {
           x: 0,
           y: 0,
           ease: 'circ.in',
-          duration: 1.2,
+          duration: shift,
         })
         this.$gsap.to(zigpo, {
           xPercent: 0,
@@ -104,7 +109,7 @@ export default {
           top: '68%',
           right: '32%',
           ease: 'circ.in',
-          duration: 1.2,
+          duration: shift,
         })
         this.$gsap.to(mimoso, {
           xPercent: 0,
@@ -114,7 +119,7 @@ export default {
           top: '56%',
           left: '36%',
           ease: 'circ.in',
-          duration: 1.2,
+          duration: shift,
         })
 
         if (this.$store.state.isMobile) {
@@ -124,7 +129,7 @@ export default {
               [mimoso, zigpo, ball, globe],
               {
                 opacity: 0,
-                duration: 1.2,
+                duration: shift,
                 ease: 'circ.in',
                 stagger: 0.32,
               },
