@@ -4,7 +4,7 @@
     <canvas
       ref="canvas"
       :width="$store.state.isMobile ? '320px' : '640px'"
-      :height="$store.state.isMobile ? '3x20px' : '640px'"
+      :height="$store.state.isMobile ? '320px' : '640px'"
     ></canvas>
     <img
       ref="instruction"
