@@ -11,6 +11,7 @@ export const state = () => ({
     popupType: '',
   },
   isMobile: false,
+  isTablet: false,
   isLandscape: false,
 })
 
@@ -46,8 +47,9 @@ export const mutations = {
   SET_ERROR(state, error) {
     state.footer = error
   },
-  DETECT_MOBILE(state, { isMobile }) {
+  DETECT_MOBILE(state, { isMobile, isTablet }) {
     state.isMobile = isMobile
+    state.isTablet = isTablet
   },
   DETECT_ORIENTATION(state, { isLandscape }) {
     state.isLandscape = isLandscape
@@ -93,7 +95,8 @@ export const actions = {
       isMobile:
         /Android|webOS|iPhone|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
           navigator.userAgent
-        ) ||
+        ),
+      isTablet:
         /(ipad|tablet|(android(?!.*mobile))|(windows(?!.*phone)(.*touch))|kindle|playbook|silk|(puffin(?!.*(IP|AP|WP))))/.test(
           navigator.userAgent.toLowerCase()
         ),
