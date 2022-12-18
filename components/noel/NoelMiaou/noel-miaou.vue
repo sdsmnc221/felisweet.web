@@ -48,7 +48,6 @@ export default {
 
     this.tl = this.$gsap
       .timeline({ paused: true })
-      .addLabel('start', 0)
       .to(
         this.$refs.ball,
         {

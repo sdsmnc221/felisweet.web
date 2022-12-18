@@ -17,12 +17,12 @@
           </section>
           <section>
             <noel-frame ref="frame1">
-              <noel-marie @showTitle="showTitle" />
+              <noel-marie @showTitle="showTitle1" />
             </noel-frame>
           </section>
           <section>
             <noel-frame ref="frame2">
-              <noel-illustration />
+              <noel-illustration @showTitle="showTitle2" />
             </noel-frame>
           </section>
           <section>
@@ -238,11 +238,16 @@ export default {
         }, 1000)
       }, 1000)
     },
-    showTitle() {
+    showTitle1() {
       this.setIndication(
         true,
         "Coucou c'est Marie. J'ai quelque chose à vous dire !"
       )
+
+      setTimeout(() => this.setIndication(false), 2400)
+    },
+    showTitle2() {
+      this.setIndication(true, 'Un certain message se cache !')
 
       setTimeout(() => this.setIndication(false), 2400)
     },
