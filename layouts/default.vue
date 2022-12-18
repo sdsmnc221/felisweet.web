@@ -28,7 +28,13 @@
       </div>
     </transition>
     <transition name="fade">
-      <page-loader v-if="loading" />
+      <page-loader v-if="loading && $route.name !== 'noel2022'" />
+    </transition>
+    <transition name="fade">
+      <noel-page-loader v-if="loading && $route.name === 'noel2022'" />
+    </transition>
+    <transition name="fade">
+      <noel-snow v-if="$route.name === 'noel2022'" />
     </transition>
   </div>
 </template>
@@ -38,10 +44,20 @@ import SiteFooter from '../components/organisms/SiteFooter'
 import SiteHeader from '../components/organisms/SiteHeader'
 import PopUp from '../components/molecules/PopUp'
 import DotCursor from '../components/molecules/DotCursor'
-import PageLoader from '../components/organisms/PageLoader/page-loader.vue'
+import PageLoader from '../components/organisms/PageLoader'
+import NoelPageLoader from '../components/noel/NoelPageLoader'
+import NoelSnow from '../components/noel/NoelSnow'
 
 export default {
-  components: { SiteFooter, SiteHeader, PopUp, DotCursor, PageLoader },
+  components: {
+    SiteFooter,
+    SiteHeader,
+    PopUp,
+    DotCursor,
+    PageLoader,
+    NoelPageLoader,
+    NoelSnow,
+  },
   async middleware({ store, $prismic }) {
     await store.dispatch('fetchFooter', $prismic)
   },

@@ -25,6 +25,9 @@
       </section>
     </div>
     <div ref="cursor" class="cursor"></div>
+    <transition name="fade">
+      <noel-indication v-if="indicationActive" :text="indicationText" />
+    </transition>
   </atom-wrapper>
 </template>
 
@@ -36,6 +39,7 @@ import NoelMiaou from '../components/noel/NoelMiaou'
 import NoelMarie from '../components/noel/NoelMarie'
 import NoelIllustration from '../components/noel/NoelIllustration'
 import NoelEbook from '../components/noel/NoelEbook'
+import NoelIndication from '../components/noel/NoelIndication'
 
 export default {
   name: 'Noel2022Page',
@@ -46,6 +50,13 @@ export default {
     NoelMarie,
     NoelIllustration,
     NoelEbook,
+    NoelIndication,
+  },
+  data() {
+    return {
+      indicationActive: false,
+      indicationText: '',
+    }
   },
   created() {
     this.$gsap.registerPlugin(ScrollTrigger)
@@ -55,6 +66,16 @@ export default {
       this.$refs.cursor.style.left = e.clientX - 48 / 2 + 'px'
       this.$refs.cursor.style.top = e.clientY - 48 / 2 + 'px'
     })
+
+    setTimeout(() => {
+      this.setIndication(
+        true,
+        'Scrollez pour vous plonger dans notre atmosphère festif, restez sur chaque section et suivez les indications pour fêter avec nous miaou~'
+      )
+
+      setTimeout(() => this.setIndication(false), 4800)
+    }, 1600)
+
     const sections = this.$gsap.utils.toArray('section')
     const bg = document.body.querySelector('.sections .bg')
 
@@ -158,6 +179,12 @@ export default {
           end
         )
     }
+  },
+  methods: {
+    setIndication(activeState, text = '') {
+      this.indicationActive = activeState
+      this.indicationText = text
+    },
   },
 }
 </script>
