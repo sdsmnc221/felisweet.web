@@ -135,7 +135,7 @@ export default {
         y: 0,
       }
 
-      const speed = 0.64
+      const speed = 0.032
 
       const elements = [quote, illus, ...gifts].map((element) => {
         return {
@@ -207,7 +207,7 @@ export default {
     height: 32%;
     width: auto;
     bottom: 16%;
-    left: 32%;
+    left: 24%;
   }
   .gift-right {
     position: absolute;
@@ -215,7 +215,7 @@ export default {
     height: 32%;
     width: auto;
     bottom: 16%;
-    right: 32%;
+    right: 24%;
   }
   .quote {
     position: absolute;
@@ -256,6 +256,15 @@ export default {
     }
     100% {
       transform: translateX(-50%) rotate(0deg);
+    }
+  }
+
+  @media #{$mq-mobile-tablet} and (orientation:landscape) {
+    .gift-left {
+      left: 32%;
+    }
+    .gift-right {
+      right: 32%;
     }
   }
 }
