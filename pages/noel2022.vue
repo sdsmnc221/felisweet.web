@@ -17,7 +17,7 @@
           </section>
           <section>
             <noel-frame ref="frame1">
-              <noel-marie />
+              <noel-marie @showTitle="showTitle" />
             </noel-frame>
           </section>
           <section>
@@ -237,6 +237,14 @@ export default {
           }, 1000)
         }, 1000)
       }, 1000)
+    },
+    showTitle() {
+      this.setIndication(
+        true,
+        "Coucou c'est Marie. J'ai quelque chose à vous dire !"
+      )
+
+      setTimeout(() => this.setIndication(false), 2400)
     },
   },
 }

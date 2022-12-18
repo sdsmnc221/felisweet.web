@@ -21,7 +21,7 @@ export default {
   background-color: $color-nepal-blue;
   background-image: url('/images/noel-rotate-screen.png');
   background-repeat: no-repeat;
-  background-size: 500%;
+  background-size: cover;
 
   img {
     width: 150%;

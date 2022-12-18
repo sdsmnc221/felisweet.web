@@ -1,7 +1,7 @@
 import Brush from '../static/images/noel-brush.png'
 import Marie from '../static/images/noel-marie-1.png'
 
-function Scratch(canvas, bg, gsap) {
+function Scratch(canvas, bg, instruction, gsap) {
   var isDrawing, lastPoint
   var canvasWidth = canvas.width,
     canvasHeight = canvas.height,
@@ -23,7 +23,7 @@ function Scratch(canvas, bg, gsap) {
   canvas.addEventListener('mousedown', handleMouseDown, false)
   canvas.addEventListener('touchstart', handleMouseDown, false)
   canvas.addEventListener('mousemove', handleMouseMove, false)
-  canvas.addEventListener('touchmove', handleMouseMove, false)
+  canvas.addEventListener('touchmove', handleTouchMove, false)
   canvas.addEventListener('mouseup', handleMouseUp, false)
   canvas.addEventListener('touchend', handleMouseUp, false)
 
@@ -104,6 +104,12 @@ function Scratch(canvas, bg, gsap) {
     filledInPixels = filledInPixels || 0
     if (filledInPixels > 64) {
       gsap.to(canvas, { opacity: 0, duration: 1.6, ease: 'circ.in' })
+      gsap.to(instruction, {
+        opacity: 0,
+        scale: 0,
+        ease: 'circ.in',
+        duration: 1.2,
+      })
     }
   }
 
@@ -137,6 +143,39 @@ function Scratch(canvas, bg, gsap) {
       brush,
       e.clientX - canvasWidth / 2,
       e.clientY - canvasHeight / 2,
+      brush.width * 4,
+      brush.height * 4
+    )
+
+    // lastPoint = currentPoint
+    handlePercentage(getFilledInPixels(12))
+  }
+
+  function handleTouchMove(e) {
+    if (!isDrawing) {
+      return
+    }
+
+    e.preventDefault()
+
+    // var currentPoint = getMouse(e, canvas),
+    //   dist = distanceBetween(lastPoint, currentPoint),
+    //   angle = angleBetween(lastPoint, currentPoint),
+    //   x,
+    //   y
+
+    // for (var i = 0; i < dist; i++) {
+    //   x = lastPoint.x + Math.sin(angle) * i - 25
+    //   y = lastPoint.y + Math.cos(angle) * i - 25
+    //   ctx.globalCompositeOperation = 'destination-out'
+    //   ctx.drawImage(brush, e.screenX, e.screenY)
+    // }
+
+    ctx.globalCompositeOperation = 'destination-out'
+    ctx.drawImage(
+      brush,
+      e.targetTouches[0].pageX - canvasWidth / 2,
+      e.targetTouches[0].pageY - canvasHeight / 2,
       brush.width * 4,
       brush.height * 4
     )

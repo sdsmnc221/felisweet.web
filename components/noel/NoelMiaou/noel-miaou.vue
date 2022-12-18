@@ -82,7 +82,6 @@ export default {
           ease: 'circ.in',
         }
       )
-
       .fromTo(
         this.$refs.instruction,
         {
@@ -317,6 +316,7 @@ export default {
     height: 32%;
     width: auto;
     animation: tilt-shaking 0.6s linear infinite;
+    pointer-events: none;
   }
 
   @keyframes tilt-shaking {
