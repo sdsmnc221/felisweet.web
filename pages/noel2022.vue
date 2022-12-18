@@ -92,125 +92,138 @@ export default {
     this.$gsap.registerPlugin(ScrollTrigger)
   },
   mounted() {
+    window.addEventListener('resize', this.render)
+
     window.addEventListener('mousemove', (e) => {
-      this.$refs.cursor.style.left = e.clientX - 48 / 2 + 'px'
-      this.$refs.cursor.style.top = e.clientY - 48 / 2 + 'px'
-    })
-
-    setTimeout(() => {
-      this.setIndication(
-        true,
-        'Scrollez pour vous plonger dans notre atmosphère festif, restez sur chaque section et suivez les indications pour fêter avec nous miaou~'
-      )
-
-      setTimeout(() => this.setIndication(false), 4800)
-    }, 7200)
-
-    const sections = this.$gsap.utils.toArray('section')
-    const bg = document.body.querySelector('.sections .bg')
-
-    const duration = 3.2
-    const sectionIncrement = duration / (sections.length - 1)
-
-    // const sectionIncrement = duration / (sections.length - 1)
-    const tl = this.$gsap.timeline({
-      scrollTrigger: {
-        trigger: document.body.querySelector('#__nuxt'),
-        pin: true,
-        scrub: true,
-        // snap: 1 / (sections.length - 1),
-        start: 'top top',
-        end: '+=' + window.innerWidth,
-      },
-    })
-
-    tl.to(sections, {
-      xPercent: -100 * (sections.length - 1),
-      duration,
-      ease: 'none',
-      onUpdate: () => {
-        this.$gsap.to(bg, { xPercent: -tl.progress() * 100 })
-      },
-    })
-
-    // everything below this is just for the fading/scaling up which is NOT scrubbed - it's all dynamic, triggered when each section enters/leaves so that the fading/scaling occurs at a consistent rate no matter how fast you scroll!
-    sections.forEach((section, index) => {
-      const noelFrame = section.querySelector('.noel-frame')
-      const tween = this.$gsap.fromTo(
-        noelFrame,
-        { opacity: 0, scale: 0.64, yPercent: 32, perspective: '32vw' },
-        {
-          opacity: 1,
-          scale: 1,
-          yPercent: 0,
-          perspective: 0,
-          duration: 1.6,
-          force3D: true,
-          paused: true,
-          ease: 'circ.in',
-          onComplete: () => {
-            const ref = this.$refs['frame' + index]
-            const slot = ref?.$slots?.default
-            if (slot && slot[0]?.componentInstance?.startTL)
-              slot[0].componentInstance.startTL()
-          },
-          onReverseComplete: () => {
-            const ref = this.$refs['frame' + index]
-            const slot = ref?.$slots?.default
-            if (slot && slot[0]?.componentInstance?.resetTL)
-              slot[0].componentInstance.resetTL()
-          },
-        }
-      )
-      addSectionCallbacks(tl, {
-        start: sectionIncrement * (index - 0.99),
-        end: sectionIncrement * (index + 0.99),
-        onEnter: () => tween.play(),
-        onLeave: () => tween.reverse(),
-        onEnterBack: () => tween.play(),
-        onLeaveBack: () => tween.reverse(),
-      })
-
-      if (index === 0) tween.play()
-      // index || tween.progress(1) // the first tween should be at its end (already faded/scaled in)
-    })
-
-    // helper function that lets us define a section in a timeline that spans between two times (start/end) and lets us add onEnter/onLeave/onEnterBack/onLeaveBack callbacks
-    function addSectionCallbacks(
-      timeline,
-      { start, end, param, onEnter, onLeave, onEnterBack, onLeaveBack }
-    ) {
-      const trackDirection = (animation) => {
-        // just adds a "direction" property to the animation that tracks the moment-by-moment playback direction (1 = forward, -1 = backward)
-        const onUpdate = animation.eventCallback('onUpdate') // in case it already has an onUpdate
-        let prevTime = animation.time()
-        animation.direction = animation.reversed() ? -1 : 1
-        animation.eventCallback('onUpdate', () => {
-          const time = animation.time()
-          if (prevTime !== time) {
-            animation.direction = time < prevTime ? -1 : 1
-            prevTime = time
-          }
-          onUpdate && onUpdate.call(animation)
-        })
+      if (this.$refs.cursor) {
+        this.$refs.cursor.style.left = e.clientX - 48 / 2 + 'px'
+        this.$refs.cursor.style.top = e.clientY - 48 / 2 + 'px'
       }
-      const empty = (v) => v // in case one of the callbacks isn't defined
-      timeline.direction || trackDirection(timeline) // make sure direction tracking is enabled on the timeline
-      start >= 0 &&
-        timeline.add(
-          () =>
-            ((timeline.direction < 0 ? onLeaveBack : onEnter) || empty)(param),
-          start
-        )
-      end <= timeline.duration() &&
-        timeline.add(
-          () =>
-            ((timeline.direction < 0 ? onEnterBack : onLeave) || empty)(param),
-          end
-        )
-    }
+    })
+
+    this.render()
   },
   methods: {
+    render() {
+      if (this.$store.state.isMobile && !this.$store.state.isLandscape) return
+
+      setTimeout(() => {
+        this.setIndication(
+          true,
+          'Scrollez pour vous plonger dans notre atmosphère festif, restez sur chaque section et suivez les indications pour fêter avec nous miaou~'
+        )
+
+        setTimeout(() => this.setIndication(false), 4800)
+      }, 7200)
+
+      const sections = this.$gsap.utils.toArray('section')
+      const bg = document.body.querySelector('.sections .bg')
+
+      const duration = 3.2
+      const sectionIncrement = duration / (sections.length - 1)
+
+      // const sectionIncrement = duration / (sections.length - 1)
+      const tl = this.$gsap.timeline({
+        scrollTrigger: {
+          trigger: document.body.querySelector('#__nuxt'),
+          pin: true,
+          scrub: true,
+          // snap: 1 / (sections.length - 1),
+          start: 'top top',
+          end: '+=' + window.innerWidth,
+        },
+      })
+
+      tl.to(sections, {
+        xPercent: -100 * (sections.length - 1),
+        duration,
+        ease: 'none',
+        onUpdate: () => {
+          this.$gsap.to(bg, { xPercent: -tl.progress() * 100 })
+        },
+      })
+
+      // everything below this is just for the fading/scaling up which is NOT scrubbed - it's all dynamic, triggered when each section enters/leaves so that the fading/scaling occurs at a consistent rate no matter how fast you scroll!
+      sections.forEach((section, index) => {
+        const noelFrame = section.querySelector('.noel-frame')
+        const tween = this.$gsap.fromTo(
+          noelFrame,
+          { opacity: 0, scale: 0.64, yPercent: 32, perspective: '32vw' },
+          {
+            opacity: 1,
+            scale: 1,
+            yPercent: 0,
+            perspective: 0,
+            duration: 1.6,
+            force3D: true,
+            paused: true,
+            ease: 'circ.in',
+            onComplete: () => {
+              const ref = this.$refs['frame' + index]
+              const slot = ref?.$slots?.default
+              if (slot && slot[0]?.componentInstance?.startTL)
+                slot[0].componentInstance.startTL()
+            },
+            onReverseComplete: () => {
+              const ref = this.$refs['frame' + index]
+              const slot = ref?.$slots?.default
+              if (slot && slot[0]?.componentInstance?.resetTL)
+                slot[0].componentInstance.resetTL()
+            },
+          }
+        )
+        addSectionCallbacks(tl, {
+          start: sectionIncrement * (index - 0.99),
+          end: sectionIncrement * (index + 0.99),
+          onEnter: () => tween.play(),
+          onLeave: () => tween.reverse(),
+          onEnterBack: () => tween.play(),
+          onLeaveBack: () => tween.reverse(),
+        })
+
+        if (index === 0) tween.play()
+        // index || tween.progress(1) // the first tween should be at its end (already faded/scaled in)
+      })
+
+      // helper function that lets us define a section in a timeline that spans between two times (start/end) and lets us add onEnter/onLeave/onEnterBack/onLeaveBack callbacks
+      function addSectionCallbacks(
+        timeline,
+        { start, end, param, onEnter, onLeave, onEnterBack, onLeaveBack }
+      ) {
+        const trackDirection = (animation) => {
+          // just adds a "direction" property to the animation that tracks the moment-by-moment playback direction (1 = forward, -1 = backward)
+          const onUpdate = animation.eventCallback('onUpdate') // in case it already has an onUpdate
+          let prevTime = animation.time()
+          animation.direction = animation.reversed() ? -1 : 1
+          animation.eventCallback('onUpdate', () => {
+            const time = animation.time()
+            if (prevTime !== time) {
+              animation.direction = time < prevTime ? -1 : 1
+              prevTime = time
+            }
+            onUpdate && onUpdate.call(animation)
+          })
+        }
+        const empty = (v) => v // in case one of the callbacks isn't defined
+        timeline.direction || trackDirection(timeline) // make sure direction tracking is enabled on the timeline
+        start >= 0 &&
+          timeline.add(
+            () =>
+              ((timeline.direction < 0 ? onLeaveBack : onEnter) || empty)(
+                param
+              ),
+            start
+          )
+        end <= timeline.duration() &&
+          timeline.add(
+            () =>
+              ((timeline.direction < 0 ? onEnterBack : onLeave) || empty)(
+                param
+              ),
+            end
+          )
+      }
+    },
     setIndication(activeState, text = '', smallState = false) {
       this.indicationActive = activeState
       this.indicationText = text
