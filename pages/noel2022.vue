@@ -157,14 +157,14 @@ export default {
           trigger: document.body.querySelector('#__nuxt'),
           pin: true,
           scrub: true,
-          snap: 1 / (sections.length - 1),
+          snap: 1 / sections.length,
           start: 'top top',
           end: '+=' + window.innerWidth,
         },
       })
 
       this.tl.to(sections, {
-        xPercent: -100 * (sections.length - 1),
+        xPercent: -100 * sections.length,
         duration,
         ease: 'none',
         onUpdate: () => {
