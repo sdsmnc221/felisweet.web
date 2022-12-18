@@ -102,7 +102,7 @@ function Scratch(canvas, bg, instruction, gsap) {
 
   function handlePercentage(filledInPixels) {
     filledInPixels = filledInPixels || 0
-    if (filledInPixels > 64) {
+    if (filledInPixels > 50) {
       gsap.to(canvas, { opacity: 0, duration: 1.6, ease: 'circ.in' })
       gsap.to(instruction, {
         opacity: 0,
@@ -138,17 +138,19 @@ function Scratch(canvas, bg, instruction, gsap) {
     //   ctx.drawImage(brush, e.screenX, e.screenY)
     // }
 
-    ctx.globalCompositeOperation = 'destination-out'
-    ctx.drawImage(
-      brush,
-      e.clientX - canvasWidth / 2,
-      e.clientY - canvasHeight / 2,
-      brush.width * 4,
-      brush.height * 4
-    )
+    scratch()
 
-    // lastPoint = currentPoint
-    handlePercentage(getFilledInPixels(12))
+    // ctx.globalCompositeOperation = 'destination-out'
+    // ctx.drawImage(
+    //   brush,
+    //   e.clientX - canvasWidth / 2,
+    //   e.clientY - canvasHeight / 2,
+    //   brush.width * 4,
+    //   brush.height * 4
+    // )
+
+    // // lastPoint = currentPoint
+    // handlePercentage(getFilledInPixels(12))
   }
 
   function handleTouchMove(e) {
@@ -157,6 +159,8 @@ function Scratch(canvas, bg, instruction, gsap) {
     }
 
     e.preventDefault()
+
+    scratch()
 
     // var currentPoint = getMouse(e, canvas),
     //   dist = distanceBetween(lastPoint, currentPoint),
@@ -171,22 +175,63 @@ function Scratch(canvas, bg, instruction, gsap) {
     //   ctx.drawImage(brush, e.screenX, e.screenY)
     // }
 
-    console.log(e.targetTouches[0])
-    ctx.globalCompositeOperation = 'destination-out'
-    ctx.drawImage(
-      brush,
-      e.targetTouches[0].clientX - canvasWidth / 2,
-      e.targetTouches[0].clientY - canvasHeight / 2,
-      brush.width * 4,
-      brush.height * 4
-    )
+    // ctx.globalCompositeOperation = 'destination-out'
+    // ctx.drawImage(
+    //   brush,
+    //   e.targetTouches[0].clientX - canvasWidth / 2,
+    //   e.targetTouches[0].clientY - canvasHeight / 2,
+    //   brush.width * 4,
+    //   brush.height * 4
+    // )
 
-    // lastPoint = currentPoint
-    handlePercentage(getFilledInPixels(12))
+    // // lastPoint = currentPoint
+    // handlePercentage(getFilledInPixels(12))
+  }
+
+  function scratch() {
+    move()
   }
 
   function handleMouseUp(e) {
     isDrawing = false
+  }
+
+  6
+
+  let coordX = 0 // Moving from the left side of the screen
+  let coordY = 0 // Moving in the center
+
+  function move() {
+    // Move step = 20 pixels
+    if (coordX < canvasWidth) {
+      coordX += brush.width
+    } else {
+      coordX = 0
+      coordY += brush.height
+    }
+
+    ctx.globalCompositeOperation = 'destination-out'
+    ctx.drawImage(brush, coordX, coordY, brush.width * 4, brush.height * 4)
+
+    // lastPoint = currentPoint
+    handlePercentage(getFilledInPixels(72))
+    // Create new mouse event
+    // let ev = new MouseEvent("mousemove", {
+    //     view: window,
+    //     bubbles: true,
+    //     cancelable: true,
+    //     clientX: coordX,
+    //     clientY: coordY
+    // });
+
+    // // Send event
+    // document.querySelector('Put your element here!').dispatchEvent(ev);
+    // If the current position of the fake "mouse" is less than the width of the screen - let's move
+    if (coordX < canvasWidth && coordY < canvasHeight) {
+      setTimeout(() => {
+        move()
+      }, 640)
+    }
   }
 }
 

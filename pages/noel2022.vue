@@ -134,7 +134,6 @@ export default {
   },
   methods: {
     render() {
-      console.log(this.$store.state)
       if (this.$store.state.isMobile && !this.$store.state.isLandscape) return
 
       setTimeout(() => {
@@ -326,11 +325,8 @@ body {
 
 body {
   overflow-x: hidden;
-  overflow-y: scroll;
+  overflow-y: hidden !important;
   position: relative;
-}
-#__nuxt {
-  overflow: hidden !important;
 }
 main.atom-wrapper {
   width: auto;
