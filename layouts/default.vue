@@ -67,7 +67,10 @@ export default {
     }
   },
   mounted() {
-    setTimeout(() => (this.loading = false), 1200)
+    setTimeout(
+      () => (this.loading = false),
+      this.$route.name !== 'noel2022' ? 1200 : 3600
+    )
 
     this.$store.dispatch('detectMobile', { navigator: window.navigator })
     this.$store.dispatch('detectOrientation', {
