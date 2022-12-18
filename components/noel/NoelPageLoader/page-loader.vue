@@ -1,6 +1,6 @@
 <template>
   <div class="page-loader">
-    <img src="/images/noel-title.png" alt="" />
+    <img src="/images/noel-title.gif" alt="" />
   </div>
 </template>
 
