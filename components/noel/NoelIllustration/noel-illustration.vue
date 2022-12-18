@@ -203,7 +203,7 @@ export default {
     height: 32%;
     width: auto;
     bottom: 16%;
-    left: 24%;
+    left: 32%;
   }
   .gift-right {
     position: absolute;
@@ -211,7 +211,7 @@ export default {
     height: 32%;
     width: auto;
     bottom: 16%;
-    right: 24%;
+    right: 32%;
   }
   .quote {
     position: absolute;
