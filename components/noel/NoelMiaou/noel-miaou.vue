@@ -43,7 +43,7 @@ export default {
     const zigpo = this.$refs.zigpo
     const mimoso = this.$refs.mimoso
 
-    const speed = 0.64
+    const speed = 0.032
     const shift = 1.2
 
     this.tl = this.$gsap
@@ -130,28 +130,33 @@ export default {
         if (this.showWish) this.release(pointerEvents)
       },
       onRelease: () => {
-        if (this.shakeTL) {
-          this.shakeTL.kill()
-          this.shakeTL = null
-        }
+        if (this.showWish) {
+          if (this.shakeTL) {
+            this.shakeTL.kill()
+            this.shakeTL = null
+          }
 
-        if (this.dragTL) {
-          this.dragTL[0].kill()
-          this.dragTL = null
+          if (this.dragTL) {
+            this.dragTL[0].kill()
+            this.dragTL = null
+          }
+        } else {
+          this.$emit('stopCountdown')
+          this.shakeTL?.pause()
         }
       },
     })
   },
   methods: {
     shake(el) {
-      this.shakeTL = this.$gsap.to(el, 0.15, {
+      this.shakeTL = this.$gsap.to(el, {
         x: 'random(-12, 12)',
         y: 'random(-12, 12)',
         rotate: 'random(-64, 64)',
         repeat: -1,
         repeatRefresh: true,
         yoyo: true,
-        duration: 0.2,
+        duration: 0.64,
         ease: 'sine.inOut',
       })
     },

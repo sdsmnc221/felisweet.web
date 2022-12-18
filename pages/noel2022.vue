@@ -18,7 +18,21 @@
               @left="left"
               @right="right"
             >
-              <noel-miaou :show-wish="showWish" @shakeGlobe="countdown" />
+              <noel-miaou
+                :show-wish="showWish"
+                @shakeGlobe="
+                  () => {
+                    stopCountdown = false
+                    countdown()
+                  }
+                "
+                @stopCountdown="
+                  () => {
+                    stopCountdown = true
+                    setIndication(false)
+                  }
+                "
+              />
             </noel-frame>
           </section>
           <section>
@@ -99,6 +113,7 @@ export default {
       indicationText: '',
       indicationSmall: false,
       showWish: false,
+      stopCountdown: false,
       tl: null,
     }
   },
@@ -124,7 +139,7 @@ export default {
       setTimeout(() => {
         this.setIndication(
           true,
-          'Scrollez pour vous plonger dans notre atmosphère festif, restez sur chaque section et suivez les indications pour fêter avec nous miaou~'
+          'Déplacez-vous entre les pages de la carte pour vous plonger dans notre atmosphère festif, restez sur chaque section et suivez les indications pour fêter avec nous miaou~'
         )
 
         setTimeout(() => this.setIndication(false), 4800)
@@ -245,21 +260,23 @@ export default {
     },
     countdown() {
       setTimeout(() => {
-        this.setIndication(true, '3', true)
+        if (!this.stopCountdown) this.setIndication(true, '3', true)
 
         setTimeout(() => {
-          this.setIndication(true, '2', true)
+          if (!this.stopCountdown) this.setIndication(true, '2', true)
 
           setTimeout(() => {
-            this.setIndication(true, '1', true)
+            if (!this.stopCountdown) this.setIndication(true, '1', true)
 
             setTimeout(() => {
-              this.setIndication(true, 'MAGIE !!!', true)
+              if (!this.stopCountdown)
+                this.setIndication(true, 'MAGIE !!!', true)
 
-              setTimeout(() => {
-                this.setIndication(false)
-                this.showWish = true
-              }, 1000)
+              if (!this.stopCountdown)
+                setTimeout(() => {
+                  this.setIndication(false)
+                  this.showWish = true
+                }, 1000)
             }, 1000)
           }, 1000)
         }, 1000)
