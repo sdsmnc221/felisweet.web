@@ -296,7 +296,6 @@ export default {
       setTimeout(() => this.setIndication(false), 2400)
     },
     left({ index }) {
-      console.log('left')
       if (index > 0) {
         window.scrollTo({
           left: 0,
@@ -306,7 +305,6 @@ export default {
       }
     },
     right({ index }) {
-      console.log('right')
       if (index < 4) {
         window.scrollTo({
           left: 0,
