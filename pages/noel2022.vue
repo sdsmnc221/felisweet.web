@@ -1,36 +1,51 @@
 <template>
   <atom-wrapper tag="main">
-    <div class="sections">
-      <div class="bg"></div>
-      <section>
-        <noel-frame ref="frame0" without-long-ball>
-          <noel-miaou />
-        </noel-frame>
-      </section>
-      <section>
-        <noel-frame ref="frame1">
-          <noel-marie />
-        </noel-frame>
-      </section>
-      <section>
-        <noel-frame ref="frame2">
-          <noel-illustration />
-        </noel-frame>
-      </section>
-      <section>
-        <noel-frame ref="frame3" without-balls without-long-ball>
-          <noel-mission-catmas />
-        </noel-frame>
-      </section>
-      <section>
-        <noel-frame ref="frame4">
-          <noel-ebook />
-        </noel-frame>
-      </section>
-    </div>
-    <div ref="cursor" class="cursor"></div>
-    <transition name="fade">
-      <noel-indication v-if="indicationActive" :text="indicationText" />
+    <transition>
+      <div
+        v-if="
+          !$store.state.isMobile ||
+          ($store.state.isMobile && $store.state.isLandscape)
+        "
+      >
+        <div class="sections">
+          <div class="bg"></div>
+          <section>
+            <noel-frame ref="frame0" without-long-ball>
+              <noel-miaou />
+            </noel-frame>
+          </section>
+          <section>
+            <noel-frame ref="frame1">
+              <noel-marie />
+            </noel-frame>
+          </section>
+          <section>
+            <noel-frame ref="frame2">
+              <noel-illustration />
+            </noel-frame>
+          </section>
+          <section>
+            <noel-frame ref="frame3" without-balls without-long-ball>
+              <noel-mission-catmas />
+            </noel-frame>
+          </section>
+          <section>
+            <noel-frame ref="frame4">
+              <noel-ebook />
+            </noel-frame>
+          </section>
+        </div>
+        <div ref="cursor" class="cursor"></div>
+        <transition name="fade">
+          <noel-indication v-if="indicationActive" :text="indicationText" />
+        </transition>
+      </div>
+    </transition>
+
+    <transition>
+      <noel-rotate-screen
+        v-if="$store.state.isMobile && !$store.state.isLandscape"
+      />
     </transition>
   </atom-wrapper>
 </template>
@@ -45,6 +60,7 @@ import NoelIllustration from '../components/noel/NoelIllustration'
 import NoelEbook from '../components/noel/NoelEbook'
 import NoelIndication from '../components/noel/NoelIndication'
 import NoelMissionCatmas from '../components/noel/NoelMissionCatmas'
+import NoelRotateScreen from '../components/noel/NoelRotateScreen'
 
 export default {
   name: 'Noel2022Page',
@@ -57,6 +73,7 @@ export default {
     NoelEbook,
     NoelIndication,
     NoelMissionCatmas,
+    NoelRotateScreen,
   },
   data() {
     return {
