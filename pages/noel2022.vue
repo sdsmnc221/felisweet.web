@@ -193,12 +193,12 @@ export default {
               if (slot && slot[0]?.componentInstance?.startTL)
                 slot[0].componentInstance.startTL()
             },
-            onReverseComplete: () => {
-              const ref = this.$refs['frame' + index]
-              const slot = ref?.$slots?.default
-              if (slot && slot[0]?.componentInstance?.resetTL)
-                slot[0].componentInstance.resetTL()
-            },
+            // onReverseComplete: () => {
+            //   const ref = this.$refs['frame' + index]
+            //   const slot = ref?.$slots?.default
+            //   if (slot && slot[0]?.componentInstance?.resetTL)
+            //     slot[0].componentInstance.resetTL()
+            // },
           }
         )
         addSectionCallbacks(this.tl, {
@@ -296,6 +296,7 @@ export default {
       setTimeout(() => this.setIndication(false), 2400)
     },
     left({ index }) {
+      console.log('left')
       if (index > 0) {
         window.scrollTo({
           left: 0,
@@ -305,6 +306,7 @@ export default {
       }
     },
     right({ index }) {
+      console.log('right')
       if (index < 4) {
         window.scrollTo({
           left: 0,
