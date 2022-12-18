@@ -40,7 +40,7 @@ export default {
   align-items: center;
   background-color: transparentize($color: #000000, $amount: 0.32);
   z-index: 99;
-  transition: all ease-in-out 0.64s, height linear 0;
+  transition: all ease-in-out 0.64s, height 1ms;
 
   &.--small {
     background-color: transparentize($color: #000000, $amount: 1);
