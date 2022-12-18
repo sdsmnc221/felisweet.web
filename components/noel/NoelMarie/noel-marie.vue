@@ -49,7 +49,7 @@ export default {
       .to(
         this.$refs.marie,
         { opacity: 1, scale: 1, duration: 0.6, ease: 'circ.in' },
-        '>'
+        '4.8'
       )
       .fromTo(
         this.$refs.instruction,
