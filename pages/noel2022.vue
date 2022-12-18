@@ -17,7 +17,11 @@
           <noel-illustration />
         </noel-frame>
       </section>
-      <section><noel-frame ref="frame3">Section 4</noel-frame></section>
+      <section>
+        <noel-frame ref="frame3" without-balls without-long-ball>
+          <noel-mission-catmas />
+        </noel-frame>
+      </section>
       <section>
         <noel-frame ref="frame4">
           <noel-ebook />
@@ -40,6 +44,7 @@ import NoelMarie from '../components/noel/NoelMarie'
 import NoelIllustration from '../components/noel/NoelIllustration'
 import NoelEbook from '../components/noel/NoelEbook'
 import NoelIndication from '../components/noel/NoelIndication'
+import NoelMissionCatmas from '../components/noel/NoelMissionCatmas'
 
 export default {
   name: 'Noel2022Page',
@@ -51,6 +56,7 @@ export default {
     NoelIllustration,
     NoelEbook,
     NoelIndication,
+    NoelMissionCatmas,
   },
   data() {
     return {
