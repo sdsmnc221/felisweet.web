@@ -19,9 +19,6 @@ export default {
   justify-content: center;
   align-items: center;
   background-color: $color-nepal-blue;
-  background-image: url('/images/noel-rotate-screen.png');
-  background-repeat: no-repeat;
-  background-size: cover;
 
   img {
     width: 150%;
