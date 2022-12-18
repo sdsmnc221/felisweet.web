@@ -171,11 +171,12 @@ function Scratch(canvas, bg, instruction, gsap) {
     //   ctx.drawImage(brush, e.screenX, e.screenY)
     // }
 
+    console.log(e.targetTouches[0])
     ctx.globalCompositeOperation = 'destination-out'
     ctx.drawImage(
       brush,
-      e.targetTouches[0].pageX - canvasWidth / 2,
-      e.targetTouches[0].pageY - canvasHeight / 2,
+      e.targetTouches[0].clientX - canvasWidth / 2,
+      e.targetTouches[0].clientY - canvasHeight / 2,
       brush.width * 4,
       brush.height * 4
     )

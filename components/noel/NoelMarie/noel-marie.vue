@@ -46,9 +46,9 @@ export default {
         },
         0
       )
-      .from(
+      .to(
         this.$refs.marie,
-        { opacity: 0, scale: 0, duration: 0.6, ease: 'circ.in' },
+        { opacity: 1, scale: 1, duration: 0.6, ease: 'circ.in' },
         '>'
       )
       .fromTo(
@@ -63,7 +63,7 @@ export default {
           duration: 1.2,
           ease: 'circ.in',
         },
-        '7.2'
+        '4.8'
       )
   },
   methods: {
@@ -102,8 +102,9 @@ export default {
     width: auto;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 0;
+    transform: translate(-50%, -50%) scale(0);
+    z-index: 1;
+    opacity: 0;
   }
 
   .instruction {
