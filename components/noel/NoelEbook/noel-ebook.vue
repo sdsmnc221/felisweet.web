@@ -58,7 +58,7 @@ export default {
           scale: 1,
           duration: 2.4,
           ease: 'circ.in',
-          // pointerEvents: 'auto',
+          pointerEvents: 'auto',
         },
         '>'
       )
