@@ -87,7 +87,6 @@
         </transition>
       </div>
     </transition>
-
     <transition>
       <noel-rotate-screen
         v-if="$store.state.isMobile && !$store.state.isLandscape"
@@ -416,7 +415,7 @@ main.atom-wrapper {
 
   .sound {
     position: fixed;
-    bottom: 14%;
+    top: 4%;
     right: 4%;
 
     .tgl {
@@ -610,10 +609,6 @@ main.atom-wrapper {
     &.--isSafari {
       flex: 1;
       height: auto;
-    }
-
-    .sound {
-      bottom: 18%;
     }
   }
 }
