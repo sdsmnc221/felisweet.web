@@ -20,7 +20,6 @@
 </template>
 
 <script>
-import { randomNumberInRange } from '../../../utils'
 export default {
   name: 'NoelIllustration',
   data() {
@@ -116,6 +115,7 @@ export default {
           {
             scale: 0.72,
             yPercent: -32,
+            xPercent: -50,
             duration: 2.4,
             ease: 'circ.in',
             filter: 'blur(1.2px)',
@@ -125,40 +125,6 @@ export default {
     },
     startTL() {
       if (this.tl) this.tl.play()
-
-      const gifts = [this.$refs.giftL, this.$refs.giftR]
-      const illus = this.$refs.illustration
-      const quote = this.$refs.quote
-
-      const mouse = {
-        x: 0,
-        y: 0,
-      }
-
-      const speed = 0.032
-
-      const elements = [quote, illus, ...gifts].map((element) => {
-        return {
-          element,
-          shiftValue: randomNumberInRange(-0.12, 0.12),
-          xSet: this.$gsap.quickSetter(element, 'x', 'px'),
-          ySet: this.$gsap.quickSetter(element, 'y', 'px'),
-        }
-      })
-
-      this.$el.addEventListener('mousemove', (e) => {
-        mouse.x = e.x
-        mouse.y = e.y
-      })
-
-      this.$gsap.ticker.add(() => {
-        const dt = 1.0 - Math.pow(1.0 - speed, this.$gsap.ticker.deltaRatio())
-
-        elements.forEach((item) => {
-          item.xSet(item.shiftValue * mouse.x * dt)
-          item.ySet(item.shiftValue * mouse.y * dt)
-        })
-      })
     },
     resetTL() {
       if (this.tl) this.tl.reverse()

@@ -35,7 +35,7 @@
       </p>
     </div>
     <button-arrow
-      v-if="index < total"
+      v-if="index < total - 1"
       direction="down"
       :size="36"
       :arrow-size="36"
