@@ -22,7 +22,7 @@
       <p>des stickers, des timbres et enveloppes...</p>
     </div>
     <div class="content">
-      <img css alt="" />
+      <img src="/images/noel-section4-content3.gif" alt="" />
     </div>
     <div class="content">
       <p>tout a été préparé avec minutie et amour.</p>
