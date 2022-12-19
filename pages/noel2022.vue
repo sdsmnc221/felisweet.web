@@ -1,5 +1,5 @@
 <template>
-  <atom-wrapper tag="main">
+  <atom-wrapper tag="main" :class="{ '--isSafari': isSafari }">
     <transition>
       <div
         v-if="
@@ -116,6 +116,19 @@ export default {
       stopCountdown: false,
       tl: null,
     }
+  },
+  computed: {
+    isSafari() {
+      const isSafari =
+        /constructor/i.test(window.HTMLElement) ||
+        (function (p) {
+          return p.toString() === '[object SafariRemoteNotification]'
+        })(
+          !window.safari ||
+            (typeof safari !== 'undefined' && window.safari.pushNotification)
+        )
+      return isSafari
+    },
   },
   created() {
     this.$gsap.registerPlugin(ScrollTrigger)
@@ -428,6 +441,16 @@ main.atom-wrapper {
 
   main.atom-wrapper .cursor {
     display: none;
+  }
+
+  main.atom-wrapper {
+    flex: none;
+    height: calc(100vh - 52px);
+
+    &.--isSafari {
+      flex: 1;
+      height: auto;
+    }
   }
 }
 </style>
