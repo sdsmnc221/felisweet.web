@@ -351,10 +351,11 @@ body {
     height: 0;
     overflow: hidden;
     z-index: -1; // hide images
-    content: url('/images/noel-marie-1.png') url('/images/noel-marie-2.gif')
-      url('/images/noel-section4-content1.gif')
-      url('/images/noel-section4-content2.gif')
-      url('/images/noel-section4-content3.gif');
+    content: url('/images/noel/noel-marie-1.png')
+      url('/images/noel/noel-marie-2.gif')
+      url('/images/noel/noel-section4-content1.gif')
+      url('/images/noel/noel-section4-content2.gif')
+      url('/images/noel/noel-section4-content3.gif');
     // load images
   }
 }
@@ -371,7 +372,7 @@ main.atom-wrapper {
     position: absolute;
     width: 48px;
     height: 48px;
-    background-image: url('/images/noel-cursor.png');
+    background-image: url('/images/noel/noel-cursor.png');
     z-index: 999;
     mix-blend-mode: normal;
     transition: none;
@@ -425,23 +426,23 @@ main.atom-wrapper {
       }
 
       &:nth-of-type(1)::after {
-        background-image: url('/images/noel-bg-1.png');
+        background-image: url('/images/noel/noel-bg-1.png');
       }
 
       &:nth-of-type(2)::after {
-        background-image: url('/images/noel-bg-2.png');
+        background-image: url('/images/noel/noel-bg-2.png');
       }
 
       &:nth-of-type(3)::after {
-        background-image: url('/images/noel-bg-3.png');
+        background-image: url('/images/noel/noel-bg-3.png');
       }
 
       &:nth-of-type(4)::after {
-        background-image: url('/images/noel-bg-4.png');
+        background-image: url('/images/noel/noel-bg-4.png');
       }
 
       &:nth-of-type(5)::after {
-        background-image: url('/images/noel-bg-5.png');
+        background-image: url('/images/noel/noel-bg-5.png');
       }
     }
   }

@@ -1,5 +1,5 @@
-import Brush from '../static/images/noel-brush.png'
-import Marie from '../static/images/noel-marie-1.png'
+import Brush from '../static/images/noel/noel-brush.png'
+import Marie from '../static/images/noel/noel-marie-1.png'
 
 function Scratch(canvas, bg, instruction, gsap) {
   var isDrawing, lastPoint

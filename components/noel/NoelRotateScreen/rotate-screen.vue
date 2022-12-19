@@ -1,6 +1,6 @@
 <template>
   <div class="rotate-screen">
-    <img src="/images/noel-rotate-screen.gif" alt="" />
+    <img src="/images/noel/noel-rotate-screen.gif" alt="" />
   </div>
 </template>
 

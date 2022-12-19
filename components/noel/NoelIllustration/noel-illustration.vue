@@ -1,19 +1,29 @@
 <template>
   <div ref="main" class="noel-illustration">
-    <img ref="quote" class="quote" src="/images/noel-quote.png" alt="" />
+    <img ref="quote" class="quote" src="/images/noel/noel-quote.png" alt="" />
     <img
       ref="illustration"
       class="illustration"
-      src="/images/noel-illustration.svg"
+      src="/images/noel/noel-illustration.svg"
       alt=""
       @click="approach"
     />
-    <img ref="giftL" class="gift-right" src="/images/noel-gift-r.png" alt="" />
-    <img ref="giftR" class="gift-left" src="/images/noel-gift-l.png" alt="" />
+    <img
+      ref="giftL"
+      class="gift-right"
+      src="/images/noel/noel-gift-r.png"
+      alt=""
+    />
+    <img
+      ref="giftR"
+      class="gift-left"
+      src="/images/noel/noel-gift-l.png"
+      alt=""
+    />
     <img
       ref="instruction"
       class="instruction"
-      src="/images/noel-section3-instruction.png"
+      src="/images/noel/noel-section3-instruction.png"
       alt=""
     />
   </div>

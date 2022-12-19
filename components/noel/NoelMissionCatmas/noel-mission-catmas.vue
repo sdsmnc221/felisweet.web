@@ -3,26 +3,26 @@
     <img
       ref="title"
       class="title"
-      src="/images/noel-section4-title.gif"
+      src="/images/noel/noel-section4-title.gif"
       alt=""
     />
     <div class="content">
       <p>De belles cartes...</p>
     </div>
     <div class="content">
-      <img src="/images/noel-section4-content1.gif" alt="" />
+      <img src="/images/noel/noel-section4-content1.gif" alt="" />
     </div>
     <div class="content">
       <p>de jolies photos de vos chats...</p>
     </div>
     <div class="content">
-      <img src="/images/noel-section4-content2.gif" alt="" />
+      <img src="/images/noel/noel-section4-content2.gif" alt="" />
     </div>
     <div class="content">
       <p>des stickers, des timbres et enveloppes...</p>
     </div>
     <div class="content">
-      <img src="/images/noel-section4-content3.gif" alt="" />
+      <img src="/images/noel/noel-section4-content3.gif" alt="" />
     </div>
     <div class="content">
       <p>tout a été préparé avec minutie et amour.</p>

@@ -1,14 +1,24 @@
 <template>
   <div ref="main" class="noel-miaou">
-    <img ref="wish" class="wish" src="/images/noel-miaou-wish.png" alt="" />
+    <img
+      ref="wish"
+      class="wish"
+      src="/images/noel/noel-miaou-wish.png"
+      alt=""
+    />
     <noel-globe ref="globe" />
-    <img ref="mimoso" class="mimoso" src="/images/noel-mimoso.svg" alt="" />
-    <img ref="zigpo" class="zigpo" src="/images/noel-zigpo.svg" alt="" />
-    <img ref="ball" class="ball" src="/images/noel-ball.svg" alt="" />
+    <img
+      ref="mimoso"
+      class="mimoso"
+      src="/images/noel/noel-mimoso.svg"
+      alt=""
+    />
+    <img ref="zigpo" class="zigpo" src="/images/noel/noel-zigpo.svg" alt="" />
+    <img ref="ball" class="ball" src="/images/noel/noel-ball.svg" alt="" />
     <img
       ref="instruction"
       class="instruction"
-      src="/images/noel-section1-instruction.png"
+      src="/images/noel/noel-section1-instruction.png"
       alt=""
     />
   </div>

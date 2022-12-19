@@ -1,6 +1,6 @@
 <template>
   <div ref="main" class="noel-marie">
-    <img ref="marie" class="marie" src="/images/noel-marie-2.gif" alt="" />
+    <img ref="marie" class="marie" src="/images/noel/noel-marie-2.gif" alt="" />
     <canvas
       ref="canvas"
       :width="$store.state.isMobile ? '320px' : '640px'"
@@ -9,7 +9,7 @@
     <img
       ref="instruction"
       class="instruction"
-      src="/images/noel-section2-instruction.png"
+      src="/images/noel/noel-section2-instruction.png"
       alt=""
     />
   </div>

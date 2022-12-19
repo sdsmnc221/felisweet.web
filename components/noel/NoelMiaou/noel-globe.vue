@@ -1558,8 +1558,8 @@
         </g>
       </g>
     </svg>
-    <img class="star" src="/images/noel-star.png" alt="" />
-    <img class="sweety" src="/images/noel-sweety.svg" alt="" />
+    <img class="star" src="/images/noel/noel-star.png" alt="" />
+    <img class="sweety" src="/images/noel/noel-sweety.svg" alt="" />
   </div>
 </template>
 
