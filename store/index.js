@@ -77,6 +77,12 @@ export const mutations = {
   },
   SET_MUTE(state, { mute }) {
     state.muted = mute
+
+    if (state.muted) {
+      state.resources.forEach((resource) => resource.stop())
+    } else {
+      state.resources.find((resource) => resource.name === 'ambiance')?.play()
+    }
   },
 }
 
