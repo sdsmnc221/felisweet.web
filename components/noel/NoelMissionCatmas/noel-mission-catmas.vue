@@ -116,6 +116,7 @@ export default {
           .timeline()
           .to(contents, {
             opacity: 0,
+            mixBlendMode: 'multiply',
             ease: 'circ.in',
             duration: 1.6,
           })
@@ -201,6 +202,7 @@ export default {
 
       &:last-of-type {
         p {
+          margin-top: 32px;
           font-size: 1rem;
         }
       }
