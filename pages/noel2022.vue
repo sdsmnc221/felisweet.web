@@ -351,7 +351,10 @@ body {
     height: 0;
     overflow: hidden;
     z-index: -1; // hide images
-    content: url('/images/noel-marie-1.png') url('/images/noel-marie-2.gif');
+    content: url('/images/noel-marie-1.png') url('/images/noel-marie-2.gif')
+      url('/images/noel-section4-content1.gif')
+      url('/images/noel-section4-content2.gif')
+      url('/images/noel-section4-content3.gif');
     // load images
   }
 }

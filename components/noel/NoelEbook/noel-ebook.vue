@@ -38,9 +38,9 @@ export default {
       .to(
         this.$refs.title,
         {
-          scale: 1,
+          scale: this.$store.state.isMobile ? 1.2 : 1,
           bottom: '-2%',
-          left: '-4%',
+          left: this.$store.state.isMobile ? '2%' : '-4%',
           xPercent: 0,
           yPercent: 0,
           x: 0,

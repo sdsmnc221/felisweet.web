@@ -22,7 +22,7 @@
       <p>des stickers, des timbres et enveloppes...</p>
     </div>
     <div class="content">
-      <img src="/images/noel-section4-content3.gif" alt="" />
+      <img css alt="" />
     </div>
     <div class="content">
       <p>tout a été préparé avec minutie et amour.</p>
@@ -175,7 +175,7 @@ export default {
     img {
       display: block;
       width: auto;
-      height: 40%;
+      height: 100%;
       mix-blend-mode: multiply;
     }
   }
@@ -201,7 +201,7 @@ export default {
 
       &:last-of-type {
         p {
-          font-size: 0.9rem;
+          font-size: 1rem;
         }
       }
     }
