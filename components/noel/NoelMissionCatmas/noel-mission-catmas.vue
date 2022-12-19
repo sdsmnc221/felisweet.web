@@ -28,10 +28,12 @@
       <p>tout a été préparé avec minutie et amour.</p>
     </div>
     <div class="content">
+      <p>Un "happy mail", un courrier du bonheur, vous a été destiné,</p>
+    </div>
+    <div class="content">
       <p>
-        Un "happy mail", un courrier du bonheur, vous a été destiné pour que vos
-        chats et vous puissiez partager ce beau moment de bonheur avec
-        FeliSweet.
+        pour que vos chats et vous puissiez partager ce beau moment de bonheur
+        avec FeliSweet.
       </p>
     </div>
     <button-arrow
