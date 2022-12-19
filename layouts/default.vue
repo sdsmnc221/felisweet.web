@@ -78,6 +78,23 @@ export default {
   async middleware({ store, $prismic }) {
     await store.dispatch('fetchFooter', $prismic)
   },
+  head() {
+    const head = {}
+
+    if (this.$route.name === 'noel2022') {
+      head.title = `Fêtez la fin de l'année 2022 avec FeliSweet`
+      head.meta = [
+        {
+          hid: 'description-noel2022',
+          name: 'description',
+          content:
+            "Carte interactive des fêtes de fin de l'année 2022 de FeliSweet",
+        },
+      ]
+    }
+
+    return head
+  },
   mounted() {
     if (this.$route.name !== 'noel2022') {
       setTimeout(
