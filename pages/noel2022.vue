@@ -439,7 +439,7 @@ main.atom-wrapper {
       + .tgl-btn {
         outline: 0;
         display: block;
-        width: 8em;
+        width: 6em;
         height: 2em;
         position: relative;
         cursor: pointer;
@@ -610,6 +610,10 @@ main.atom-wrapper {
     &.--isSafari {
       flex: 1;
       height: auto;
+    }
+
+    .sound {
+      bottom: 18%;
     }
   }
 }

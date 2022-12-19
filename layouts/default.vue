@@ -32,11 +32,24 @@
     </transition>
     <transition name="fade">
       <noel-page-loader
-        v-if="$store.state.loading && $route.name === 'noel2022'"
+        v-if="
+          $store.state.loading &&
+          $route.name === 'noel2022' &&
+          $store.state.isLandscape
+        "
       />
     </transition>
     <transition name="fade">
       <noel-snow v-if="$route.name === 'noel2022'" />
+    </transition>
+    <transition name="fade">
+      <noel-rotate-screen
+        v-if="
+          $route.name === 'noel2022' &&
+          $store.state.isMobile &&
+          !$store.state.isLandscape
+        "
+      />
     </transition>
   </div>
 </template>
@@ -49,6 +62,7 @@ import DotCursor from '../components/molecules/DotCursor'
 import PageLoader from '../components/organisms/PageLoader'
 import NoelPageLoader from '../components/noel/NoelPageLoader'
 import NoelSnow from '../components/noel/NoelSnow'
+import NoelRotateScreen from '../components/noel/NoelRotateScreen'
 
 export default {
   components: {
@@ -59,6 +73,7 @@ export default {
     PageLoader,
     NoelPageLoader,
     NoelSnow,
+    NoelRotateScreen,
   },
   async middleware({ store, $prismic }) {
     await store.dispatch('fetchFooter', $prismic)

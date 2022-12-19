@@ -12,8 +12,9 @@ export default {
 
 <style lang="scss">
 .rotate-screen {
-  flex: 1;
   width: 100vw;
+  height: 100vh;
+  overflow: hidden;
   align-self: stretch;
   display: flex;
   justify-content: center;
