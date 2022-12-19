@@ -89,6 +89,8 @@ export default {
           duration: 1.6,
           stagger: 0.48,
           ease: 'circ.in',
+          onComplete: () =>
+            this.$store.dispatch('playSound', { name: 'miaou' }),
         }
       )
       .fromTo(
@@ -140,6 +142,8 @@ export default {
         if (this.showWish) this.release(pointerEvents)
       },
       onRelease: () => {
+        this.$store.dispatch('stopSound', { name: 'shake' })
+
         if (this.showWish) {
           if (this.shakeTL) {
             this.shakeTL.kill()
@@ -168,6 +172,7 @@ export default {
         yoyo: true,
         duration: 0.64,
         ease: 'sine.inOut',
+        onStart: () => this.$store.dispatch('playSound', { name: 'shake' }),
       })
     },
     release(e) {
@@ -244,6 +249,8 @@ export default {
               left: '50%',
               duration: 2.4,
               ease: 'circ.in',
+              onComplete: () =>
+                this.$store.dispatch('playSound', { name: 'magic' }),
             },
             '>'
           )
@@ -256,6 +263,8 @@ export default {
           xPercent: -50,
           duration: 2.4,
           ease: 'circ.in',
+          onComplete: () =>
+            this.$store.dispatch('playSound', { name: 'magic' }),
         })
       }
     },

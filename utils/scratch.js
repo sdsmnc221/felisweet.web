@@ -1,7 +1,7 @@
 import Brush from '../static/images/noel/noel-brush.png'
 import Marie from '../static/images/noel/noel-marie-1.png'
 
-function Scratch(canvas, bg, instruction, gsap) {
+function Scratch(canvas, bg, instruction, gsap, sounds) {
   var isDrawing, lastPoint
   var canvasWidth = canvas.width,
     canvasHeight = canvas.height,
@@ -103,7 +103,11 @@ function Scratch(canvas, bg, instruction, gsap) {
   function handlePercentage(filledInPixels) {
     filledInPixels = filledInPixels || 0
     if (filledInPixels > 50) {
-      gsap.to(canvas, { opacity: 0, duration: 1.6, ease: 'circ.in' })
+      gsap.to(canvas, {
+        opacity: 0,
+        duration: 1.6,
+        ease: 'circ.in',
+      })
       gsap.to(instruction, {
         opacity: 0,
         scale: 0,
@@ -190,6 +194,7 @@ function Scratch(canvas, bg, instruction, gsap) {
 
   function scratch() {
     move()
+    sounds.play()
   }
 
   function handleMouseUp(e) {

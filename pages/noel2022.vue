@@ -84,6 +84,8 @@
 
 <script>
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import Resources from '../utils/Resources'
+import sources from '../utils/souces'
 import AtomWrapper from '../components/atoms/AtomWrapper'
 import NoelFrame from '../components/noel/NoelFrame'
 import NoelMiaou from '../components/noel/NoelMiaou'
@@ -115,6 +117,7 @@ export default {
       showWish: false,
       stopCountdown: false,
       tl: null,
+      resources: null,
     }
   },
   computed: {
@@ -142,6 +145,14 @@ export default {
         this.$refs.cursor.style.top = e.clientY - 48 / 2 + 'px'
       }
     })
+
+    window.addEventListener('resourcesIsReady', () => {
+      setTimeout(() => {
+        this.$store.dispatch('playSound', { name: 'ambiance' })
+      }, 1000)
+    })
+
+    this.resources = new Resources(sources, this.$store, window)
 
     this.render()
   },
@@ -300,6 +311,7 @@ export default {
         true,
         "Coucou c'est Marie. J'ai quelque chose à vous dire !"
       )
+      this.$store.dispatch('playSound', { name: 'coucou' })
 
       setTimeout(() => this.setIndication(false), 2400)
     },
@@ -309,21 +321,27 @@ export default {
       setTimeout(() => this.setIndication(false), 2400)
     },
     left({ index }) {
+      if (index - 1 === 0) this.$store.dispatch('playSound', { name: 'miaou' })
       if (index > 0) {
         window.scrollTo({
           left: 0,
           top: window.scrollY - 10,
           behavior: 'smooth',
         })
+        this.$store.dispatch('playSound', { name: 'star' })
       }
     },
     right({ index }) {
+      if (index === 0) {
+        this.$store.dispatch('stopSound', { name: 'miaou' })
+      }
       if (index < 4) {
         window.scrollTo({
           left: 0,
           top: window.scrollY + 10,
           behavior: 'smooth',
         })
+        this.$store.dispatch('playSound', { name: 'star' })
       }
     },
   },

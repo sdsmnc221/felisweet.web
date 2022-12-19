@@ -117,6 +117,10 @@ export default {
             duration: 3.6,
             ease: 'circ.in',
             mixBlendMode: 'normal',
+            onStart: () =>
+              this.$store.dispatch('playSound', { name: 'swoosh' }),
+            onComplete: () =>
+              this.$store.dispatch('playSound', { name: 'magic' }),
           },
           0
         )

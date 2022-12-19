@@ -40,7 +40,11 @@ export default {
               this.$refs.canvas,
               this.$refs.marie,
               this.$refs.instruction,
-              this.$gsap
+              this.$gsap,
+              {
+                play: () =>
+                  this.$store.dispatch('playSound', { name: 'scratch' }),
+              }
             )
           },
         },

@@ -13,6 +13,9 @@ export const state = () => ({
   isMobile: false,
   isTablet: false,
   isLandscape: false,
+  loading: true,
+  percentLoaded: 0,
+  resources: [],
 })
 
 export const getters = {
@@ -53,6 +56,21 @@ export const mutations = {
   },
   DETECT_ORIENTATION(state, { isLandscape }) {
     state.isLandscape = isLandscape
+  },
+  SET_LOADING(state, { loading }) {
+    state.loading = loading
+  },
+  PERCENT_LOADED(state, { percent }) {
+    state.percentLoaded = percent
+  },
+  SET_RESOURCES(state, { resources }) {
+    state.resources = [...state.resources, ...resources]
+  },
+  PLAY_SOUND(state, { name }) {
+    state.resources.find((resource) => resource.name === name)?.play()
+  },
+  STOP_SOUND(state, { name }) {
+    state.resources.find((resource) => resource.name === name)?.stop()
   },
 }
 
@@ -106,5 +124,20 @@ export const actions = {
     commit('DETECT_ORIENTATION', {
       isLandscape: innerWidth > innerHeight,
     })
+  },
+  setLoading({ commit }, { loading }) {
+    commit('SET_LOADING', { loading })
+  },
+  setPercentLoaded({ commit }, { percent }) {
+    commit('PERCENT_LOADED', { percent })
+  },
+  setResources({ commit }, { resources }) {
+    commit('SET_RESOURCES', { resources })
+  },
+  playSound({ commit }, { name }) {
+    commit('PLAY_SOUND', { name })
+  },
+  stopSound({ commit }, { name }) {
+    commit('STOP_SOUND', { name })
   },
 }

@@ -112,6 +112,7 @@ export default {
       this.index++
 
       if (this.index < this.total) {
+        this.$store.dispatch('playSound', { name: 'chime' })
         this.$gsap
           .timeline()
           .to(contents, {
