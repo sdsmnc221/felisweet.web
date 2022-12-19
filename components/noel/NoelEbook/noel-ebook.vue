@@ -9,7 +9,7 @@
     <img
       ref="title"
       class="title"
-      src="/images/noel-section5-title.png"
+      src="/images/noel-section5-title.gif"
       alt=""
     />
   </div>

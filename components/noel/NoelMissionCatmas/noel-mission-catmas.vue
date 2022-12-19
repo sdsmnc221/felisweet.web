@@ -3,7 +3,7 @@
     <img
       ref="title"
       class="title"
-      src="/images/noel-section4-title.png"
+      src="/images/noel-section4-title.gif"
       alt=""
     />
     <div class="content">

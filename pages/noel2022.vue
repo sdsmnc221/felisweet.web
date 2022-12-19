@@ -344,6 +344,16 @@ body {
   overflow-x: hidden;
   overflow-y: hidden !important;
   position: relative;
+
+  &::after {
+    position: absolute;
+    width: 0;
+    height: 0;
+    overflow: hidden;
+    z-index: -1; // hide images
+    content: url('/images/noel-marie-1.png') url('/images/noel-marie-2.gif');
+    // load images
+  }
 }
 main.atom-wrapper {
   width: auto;
