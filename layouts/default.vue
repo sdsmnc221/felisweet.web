@@ -1,6 +1,6 @@
 <template>
   <div>
-    <transition v-if="!loading">
+    <transition v-if="!$store.state.loading">
       <div @scroll.passive="handleScroll" class="container">
         <site-header v-bind="$store.state.header" />
         <nuxt-child
@@ -28,10 +28,12 @@
       </div>
     </transition>
     <transition name="fade">
-      <page-loader v-if="loading && $route.name !== 'noel2022'" />
+      <page-loader v-if="$store.state.loading && $route.name !== 'noel2022'" />
     </transition>
     <transition name="fade">
-      <noel-page-loader v-if="loading && $route.name === 'noel2022'" />
+      <noel-page-loader
+        v-if="$store.state.loading && $route.name === 'noel2022'"
+      />
     </transition>
     <transition name="fade">
       <noel-snow v-if="$route.name === 'noel2022'" />
@@ -61,16 +63,13 @@ export default {
   async middleware({ store, $prismic }) {
     await store.dispatch('fetchFooter', $prismic)
   },
-  data() {
-    return {
-      loading: true,
-    }
-  },
   mounted() {
-    setTimeout(
-      () => (this.loading = false),
-      this.$route.name !== 'noel2022' ? 1200 : 3600
-    )
+    if (this.$route.name !== 'noel2022') {
+      setTimeout(
+        () => this.$store.dispatch('setLoading', { loading: false }),
+        1200
+      )
+    }
 
     this.$store.dispatch('detectMobile', { navigator: window.navigator })
     this.$store.dispatch('detectOrientation', {

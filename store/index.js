@@ -16,6 +16,7 @@ export const state = () => ({
   loading: true,
   percentLoaded: 0,
   resources: [],
+  muted: false,
 })
 
 export const getters = {
@@ -67,10 +68,15 @@ export const mutations = {
     state.resources = [...state.resources, ...resources]
   },
   PLAY_SOUND(state, { name }) {
-    state.resources.find((resource) => resource.name === name)?.play()
+    if (!state.muted)
+      state.resources.find((resource) => resource.name === name)?.play()
   },
   STOP_SOUND(state, { name }) {
-    state.resources.find((resource) => resource.name === name)?.stop()
+    if (!state.muted)
+      state.resources.find((resource) => resource.name === name)?.stop()
+  },
+  SET_MUTE(state, { mute }) {
+    state.muted = mute
   },
 }
 
@@ -139,5 +145,8 @@ export const actions = {
   },
   stopSound({ commit }, { name }) {
     commit('STOP_SOUND', { name })
+  },
+  setMute({ commit }, { mute }) {
+    commit('SET_MUTE', { mute })
   },
 }

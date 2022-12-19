@@ -147,9 +147,10 @@ export default {
     })
 
     window.addEventListener('resourcesIsReady', () => {
-      setTimeout(() => {
-        this.$store.dispatch('playSound', { name: 'ambiance' })
-      }, 1000)
+      if (!this.$store.state.muted)
+        setTimeout(() => {
+          this.$store.dispatch('playSound', { name: 'ambiance' })
+        }, 1000)
     })
 
     this.resources = new Resources(sources, this.$store, window)
