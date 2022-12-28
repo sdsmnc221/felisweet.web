@@ -9,16 +9,29 @@
     >
       <photo-banner :data="banner" />
     </atom-wrapper>
+
+    <scroll-reveal-wrapper
+      v-for="(slice, index) in slices"
+      :key="`slice-service-info${index}`"
+    >
+      <atom-wrapper tag="section">
+        <service-info-block :data="slice" :small-title="index === 0" />
+      </atom-wrapper>
+    </scroll-reveal-wrapper>
+
     <paws-pattern :paws-per-section="6" />
   </atom-wrapper>
 </template>
 
 <script>
 import AtomWrapper from '../components/atoms/AtomWrapper'
+import ScrollRevealWrapper from '../components/atoms/ScrollRevealWrapper'
+import ServiceInfoBlock from '../components/molecules/ServiceInfoBlock'
 import PawsPattern from '../components/organisms/Paws-Pattern'
 import PhotoBanner from '../components/organisms/PhotoBanner'
 
 import photoBannerAdapter from '../utils/adapters/photoBanner'
+import serviceInfoBlockAdapter from '../utils/adapters/serviceInfoBlock'
 
 export default {
   name: 'IndexPage',
@@ -26,6 +39,8 @@ export default {
     AtomWrapper,
     PawsPattern,
     PhotoBanner,
+    ScrollRevealWrapper,
+    ServiceInfoBlock,
   },
   props: {
     openPopup: {
@@ -50,11 +65,16 @@ export default {
 
     const data = document?.data
 
-    const moduleBanner = data.module_banner
+    const moduleBanner = data?.module_banner
+
+    const slices = data?.slices
 
     if (data) {
       return {
         banner: photoBannerAdapter({ $prismic, data: moduleBanner.data }),
+        slices: slices.map((slice) =>
+          serviceInfoBlockAdapter({ $prismic, data: slice })
+        ),
       }
     } else {
       error({ statusCode: 404, message: 'Page not found' })
