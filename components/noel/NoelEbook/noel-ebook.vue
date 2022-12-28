@@ -4,7 +4,7 @@
       ref="iframe"
       allowfullscreen="allowfullscreen"
       scrolling="no"
-      src="https://heyzine.com/flip-book/017363908b.html"
+      src="https://heyzine.com/flip-book/cc21d07c23.html"
     />
     <img
       ref="title"

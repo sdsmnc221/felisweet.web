@@ -5,9 +5,9 @@ export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
     titleTemplate:
-      '%s - Felisweet Marie-Bénédicte Siruguet - Comportementaliste et Cat-sitter autour de Sainte-Geneviève-des-Bois',
+      '%s - FeliSweet Marie-Bénédicte Siruguet - Comportementaliste et Cat-sitter autour de Sainte-Geneviève-des-Bois',
     title:
-      'Felisweet Marie-Bénédicte Siruguet - Comportementaliste et Cat-sitter autour de Sainte-Geneviève-des-Bois',
+      'FeliSweet Marie-Bénédicte Siruguet - Comportementaliste et Cat-sitter autour de Sainte-Geneviève-des-Bois',
     htmlAttrs: {
       lang: 'fr',
     },

@@ -2652,15 +2652,17 @@
       v-if="index !== 0"
       ref="scrollLeft"
       class="scroll-left"
+      :class="{ '--narrow': index === 4 }"
       direction="left"
       :size="48"
       :arrow-size="24"
       :on-click="scrollLeft"
     />
     <button-arrow
-      v-if="index !== 4"
+      v-if="index !== 5"
       ref="scrollRight"
       class="scroll-right"
+      :class="{ '--narrow': index === 4 }"
       direction="right"
       :size="48"
       :arrow-size="24"
@@ -2747,7 +2749,10 @@ export default {
     top: 50%;
     left: 6%;
     transform: translateY(-50%);
-    z-index: 9;
+    z-index: 97;
+    &.--narrow {
+      left: 10%;
+    }
   }
 
   .scroll-right {
@@ -2755,7 +2760,11 @@ export default {
     top: 50%;
     right: 6%;
     transform: translateY(-50%);
-    z-index: 9;
+    z-index: 97;
+
+    &.--narrow {
+      right: 10%;
+    }
   }
 
   svg {

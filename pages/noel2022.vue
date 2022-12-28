@@ -71,12 +71,7 @@
             type="checkbox"
             @change="sound"
           />
-          <label
-            class="tgl-btn"
-            data-tg-off="Sans son"
-            data-tg-on="Avec son"
-            for="sound"
-          ></label>
+          <label class="tgl-btn" for="sound"></label>
         </div>
         <transition name="fade">
           <noel-indication
@@ -85,6 +80,7 @@
             :small="indicationSmall"
           />
         </transition>
+        <noel-ending v-if="showEnding" />
       </div>
     </transition>
     <transition>
@@ -108,6 +104,7 @@ import NoelEbook from '../components/noel/NoelEbook'
 import NoelIndication from '../components/noel/NoelIndication'
 import NoelMissionCatmas from '../components/noel/NoelMissionCatmas'
 import NoelRotateScreen from '../components/noel/NoelRotateScreen'
+import NoelEnding from '../components/noel/NoelEnding'
 
 export default {
   name: 'Noel2022Page',
@@ -121,6 +118,7 @@ export default {
     NoelIndication,
     NoelMissionCatmas,
     NoelRotateScreen,
+    NoelEnding,
   },
   data() {
     return {
@@ -130,7 +128,14 @@ export default {
       showWish: false,
       stopCountdown: false,
       tl: null,
+      shakeTL: null,
       resources: null,
+      showEnding: false,
+    }
+  },
+  head() {
+    return {
+      title: "Fêtez la fin de l'année 2022 avec FeliSweet",
     }
   },
   computed: {
@@ -169,6 +174,29 @@ export default {
     this.resources = new Resources(sources, this.$store, window)
 
     this.render()
+
+    this.shakeTL = this.$gsap
+      .timeline({ paused: true })
+      .add(() => {
+        if (!this.stopCountdown) this.setIndication(true, '3', true)
+      }, '0')
+      .add(() => {
+        if (!this.stopCountdown) this.setIndication(true, '2', true)
+      }, '1')
+      .add(() => {
+        if (!this.stopCountdown) this.setIndication(true, '1', true)
+      }, '2')
+      .add(() => {
+        if (!this.stopCountdown) this.setIndication(true, 'MAGIE !!!', true)
+      }, '3')
+      .add(() => {
+        if (!this.stopCountdown) this.setIndication(true, 'MAGIE !!!', true)
+      }, '4')
+      .add(() => {
+        this.stopCountdown = true
+        this.setIndication(false)
+        this.showWish = true
+      }, '5')
   },
   methods: {
     render() {
@@ -297,28 +325,7 @@ export default {
       this.indicationSmall = smallState
     },
     countdown() {
-      setTimeout(() => {
-        if (!this.stopCountdown) this.setIndication(true, '3', true)
-
-        setTimeout(() => {
-          if (!this.stopCountdown) this.setIndication(true, '2', true)
-
-          setTimeout(() => {
-            if (!this.stopCountdown) this.setIndication(true, '1', true)
-
-            setTimeout(() => {
-              if (!this.stopCountdown)
-                this.setIndication(true, 'MAGIE !!!', true)
-
-              if (!this.stopCountdown)
-                setTimeout(() => {
-                  this.setIndication(false)
-                  this.showWish = true
-                }, 1000)
-            }, 1000)
-          }, 1000)
-        }, 1000)
-      }, 1000)
+      if (this.shakeTL) this.shakeTL.progress(0).play()
     },
     showTitle1() {
       this.setIndication(
@@ -356,6 +363,10 @@ export default {
           behavior: 'smooth',
         })
         this.$store.dispatch('playSound', { name: 'star' })
+      }
+
+      if (index === 4) {
+        this.showEnding = true
       }
     },
     sound(e) {
@@ -490,14 +501,22 @@ main.atom-wrapper {
         }
 
         &:after {
-          content: attr(data-tg-on);
-          background: #02c66f;
+          width: 120px;
+          height: 64px;
           transform: rotateY(-180deg);
+          background-image: url('/images/noel/noel-unmute.gif');
+          background-size: contain;
+          background-repeat: no-repeat;
+          background-position: center;
         }
 
         &:before {
-          background: #ff3a19;
-          content: attr(data-tg-off);
+          width: 120px;
+          height: 64px;
+          background-image: url('/images/noel/noel-mute.gif');
+          background-size: contain;
+          background-repeat: no-repeat;
+          background-position: center;
         }
 
         &:active:before {
@@ -513,7 +532,6 @@ main.atom-wrapper {
         &:after {
           transform: rotateY(0);
           left: 0;
-          background: #7fc6a6;
         }
 
         &:active:after {

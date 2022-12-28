@@ -28,6 +28,13 @@
       <p>tout a été préparé avec minutie et amour.</p>
     </div>
     <div class="content">
+      <img
+        class="happy-mail"
+        src="/images/noel/noel-section4-content4.gif"
+        alt=""
+      />
+    </div>
+    <div class="content">
       <p>Un "happy mail", un courrier du bonheur, vous a été destiné,</p>
     </div>
     <div class="content">
@@ -179,6 +186,10 @@ export default {
       width: auto;
       height: 100%;
       mix-blend-mode: multiply;
+
+      &.happy-mail {
+        height: 50%;
+      }
     }
   }
 

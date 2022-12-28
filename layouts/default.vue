@@ -82,7 +82,7 @@ export default {
     const head = {}
 
     if (this.$route.name === 'noel2022') {
-      head.title = `Fêtez la fin de l'année 2022 avec FeliSweet`
+      // head.title = `Fêtez la fin de l'année 2022 avec FeliSweet`
       head.meta = [
         {
           hid: 'description-noel2022',
