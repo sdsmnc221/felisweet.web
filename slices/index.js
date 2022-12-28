@@ -2,12 +2,14 @@
 
 import ProblematicsBlock from './ProblematicsBlock';
 import ReviewsBlock from './ReviewsBlock';
+import ServiceInfoBlock from './ServiceInfoBlock';
 import ServicesBlock from './ServicesBlock';
 import SocialMediaBlock from './SocialMediaBlock';
 
 export {
 	ProblematicsBlock,
 	ReviewsBlock,
+	ServiceInfoBlock,
 	ServicesBlock,
 	SocialMediaBlock,
 };
@@ -15,6 +17,7 @@ export {
 export const components = {
 	problematics_block: ProblematicsBlock,
 	reviews_block: ReviewsBlock,
+	service_info_block: ServiceInfoBlock,
 	services_block: ServicesBlock,
 	social_media_block: SocialMediaBlock,
 };

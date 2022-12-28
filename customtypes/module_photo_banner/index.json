@@ -1,0 +1,51 @@
+{
+  "id": "module_photo_banner",
+  "label": "Module Photo Banner",
+  "repeatable": true,
+  "status": true,
+  "json": {
+    "Main": {
+      "image": {
+        "type": "Image",
+        "config": {
+          "label": "image",
+          "constraint": {},
+          "thumbnails": []
+        }
+      },
+      "description": {
+        "type": "StructuredText",
+        "config": {
+          "label": "description",
+          "placeholder": "",
+          "allowTargetBlank": true,
+          "multi": "paragraph,strong,em,hyperlink"
+        }
+      },
+      "bubble_desktop": {
+        "type": "Image",
+        "config": {
+          "label": "Bubble Desktop",
+          "constraint": {},
+          "thumbnails": []
+        }
+      },
+      "bubble_mobile": {
+        "type": "Image",
+        "config": {
+          "label": "Bubble Mobile",
+          "constraint": {},
+          "thumbnails": []
+        }
+      },
+      "bubble_image": {
+        "type": "Image",
+        "config": {
+          "label": "Bubble Image",
+          "constraint": {},
+          "thumbnails": []
+        }
+      }
+    }
+  }
+}

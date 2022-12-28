@@ -207,6 +207,121 @@
         },
         "screenshotPaths": {}
       },
+      "service_info_block": {
+        "library": "slices",
+        "id": "service_info_block",
+        "name": "ServiceInfoBlock",
+        "description": "ServiceInfoBlock",
+        "model": {
+          "id": "service_info_block",
+          "type": "SharedSlice",
+          "name": "ServiceInfoBlock",
+          "description": "ServiceInfoBlock",
+          "variations": [
+            {
+              "id": "default",
+              "name": "Default",
+              "docURL": "...",
+              "version": "sktwi1xtmkfgx8626",
+              "description": "ServiceInfoBlock",
+              "primary": {
+                "title": {
+                  "type": "Text",
+                  "config": {
+                    "label": "Title",
+                    "placeholder": ""
+                  }
+                },
+                "subtitle_up": {
+                  "type": "StructuredText",
+                  "config": {
+                    "label": "Subtitle Up",
+                    "placeholder": "",
+                    "allowTargetBlank": true,
+                    "multi": "paragraph,strong,em,hyperlink"
+                  }
+                },
+                "subtitle_down": {
+                  "type": "StructuredText",
+                  "config": {
+                    "label": "Subtitle Down",
+                    "placeholder": "",
+                    "allowTargetBlank": true,
+                    "multi": "paragraph,strong,em,hyperlink"
+                  }
+                },
+                "description": {
+                  "type": "StructuredText",
+                  "config": {
+                    "label": "Description",
+                    "placeholder": "",
+                    "allowTargetBlank": true,
+                    "multi": "paragraph,strong,em,list-item,o-list-item,hyperlink"
+                  }
+                },
+                "illustration": {
+                  "type": "Image",
+                  "config": {
+                    "label": "Illustration",
+                    "constraint": {},
+                    "thumbnails": []
+                  }
+                }
+              },
+              "items": {},
+              "imageUrl": "https://images.prismic.io/slice-machine/621a5ec4-0387-4bc5-9860-2dd46cbc07cd_default_ss.png?auto=compress,format"
+            }
+          ]
+        },
+        "mocks": {
+          "default": {
+            "variation": "default",
+            "version": "sktwi1xtmkfgx8626",
+            "items": [
+              {}
+            ],
+            "primary": {
+              "title": "asleep",
+              "subtitle_up": [
+                {
+                  "type": "paragraph",
+                  "text": "Id aute irure exercitation nostrud do laborum amet laboris veniam nulla do.",
+                  "spans": []
+                }
+              ],
+              "subtitle_down": [
+                {
+                  "type": "paragraph",
+                  "text": "Enim ex adipisicing tempor eu laborum.",
+                  "spans": []
+                }
+              ],
+              "description": [
+                {
+                  "type": "paragraph",
+                  "text": "Labore irure labore qui esse ea eiusmod tempor.",
+                  "spans": []
+                }
+              ],
+              "illustration": {
+                "dimensions": {
+                  "width": 900,
+                  "height": 500
+                },
+                "alt": null,
+                "copyright": null,
+                "url": "https://images.unsplash.com/photo-1494173853739-c21f58b16055"
+              }
+            },
+            "slice_type": "service_info_block"
+          }
+        },
+        "meta": {
+          "fileName": "index",
+          "extension": "vue"
+        },
+        "screenshotPaths": {}
+      },
       "services_block": {
         "library": "slices",
         "id": "services_block",

@@ -55,7 +55,16 @@
       }
     },
     "module_contact_banner": {},
-    "module_social_media": {}
+    "module_social_media": {},
+    "module_photo_banner": {
+      "description": {
+        "config": {
+          "patternType": "PARAGRAPH",
+          "blocks": 1
+        }
+      }
+    },
+    "info_page": {}
   },
   "slices": {
     "Services": {
@@ -119,6 +128,30 @@
       "default": {
         "primary": {},
         "items": {}
+      }
+    },
+    "ServiceInfoBlock": {
+      "default": {
+        "primary": {
+          "description": {
+            "config": {
+              "patternType": "PARAGRAPH",
+              "blocks": 1
+            }
+          },
+          "subtitle_up": {
+            "config": {
+              "patternType": "PARAGRAPH",
+              "blocks": 1
+            }
+          },
+          "subtitle_down": {
+            "config": {
+              "patternType": "PARAGRAPH",
+              "blocks": 1
+            }
+          }
+        }
       }
     }
   }
