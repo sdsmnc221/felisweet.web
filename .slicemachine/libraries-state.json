@@ -1,6 +1,68 @@
 {
   "slices": {
     "components": {
+      "header_link": {
+        "library": "slices",
+        "id": "header_link",
+        "name": "HeaderLinks",
+        "description": "HeaderLink",
+        "model": {
+          "id": "header_link",
+          "type": "SharedSlice",
+          "name": "HeaderLinks",
+          "description": "HeaderLink",
+          "variations": [
+            {
+              "id": "default",
+              "name": "Default",
+              "docURL": "...",
+              "version": "sktwi1xtmkfgx8626",
+              "description": "HeaderLink",
+              "primary": {},
+              "items": {
+                "title": {
+                  "type": "Text",
+                  "config": {
+                    "label": "Title",
+                    "placeholder": ""
+                  }
+                },
+                "link": {
+                  "type": "Link",
+                  "config": {
+                    "label": "link",
+                    "placeholder": "",
+                    "select": null
+                  }
+                }
+              },
+              "imageUrl": "https://images.prismic.io/slice-machine/621a5ec4-0387-4bc5-9860-2dd46cbc07cd_default_ss.png?auto=compress,format"
+            }
+          ]
+        },
+        "mocks": {
+          "default": {
+            "variation": "default",
+            "version": "sktwi1xtmkfgx8626",
+            "items": [
+              {
+                "title": "social",
+                "link": {
+                  "link_type": "Web",
+                  "url": "http://google.com"
+                }
+              }
+            ],
+            "primary": {},
+            "slice_type": "header_link"
+          }
+        },
+        "meta": {
+          "fileName": "index",
+          "extension": "vue"
+        },
+        "screenshotPaths": {}
+      },
       "problematics_block": {
         "library": "slices",
         "id": "problematics_block",

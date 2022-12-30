@@ -1,0 +1,31 @@
+{
+  "id": "site_header",
+  "label": "Site Header",
+  "repeatable": false,
+  "status": true,
+  "json": {
+    "Main": {
+      "logo": {
+        "type": "Link",
+        "config": {
+          "label": "logo",
+          "select": "document",
+          "customtypes": [
+            "module_logo"
+          ]
+        }
+      },
+      "slices": {
+        "type": "Slices",
+        "fieldset": "Slice Zone",
+        "config": {
+          "choices": {
+            "header_link": {
+              "type": "SharedSlice"
+            }
+          }
+        }
+      }
+    }
+  }
+}

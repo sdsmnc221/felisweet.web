@@ -22,6 +22,14 @@
           ]
         }
       },
+      "site_footer": {
+        "type": "Link",
+        "config": {
+          "label": "site footer",
+          "placeholder": "",
+          "select": "media"
+        }
+      },
       "slices": {
         "type": "Slices",
         "fieldset": "Slice Zone",

@@ -82,6 +82,17 @@ interface InfoPageDocumentData {
      */
     module_banner: prismicT.RelationField<"module_photo_banner">;
     /**
+     * site footer field in *Info Page*
+     *
+     * - **Field Type**: Link to Media
+     * - **Placeholder**: *None*
+     * - **API ID Path**: info_page.site_footer
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/link-content-relationship
+     *
+     */
+    site_footer: prismicT.LinkToMediaField;
+    /**
      * Slice Zone field in *Info Page*
      *
      * - **Field Type**: Slice Zone
@@ -656,7 +667,96 @@ interface SiteFooterDocumentData {
  * @typeParam Lang - Language API ID of the document.
  */
 export type SiteFooterDocument<Lang extends string = string> = prismicT.PrismicDocumentWithoutUID<Simplify<SiteFooterDocumentData>, "site_footer", Lang>;
-export type AllDocumentTypes = HomePageDocument | InfoPageDocument | ModuleContactBannerDocument | ModuleHeroBannerDocument | ModuleLogoDocument | ModulePhotoBannerDocument | ModuleServiceDocument | ModuleSocialMediaDocument | SiteFooterDocument;
+/** Content for Site Header documents */
+interface SiteHeaderDocumentData {
+    /**
+     * logo field in *Site Header*
+     *
+     * - **Field Type**: Content Relationship
+     * - **Placeholder**: *None*
+     * - **API ID Path**: site_header.logo
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/link-content-relationship
+     *
+     */
+    logo: prismicT.RelationField<"module_logo">;
+    /**
+     * Slice Zone field in *Site Header*
+     *
+     * - **Field Type**: Slice Zone
+     * - **Placeholder**: *None*
+     * - **API ID Path**: site_header.slices[]
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/slices
+     *
+     */
+    slices: prismicT.SliceZone<SiteHeaderDocumentDataSlicesSlice>;
+}
+/**
+ * Slice for *Site Header → Slice Zone*
+ *
+ */
+type SiteHeaderDocumentDataSlicesSlice = HeaderLinkSlice;
+/**
+ * Site Header document from Prismic
+ *
+ * - **API ID**: `site_header`
+ * - **Repeatable**: `false`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type SiteHeaderDocument<Lang extends string = string> = prismicT.PrismicDocumentWithoutUID<Simplify<SiteHeaderDocumentData>, "site_header", Lang>;
+export type AllDocumentTypes = HomePageDocument | InfoPageDocument | ModuleContactBannerDocument | ModuleHeroBannerDocument | ModuleLogoDocument | ModulePhotoBannerDocument | ModuleServiceDocument | ModuleSocialMediaDocument | SiteFooterDocument | SiteHeaderDocument;
+/**
+ * Item in HeaderLinks → Items
+ *
+ */
+export interface HeaderLinkSliceDefaultItem {
+    /**
+     * Title field in *HeaderLinks → Items*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: header_link.items[].title
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    title: prismicT.KeyTextField;
+    /**
+     * link field in *HeaderLinks → Items*
+     *
+     * - **Field Type**: Link
+     * - **Placeholder**: *None*
+     * - **API ID Path**: header_link.items[].link
+     * - **Documentation**: https://prismic.io/docs/core-concepts/link-content-relationship
+     *
+     */
+    link: prismicT.LinkField;
+}
+/**
+ * Default variation for HeaderLinks Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: `HeaderLink`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
+ *
+ */
+export type HeaderLinkSliceDefault = prismicT.SharedSliceVariation<"default", Record<string, never>, Simplify<HeaderLinkSliceDefaultItem>>;
+/**
+ * Slice variation for *HeaderLinks*
+ *
+ */
+type HeaderLinkSliceVariation = HeaderLinkSliceDefault;
+/**
+ * HeaderLinks Shared Slice
+ *
+ * - **API ID**: `header_link`
+ * - **Description**: `HeaderLink`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
+ *
+ */
+export type HeaderLinkSlice = prismicT.SharedSlice<"header_link", HeaderLinkSliceVariation>;
 /**
  * Primary content in ProblematicsBlock → Primary
  *
@@ -1041,6 +1141,6 @@ declare module "@prismicio/client" {
         (repositoryNameOrEndpoint: string, options?: prismic.ClientConfig): prismic.Client<AllDocumentTypes>;
     }
     namespace Content {
-        export type { HomePageDocumentData, HomePageDocumentDataSlicesSlice, HomePageDocument, InfoPageDocumentData, InfoPageDocumentDataSlicesSlice, InfoPageDocument, ModuleContactBannerDocumentData, ModuleContactBannerDocumentDataSlicesSlice, ModuleContactBannerDocument, ModuleHeroBannerDocumentData, ModuleHeroBannerDocument, ModuleLogoDocumentData, ModuleLogoDocument, ModulePhotoBannerDocumentData, ModulePhotoBannerDocument, ModuleServiceDocumentData, ModuleServiceDocument, ModuleSocialMediaDocumentData, ModuleSocialMediaDocument, SiteFooterDocumentData, SiteFooterDocument, AllDocumentTypes, ProblematicsBlockSliceDefaultPrimary, ProblematicsBlockSliceDefaultItem, ProblematicsBlockSliceDefault, ProblematicsBlockSliceVariation, ProblematicsBlockSlice, ReviewsBlockSliceDefaultPrimary, ReviewsBlockSliceDefaultItem, ReviewsBlockSliceDefault, ReviewsBlockSliceVariation, ReviewsBlockSlice, ServiceInfoBlockSliceDefaultPrimary, ServiceInfoBlockSliceDefault, ServiceInfoBlockSliceVariation, ServiceInfoBlockSlice, ServicesBlockSliceDefaultPrimary, ServicesBlockSliceDefaultItem, ServicesBlockSliceDefault, ServicesBlockSliceVariation, ServicesBlockSlice, SocialMediaBlockSliceDefaultPrimary, SocialMediaBlockSliceDefaultItem, SocialMediaBlockSliceDefault, SocialMediaBlockSliceVariation, SocialMediaBlockSlice };
+        export type { HomePageDocumentData, HomePageDocumentDataSlicesSlice, HomePageDocument, InfoPageDocumentData, InfoPageDocumentDataSlicesSlice, InfoPageDocument, ModuleContactBannerDocumentData, ModuleContactBannerDocumentDataSlicesSlice, ModuleContactBannerDocument, ModuleHeroBannerDocumentData, ModuleHeroBannerDocument, ModuleLogoDocumentData, ModuleLogoDocument, ModulePhotoBannerDocumentData, ModulePhotoBannerDocument, ModuleServiceDocumentData, ModuleServiceDocument, ModuleSocialMediaDocumentData, ModuleSocialMediaDocument, SiteFooterDocumentData, SiteFooterDocument, SiteHeaderDocumentData, SiteHeaderDocumentDataSlicesSlice, SiteHeaderDocument, AllDocumentTypes, HeaderLinkSliceDefaultItem, HeaderLinkSliceDefault, HeaderLinkSliceVariation, HeaderLinkSlice, ProblematicsBlockSliceDefaultPrimary, ProblematicsBlockSliceDefaultItem, ProblematicsBlockSliceDefault, ProblematicsBlockSliceVariation, ProblematicsBlockSlice, ReviewsBlockSliceDefaultPrimary, ReviewsBlockSliceDefaultItem, ReviewsBlockSliceDefault, ReviewsBlockSliceVariation, ReviewsBlockSlice, ServiceInfoBlockSliceDefaultPrimary, ServiceInfoBlockSliceDefault, ServiceInfoBlockSliceVariation, ServiceInfoBlockSlice, ServicesBlockSliceDefaultPrimary, ServicesBlockSliceDefaultItem, ServicesBlockSliceDefault, ServicesBlockSliceVariation, ServicesBlockSlice, SocialMediaBlockSliceDefaultPrimary, SocialMediaBlockSliceDefaultItem, SocialMediaBlockSliceDefault, SocialMediaBlockSliceVariation, SocialMediaBlockSlice };
     }
 }

@@ -64,7 +64,8 @@
         }
       }
     },
-    "info_page": {}
+    "info_page": {},
+    "site_header": {}
   },
   "slices": {
     "Services": {
@@ -158,6 +159,12 @@
             }
           }
         }
+      }
+    },
+    "HeaderLink": {},
+    "HeaderLinks": {
+      "default": {
+        "primary": {}
       }
     }
   }
