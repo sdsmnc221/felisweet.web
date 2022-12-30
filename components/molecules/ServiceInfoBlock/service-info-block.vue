@@ -159,7 +159,7 @@ export default {
     }
 
     .bubble-image {
-      margin: 0 6.4vw;
+      margin: 0 12vw;
 
       &.--with-border {
         &::after {
@@ -169,10 +169,10 @@ export default {
     }
   }
 
-  @media #{$mq-tablet} {
-  }
-
   @media #{$mq-xlarge} {
+    .text-block {
+      width: 40%;
+    }
   }
 }
 </style>
