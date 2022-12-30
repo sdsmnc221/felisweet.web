@@ -59,7 +59,7 @@ export default {
     },
   },
   async asyncData({ $prismic, $enhancedLinkSerializer, error }) {
-    const document = await $prismic.api.getByUID('info_page', 'services', {
+    const document = await $prismic.api.getByUID('info_page', 'tarifs', {
       fetchLinks: [
         'module_photo_banner.image',
         'module_photo_banner.description',

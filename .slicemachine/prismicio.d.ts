@@ -863,6 +863,26 @@ interface ServiceInfoBlockSliceDefaultPrimary {
      */
     description: prismicT.RichTextField;
     /**
+     * Warning field in *ServiceInfoBlock → Primary*
+     *
+     * - **Field Type**: Rich Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: service_info_block.primary.warning
+     * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
+     *
+     */
+    warning: prismicT.RichTextField;
+    /**
+     * Warning icon field in *ServiceInfoBlock → Primary*
+     *
+     * - **Field Type**: Image
+     * - **Placeholder**: *None*
+     * - **API ID Path**: service_info_block.primary.warning_icon
+     * - **Documentation**: https://prismic.io/docs/core-concepts/image
+     *
+     */
+    warning_icon: prismicT.ImageField<never>;
+    /**
      * Illustration field in *ServiceInfoBlock → Primary*
      *
      * - **Field Type**: Image

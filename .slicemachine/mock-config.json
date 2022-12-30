@@ -150,6 +150,12 @@
               "patternType": "PARAGRAPH",
               "blocks": 1
             }
+          },
+          "warning": {
+            "config": {
+              "patternType": "PARAGRAPH",
+              "blocks": 1
+            }
           }
         }
       }

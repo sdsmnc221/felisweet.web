@@ -11,6 +11,10 @@ const adapter = ({ $prismic, data }) => {
     },
     description: $prismic.asHTML(primary?.description),
     illustration: imageAdapter(primary?.illustration),
+    warning: {
+      text: $prismic.asHTML(primary?.warning),
+      icon: imageAdapter(primary?.warning_icon),
+    },
   }
 }
 

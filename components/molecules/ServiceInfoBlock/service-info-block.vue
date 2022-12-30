@@ -23,7 +23,12 @@
         </atom-wrapper>
       </div>
     </template>
+    <div v-if="data.warning.text" class="warning-block">
+      <div class="warning" v-html="data.warning.text" />
+      <atom-image :src="data.warning.icon.filename" />
+    </div>
     <bubble-image
+      :class="{ '--has-warning': hasWarning }"
       :src="data.illustration.filename"
       :size="$store.state.isMobile ? 90 : 190"
       with-border
@@ -32,12 +37,13 @@
 </template>
 
 <script>
+import AtomImage from '../../atoms/AtomImage'
 import AtomWrapper from '../../atoms/AtomWrapper'
 import BubbleImage from '../../atoms/BubbleImage'
 
 export default {
   name: 'ServiceBlock',
-  components: { AtomWrapper, BubbleImage },
+  components: { AtomWrapper, BubbleImage, AtomImage },
   props: {
     data: {
       type: Object,
@@ -50,6 +56,11 @@ export default {
     rowReverse: {
       type: Boolean,
       default: false,
+    },
+  },
+  computed: {
+    hasWarning() {
+      return !!this.data.warning.text
     },
   },
 }
@@ -89,6 +100,14 @@ export default {
     }
 
     .description {
+      strong {
+        font-weight: $weight-bold;
+      }
+
+      em {
+        @include rem(font-size, $font-size-body-s);
+      }
+
       ul {
         text-align: left;
 
@@ -125,6 +144,30 @@ export default {
     }
   }
 
+  .warning-block {
+    background: #fcf9f1;
+    border: 4px solid $color-jellybean-blue;
+    border-radius: 10px;
+    position: relative;
+    margin: 0 auto;
+    transform: translateY(-40%);
+    @include rem(padding, $spacing-m);
+    width: 64%;
+
+    p {
+      @include rem(font-size, $font-size-body-xs);
+      text-align: center;
+    }
+
+    .atom-image {
+      position: absolute;
+      width: 64px;
+      height: 64px;
+      right: -10%;
+      bottom: -20%;
+    }
+  }
+
   .bubble-image {
     margin: 6.4vh auto;
   }
@@ -139,6 +182,24 @@ export default {
 
     &.--reverse {
       flex-direction: row-reverse;
+      .bubble-image {
+        &.--has-warning {
+          transform: scale(0.72);
+          bottom: -16%;
+          left: 40%;
+          position: absolute;
+        }
+      }
+    }
+
+    &:not(.--reverse) {
+      .bubble-image {
+        &.--has-warning {
+          bottom: -16%;
+          left: 48%;
+          position: absolute;
+        }
+      }
     }
 
     .text-block {
@@ -158,6 +219,24 @@ export default {
       @include rem(font-size, $font-size-heading-2);
     }
 
+    .warning-block {
+      width: 24%;
+      margin: 0 12vw;
+      @include rem(padding, $spacing-l);
+      transform: translateY(10%);
+
+      .atom-image {
+        bottom: -30;
+        right: -10%;
+        width: 90px;
+        height: 90px;
+      }
+
+      p {
+        @include rem(font-size, $font-size-body-l);
+      }
+    }
+
     .bubble-image {
       margin: 0 12vw;
 
@@ -169,9 +248,19 @@ export default {
     }
   }
 
-  @media #{$mq-xlarge} {
+  @media #{$mq-large} {
     .text-block {
       width: 40%;
+    }
+
+    &:not(.--reverse) {
+      .bubble-image {
+        &.--has-warning {
+          bottom: -16%;
+          left: 24%;
+          position: absolute;
+        }
+      }
     }
   }
 }

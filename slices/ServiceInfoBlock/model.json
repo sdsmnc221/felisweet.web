@@ -45,6 +45,23 @@
             "multi": "paragraph,strong,em,list-item,o-list-item,hyperlink"
           }
         },
+        "warning": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Warning",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "single": "paragraph,strong,em"
+          }
+        },
+        "warning_icon": {
+          "type": "Image",
+          "config": {
+            "label": "Warning icon",
+            "constraint": {},
+            "thumbnails": []
+          }
+        },
         "illustration": {
           "type": "Image",
           "config": {
