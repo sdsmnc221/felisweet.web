@@ -8,7 +8,10 @@
         v-html="data.bubbleDescription.text"
       />
     </atom-wrapper>
-    <bubble-image :src="data.bubbleImage.filename" :size="90" />
+    <bubble-image
+      :src="data.bubbleImage.filename"
+      :size="$store.state.isMobile ? 90 : 190"
+    />
   </atom-wrapper>
 </template>
 
@@ -73,7 +76,7 @@ export default {
         @include rem(font-size, $font-size-body-xs);
         padding: 5% 20% 10% 20%;
         text-align: center;
-        font-weight: $weight-bold;
+        font-weight: $weight-medium;
       }
     }
   }
@@ -82,10 +85,56 @@ export default {
     margin: 6.4vh 0;
   }
 
-  @media #{$mq-medium} {
-  }
+  @media #{$mq-medium}, #{$mq-tablet} {
+    overflow-y: visible;
+    width: 100vw;
+    height: 100vh;
+    background-image: url('/images/photo-banner-pattern.svg');
+    background-repeat: repeat;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
-  @media #{$mq-tablet} {
+    .banner {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      img {
+        transform: translateX(20%);
+        width: 32%;
+      }
+
+      .bubble-description {
+        width: 32%;
+        min-height: 80%;
+        position: relative;
+        transform: none;
+        bottom: 0;
+        left: 0;
+        background-image: var(--bubble-desktop);
+        background-size: 100% auto;
+        margin: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transform: scale(0.8);
+
+        p {
+          color: $color-white;
+          @include rem(font-size, $font-size-body-l);
+          transform: rotate(-3.2deg);
+        }
+      }
+    }
+
+    .bubble-image {
+      position: absolute;
+      bottom: -20%;
+      right: 20%;
+    }
   }
 
   @media #{$mq-large} {

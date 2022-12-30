@@ -1,12 +1,33 @@
 <template>
-  <atom-wrapper class="service-info-block" :class="{ '--small': smallTitle }">
-    <h2 :class="{ '--small': smallTitle }">{{ data.title }}</h2>
-    <atom-wrapper class="content">
-      <div class="subtitle" v-html="data.subtitles.up" />
-      <div class="description" v-html="data.description" />
-      <div class="subtitle" v-html="data.subtitles.down" />
-    </atom-wrapper>
-    <bubble-image :src="data.illustration.filename" :size="90" with-border />
+  <atom-wrapper
+    class="service-info-block"
+    :class="{ '--small': smallTitle, '--reverse': rowReverse }"
+  >
+    <template v-if="$store.state.isMobile">
+      <h2 :class="{ '--small': smallTitle }">
+        {{ data.title }}
+      </h2>
+      <atom-wrapper class="content">
+        <div class="subtitle" v-html="data.subtitles.up" />
+        <div class="description" v-html="data.description" />
+        <div class="subtitle" v-html="data.subtitles.down" />
+      </atom-wrapper>
+    </template>
+    <template v-else>
+      <div class="text-block">
+        <h2 :class="{ '--small': smallTitle }">{{ data.title }}</h2>
+        <atom-wrapper class="content">
+          <div class="subtitle" v-html="data.subtitles.up" />
+          <div class="description" v-html="data.description" />
+          <div class="subtitle" v-html="data.subtitles.down" />
+        </atom-wrapper>
+      </div>
+    </template>
+    <bubble-image
+      :src="data.illustration.filename"
+      :size="$store.state.isMobile ? 90 : 190"
+      with-border
+    />
   </atom-wrapper>
 </template>
 
@@ -23,6 +44,10 @@ export default {
       default: () => {},
     },
     smallTitle: {
+      type: Boolean,
+      default: false,
+    },
+    rowReverse: {
       type: Boolean,
       default: false,
     },
@@ -105,6 +130,43 @@ export default {
   }
 
   @media #{$mq-medium}, #{$mq-tablet} {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    margin: $spacing-4xl 0 $spacing-3xl 0;
+    overflow: visible;
+
+    &.--reverse {
+      flex-direction: row-reverse;
+    }
+
+    .text-block {
+      width: 50%;
+    }
+
+    &.--small .content {
+      margin-top: -12px;
+    }
+
+    &:not(.--small) .content {
+      margin-top: -10px;
+    }
+
+    h2,
+    h2.--small {
+      @include rem(font-size, $font-size-heading-2);
+    }
+
+    .bubble-image {
+      margin: 0 6.4vw;
+
+      &.--with-border {
+        &::after {
+          display: block;
+        }
+      }
+    }
   }
 
   @media #{$mq-tablet} {
