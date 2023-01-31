@@ -1,0 +1,33 @@
+{
+  "id": "about_page",
+  "label": "About Page",
+  "repeatable": false,
+  "status": true,
+  "json": {
+    "Main": {
+      "slices": {
+        "type": "Slices",
+        "fieldset": "Slice Zone",
+        "config": {
+          "choices": {
+            "about_title_block": {
+              "type": "SharedSlice"
+            },
+            "rect_text_block": {
+              "type": "SharedSlice"
+            },
+            "formation": {
+              "type": "SharedSlice"
+            },
+            "round_text_block": {
+              "type": "SharedSlice"
+            },
+            "about_contact": {
+              "type": "SharedSlice"
+            }
+          }
+        }
+      }
+    }
+  }
+}

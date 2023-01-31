@@ -1,0 +1,66 @@
+{
+  "id": "rect_text_block",
+  "type": "SharedSlice",
+  "name": "RectTextBlock",
+  "description": "RectTextBlock",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "sktwi1xtmkfgx8626",
+      "description": "RectTextBlock",
+      "primary": {
+        "text": {
+          "type": "StructuredText",
+          "config": {
+            "label": "text",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "multi": "paragraph,em,strong"
+          }
+        },
+        "with_border": {
+          "type": "Boolean",
+          "config": {
+            "label": "with border",
+            "default_value": false,
+            "placeholder_true": "true",
+            "placeholder_false": "false"
+          }
+        }
+      },
+      "items": {
+        "image": {
+          "type": "Image",
+          "config": {
+            "label": "image",
+            "constraint": {},
+            "thumbnails": []
+          }
+        },
+        "image_with_border": {
+          "type": "Boolean",
+          "config": {
+            "label": "image with border",
+            "placeholder_false": "false",
+            "placeholder_true": "true",
+            "default_value": false
+          }
+        },
+        "image_position": {
+          "type": "Select",
+          "config": {
+            "label": "image position",
+            "placeholder": "",
+            "options": [
+              "up",
+              "down"
+            ]
+          }
+        }
+      },
+      "imageUrl": "https://images.prismic.io/slice-machine/621a5ec4-0387-4bc5-9860-2dd46cbc07cd_default_ss.png?auto=compress,format"
+    }
+  ]
+}

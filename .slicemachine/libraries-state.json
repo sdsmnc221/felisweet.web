@@ -1,6 +1,316 @@
 {
   "slices": {
     "components": {
+      "about_contact": {
+        "library": "slices",
+        "id": "about_contact",
+        "name": "AboutContact",
+        "description": "AboutContact",
+        "model": {
+          "id": "about_contact",
+          "type": "SharedSlice",
+          "name": "AboutContact",
+          "description": "AboutContact",
+          "variations": [
+            {
+              "id": "default",
+              "name": "Default",
+              "docURL": "...",
+              "version": "sktwi1xtmkfgx8626",
+              "description": "AboutContact",
+              "primary": {
+                "cta_text": {
+                  "type": "StructuredText",
+                  "config": {
+                    "label": "cta text",
+                    "placeholder": "",
+                    "allowTargetBlank": true,
+                    "single": "paragraph,strong,em"
+                  }
+                },
+                "cta_image": {
+                  "type": "Image",
+                  "config": {
+                    "label": "cta image",
+                    "constraint": {},
+                    "thumbnails": []
+                  }
+                },
+                "cta_link": {
+                  "type": "Link",
+                  "config": {
+                    "label": "cta link",
+                    "placeholder": "",
+                    "allowTargetBlank": true,
+                    "select": null
+                  }
+                }
+              },
+              "items": {
+                "link": {
+                  "type": "Link",
+                  "config": {
+                    "label": "link",
+                    "placeholder": "",
+                    "select": null
+                  }
+                },
+                "text": {
+                  "type": "Text",
+                  "config": {
+                    "label": "text",
+                    "placeholder": ""
+                  }
+                },
+                "icon": {
+                  "type": "Image",
+                  "config": {
+                    "label": "icon",
+                    "constraint": {},
+                    "thumbnails": []
+                  }
+                }
+              },
+              "imageUrl": "https://images.prismic.io/slice-machine/621a5ec4-0387-4bc5-9860-2dd46cbc07cd_default_ss.png?auto=compress,format"
+            }
+          ]
+        },
+        "mocks": {
+          "default": {
+            "variation": "default",
+            "version": "sktwi1xtmkfgx8626",
+            "items": [
+              {
+                "link": {
+                  "link_type": "Web",
+                  "url": "http://twitter.com"
+                },
+                "text": "fix",
+                "icon": {
+                  "dimensions": {
+                    "width": 900,
+                    "height": 500
+                  },
+                  "alt": null,
+                  "copyright": null,
+                  "url": "https://images.unsplash.com/photo-1587613865763-4b8b0d19e8ab"
+                }
+              }
+            ],
+            "primary": {
+              "cta_text": [
+                {
+                  "type": "paragraph",
+                  "text": "Pariatur ad adipisicing voluptate eu esse laboris fugiat eiusmod elit dolore.",
+                  "spans": []
+                }
+              ],
+              "cta_image": {
+                "dimensions": {
+                  "width": 900,
+                  "height": 500
+                },
+                "alt": null,
+                "copyright": null,
+                "url": "https://images.unsplash.com/photo-1494173853739-c21f58b16055"
+              },
+              "cta_link": {
+                "link_type": "Web",
+                "url": "https://slicemachine.dev"
+              }
+            },
+            "slice_type": "about_contact"
+          }
+        },
+        "meta": {
+          "fileName": "index",
+          "extension": "vue"
+        },
+        "screenshotPaths": {}
+      },
+      "about_title_block": {
+        "library": "slices",
+        "id": "about_title_block",
+        "name": "AboutTitleBlock",
+        "description": "AboutTitleBlock",
+        "model": {
+          "id": "about_title_block",
+          "type": "SharedSlice",
+          "name": "AboutTitleBlock",
+          "description": "AboutTitleBlock",
+          "variations": [
+            {
+              "id": "default",
+              "name": "Default",
+              "docURL": "...",
+              "version": "sktwi1xtmkfgx8626",
+              "description": "AboutTitleBlock",
+              "primary": {
+                "text": {
+                  "type": "StructuredText",
+                  "config": {
+                    "label": "text",
+                    "placeholder": "",
+                    "allowTargetBlank": true,
+                    "single": "heading2,strong,em"
+                  }
+                },
+                "image": {
+                  "type": "Image",
+                  "config": {
+                    "label": "image",
+                    "constraint": {},
+                    "thumbnails": []
+                  }
+                }
+              },
+              "items": {},
+              "imageUrl": "https://images.prismic.io/slice-machine/621a5ec4-0387-4bc5-9860-2dd46cbc07cd_default_ss.png?auto=compress,format"
+            }
+          ]
+        },
+        "mocks": {
+          "default": {
+            "variation": "default",
+            "version": "sktwi1xtmkfgx8626",
+            "items": [
+              {}
+            ],
+            "primary": {
+              "text": [
+                {
+                  "type": "heading2",
+                  "text": "Chapter",
+                  "spans": []
+                }
+              ],
+              "image": {
+                "dimensions": {
+                  "width": 900,
+                  "height": 500
+                },
+                "alt": null,
+                "copyright": null,
+                "url": "https://images.unsplash.com/photo-1537498425277-c283d32ef9db"
+              }
+            },
+            "slice_type": "about_title_block"
+          }
+        },
+        "meta": {
+          "fileName": "index",
+          "extension": "vue"
+        },
+        "screenshotPaths": {}
+      },
+      "formation": {
+        "library": "slices",
+        "id": "formation",
+        "name": "Formation",
+        "description": "Formation",
+        "model": {
+          "id": "formation",
+          "type": "SharedSlice",
+          "name": "Formation",
+          "description": "Formation",
+          "variations": [
+            {
+              "id": "default",
+              "name": "Default",
+              "docURL": "...",
+              "version": "sktwi1xtmkfgx8626",
+              "description": "Formation",
+              "primary": {
+                "text": {
+                  "type": "StructuredText",
+                  "config": {
+                    "label": "text",
+                    "placeholder": "",
+                    "allowTargetBlank": true,
+                    "single": "paragraph,strong,em"
+                  }
+                }
+              },
+              "items": {
+                "year": {
+                  "type": "Number",
+                  "config": {
+                    "label": "year",
+                    "placeholder": ""
+                  }
+                },
+                "name": {
+                  "type": "StructuredText",
+                  "config": {
+                    "label": "name",
+                    "placeholder": "",
+                    "allowTargetBlank": true,
+                    "single": "paragraph,strong"
+                  }
+                },
+                "certificate": {
+                  "type": "Text",
+                  "config": {
+                    "label": "certificate",
+                    "placeholder": ""
+                  }
+                },
+                "description": {
+                  "type": "StructuredText",
+                  "config": {
+                    "label": "description",
+                    "placeholder": "",
+                    "allowTargetBlank": true,
+                    "multi": "paragraph,strong,em"
+                  }
+                }
+              },
+              "imageUrl": "https://images.prismic.io/slice-machine/621a5ec4-0387-4bc5-9860-2dd46cbc07cd_default_ss.png?auto=compress,format"
+            }
+          ]
+        },
+        "mocks": {
+          "default": {
+            "variation": "default",
+            "version": "sktwi1xtmkfgx8626",
+            "items": [
+              {
+                "year": 11,
+                "name": [
+                  {
+                    "type": "paragraph",
+                    "text": "Lorem nulla elit fugiat do incididunt exercitation.",
+                    "spans": []
+                  }
+                ],
+                "certificate": "know",
+                "description": [
+                  {
+                    "type": "paragraph",
+                    "text": "Quis laborum officia in.",
+                    "spans": []
+                  }
+                ]
+              }
+            ],
+            "primary": {
+              "text": [
+                {
+                  "type": "paragraph",
+                  "text": "Non quis anim occaecat quis ex dolor eiusmod dolor sint.",
+                  "spans": []
+                }
+              ]
+            },
+            "slice_type": "formation"
+          }
+        },
+        "meta": {
+          "fileName": "index",
+          "extension": "vue"
+        },
+        "screenshotPaths": {}
+      },
       "header_link": {
         "library": "slices",
         "id": "header_link",
@@ -164,6 +474,115 @@
         },
         "screenshotPaths": {}
       },
+      "rect_text_block": {
+        "library": "slices",
+        "id": "rect_text_block",
+        "name": "RectTextBlock",
+        "description": "RectTextBlock",
+        "model": {
+          "id": "rect_text_block",
+          "type": "SharedSlice",
+          "name": "RectTextBlock",
+          "description": "RectTextBlock",
+          "variations": [
+            {
+              "id": "default",
+              "name": "Default",
+              "docURL": "...",
+              "version": "sktwi1xtmkfgx8626",
+              "description": "RectTextBlock",
+              "primary": {
+                "text": {
+                  "type": "StructuredText",
+                  "config": {
+                    "label": "text",
+                    "placeholder": "",
+                    "allowTargetBlank": true,
+                    "multi": "paragraph,em,strong"
+                  }
+                },
+                "with_border": {
+                  "type": "Boolean",
+                  "config": {
+                    "label": "with border",
+                    "default_value": false,
+                    "placeholder_true": "true",
+                    "placeholder_false": "false"
+                  }
+                }
+              },
+              "items": {
+                "image": {
+                  "type": "Image",
+                  "config": {
+                    "label": "image",
+                    "constraint": {},
+                    "thumbnails": []
+                  }
+                },
+                "image_with_border": {
+                  "type": "Boolean",
+                  "config": {
+                    "label": "image with border",
+                    "placeholder_false": "false",
+                    "placeholder_true": "true",
+                    "default_value": false
+                  }
+                },
+                "image_position": {
+                  "type": "Select",
+                  "config": {
+                    "label": "image position",
+                    "placeholder": "",
+                    "options": [
+                      "up",
+                      "down"
+                    ]
+                  }
+                }
+              },
+              "imageUrl": "https://images.prismic.io/slice-machine/621a5ec4-0387-4bc5-9860-2dd46cbc07cd_default_ss.png?auto=compress,format"
+            }
+          ]
+        },
+        "mocks": {
+          "default": {
+            "variation": "default",
+            "version": "sktwi1xtmkfgx8626",
+            "items": [
+              {
+                "image": {
+                  "dimensions": {
+                    "width": 900,
+                    "height": 500
+                  },
+                  "alt": null,
+                  "copyright": null,
+                  "url": "https://images.unsplash.com/photo-1587613865763-4b8b0d19e8ab"
+                },
+                "image_with_border": true,
+                "image_position": "up"
+              }
+            ],
+            "primary": {
+              "text": [
+                {
+                  "type": "paragraph",
+                  "text": "Aliquip veniam dolor ullamco sint sunt id excepteur et est reprehenderit occaecat quis dolore. Ipsum ullamco reprehenderit commodo quis veniam aute labore minim minim.",
+                  "spans": []
+                }
+              ],
+              "with_border": false
+            },
+            "slice_type": "rect_text_block"
+          }
+        },
+        "meta": {
+          "fileName": "index",
+          "extension": "vue"
+        },
+        "screenshotPaths": {}
+      },
       "reviews_block": {
         "library": "slices",
         "id": "reviews_block",
@@ -261,6 +680,83 @@
               }
             },
             "slice_type": "reviews_block"
+          }
+        },
+        "meta": {
+          "fileName": "index",
+          "extension": "vue"
+        },
+        "screenshotPaths": {}
+      },
+      "round_text_block": {
+        "library": "slices",
+        "id": "round_text_block",
+        "name": "RoundTextBlock",
+        "description": "RoundTextBlock",
+        "model": {
+          "id": "round_text_block",
+          "type": "SharedSlice",
+          "name": "RoundTextBlock",
+          "description": "RoundTextBlock",
+          "variations": [
+            {
+              "id": "default",
+              "name": "Default",
+              "docURL": "...",
+              "version": "sktwi1xtmkfgx8626",
+              "description": "RoundTextBlock",
+              "primary": {
+                "text": {
+                  "type": "StructuredText",
+                  "config": {
+                    "label": "text",
+                    "placeholder": "",
+                    "allowTargetBlank": true,
+                    "multi": "paragraph,strong,em"
+                  }
+                }
+              },
+              "items": {
+                "image": {
+                  "type": "Image",
+                  "config": {
+                    "label": "image",
+                    "constraint": {},
+                    "thumbnails": []
+                  }
+                }
+              },
+              "imageUrl": "https://images.prismic.io/slice-machine/621a5ec4-0387-4bc5-9860-2dd46cbc07cd_default_ss.png?auto=compress,format"
+            }
+          ]
+        },
+        "mocks": {
+          "default": {
+            "variation": "default",
+            "version": "sktwi1xtmkfgx8626",
+            "items": [
+              {
+                "image": {
+                  "dimensions": {
+                    "width": 900,
+                    "height": 500
+                  },
+                  "alt": null,
+                  "copyright": null,
+                  "url": "https://images.unsplash.com/photo-1600804931749-2da4ce26c869"
+                }
+              }
+            ],
+            "primary": {
+              "text": [
+                {
+                  "type": "paragraph",
+                  "text": "Lorem aute incididunt sint labore consectetur fugiat excepteur eu veniam anim.",
+                  "spans": []
+                }
+              ]
+            },
+            "slice_type": "round_text_block"
           }
         },
         "meta": {

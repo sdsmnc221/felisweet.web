@@ -1,0 +1,19 @@
+[
+  {
+    "variation": "default",
+    "version": "sktwi1xtmkfgx8626",
+    "items": [
+      {}
+    ],
+    "primary": {
+      "title": [
+        {
+          "type": "heading2",
+          "text": "Glass",
+          "spans": []
+        }
+      ]
+    },
+    "slice_type": "point_de_depart"
+  }
+]
