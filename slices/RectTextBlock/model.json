@@ -28,6 +28,22 @@
             "placeholder_true": "true",
             "placeholder_false": "false"
           }
+        },
+        "big_text": {
+          "type": "Boolean",
+          "config": {
+            "label": "big text",
+            "default_value": false,
+            "placeholder_true": "true",
+            "placeholder_false": "false"
+          }
+        },
+        "text_class": {
+          "type": "Text",
+          "config": {
+            "label": "text class",
+            "placeholder": ""
+          }
         }
       },
       "items": {
@@ -57,6 +73,13 @@
               "up",
               "down"
             ]
+          }
+        },
+        "image_class": {
+          "type": "Text",
+          "config": {
+            "label": "image class",
+            "placeholder": ""
           }
         }
       },

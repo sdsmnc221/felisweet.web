@@ -9,10 +9,11 @@
       "text": [
         {
           "type": "heading2",
-          "text": "Chapter",
+          "text": "Planning",
           "spans": []
         }
       ],
+      "addition_class_text": "dried",
       "image": {
         "dimensions": {
           "width": 900,
@@ -20,8 +21,9 @@
         },
         "alt": null,
         "copyright": null,
-        "url": "https://images.unsplash.com/photo-1537498425277-c283d32ef9db"
-      }
+        "url": "https://images.unsplash.com/photo-1589321578146-4c1ba445cc88"
+      },
+      "additional_class_image": "surrounded"
     },
     "slice_type": "about_title_block"
   }

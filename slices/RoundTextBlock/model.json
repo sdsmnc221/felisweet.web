@@ -19,6 +19,13 @@
             "allowTargetBlank": true,
             "multi": "paragraph,strong,em"
           }
+        },
+        "text_class": {
+          "type": "Text",
+          "config": {
+            "label": "text class",
+            "placeholder": ""
+          }
         }
       },
       "items": {
@@ -28,6 +35,13 @@
             "label": "image",
             "constraint": {},
             "thumbnails": []
+          }
+        },
+        "image_class": {
+          "type": "Text",
+          "config": {
+            "label": "image class",
+            "placeholder": ""
           }
         }
       },

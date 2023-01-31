@@ -20,12 +20,26 @@
             "single": "heading2,strong,em"
           }
         },
+        "addition_class_text": {
+          "type": "Text",
+          "config": {
+            "label": "addition class text",
+            "placeholder": ""
+          }
+        },
         "image": {
           "type": "Image",
           "config": {
             "label": "image",
             "constraint": {},
             "thumbnails": []
+          }
+        },
+        "additional_class_image": {
+          "type": "Text",
+          "config": {
+            "label": "additional class image",
+            "placeholder": ""
           }
         }
       },

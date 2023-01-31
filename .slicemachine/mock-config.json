@@ -202,19 +202,13 @@
               "blocks": 1
             }
           }
-        }
+        },
+        "items": {}
       }
     },
     "Formation": {
       "default": {
-        "primary": {
-          "text": {
-            "config": {
-              "patternType": "PARAGRAPH",
-              "blocks": 1
-            }
-          }
-        },
+        "primary": {},
         "items": {
           "name": {
             "config": {

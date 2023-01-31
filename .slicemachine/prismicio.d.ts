@@ -848,6 +848,16 @@ interface AboutTitleBlockSliceDefaultPrimary {
      */
     text: prismicT.RichTextField;
     /**
+     * addition class text field in *AboutTitleBlock → Primary*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: about_title_block.primary.addition_class_text
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    addition_class_text: prismicT.KeyTextField;
+    /**
      * image field in *AboutTitleBlock → Primary*
      *
      * - **Field Type**: Image
@@ -857,6 +867,16 @@ interface AboutTitleBlockSliceDefaultPrimary {
      *
      */
     image: prismicT.ImageField<never>;
+    /**
+     * additional class image field in *AboutTitleBlock → Primary*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: about_title_block.primary.additional_class_image
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    additional_class_image: prismicT.KeyTextField;
 }
 /**
  * Default variation for AboutTitleBlock Slice
@@ -881,22 +901,6 @@ type AboutTitleBlockSliceVariation = AboutTitleBlockSliceDefault;
  *
  */
 export type AboutTitleBlockSlice = prismicT.SharedSlice<"about_title_block", AboutTitleBlockSliceVariation>;
-/**
- * Primary content in Formation → Primary
- *
- */
-interface FormationSliceDefaultPrimary {
-    /**
-     * text field in *Formation → Primary*
-     *
-     * - **Field Type**: Rich Text
-     * - **Placeholder**: *None*
-     * - **API ID Path**: formation.primary.text
-     * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
-     *
-     */
-    text: prismicT.RichTextField;
-}
 /**
  * Item in Formation → Items
  *
@@ -951,7 +955,7 @@ export interface FormationSliceDefaultItem {
  * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
  *
  */
-export type FormationSliceDefault = prismicT.SharedSliceVariation<"default", Simplify<FormationSliceDefaultPrimary>, Simplify<FormationSliceDefaultItem>>;
+export type FormationSliceDefault = prismicT.SharedSliceVariation<"default", Record<string, never>, Simplify<FormationSliceDefaultItem>>;
 /**
  * Slice variation for *Formation*
  *
@@ -1116,6 +1120,27 @@ interface RectTextBlockSliceDefaultPrimary {
      *
      */
     with_border: prismicT.BooleanField;
+    /**
+     * big text field in *RectTextBlock → Primary*
+     *
+     * - **Field Type**: Boolean
+     * - **Placeholder**: *None*
+     * - **Default Value**: false
+     * - **API ID Path**: rect_text_block.primary.big_text
+     * - **Documentation**: https://prismic.io/docs/core-concepts/boolean
+     *
+     */
+    big_text: prismicT.BooleanField;
+    /**
+     * text class field in *RectTextBlock → Primary*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: rect_text_block.primary.text_class
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    text_class: prismicT.KeyTextField;
 }
 /**
  * Item in RectTextBlock → Items
@@ -1153,6 +1178,16 @@ export interface RectTextBlockSliceDefaultItem {
      *
      */
     image_position: prismicT.SelectField<"up" | "down">;
+    /**
+     * image class field in *RectTextBlock → Items*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: rect_text_block.items[].image_class
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    image_class: prismicT.KeyTextField;
 }
 /**
  * Default variation for RectTextBlock Slice
@@ -1277,6 +1312,16 @@ interface RoundTextBlockSliceDefaultPrimary {
      *
      */
     text: prismicT.RichTextField;
+    /**
+     * text class field in *RoundTextBlock → Primary*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: round_text_block.primary.text_class
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    text_class: prismicT.KeyTextField;
 }
 /**
  * Item in RoundTextBlock → Items
@@ -1293,6 +1338,16 @@ export interface RoundTextBlockSliceDefaultItem {
      *
      */
     image: prismicT.ImageField<never>;
+    /**
+     * image class field in *RoundTextBlock → Items*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: round_text_block.items[].image_class
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    image_class: prismicT.KeyTextField;
 }
 /**
  * Default variation for RoundTextBlock Slice
@@ -1541,6 +1596,6 @@ declare module "@prismicio/client" {
         (repositoryNameOrEndpoint: string, options?: prismic.ClientConfig): prismic.Client<AllDocumentTypes>;
     }
     namespace Content {
-        export type { AboutPageDocumentData, AboutPageDocumentDataSlicesSlice, AboutPageDocument, HomePageDocumentData, HomePageDocumentDataSlicesSlice, HomePageDocument, InfoPageDocumentData, InfoPageDocumentDataSlicesSlice, InfoPageDocument, ModuleContactBannerDocumentData, ModuleContactBannerDocumentDataSlicesSlice, ModuleContactBannerDocument, ModuleHeroBannerDocumentData, ModuleHeroBannerDocument, ModuleLogoDocumentData, ModuleLogoDocument, ModulePhotoBannerDocumentData, ModulePhotoBannerDocument, ModuleServiceDocumentData, ModuleServiceDocument, ModuleSocialMediaDocumentData, ModuleSocialMediaDocument, SiteFooterDocumentData, SiteFooterDocument, SiteHeaderDocumentData, SiteHeaderDocumentDataSlicesSlice, SiteHeaderDocument, AllDocumentTypes, AboutContactSliceDefaultPrimary, AboutContactSliceDefaultItem, AboutContactSliceDefault, AboutContactSliceVariation, AboutContactSlice, AboutTitleBlockSliceDefaultPrimary, AboutTitleBlockSliceDefault, AboutTitleBlockSliceVariation, AboutTitleBlockSlice, FormationSliceDefaultPrimary, FormationSliceDefaultItem, FormationSliceDefault, FormationSliceVariation, FormationSlice, HeaderLinkSliceDefaultItem, HeaderLinkSliceDefault, HeaderLinkSliceVariation, HeaderLinkSlice, ProblematicsBlockSliceDefaultPrimary, ProblematicsBlockSliceDefaultItem, ProblematicsBlockSliceDefault, ProblematicsBlockSliceVariation, ProblematicsBlockSlice, RectTextBlockSliceDefaultPrimary, RectTextBlockSliceDefaultItem, RectTextBlockSliceDefault, RectTextBlockSliceVariation, RectTextBlockSlice, ReviewsBlockSliceDefaultPrimary, ReviewsBlockSliceDefaultItem, ReviewsBlockSliceDefault, ReviewsBlockSliceVariation, ReviewsBlockSlice, RoundTextBlockSliceDefaultPrimary, RoundTextBlockSliceDefaultItem, RoundTextBlockSliceDefault, RoundTextBlockSliceVariation, RoundTextBlockSlice, ServiceInfoBlockSliceDefaultPrimary, ServiceInfoBlockSliceDefault, ServiceInfoBlockSliceVariation, ServiceInfoBlockSlice, ServicesBlockSliceDefaultPrimary, ServicesBlockSliceDefaultItem, ServicesBlockSliceDefault, ServicesBlockSliceVariation, ServicesBlockSlice, SocialMediaBlockSliceDefaultPrimary, SocialMediaBlockSliceDefaultItem, SocialMediaBlockSliceDefault, SocialMediaBlockSliceVariation, SocialMediaBlockSlice };
+        export type { AboutPageDocumentData, AboutPageDocumentDataSlicesSlice, AboutPageDocument, HomePageDocumentData, HomePageDocumentDataSlicesSlice, HomePageDocument, InfoPageDocumentData, InfoPageDocumentDataSlicesSlice, InfoPageDocument, ModuleContactBannerDocumentData, ModuleContactBannerDocumentDataSlicesSlice, ModuleContactBannerDocument, ModuleHeroBannerDocumentData, ModuleHeroBannerDocument, ModuleLogoDocumentData, ModuleLogoDocument, ModulePhotoBannerDocumentData, ModulePhotoBannerDocument, ModuleServiceDocumentData, ModuleServiceDocument, ModuleSocialMediaDocumentData, ModuleSocialMediaDocument, SiteFooterDocumentData, SiteFooterDocument, SiteHeaderDocumentData, SiteHeaderDocumentDataSlicesSlice, SiteHeaderDocument, AllDocumentTypes, AboutContactSliceDefaultPrimary, AboutContactSliceDefaultItem, AboutContactSliceDefault, AboutContactSliceVariation, AboutContactSlice, AboutTitleBlockSliceDefaultPrimary, AboutTitleBlockSliceDefault, AboutTitleBlockSliceVariation, AboutTitleBlockSlice, FormationSliceDefaultItem, FormationSliceDefault, FormationSliceVariation, FormationSlice, HeaderLinkSliceDefaultItem, HeaderLinkSliceDefault, HeaderLinkSliceVariation, HeaderLinkSlice, ProblematicsBlockSliceDefaultPrimary, ProblematicsBlockSliceDefaultItem, ProblematicsBlockSliceDefault, ProblematicsBlockSliceVariation, ProblematicsBlockSlice, RectTextBlockSliceDefaultPrimary, RectTextBlockSliceDefaultItem, RectTextBlockSliceDefault, RectTextBlockSliceVariation, RectTextBlockSlice, ReviewsBlockSliceDefaultPrimary, ReviewsBlockSliceDefaultItem, ReviewsBlockSliceDefault, ReviewsBlockSliceVariation, ReviewsBlockSlice, RoundTextBlockSliceDefaultPrimary, RoundTextBlockSliceDefaultItem, RoundTextBlockSliceDefault, RoundTextBlockSliceVariation, RoundTextBlockSlice, ServiceInfoBlockSliceDefaultPrimary, ServiceInfoBlockSliceDefault, ServiceInfoBlockSliceVariation, ServiceInfoBlockSlice, ServicesBlockSliceDefaultPrimary, ServicesBlockSliceDefaultItem, ServicesBlockSliceDefault, ServicesBlockSliceVariation, ServicesBlockSlice, SocialMediaBlockSliceDefaultPrimary, SocialMediaBlockSliceDefaultItem, SocialMediaBlockSliceDefault, SocialMediaBlockSliceVariation, SocialMediaBlockSlice };
     }
 }

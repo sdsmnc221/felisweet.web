@@ -18,7 +18,7 @@ export const _Default = () => ({
   },
   data() {
     return {
-      mock: {"variation":"default","version":"sktwi1xtmkfgx8626","items":[{"image":{"dimensions":{"width":900,"height":500},"alt":null,"copyright":null,"url":"https://images.unsplash.com/photo-1600804931749-2da4ce26c869"}}],"primary":{"text":[{"type":"paragraph","text":"Lorem aute incididunt sint labore consectetur fugiat excepteur eu veniam anim.","spans":[]}]},"slice_type":"round_text_block","id":"_Default"}
+      mock: {"variation":"default","version":"sktwi1xtmkfgx8626","items":[{"image":{"dimensions":{"width":900,"height":500},"alt":null,"copyright":null,"url":"https://images.unsplash.com/photo-1589321578146-4c1ba445cc88"},"image_class":"active"}],"primary":{"text":[{"type":"paragraph","text":"Mollit aute irure pariatur consectetur. Est do culpa consequat id consectetur velit dolor laboris duis velit Lorem.","spans":[]}],"text_class":"smaller"},"slice_type":"round_text_block","id":"_Default"}
     }
   },
   template: '<SliceZone :slices="[mock]" :resolver="resolve" />'
