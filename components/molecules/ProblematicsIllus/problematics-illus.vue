@@ -799,7 +799,7 @@ export default {
   @media #{$mq-medium} {
     div p {
       @include rem(font-size, $font-size-body-l);
-      transform: translateY(12px);
+      transform: translateY(-6px) scale(0.84);
     }
 
     h2 p,

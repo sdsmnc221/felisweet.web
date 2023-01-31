@@ -1,6 +1,6 @@
 <template>
   <atom-wrapper tag="main">
-    <scroll-reveal-wrapper>
+    <scroll-reveal-wrapper :top="200">
       <atom-wrapper
         ref="hero"
         tag="section"
@@ -15,6 +15,8 @@
     <scroll-reveal-wrapper
       v-for="(slice, index) in slices"
       :key="`slice-service-info${index}`"
+      :top="200"
+      :class="{ '--is-last-section': index === slices.length - 1 }"
     >
       <atom-wrapper tag="section">
         <service-info-block
@@ -25,11 +27,16 @@
       </atom-wrapper>
     </scroll-reveal-wrapper>
 
+    <atom-wrapper class="footer" tag="section">
+      <atom-image src="/images/footer-tarifs.gif" />
+    </atom-wrapper>
+
     <paws-pattern :paws-per-section="4" />
   </atom-wrapper>
 </template>
 
 <script>
+import AtomImage from '../components/atoms/AtomImage'
 import AtomWrapper from '../components/atoms/AtomWrapper'
 import ScrollRevealWrapper from '../components/atoms/ScrollRevealWrapper'
 import ServiceInfoBlock from '../components/molecules/ServiceInfoBlock'
@@ -43,6 +50,7 @@ export default {
   name: 'IndexPage',
   components: {
     AtomWrapper,
+    AtomImage,
     PawsPattern,
     PhotoBanner,
     ScrollRevealWrapper,
@@ -86,12 +94,6 @@ export default {
       error({ statusCode: 404, message: 'Page not found' })
     }
   },
-  mounted() {},
-  methods: {
-    scrollDown() {
-      this.$refs.sectionProblematics.scrollIntoView()
-    },
-  },
 }
 </script>
 
@@ -99,7 +101,39 @@ export default {
 main {
   overflow: hidden;
 
+  .--is-last-section {
+    margin-bottom: 24vh;
+  }
+
+  .footer {
+    position: relative;
+
+    .atom-image {
+      position: absolute;
+      z-index: -1;
+      bottom: 0;
+      left: -12px;
+      width: 104vw;
+      min-height: 22vh;
+      max-height: 100vh;
+    }
+  }
+
   @media #{$mq-medium} {
+    .--is-last-section {
+      margin-bottom: 48vh;
+    }
+
+    .footer {
+      position: relative;
+
+      .atom-image {
+        left: -24px;
+        width: 102vw;
+        min-height: 496px;
+      }
+    }
+
     .section-banner {
       overflow: visible;
     }

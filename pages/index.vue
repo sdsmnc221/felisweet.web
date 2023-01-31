@@ -76,8 +76,18 @@
       </atom-wrapper>
     </scroll-reveal-wrapper>
     <scroll-reveal-wrapper>
-      <atom-wrapper tag="section" flex flex-center class="section-contact">
-        <contact-banner :data="contactBanner" :open-planning="openPlanning" />
+      <atom-wrapper
+        id="contact"
+        tag="section"
+        flex
+        flex-center
+        class="section-contact"
+      >
+        <contact-banner
+          ref="contact"
+          :data="contactBanner"
+          :open-planning="openPlanning"
+        />
       </atom-wrapper>
     </scroll-reveal-wrapper>
     <paws-pattern :paws-per-section="6" />
@@ -230,6 +240,8 @@ export default {
     }
   },
   mounted() {
+    if (this.$route.hash.includes('#contact'))
+      this.$refs.contact.$el.scrollIntoView(false)
     this.$gsap.to([this.$refs.scrollDown.$el], {
       opacity: 1,
       scale: 1,

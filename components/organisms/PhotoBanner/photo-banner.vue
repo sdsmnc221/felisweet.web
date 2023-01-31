@@ -55,6 +55,7 @@ export default {
   .banner {
     width: 72%;
     position: relative;
+    @include rem(margin-bottom, $spacing-3xl);
 
     img {
       transform: translateX(6%);
@@ -62,19 +63,23 @@ export default {
 
     .bubble-description {
       overflow: visible;
-      width: 132%;
+      width: 100%;
+      height: 40%;
       position: absolute;
-      bottom: -16%;
+      bottom: -32%;
       left: 50%;
       transform: translateX(-50%);
       background-image: var(--bubble-mobile);
-      background-size: 100% auto;
+      background-size: auto 100%;
       background-position: center;
       background-repeat: no-repeat;
+      justify-content: center;
+      align-items: center;
+      padding: 14%;
 
       p {
         @include rem(font-size, $font-size-body-xs);
-        padding: 5% 20% 10% 20%;
+        color: $color-white;
         text-align: center;
         font-weight: $weight-medium;
       }

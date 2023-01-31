@@ -81,16 +81,42 @@ export default {
   head() {
     const head = {}
 
-    if (this.$route.name === 'noel2022') {
-      // head.title = `Fêtez la fin de l'année 2022 avec FeliSweet`
-      head.meta = [
-        {
-          hid: 'description-noel2022',
-          name: 'description',
-          content:
-            "Carte interactive des fêtes de fin de l'année 2022 de FeliSweet",
-        },
-      ]
+    switch (this.$route.name) {
+      case 'noel2022':
+        head.title = `Fêtez la fin de l'année 2022 avec FeliSweet`
+        head.meta = [
+          {
+            hid: 'description-noel2022',
+            name: 'description',
+            content:
+              "Carte interactive des fêtes de fin de l'année 2022 de FeliSweet",
+          },
+        ]
+        break
+      case 'services':
+        head.title = `Découvrez nos Services`
+        head.meta = [
+          {
+            hid: 'description-services',
+            name: 'description',
+            content:
+              'Les services proposés par FeliSweet : Comportements du chat et Cat-sitting',
+          },
+        ]
+        break
+      case 'tarfis':
+        head.title = `Découvrez nos Tarifs`
+        head.meta = [
+          {
+            hid: 'description-tarifs',
+            name: 'description',
+            content:
+              'Les tarifs proposés par FeliSweet : Comportements du chat et Cat-sitting',
+          },
+        ]
+        break
+      default:
+        break
     }
 
     return head

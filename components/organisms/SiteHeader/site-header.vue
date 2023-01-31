@@ -12,6 +12,11 @@
           {{ linkItem.title }}
         </a>
       </div>
+
+      <a class="link contact" href="/#contact"
+        ><atom-image src="/images/contact-btn.svg"
+      /></a>
+
       <div ref="ham" class="mobile-menu link">
         <input type="checkbox" name="" class="check" />
         <div class="ham-menu">
@@ -42,12 +47,13 @@
 import AtomWrapper from '../../atoms/AtomWrapper'
 import LogoFelisweet from '../../atoms/LogoFelisweet'
 import ScrollRevealWrapper from '../../atoms/ScrollRevealWrapper'
+import AtomImage from '../../atoms/AtomImage'
 
 import moduleLogoAdapter from '../../../utils/adapters/moduleLogo'
 
 export default {
   name: 'SiteHeader',
-  components: { AtomWrapper, LogoFelisweet, ScrollRevealWrapper },
+  components: { AtomWrapper, LogoFelisweet, ScrollRevealWrapper, AtomImage },
   props: {
     showLogo: {
       type: Boolean,
@@ -58,6 +64,7 @@ export default {
     return {
       headerLogo: null,
       links: [],
+      lastScroll: 0,
     }
   },
   async fetch() {
@@ -76,11 +83,22 @@ export default {
   },
   mounted() {
     window.addEventListener('scroll', () => {
+      let color = 'transparent'
+      const currentScroll =
+        document.documentElement.scrollTop || document.body.scrollTop // Get Current Scroll Value
+
+      if (currentScroll > 0 && this.lastScroll <= currentScroll) {
+        this.lastScroll = currentScroll
+        color = 'white'
+      } else {
+        this.lastScroll = currentScroll
+        color = 'transparent'
+      }
+
       this.$gsap.set(this.$refs.header, {
-        backgroundColor: window.scrollY === 0 ? 'transparent' : '#FFFFFF',
-        duration: 3.6,
+        backgroundColor: color,
+        duration: 1.2,
         ease: 'circ.in',
-        delay: 1.2,
       })
     })
 
@@ -104,7 +122,6 @@ export default {
   top: 0;
   left: 0;
   width: 100vw;
-  height: 100vh;
   z-index: 999;
 
   header {
@@ -113,8 +130,9 @@ export default {
     display: flex;
     justify-content: flex-end;
     align-items: center;
-    background-color: $color-white;
-    padding: 0 8px;
+    background-color: transparent;
+    padding: $spacing-xl;
+    position: relative;
   }
 
   .logo-felisweet {
@@ -164,6 +182,15 @@ export default {
 
   .links {
     display: none;
+  }
+
+  .contact {
+    position: absolute !important;
+    top: 16px;
+    left: 16px;
+    img {
+      width: 84px;
+    }
   }
 
   .link:not(.mobile-menu) {
@@ -272,6 +299,20 @@ export default {
 
     .links {
       display: flex;
+      background-color: $color-white;
+      padding: $spacing-s $spacing-m;
+      border-radius: 64px;
+    }
+
+    .contact {
+      position: relative !important;
+      margin-left: $spacing-xl;
+      top: 0;
+      left: 0;
+
+      img {
+        width: 84px;
+      }
     }
 
     .logo-felisweet {
