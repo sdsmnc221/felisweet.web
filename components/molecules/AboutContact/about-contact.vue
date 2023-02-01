@@ -14,7 +14,7 @@
       </a>
     </div>
     <div v-if="data.cta" class="cta-content">
-      <a href="/services">
+      <a :href="`/${data.cta.link.field.uid}`">
         <span v-html="data.cta.text" />
       </a>
       <atom-image :src="data.cta.image.filename" :alt="data.cta.image.alt" />

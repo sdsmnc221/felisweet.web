@@ -34,7 +34,7 @@ type AboutPageDocumentDataSlicesSlice = AboutTitleBlockSlice | RectTextBlockSlic
  *
  * @typeParam Lang - Language API ID of the document.
  */
-export type AboutPageDocument<Lang extends string = string> = prismicT.PrismicDocumentWithoutUID<Simplify<AboutPageDocumentData>, "about_page", Lang>;
+export type AboutPageDocument<Lang extends string = string> = prismicT.PrismicDocumentWithUID<Simplify<AboutPageDocumentData>, "about_page", Lang>;
 /** Content for Home Page documents */
 interface HomePageDocumentData {
     /**
