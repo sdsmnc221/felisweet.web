@@ -1,7 +1,7 @@
 <template>
   <button class="button-arrow link" :style="cssProps" @click="onClick">
     <atom-image
-      src="/images/arrow.svg"
+      :src="dark ? '/images/arrow-dark.svg' : '/images/arrow.svg'"
       :width="arrowSize"
       :height="arrowSize"
       :fluid="false"
@@ -31,6 +31,10 @@ export default {
     onClick: {
       type: Function,
       default: () => {},
+    },
+    dark: {
+      type: Boolean,
+      default: false,
     },
   },
   computed: {

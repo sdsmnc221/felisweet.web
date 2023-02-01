@@ -5,6 +5,7 @@
       :size="32"
       :arrow-size="16"
       :on-click="prev"
+      dark
     />
     <atom-wrapper class="formations">
       <ul :style="styleObject">
@@ -190,6 +191,7 @@
       :size="32"
       :arrow-size="16"
       :on-click="next"
+      dark
     />
   </atom-wrapper>
 </template>
@@ -286,6 +288,8 @@ export default {
   .button-arrow {
     position: relative;
     z-index: 2;
+    transform: scale(1.4) translateY(-100%);
+    border: 2px solid $color-service-blue;
   }
 
   .formations {
@@ -418,7 +422,6 @@ export default {
         border-width: 12px;
 
         div.formation-content {
-          overflow-y: scroll;
           @include rem(margin, $spacing-3xl 0 $spacing-4xl 0);
 
           div {
