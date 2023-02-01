@@ -302,6 +302,11 @@ export default {
       background-color: $color-white;
       padding: $spacing-s $spacing-m;
       border-radius: 64px;
+
+      a {
+        text-align: center;
+        white-space: nowrap;
+      }
     }
 
     .contact {
