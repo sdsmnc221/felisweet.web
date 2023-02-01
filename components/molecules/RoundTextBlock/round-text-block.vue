@@ -124,5 +124,34 @@ export default {
       height: 242px;
     }
   }
+
+  @media #{$mq-medium}, #{$mq-tablet} {
+    width: 48vw;
+
+    .text {
+      * {
+        font-size: 24px;
+      }
+
+      &.-formation-text {
+        @include rem(padding, calc($spacing-5xl * 1.2));
+        transform: none;
+        margin-top: 160px;
+      }
+      &.-invitation {
+        width: 50%;
+        padding: 5.2rem;
+      }
+    }
+
+    .atom-image {
+      &.-mask {
+        transform: scale(3.2);
+      }
+      &.-book {
+        transform: scale(1.2);
+      }
+    }
+  }
 }
 </style>

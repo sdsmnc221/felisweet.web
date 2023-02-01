@@ -32,11 +32,6 @@
             />
           </div>
           <span class="formation-year">{{ formation.year || 'Actuel' }}</span>
-          <atom-image
-            src="/images/formation-head.png"
-            alt=""
-            class="formation-head"
-          />
           <svg
             ref="svg"
             class="formation-cat"
@@ -179,6 +174,12 @@
                 d="M25.2,18.2c0,0-0.2-13.8,3.1-11.2c3.6,4.1,5.7,8.5,6.1,11.5C32.9,18.7,25.2,18.2,25.2,18.2z"
               />
             </g>
+
+            <image
+              href="/images/formation-head.png"
+              alt=""
+              class="formation-head"
+            />
           </svg>
         </li>
       </ul>
@@ -194,13 +195,12 @@
 </template>
 
 <script>
-import AtomImage from '../../atoms/AtomImage'
 import AtomWrapper from '../../atoms/AtomWrapper'
 import ButtonArrow from '../../atoms/ButtonArrow'
 
 export default {
   name: 'SliderFormations',
-  components: { AtomWrapper, ButtonArrow, AtomImage },
+  components: { AtomWrapper, ButtonArrow },
   props: {
     data: {
       type: Object,
@@ -277,6 +277,11 @@ export default {
   width: 100vw;
   margin-bottom: $spacing-5xl;
   margin-top: calc($spacing-5xl * 2);
+
+  svg {
+    position: relative;
+    overflow: visible;
+  }
 
   .button-arrow {
     position: relative;
@@ -375,12 +380,9 @@ export default {
       }
 
       .formation-head {
-        position: absolute;
-        top: -64px;
-        left: 26px;
-        width: 48px;
-        height: 48px;
-        z-index: 2;
+        transform: translate(32px, -32px);
+        width: 100px;
+        height: 100px;
       }
 
       .formation-year {
@@ -413,32 +415,57 @@ export default {
 
       li {
         @include rem(padding, $spacing-2xl);
+        border-width: 12px;
 
-        div.formations-content {
+        div.formation-content {
           overflow-y: scroll;
           @include rem(margin, $spacing-3xl 0 $spacing-4xl 0);
 
           div {
             justify-content: center;
-            align-items: flex-start;
-            @include rem(padding-bottom, $spacing-xl);
-          }
-        }
-
-        p {
-          &:first-child {
-            @include rem(margin-top, $spacing-2xl);
-          }
-          &:last-child {
-            @include rem(margin-bottom, $spacing-xl);
+            align-items: center;
           }
 
-          @include rem(margin-top, $spacing-l);
+          * {
+            font-size: 24px;
+          }
         }
 
         .formation-cat {
           width: 32vw;
           top: -80px;
+        }
+
+        .formation-head {
+          transform: translate(58px, -8px);
+          width: 56px;
+          height: 56px;
+        }
+
+        .formation-year {
+          font-size: 96px;
+          bottom: -22px;
+        }
+
+        div.formation-content {
+          position: relative;
+          max-height: 64vh;
+
+          * {
+            @include rem(font-size, $font-size-body-l);
+          }
+
+          .formation-name {
+            strong {
+              @include rem(font-size, $font-size-heading-3);
+            }
+          }
+
+          .formation-certificate {
+            @include rem(font-size, $font-size-body-xl);
+            font-weight: 800;
+            @include rem(margin-top, $spacing-m);
+          }
         }
       }
     }
@@ -480,6 +507,15 @@ export default {
   }
   .d {
     fill: #2381a0;
+  }
+}
+
+@media #{$mq-medium} {
+  .slider-formations {
+    margin-top: 0;
+    margin-bottom: 0;
+    top: $spacing-4xl;
+    position: relative;
   }
 }
 </style>

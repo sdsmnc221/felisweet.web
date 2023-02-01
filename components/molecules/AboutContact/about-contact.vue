@@ -64,6 +64,7 @@ export default {
       display: block;
       text-decoration: none;
       padding: $spacing-xs $spacing-s;
+      text-align: center;
 
       &:first-of-type {
         width: 92vw;
@@ -187,6 +188,70 @@ export default {
       width: 324px;
       height: 472px;
       transform: translate(32%, 24%);
+    }
+  }
+
+  @media #{$mq-medium} {
+    .links {
+      display: flex;
+      padding: 80px 160px;
+
+      .yarn {
+        width: 160px;
+        height: 160px;
+        top: -16%;
+        right: 12%;
+      }
+
+      .bowl {
+        top: 32%;
+        left: 12%;
+        width: 160px;
+        height: 160px;
+      }
+
+      a {
+        padding: $spacing-m $spacing-s;
+        position: relative;
+        &:first-of-type {
+          width: 32vw;
+          left: -8%;
+          transform: rotate(6.19deg);
+        }
+
+        &:nth-of-type(2) {
+          width: 32vw;
+          left: 0;
+          transform: rotate(-3.52deg);
+        }
+
+        &:last-of-type {
+          width: 32vw;
+          left: 8%;
+          transform: rotate(-6.66deg);
+        }
+
+        &::before {
+          border-radius: 32px;
+        }
+      }
+    }
+
+    .cta-content {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+
+      a {
+        width: 32vw;
+        padding: 24px;
+        transform: rotate(-9.71deg) translateY(120px);
+      }
+
+      .atom-image {
+        transform: translate(120px, 24%);
+      }
     }
   }
 }

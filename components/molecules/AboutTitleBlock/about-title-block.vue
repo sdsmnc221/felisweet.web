@@ -91,5 +91,26 @@ export default {
       @include rem(margin-top, $spacing-xs);
     }
   }
+
+  @media #{$mq-medium}, #{$mq-tablet} {
+    .text {
+      * {
+        font-size: 72px;
+      }
+    }
+
+    .atom-image {
+      &.-with-little-house {
+        width: 128px;
+        height: 128px;
+        left: 24%;
+      }
+      &.-with-illus {
+        width: 32vw;
+        height: auto;
+        margin: $spacing-5xl auto;
+      }
+    }
+  }
 }
 </style>

@@ -203,5 +203,80 @@ export default {
       height: 240px;
     }
   }
+
+  @media #{$mq-medium}, #{$mq-tablet} {
+    width: 50%;
+
+    .text {
+      padding: 32px 48px;
+
+      * {
+        font-size: 24px;
+      }
+
+      &.-big-text * {
+        font-size: 28px;
+        line-height: 100%;
+      }
+    }
+
+    .atom-image {
+      max-width: 32vw;
+
+      &.-sick-cat {
+        width: 240px;
+        height: 240px;
+      }
+
+      &.-with-border {
+        transform: rotate(11.58deg) translateY(-32%) translateX(32%);
+      }
+
+      &:not(.-with-border) {
+        margin: 0 auto;
+      }
+
+      &.-arrow {
+        width: 120px;
+        height: 160px;
+        top: -112px;
+        left: -72px;
+      }
+
+      &.-foyer-1 {
+        transform: rotate(-18.58deg) translateY(-17%) translateX(-35%);
+      }
+
+      &.-foyer-2 {
+        position: absolute;
+        width: 24vw;
+        height: auto;
+        transform: rotate(11.58deg) translateY(-72%) translateX(100%);
+      }
+
+      &.-illus {
+        top: 72px;
+      }
+
+      &.-avatar {
+        transform: rotate(12deg);
+        position: absolute;
+        left: 38vw;
+        top: -18vh;
+      }
+
+      &.-foyer-3 {
+        transform: rotate(-11.58deg) translateY(-24%) translateX(-32%);
+      }
+
+      &.-foyer-4 {
+        position: absolute;
+        width: 32vw;
+        height: auto;
+        top: -36vh;
+        left: 12vw;
+      }
+    }
+  }
 }
 </style>
