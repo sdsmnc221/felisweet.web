@@ -10,10 +10,26 @@
       "docURL": "...",
       "version": "sktwi1xtmkfgx8626",
       "description": "Formation",
-      "primary": {},
+      "primary": {
+        "cta_text": {
+          "type": "Text",
+          "config": {
+            "label": "cta text",
+            "placeholder": ""
+          }
+        },
+        "cta_bg_image": {
+          "type": "Image",
+          "config": {
+            "label": "cta bg image",
+            "constraint": {},
+            "thumbnails": []
+          }
+        }
+      },
       "items": {
         "year": {
-          "type": "Number",
+          "type": "Text",
           "config": {
             "label": "year",
             "placeholder": ""

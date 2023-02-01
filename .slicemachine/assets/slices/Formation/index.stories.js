@@ -18,7 +18,7 @@ export const _Default = () => ({
   },
   data() {
     return {
-      mock: {"variation":"default","version":"sktwi1xtmkfgx8626","items":[{"year":32,"name":[{"type":"paragraph","text":"Do aliqua magna sint dolor sint esse. Quis excepteur deserunt tempor dolore consectetur. Cillum officia officia cupidatat proident esse sit laborum fugiat incididunt duis reprehenderit exercitation eu.","spans":[]}],"certificate":"my","description":[{"type":"paragraph","text":"Consequat magna quis enim aliqua aliqua id id do ex. Proident labore laboris do voluptate. Aliqua aute deserunt dolor.","spans":[]}]}],"primary":{},"slice_type":"formation","id":"_Default"}
+      mock: {"variation":"default","version":"sktwi1xtmkfgx8626","items":[{"year":"clay","name":[{"type":"paragraph","text":"Nostrud sint voluptate eiusmod cupidatat veniam in exercitation consequat fugiat aliqua voluptate pariatur. Adipisicing aliqua ut nulla velit nulla sit proident.","spans":[]}],"certificate":"stems","description":[{"type":"paragraph","text":"Culpa ex labore id officia aliqua dolor commodo aliquip. Quis Lorem sit amet Lorem incididunt quis sunt commodo sint reprehenderit culpa nostrud.","spans":[]}]}],"primary":{"cta_text":"sugar","cta_bg_image":{"dimensions":{"width":900,"height":500},"alt":null,"copyright":null,"url":"https://images.unsplash.com/photo-1537498425277-c283d32ef9db"}},"slice_type":"formation","id":"_Default"}
     }
   },
   template: '<SliceZone :slices="[mock]" :resolver="resolve" />'

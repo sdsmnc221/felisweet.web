@@ -902,6 +902,32 @@ type AboutTitleBlockSliceVariation = AboutTitleBlockSliceDefault;
  */
 export type AboutTitleBlockSlice = prismicT.SharedSlice<"about_title_block", AboutTitleBlockSliceVariation>;
 /**
+ * Primary content in Formation → Primary
+ *
+ */
+interface FormationSliceDefaultPrimary {
+    /**
+     * cta text field in *Formation → Primary*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: formation.primary.cta_text
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    cta_text: prismicT.KeyTextField;
+    /**
+     * cta bg image field in *Formation → Primary*
+     *
+     * - **Field Type**: Image
+     * - **Placeholder**: *None*
+     * - **API ID Path**: formation.primary.cta_bg_image
+     * - **Documentation**: https://prismic.io/docs/core-concepts/image
+     *
+     */
+    cta_bg_image: prismicT.ImageField<never>;
+}
+/**
  * Item in Formation → Items
  *
  */
@@ -909,13 +935,13 @@ export interface FormationSliceDefaultItem {
     /**
      * year field in *Formation → Items*
      *
-     * - **Field Type**: Number
+     * - **Field Type**: Text
      * - **Placeholder**: *None*
      * - **API ID Path**: formation.items[].year
-     * - **Documentation**: https://prismic.io/docs/core-concepts/number
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
      *
      */
-    year: prismicT.NumberField;
+    year: prismicT.KeyTextField;
     /**
      * name field in *Formation → Items*
      *
@@ -955,7 +981,7 @@ export interface FormationSliceDefaultItem {
  * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
  *
  */
-export type FormationSliceDefault = prismicT.SharedSliceVariation<"default", Record<string, never>, Simplify<FormationSliceDefaultItem>>;
+export type FormationSliceDefault = prismicT.SharedSliceVariation<"default", Simplify<FormationSliceDefaultPrimary>, Simplify<FormationSliceDefaultItem>>;
 /**
  * Slice variation for *Formation*
  *
@@ -1596,6 +1622,6 @@ declare module "@prismicio/client" {
         (repositoryNameOrEndpoint: string, options?: prismic.ClientConfig): prismic.Client<AllDocumentTypes>;
     }
     namespace Content {
-        export type { AboutPageDocumentData, AboutPageDocumentDataSlicesSlice, AboutPageDocument, HomePageDocumentData, HomePageDocumentDataSlicesSlice, HomePageDocument, InfoPageDocumentData, InfoPageDocumentDataSlicesSlice, InfoPageDocument, ModuleContactBannerDocumentData, ModuleContactBannerDocumentDataSlicesSlice, ModuleContactBannerDocument, ModuleHeroBannerDocumentData, ModuleHeroBannerDocument, ModuleLogoDocumentData, ModuleLogoDocument, ModulePhotoBannerDocumentData, ModulePhotoBannerDocument, ModuleServiceDocumentData, ModuleServiceDocument, ModuleSocialMediaDocumentData, ModuleSocialMediaDocument, SiteFooterDocumentData, SiteFooterDocument, SiteHeaderDocumentData, SiteHeaderDocumentDataSlicesSlice, SiteHeaderDocument, AllDocumentTypes, AboutContactSliceDefaultPrimary, AboutContactSliceDefaultItem, AboutContactSliceDefault, AboutContactSliceVariation, AboutContactSlice, AboutTitleBlockSliceDefaultPrimary, AboutTitleBlockSliceDefault, AboutTitleBlockSliceVariation, AboutTitleBlockSlice, FormationSliceDefaultItem, FormationSliceDefault, FormationSliceVariation, FormationSlice, HeaderLinkSliceDefaultItem, HeaderLinkSliceDefault, HeaderLinkSliceVariation, HeaderLinkSlice, ProblematicsBlockSliceDefaultPrimary, ProblematicsBlockSliceDefaultItem, ProblematicsBlockSliceDefault, ProblematicsBlockSliceVariation, ProblematicsBlockSlice, RectTextBlockSliceDefaultPrimary, RectTextBlockSliceDefaultItem, RectTextBlockSliceDefault, RectTextBlockSliceVariation, RectTextBlockSlice, ReviewsBlockSliceDefaultPrimary, ReviewsBlockSliceDefaultItem, ReviewsBlockSliceDefault, ReviewsBlockSliceVariation, ReviewsBlockSlice, RoundTextBlockSliceDefaultPrimary, RoundTextBlockSliceDefaultItem, RoundTextBlockSliceDefault, RoundTextBlockSliceVariation, RoundTextBlockSlice, ServiceInfoBlockSliceDefaultPrimary, ServiceInfoBlockSliceDefault, ServiceInfoBlockSliceVariation, ServiceInfoBlockSlice, ServicesBlockSliceDefaultPrimary, ServicesBlockSliceDefaultItem, ServicesBlockSliceDefault, ServicesBlockSliceVariation, ServicesBlockSlice, SocialMediaBlockSliceDefaultPrimary, SocialMediaBlockSliceDefaultItem, SocialMediaBlockSliceDefault, SocialMediaBlockSliceVariation, SocialMediaBlockSlice };
+        export type { AboutPageDocumentData, AboutPageDocumentDataSlicesSlice, AboutPageDocument, HomePageDocumentData, HomePageDocumentDataSlicesSlice, HomePageDocument, InfoPageDocumentData, InfoPageDocumentDataSlicesSlice, InfoPageDocument, ModuleContactBannerDocumentData, ModuleContactBannerDocumentDataSlicesSlice, ModuleContactBannerDocument, ModuleHeroBannerDocumentData, ModuleHeroBannerDocument, ModuleLogoDocumentData, ModuleLogoDocument, ModulePhotoBannerDocumentData, ModulePhotoBannerDocument, ModuleServiceDocumentData, ModuleServiceDocument, ModuleSocialMediaDocumentData, ModuleSocialMediaDocument, SiteFooterDocumentData, SiteFooterDocument, SiteHeaderDocumentData, SiteHeaderDocumentDataSlicesSlice, SiteHeaderDocument, AllDocumentTypes, AboutContactSliceDefaultPrimary, AboutContactSliceDefaultItem, AboutContactSliceDefault, AboutContactSliceVariation, AboutContactSlice, AboutTitleBlockSliceDefaultPrimary, AboutTitleBlockSliceDefault, AboutTitleBlockSliceVariation, AboutTitleBlockSlice, FormationSliceDefaultPrimary, FormationSliceDefaultItem, FormationSliceDefault, FormationSliceVariation, FormationSlice, HeaderLinkSliceDefaultItem, HeaderLinkSliceDefault, HeaderLinkSliceVariation, HeaderLinkSlice, ProblematicsBlockSliceDefaultPrimary, ProblematicsBlockSliceDefaultItem, ProblematicsBlockSliceDefault, ProblematicsBlockSliceVariation, ProblematicsBlockSlice, RectTextBlockSliceDefaultPrimary, RectTextBlockSliceDefaultItem, RectTextBlockSliceDefault, RectTextBlockSliceVariation, RectTextBlockSlice, ReviewsBlockSliceDefaultPrimary, ReviewsBlockSliceDefaultItem, ReviewsBlockSliceDefault, ReviewsBlockSliceVariation, ReviewsBlockSlice, RoundTextBlockSliceDefaultPrimary, RoundTextBlockSliceDefaultItem, RoundTextBlockSliceDefault, RoundTextBlockSliceVariation, RoundTextBlockSlice, ServiceInfoBlockSliceDefaultPrimary, ServiceInfoBlockSliceDefault, ServiceInfoBlockSliceVariation, ServiceInfoBlockSlice, ServicesBlockSliceDefaultPrimary, ServicesBlockSliceDefaultItem, ServicesBlockSliceDefault, ServicesBlockSliceVariation, ServicesBlockSlice, SocialMediaBlockSliceDefaultPrimary, SocialMediaBlockSliceDefaultItem, SocialMediaBlockSliceDefault, SocialMediaBlockSliceVariation, SocialMediaBlockSlice };
     }
 }

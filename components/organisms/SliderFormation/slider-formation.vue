@@ -8,6 +8,10 @@
       dark
     />
     <atom-wrapper class="formations">
+      <div v-if="data.cta.text && data.cta.image" class="cta">
+        <atom-image :src="data.cta.image.filename" :alt="data.cta.image.alt" />
+        <span>{{ data.cta.text }}</span>
+      </div>
       <ul :style="styleObject">
         <li
           v-for="(formation, index) in data.formations"
@@ -32,7 +36,7 @@
               v-html="formation.description"
             />
           </div>
-          <span class="formation-year">{{ formation.year || 'Actuel' }}</span>
+          <span class="formation-year">{{ formation.year }}</span>
           <svg
             ref="svg"
             class="formation-cat"
@@ -197,12 +201,13 @@
 </template>
 
 <script>
+import AtomImage from '../../atoms/AtomImage'
 import AtomWrapper from '../../atoms/AtomWrapper'
 import ButtonArrow from '../../atoms/ButtonArrow'
 
 export default {
   name: 'SliderFormations',
-  components: { AtomWrapper, ButtonArrow },
+  components: { AtomWrapper, ButtonArrow, AtomImage },
   props: {
     data: {
       type: Object,
@@ -279,6 +284,25 @@ export default {
   width: 100vw;
   margin-bottom: $spacing-5xl;
   margin-top: calc($spacing-5xl * 2);
+
+  .cta {
+    position: absolute;
+    top: -64%;
+    left: 0;
+
+    span {
+      position: absolute;
+      color: $color-light-blue;
+      font-weight: $weight-bold;
+      top: 40%;
+      left: 50%;
+      transform: translate(-50%, -50%) rotate(-2deg);
+      width: 100%;
+      text-align: center;
+      letter-spacing: -0.02em;
+      @include rem(font-size, $font-size-root);
+    }
+  }
 
   svg {
     position: relative;
@@ -408,6 +432,16 @@ export default {
   }
 
   @media #{$mq-medium} {
+    .cta {
+      top: -40%;
+      left: 18%;
+      transform: rotate(-12deg);
+
+      span {
+        padding: 0 12px;
+      }
+    }
+
     .formations {
       @include rem(margin-top, $spacing-2xl);
       @include rem(margin-bottom, $spacing-5xl * 3);
