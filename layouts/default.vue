@@ -93,6 +93,16 @@ export default {
           },
         ]
         break
+      case 'about':
+        head.title = `À propos de FeliSweet`
+        head.meta = [
+          {
+            hid: 'description-about',
+            name: 'description',
+            content: 'Présentation de FeliSweet et de Marie',
+          },
+        ]
+        break
       case 'services':
         head.title = `Découvrez nos Services`
         head.meta = [
@@ -104,7 +114,7 @@ export default {
           },
         ]
         break
-      case 'tarfis':
+      case 'tarifs':
         head.title = `Découvrez nos Tarifs`
         head.meta = [
           {
