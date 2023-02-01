@@ -181,7 +181,7 @@
             </g>
 
             <image
-              href="/images/formation-head.png"
+              href="/images/formation-head.svg"
               alt=""
               class="formation-head"
             />
@@ -411,6 +411,7 @@ export default {
         transform: translate(32px, -32px);
         width: 100px;
         height: 100px;
+        filter: brightness(2);
       }
 
       .formation-year {
@@ -474,9 +475,9 @@ export default {
         }
 
         .formation-head {
-          transform: translate(58px, -8px);
-          width: 56px;
-          height: 56px;
+          transform: translate(16px, -48px);
+          width: 132px;
+          height: 132px;
         }
 
         .formation-year {
