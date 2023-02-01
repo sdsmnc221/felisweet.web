@@ -6,9 +6,9 @@
       {
         "link": {
           "link_type": "Web",
-          "url": "http://twitter.com"
+          "url": "https://slicemachine.dev"
         },
-        "text": "fix",
+        "text": "earth",
         "icon": {
           "dimensions": {
             "width": 900,
@@ -16,7 +16,7 @@
           },
           "alt": null,
           "copyright": null,
-          "url": "https://images.unsplash.com/photo-1587613865763-4b8b0d19e8ab"
+          "url": "https://images.unsplash.com/photo-1587653915936-5623ea0b949a"
         }
       }
     ],
@@ -24,7 +24,7 @@
       "cta_text": [
         {
           "type": "paragraph",
-          "text": "Pariatur ad adipisicing voluptate eu esse laboris fugiat eiusmod elit dolore.",
+          "text": "Amet exercitation ex duis excepteur pariatur.",
           "spans": []
         }
       ],
@@ -35,11 +35,11 @@
         },
         "alt": null,
         "copyright": null,
-        "url": "https://images.unsplash.com/photo-1494173853739-c21f58b16055"
+        "url": "https://images.unsplash.com/photo-1499951360447-b19be8fe80f5"
       },
       "cta_link": {
         "link_type": "Web",
-        "url": "https://slicemachine.dev"
+        "url": "http://google.com"
       }
     },
     "slice_type": "about_contact"

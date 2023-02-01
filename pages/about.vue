@@ -22,10 +22,13 @@ import AboutTitleBlock from '../components/molecules/AboutTitleBlock'
 import RectTextBlock from '../components/molecules/RectTextBlock'
 import RoundTextBlock from '../components/molecules/RoundTextBlock'
 import AboutContact from '../components/molecules/AboutContact'
+import SliderFormation from '../components/organisms/SliderFormation'
 
 import aboutTitleAdapter from '../utils/adapters/aboutTitle'
 import rectTextAdapter from '../utils/adapters/rectText'
 import roundTextAdapter from '../utils/adapters/roundText'
+import sliderFormationAdapter from '../utils/adapters/sliderFormation'
+import aboutContactAdapter from '../utils/adapters/aboutContact'
 
 export default {
   name: 'IndexPage',
@@ -67,16 +70,18 @@ export default {
         case 'round_text_block':
           data = roundTextAdapter($prismic, slice)
           break
-        // case 'about_contact':
-        //   return AboutContact
+        case 'formation':
+          data = sliderFormationAdapter($prismic, slice)
+          break
+        case 'about_contact':
+          data = aboutContactAdapter($prismic, $enhancedLinkSerializer, slice)
+          break
         default:
           break
       }
 
       return { type, data }
     }
-
-    console.log(data.slices)
 
     if (data) {
       return {
@@ -98,6 +103,8 @@ export default {
           return RectTextBlock
         case 'round_text_block':
           return RoundTextBlock
+        case 'formation':
+          return SliderFormation
         case 'about_contact':
           return AboutContact
         default:
