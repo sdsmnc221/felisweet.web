@@ -73,6 +73,7 @@ export default {
   // Prismic @nuxtjs/prismic configuration: https://prismic.nuxtjs.org/configuration
   prismic: {
     endpoint: `https://${process.env.PRISMIC_REPOSITORY}.prismic.io/api/v2`,
+    preview: false,
     modern: true,
     apiOptions: {
       routes: [

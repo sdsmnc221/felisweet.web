@@ -1,8 +1,11 @@
 <template>
   <div>
     <transition v-if="!$store.state.loading">
-      <div @scroll.passive="handleScroll" class="container">
-        <site-header v-bind="$store.state.header" />
+      <div class="container">
+        <site-header
+          v-if="$route.name !== 'noel2022'"
+          v-bind="$store.state.header"
+        />
         <nuxt-child
           :open-popup="openPopup"
           :popup-content-planning="
