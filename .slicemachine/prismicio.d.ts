@@ -35,6 +35,35 @@ type AboutPageDocumentDataSlicesSlice = AboutTitleBlockSlice | RectTextBlockSlic
  * @typeParam Lang - Language API ID of the document.
  */
 export type AboutPageDocument<Lang extends string = string> = prismicT.PrismicDocumentWithUID<Simplify<AboutPageDocumentData>, "about_page", Lang>;
+/** Content for ComportementalistePage documents */
+interface ComportementalistePageDocumentData {
+    /**
+     * Slice Zone field in *ComportementalistePage*
+     *
+     * - **Field Type**: Slice Zone
+     * - **Placeholder**: *None*
+     * - **API ID Path**: comportementaliste_page.slices[]
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/slices
+     *
+     */
+    slices: prismicT.SliceZone<ComportementalistePageDocumentDataSlicesSlice>;
+}
+/**
+ * Slice for *ComportementalistePage → Slice Zone*
+ *
+ */
+type ComportementalistePageDocumentDataSlicesSlice = ServiceInfoBlockSlice | HorizontalSliderBlocksSlice;
+/**
+ * ComportementalistePage document from Prismic
+ *
+ * - **API ID**: `comportementaliste_page`
+ * - **Repeatable**: `false`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type ComportementalistePageDocument<Lang extends string = string> = prismicT.PrismicDocumentWithUID<Simplify<ComportementalistePageDocumentData>, "comportementaliste_page", Lang>;
 /** Content for Home Page documents */
 interface HomePageDocumentData {
     /**
@@ -736,7 +765,7 @@ type SiteHeaderDocumentDataSlicesSlice = HeaderLinkSlice;
  * @typeParam Lang - Language API ID of the document.
  */
 export type SiteHeaderDocument<Lang extends string = string> = prismicT.PrismicDocumentWithoutUID<Simplify<SiteHeaderDocumentData>, "site_header", Lang>;
-export type AllDocumentTypes = AboutPageDocument | HomePageDocument | InfoPageDocument | ModuleContactBannerDocument | ModuleHeroBannerDocument | ModuleLogoDocument | ModulePhotoBannerDocument | ModuleServiceDocument | ModuleSocialMediaDocument | SiteFooterDocument | SiteHeaderDocument;
+export type AllDocumentTypes = AboutPageDocument | ComportementalistePageDocument | HomePageDocument | InfoPageDocument | ModuleContactBannerDocument | ModuleHeroBannerDocument | ModuleLogoDocument | ModulePhotoBannerDocument | ModuleServiceDocument | ModuleSocialMediaDocument | SiteFooterDocument | SiteHeaderDocument;
 /**
  * Primary content in AboutContact → Primary
  *
@@ -1045,6 +1074,91 @@ type HeaderLinkSliceVariation = HeaderLinkSliceDefault;
  *
  */
 export type HeaderLinkSlice = prismicT.SharedSlice<"header_link", HeaderLinkSliceVariation>;
+/**
+ * Primary content in HorizontalSliderBlocks → Primary
+ *
+ */
+interface HorizontalSliderBlocksSliceDefaultPrimary {
+    /**
+     * Illustration top field in *HorizontalSliderBlocks → Primary*
+     *
+     * - **Field Type**: Image
+     * - **Placeholder**: *None*
+     * - **API ID Path**: horizontal_slider_blocks.primary.illustration_top
+     * - **Documentation**: https://prismic.io/docs/core-concepts/image
+     *
+     */
+    illustration_top: prismicT.ImageField<never>;
+    /**
+     * top block text field in *HorizontalSliderBlocks → Primary*
+     *
+     * - **Field Type**: Rich Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: horizontal_slider_blocks.primary.top_block_text
+     * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
+     *
+     */
+    top_block_text: prismicT.RichTextField;
+    /**
+     * Illustration bottom field in *HorizontalSliderBlocks → Primary*
+     *
+     * - **Field Type**: Image
+     * - **Placeholder**: *None*
+     * - **API ID Path**: horizontal_slider_blocks.primary.illustration_bottom
+     * - **Documentation**: https://prismic.io/docs/core-concepts/image
+     *
+     */
+    illustration_bottom: prismicT.ImageField<never>;
+    /**
+     * bottom block text field in *HorizontalSliderBlocks → Primary*
+     *
+     * - **Field Type**: Rich Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: horizontal_slider_blocks.primary.bottom_block_text
+     * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
+     *
+     */
+    bottom_block_text: prismicT.RichTextField;
+}
+/**
+ * Item in HorizontalSliderBlocks → Items
+ *
+ */
+export interface HorizontalSliderBlocksSliceDefaultItem {
+    /**
+     * block text field in *HorizontalSliderBlocks → Items*
+     *
+     * - **Field Type**: Rich Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: horizontal_slider_blocks.items[].block_text
+     * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
+     *
+     */
+    block_text: prismicT.RichTextField;
+}
+/**
+ * Default variation for HorizontalSliderBlocks Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: `HorizontalSliderBlocks`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
+ *
+ */
+export type HorizontalSliderBlocksSliceDefault = prismicT.SharedSliceVariation<"default", Simplify<HorizontalSliderBlocksSliceDefaultPrimary>, Simplify<HorizontalSliderBlocksSliceDefaultItem>>;
+/**
+ * Slice variation for *HorizontalSliderBlocks*
+ *
+ */
+type HorizontalSliderBlocksSliceVariation = HorizontalSliderBlocksSliceDefault;
+/**
+ * HorizontalSliderBlocks Shared Slice
+ *
+ * - **API ID**: `horizontal_slider_blocks`
+ * - **Description**: `HorizontalSliderBlocks`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
+ *
+ */
+export type HorizontalSliderBlocksSlice = prismicT.SharedSlice<"horizontal_slider_blocks", HorizontalSliderBlocksSliceVariation>;
 /**
  * Primary content in ProblematicsBlock → Primary
  *
@@ -1454,6 +1568,16 @@ interface ServiceInfoBlockSliceDefaultPrimary {
      */
     warning: prismicT.RichTextField;
     /**
+     * Illustration field in *ServiceInfoBlock → Primary*
+     *
+     * - **Field Type**: Image
+     * - **Placeholder**: *None*
+     * - **API ID Path**: service_info_block.primary.illustration
+     * - **Documentation**: https://prismic.io/docs/core-concepts/image
+     *
+     */
+    illustration: prismicT.ImageField<never>;
+    /**
      * Warning icon field in *ServiceInfoBlock → Primary*
      *
      * - **Field Type**: Image
@@ -1464,15 +1588,16 @@ interface ServiceInfoBlockSliceDefaultPrimary {
      */
     warning_icon: prismicT.ImageField<never>;
     /**
-     * Illustration field in *ServiceInfoBlock → Primary*
+     * Has outer border field in *ServiceInfoBlock → Primary*
      *
-     * - **Field Type**: Image
+     * - **Field Type**: Boolean
      * - **Placeholder**: *None*
-     * - **API ID Path**: service_info_block.primary.illustration
-     * - **Documentation**: https://prismic.io/docs/core-concepts/image
+     * - **Default Value**: false
+     * - **API ID Path**: service_info_block.primary.has_outer_border
+     * - **Documentation**: https://prismic.io/docs/core-concepts/boolean
      *
      */
-    illustration: prismicT.ImageField<never>;
+    has_outer_border: prismicT.BooleanField;
 }
 /**
  * Default variation for ServiceInfoBlock Slice
@@ -1484,10 +1609,55 @@ interface ServiceInfoBlockSliceDefaultPrimary {
  */
 export type ServiceInfoBlockSliceDefault = prismicT.SharedSliceVariation<"default", Simplify<ServiceInfoBlockSliceDefaultPrimary>, never>;
 /**
+ * Primary content in ServiceInfoBlock → Primary
+ *
+ */
+interface ServiceInfoBlockSliceIsWhitePrimary {
+    /**
+     * Description field in *ServiceInfoBlock → Primary*
+     *
+     * - **Field Type**: Rich Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: service_info_block.primary.description
+     * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
+     *
+     */
+    description: prismicT.RichTextField;
+    /**
+     * Illustration top field in *ServiceInfoBlock → Primary*
+     *
+     * - **Field Type**: Image
+     * - **Placeholder**: *None*
+     * - **API ID Path**: service_info_block.primary.illustration_top
+     * - **Documentation**: https://prismic.io/docs/core-concepts/image
+     *
+     */
+    illustration_top: prismicT.ImageField<never>;
+    /**
+     * Illustration bottom field in *ServiceInfoBlock → Primary*
+     *
+     * - **Field Type**: Image
+     * - **Placeholder**: *None*
+     * - **API ID Path**: service_info_block.primary.illustration_bottom
+     * - **Documentation**: https://prismic.io/docs/core-concepts/image
+     *
+     */
+    illustration_bottom: prismicT.ImageField<never>;
+}
+/**
+ * isWhite variation for ServiceInfoBlock Slice
+ *
+ * - **API ID**: `isWhite`
+ * - **Description**: `ServiceInfoBlock`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
+ *
+ */
+export type ServiceInfoBlockSliceIsWhite = prismicT.SharedSliceVariation<"isWhite", Simplify<ServiceInfoBlockSliceIsWhitePrimary>, never>;
+/**
  * Slice variation for *ServiceInfoBlock*
  *
  */
-type ServiceInfoBlockSliceVariation = ServiceInfoBlockSliceDefault;
+type ServiceInfoBlockSliceVariation = ServiceInfoBlockSliceDefault | ServiceInfoBlockSliceIsWhite;
 /**
  * ServiceInfoBlock Shared Slice
  *
@@ -1622,6 +1792,6 @@ declare module "@prismicio/client" {
         (repositoryNameOrEndpoint: string, options?: prismic.ClientConfig): prismic.Client<AllDocumentTypes>;
     }
     namespace Content {
-        export type { AboutPageDocumentData, AboutPageDocumentDataSlicesSlice, AboutPageDocument, HomePageDocumentData, HomePageDocumentDataSlicesSlice, HomePageDocument, InfoPageDocumentData, InfoPageDocumentDataSlicesSlice, InfoPageDocument, ModuleContactBannerDocumentData, ModuleContactBannerDocumentDataSlicesSlice, ModuleContactBannerDocument, ModuleHeroBannerDocumentData, ModuleHeroBannerDocument, ModuleLogoDocumentData, ModuleLogoDocument, ModulePhotoBannerDocumentData, ModulePhotoBannerDocument, ModuleServiceDocumentData, ModuleServiceDocument, ModuleSocialMediaDocumentData, ModuleSocialMediaDocument, SiteFooterDocumentData, SiteFooterDocument, SiteHeaderDocumentData, SiteHeaderDocumentDataSlicesSlice, SiteHeaderDocument, AllDocumentTypes, AboutContactSliceDefaultPrimary, AboutContactSliceDefaultItem, AboutContactSliceDefault, AboutContactSliceVariation, AboutContactSlice, AboutTitleBlockSliceDefaultPrimary, AboutTitleBlockSliceDefault, AboutTitleBlockSliceVariation, AboutTitleBlockSlice, FormationSliceDefaultPrimary, FormationSliceDefaultItem, FormationSliceDefault, FormationSliceVariation, FormationSlice, HeaderLinkSliceDefaultItem, HeaderLinkSliceDefault, HeaderLinkSliceVariation, HeaderLinkSlice, ProblematicsBlockSliceDefaultPrimary, ProblematicsBlockSliceDefaultItem, ProblematicsBlockSliceDefault, ProblematicsBlockSliceVariation, ProblematicsBlockSlice, RectTextBlockSliceDefaultPrimary, RectTextBlockSliceDefaultItem, RectTextBlockSliceDefault, RectTextBlockSliceVariation, RectTextBlockSlice, ReviewsBlockSliceDefaultPrimary, ReviewsBlockSliceDefaultItem, ReviewsBlockSliceDefault, ReviewsBlockSliceVariation, ReviewsBlockSlice, RoundTextBlockSliceDefaultPrimary, RoundTextBlockSliceDefaultItem, RoundTextBlockSliceDefault, RoundTextBlockSliceVariation, RoundTextBlockSlice, ServiceInfoBlockSliceDefaultPrimary, ServiceInfoBlockSliceDefault, ServiceInfoBlockSliceVariation, ServiceInfoBlockSlice, ServicesBlockSliceDefaultPrimary, ServicesBlockSliceDefaultItem, ServicesBlockSliceDefault, ServicesBlockSliceVariation, ServicesBlockSlice, SocialMediaBlockSliceDefaultPrimary, SocialMediaBlockSliceDefaultItem, SocialMediaBlockSliceDefault, SocialMediaBlockSliceVariation, SocialMediaBlockSlice };
+        export type { AboutPageDocumentData, AboutPageDocumentDataSlicesSlice, AboutPageDocument, ComportementalistePageDocumentData, ComportementalistePageDocumentDataSlicesSlice, ComportementalistePageDocument, HomePageDocumentData, HomePageDocumentDataSlicesSlice, HomePageDocument, InfoPageDocumentData, InfoPageDocumentDataSlicesSlice, InfoPageDocument, ModuleContactBannerDocumentData, ModuleContactBannerDocumentDataSlicesSlice, ModuleContactBannerDocument, ModuleHeroBannerDocumentData, ModuleHeroBannerDocument, ModuleLogoDocumentData, ModuleLogoDocument, ModulePhotoBannerDocumentData, ModulePhotoBannerDocument, ModuleServiceDocumentData, ModuleServiceDocument, ModuleSocialMediaDocumentData, ModuleSocialMediaDocument, SiteFooterDocumentData, SiteFooterDocument, SiteHeaderDocumentData, SiteHeaderDocumentDataSlicesSlice, SiteHeaderDocument, AllDocumentTypes, AboutContactSliceDefaultPrimary, AboutContactSliceDefaultItem, AboutContactSliceDefault, AboutContactSliceVariation, AboutContactSlice, AboutTitleBlockSliceDefaultPrimary, AboutTitleBlockSliceDefault, AboutTitleBlockSliceVariation, AboutTitleBlockSlice, FormationSliceDefaultPrimary, FormationSliceDefaultItem, FormationSliceDefault, FormationSliceVariation, FormationSlice, HeaderLinkSliceDefaultItem, HeaderLinkSliceDefault, HeaderLinkSliceVariation, HeaderLinkSlice, HorizontalSliderBlocksSliceDefaultPrimary, HorizontalSliderBlocksSliceDefaultItem, HorizontalSliderBlocksSliceDefault, HorizontalSliderBlocksSliceVariation, HorizontalSliderBlocksSlice, ProblematicsBlockSliceDefaultPrimary, ProblematicsBlockSliceDefaultItem, ProblematicsBlockSliceDefault, ProblematicsBlockSliceVariation, ProblematicsBlockSlice, RectTextBlockSliceDefaultPrimary, RectTextBlockSliceDefaultItem, RectTextBlockSliceDefault, RectTextBlockSliceVariation, RectTextBlockSlice, ReviewsBlockSliceDefaultPrimary, ReviewsBlockSliceDefaultItem, ReviewsBlockSliceDefault, ReviewsBlockSliceVariation, ReviewsBlockSlice, RoundTextBlockSliceDefaultPrimary, RoundTextBlockSliceDefaultItem, RoundTextBlockSliceDefault, RoundTextBlockSliceVariation, RoundTextBlockSlice, ServiceInfoBlockSliceDefaultPrimary, ServiceInfoBlockSliceDefault, ServiceInfoBlockSliceIsWhitePrimary, ServiceInfoBlockSliceIsWhite, ServiceInfoBlockSliceVariation, ServiceInfoBlockSlice, ServicesBlockSliceDefaultPrimary, ServicesBlockSliceDefaultItem, ServicesBlockSliceDefault, ServicesBlockSliceVariation, ServicesBlockSlice, SocialMediaBlockSliceDefaultPrimary, SocialMediaBlockSliceDefaultItem, SocialMediaBlockSliceDefault, SocialMediaBlockSliceVariation, SocialMediaBlockSlice };
     }
 }

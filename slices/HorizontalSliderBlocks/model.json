@@ -1,0 +1,63 @@
+{
+  "id": "horizontal_slider_blocks",
+  "type": "SharedSlice",
+  "name": "HorizontalSliderBlocks",
+  "description": "HorizontalSliderBlocks",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "sktwi1xtmkfgx8626",
+      "description": "HorizontalSliderBlocks",
+      "primary": {
+        "illustration_top": {
+          "type": "Image",
+          "config": {
+            "label": "Illustration top",
+            "constraint": {},
+            "thumbnails": []
+          }
+        },
+        "top_block_text": {
+          "type": "StructuredText",
+          "config": {
+            "label": "top block text",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "multi": "paragraph,em,strong"
+          }
+        },
+        "illustration_bottom": {
+          "type": "Image",
+          "config": {
+            "label": "Illustration bottom",
+            "constraint": {},
+            "thumbnails": []
+          }
+        },
+        "bottom_block_text": {
+          "type": "StructuredText",
+          "config": {
+            "label": "bottom block text",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "multi": "paragraph,strong,em,hyperlink,image,list-item,o-list-item"
+          }
+        }
+      },
+      "items": {
+        "block_text": {
+          "type": "StructuredText",
+          "config": {
+            "label": "block text",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "multi": "paragraph,strong,em,hyperlink,embed,o-list-item,list-item,image"
+          }
+        }
+      },
+      "imageUrl": "https://images.prismic.io/slice-machine/621a5ec4-0387-4bc5-9860-2dd46cbc07cd_default_ss.png?auto=compress,format"
+    }
+  ]
+}

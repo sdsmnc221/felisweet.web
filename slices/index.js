@@ -4,6 +4,7 @@ import AboutContact from './AboutContact';
 import AboutTitleBlock from './AboutTitleBlock';
 import Formation from './Formation';
 import HeaderLinks from './HeaderLinks';
+import HorizontalSliderBlocks from './HorizontalSliderBlocks';
 import ProblematicsBlock from './ProblematicsBlock';
 import RectTextBlock from './RectTextBlock';
 import ReviewsBlock from './ReviewsBlock';
@@ -17,6 +18,7 @@ export {
 	AboutTitleBlock,
 	Formation,
 	HeaderLinks,
+	HorizontalSliderBlocks,
 	ProblematicsBlock,
 	RectTextBlock,
 	ReviewsBlock,
@@ -31,6 +33,7 @@ export const components = {
 	about_title_block: AboutTitleBlock,
 	formation: Formation,
 	header_link: HeaderLinks,
+	horizontal_slider_blocks: HorizontalSliderBlocks,
 	problematics_block: ProblematicsBlock,
 	rect_text_block: RectTextBlock,
 	reviews_block: ReviewsBlock,

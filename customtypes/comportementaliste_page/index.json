@@ -1,0 +1,31 @@
+{
+  "id": "comportementaliste_page",
+  "label": "ComportementalistePage",
+  "repeatable": false,
+  "status": true,
+  "json": {
+    "Main": {
+      "uid": {
+        "type": "UID",
+        "config": {
+          "label": "uid",
+          "placeholder": ""
+        }
+      },
+      "slices": {
+        "type": "Slices",
+        "fieldset": "Slice Zone",
+        "config": {
+          "choices": {
+            "service_info_block": {
+              "type": "SharedSlice"
+            },
+            "horizontal_slider_blocks": {
+              "type": "SharedSlice"
+            }
+          }
+        }
+      }
+    }
+  }
+}
