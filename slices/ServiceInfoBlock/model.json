@@ -114,6 +114,15 @@
             "constraint": {},
             "thumbnails": []
           }
+        },
+        "attached_top": {
+          "type": "Boolean",
+          "config": {
+            "label": "Attached top to previous block\\",
+            "default_value": false,
+            "placeholder_true": "true",
+            "placeholder_false": "false"
+          }
         }
       },
       "items": {},

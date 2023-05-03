@@ -1,17 +1,65 @@
 <template>
   <atom-wrapper
     class="service-info-block"
-    :class="{ '--small': smallTitle, '--reverse': rowReverse }"
+    :class="{
+      '--small': smallTitle,
+      '--reverse': rowReverse,
+      '--variation-white': data.variation === 'isWhite',
+      '--variation-default': data.variation === 'default',
+      '--attached-top': data.attachedTop,
+      '--has-outer-border': data.hasOuterBorder,
+    }"
   >
     <template v-if="$store.state.isMobile">
       <h2 :class="{ '--small': smallTitle }">
         {{ data.title }}
       </h2>
-      <atom-wrapper class="content">
-        <div class="subtitle" v-html="data.subtitles.up" />
+
+      <atom-image
+        v-if="
+          data.illustrations &&
+          data.illustrations.top &&
+          data.illustrations.top.filename
+        "
+        :src="data.illustrations.top.filename"
+      />
+
+      <atom-wrapper
+        class="content"
+        :class="{
+          '--has-margin-bottom':
+            data.illustrations &&
+            data.illustrations.bottom &&
+            !data.illustrations.bottom.filename,
+          '--has-margin-top':
+            data.illustrations &&
+            data.illustrations.top &&
+            data.illustrations.top.filename,
+        }"
+      >
+        <div
+          v-if="data.subtitles.up"
+          class="subtitle"
+          v-html="data.subtitles.up"
+        />
         <div class="description" v-html="data.description" />
-        <div class="subtitle" v-html="data.subtitles.down" />
+        <div
+          v-if="data.subtitles.down"
+          class="subtitle"
+          v-html="data.subtitles.down"
+        />
       </atom-wrapper>
+
+      <bubble-image
+        v-if="
+          data.illustrations &&
+          data.illustrations.bottom &&
+          data.illustrations.bottom.filename
+        "
+        :src="data.illustrations.bottom.filename"
+        :size="90"
+        with-border
+      />
     </template>
     <template v-else>
       <div class="text-block">
@@ -28,6 +76,7 @@
       <atom-image :src="data.warning.icon.filename" />
     </div>
     <bubble-image
+      v-if="data.illustration.filename"
       :class="{ '--has-warning': hasWarning }"
       :src="data.illustration.filename"
       :size="$store.state.isMobile ? 90 : 190"
@@ -63,6 +112,9 @@ export default {
       return !!this.data.warning.text
     },
   },
+  mounted() {
+    console.log(this.data)
+  },
 }
 </script>
 
@@ -87,16 +139,60 @@ export default {
     margin-top: -12px;
   }
 
+  &.--variation-white {
+    &.--attached-top {
+      margin-top: -54px;
+    }
+
+    .content {
+      background-color: $color-white;
+      color: $color-service-blue;
+
+      .subtitle {
+        display: none;
+      }
+    }
+  }
+
+  &.--has-outer-border {
+    padding: $spacing-l;
+    position: relative;
+
+    &:before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 80vw;
+      height: calc(100% + 16px);
+      border-radius: 48px;
+      border: 5px dashed $color-service-blue;
+    }
+  }
+
   .content {
     width: 80%;
     background-color: $color-service-blue;
     color: $color-white;
     border-radius: 32px;
 
+    p {
+      margin-bottom: $spacing-m;
+    }
+
     > * {
       @include rem(padding, $spacing-l $spacing-m);
       @include rem(font-size, $font-size-heading-5);
       text-align: center;
+    }
+
+    &.--has-margin-bottom {
+      margin-bottom: 6.4vh;
+    }
+
+    &.--has-margin-top {
+      margin-top: -12%;
     }
 
     .description {

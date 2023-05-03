@@ -106,6 +106,17 @@ export default {
           },
         ]
         break
+      case 'comportementaliste-felin':
+        head.title = `Qu'est-ce qu'un.e comportementaliste félin.e ?`
+        head.meta = [
+          {
+            hid: 'description-comportementaliste_felin',
+            name: 'description',
+            content:
+              'Quelles sont les missions d’un.e comportementaliste félin.e chez FeliSweet ?',
+          },
+        ]
+        break
       case 'services':
         head.title = `Découvrez nos Services`
         head.meta = [

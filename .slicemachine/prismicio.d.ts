@@ -1643,6 +1643,17 @@ interface ServiceInfoBlockSliceIsWhitePrimary {
      *
      */
     illustration_bottom: prismicT.ImageField<never>;
+    /**
+     * Attached top to previous block\ field in *ServiceInfoBlock → Primary*
+     *
+     * - **Field Type**: Boolean
+     * - **Placeholder**: *None*
+     * - **Default Value**: false
+     * - **API ID Path**: service_info_block.primary.attached_top
+     * - **Documentation**: https://prismic.io/docs/core-concepts/boolean
+     *
+     */
+    attached_top: prismicT.BooleanField;
 }
 /**
  * isWhite variation for ServiceInfoBlock Slice

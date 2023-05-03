@@ -1,9 +1,10 @@
 import imageAdapter from './imageAdapter'
 
 const adapter = ({ $prismic, data }) => {
-  const { primary } = data
+  const { primary, variation } = data
 
   return {
+    variation,
     title: primary?.title,
     subtitles: {
       up: $prismic.asHTML(primary?.subtitle_up),
@@ -15,6 +16,14 @@ const adapter = ({ $prismic, data }) => {
       text: $prismic.asHTML(primary?.warning),
       icon: imageAdapter(primary?.warning_icon),
     },
+    ...(variation === 'isWhite' && {
+      illustrations: {
+        top: imageAdapter(primary?.illustration_top),
+        bottom: imageAdapter(primary?.illustration_bottom),
+      },
+      attachedTop: primary?.attached_top,
+    }),
+    hasOuterBorder: primary?.has_outer_border,
   }
 }
 
