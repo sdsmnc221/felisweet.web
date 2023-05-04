@@ -112,9 +112,6 @@ export default {
       return !!this.data.warning.text
     },
   },
-  mounted() {
-    console.log(this.data)
-  },
 }
 </script>
 

@@ -1,22 +1,28 @@
 <template>
   <atom-wrapper tag="main">
-    <scroll-reveal-wrapper
-      v-for="(slice, index) in slices"
-      :key="`slice-mobile-service-info${index}`"
-      :top="200"
-      :class="{
-        '--is-first-section': index === 0,
-        '--is-last-section': index === slices.length - 1,
-      }"
-    >
-      <atom-wrapper tag="section">
-        <service-info-block
-          :data="slice"
-          :small-title="index === 0"
-          :row-reverse="index % 2 !== 0"
-        />
-      </atom-wrapper>
-    </scroll-reveal-wrapper>
+    <template v-if="$store.state.isMobile">
+      <scroll-reveal-wrapper
+        v-for="(slice, index) in mobileSlices"
+        :key="`slice-mobile-service-info${index}`"
+        :top="200"
+        :class="{
+          '--is-first-section': index === 0,
+          '--is-last-section': index === slices.length - 1,
+        }"
+      >
+        <atom-wrapper tag="section">
+          <service-info-block
+            :data="slice"
+            :small-title="index === 0"
+            :row-reverse="index % 2 !== 0"
+          />
+        </atom-wrapper>
+      </scroll-reveal-wrapper>
+    </template>
+
+    <template v-else>
+      <horizontal-slider-blocks :data="desktopSlice" />
+    </template>
 
     <paws-pattern :paws-per-section="4" />
   </atom-wrapper>
@@ -27,8 +33,10 @@ import AtomWrapper from '../components/atoms/AtomWrapper'
 import ScrollRevealWrapper from '../components/atoms/ScrollRevealWrapper'
 import ServiceInfoBlock from '../components/molecules/ServiceInfoBlock'
 import PawsPattern from '../components/organisms/Paws-Pattern'
+import HorizontalSliderBlocks from '../components/organisms/HorizontalSliderBlocks'
 
 import serviceInfoBlockAdapter from '../utils/adapters/serviceInfoBlock'
+import horizontalSliderBlocksAdapter from '../utils/adapters/horizontalSliderBlocks'
 
 export default {
   name: 'IndexPage',
@@ -37,6 +45,7 @@ export default {
     PawsPattern,
     ScrollRevealWrapper,
     ServiceInfoBlock,
+    HorizontalSliderBlocks,
   },
   props: {
     openPopup: {
@@ -59,13 +68,19 @@ export default {
       ({ slice_type: sliceType }) => sliceType === 'service_info_block'
     )
 
-    console.log(mobileSlices)
+    const desktopSlice = slices?.find(
+      ({ slice_type: sliceType }) => sliceType === 'horizontal_slider_blocks'
+    )
 
     if (data) {
       return {
-        slices: mobileSlices.map((slice) =>
+        mobileSlices: mobileSlices.map((slice) =>
           serviceInfoBlockAdapter({ $prismic, data: slice })
         ),
+        desktopSlice: horizontalSliderBlocksAdapter({
+          $prismic,
+          data: desktopSlice,
+        }),
       }
     } else {
       error({ statusCode: 404, message: 'Page not found' })
@@ -91,20 +106,6 @@ main {
 
   .--is-last-section {
     margin-bottom: 7.2vh;
-  }
-
-  .footer {
-    position: relative;
-
-    .atom-image {
-      position: absolute;
-      z-index: -1;
-      bottom: 0;
-      left: -12px;
-      width: 104vw;
-      min-height: 22vh;
-      max-height: 100vh;
-    }
   }
 
   @media #{$mq-medium} {
