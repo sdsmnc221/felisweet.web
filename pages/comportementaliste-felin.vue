@@ -7,7 +7,7 @@
         :top="200"
         :class="{
           '--is-first-section': index === 0,
-          '--is-last-section': index === slices.length - 1,
+          '--is-last-section': index === mobileSlices.length - 1,
         }"
       >
         <atom-wrapper tag="section">

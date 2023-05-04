@@ -174,8 +174,10 @@ export default {
       flex-direction: column;
 
       a {
+        text-align: center;
         margin: $spacing-xl 0;
-        font-size: $font-size-heading-2;
+        padding: 0 $spacing-xl;
+        font-size: $font-size-heading-3;
       }
     }
   }
