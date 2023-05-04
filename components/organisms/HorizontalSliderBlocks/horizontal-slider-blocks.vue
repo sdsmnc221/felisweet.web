@@ -64,8 +64,8 @@ export default {
       scrollTrigger: {
         trigger: document.body.querySelector('.slider-container'),
         pin: '.bottom-content',
-        scrub: true,
-        snap: 1 / sections.length,
+        scrub: 0.16,
+        // snap: 1 / sections.length,
         start: 'top 20%',
         end: '+=' + window.innerWidth,
       },
@@ -73,8 +73,8 @@ export default {
 
     this.tl.to(sections, {
       xPercent: -100 * sections.length - 1,
-      duration: 1.6,
-      ease: 'none',
+      duration: 2.4,
+      ease: 'power2.inOut',
     })
   },
 }
