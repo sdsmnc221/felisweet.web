@@ -212,6 +212,8 @@ export default {
       document?.data?.module_contact_banner?.id
     )
 
+    const moduleCatus = document?.data?.catus
+
     if (document) {
       const data = moduleHeroBanner?.data
       return {
@@ -230,7 +232,8 @@ export default {
               contactBanner: moduleContactBannerAdapter(
                 $prismic,
                 moduleContactBanner,
-                moduleSocialMedia
+                moduleSocialMedia,
+                moduleCatus
               ),
             }
           : {}),

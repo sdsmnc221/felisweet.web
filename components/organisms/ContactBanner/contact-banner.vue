@@ -952,7 +952,10 @@
           />
         </g>
       </svg>
-      <h2 v-html="data.title" />
+      <div ref="title" class="title">
+        <h2 v-html="data.title[0]" />
+        <h2 v-html="data.title[1]" class="--catus" />
+      </div>
     </atom-wrapper>
     <atom-wrapper class="contact-foot" flex flex-center flex-col>
       <atom-image :src="data.illustrations.foot" />
@@ -1082,6 +1085,13 @@ export default {
         },
         'start'
       )
+
+    this.$gsap
+      .timeline({ repeat: -1 })
+      .to(this.$refs.title.children[0], { opacity: 0, duration: 2.4 }, 0)
+      .to(this.$refs.title.children[0], { opacity: 1, duration: 2.4 }, 4.8)
+      .to(this.$refs.title.children[1], { opacity: 1, duration: 2.4 }, 1.2)
+      .to(this.$refs.title.children[1], { opacity: 0, duration: 2.4 }, 4.8)
   },
   methods: {
     isQR(item) {
@@ -1103,6 +1113,48 @@ export default {
     position: relative;
 
     h2 {
+      &.--catus {
+        opacity: 0;
+        transform: scale(0.8) translateY(24px);
+
+        p {
+          margin: -4px;
+        }
+
+        * {
+          font-size: $font-size-body-m;
+          font-style: normal;
+
+          strong {
+            font-size: $font-size-body-m;
+            font-weight: $weight-bold;
+            text-transform: uppercase;
+            letter-spacing: 0.32rem;
+            color: $color-catus;
+
+            em {
+              font-size: $font-size-body-xs;
+              font-weight: $weight-bold;
+              text-transform: uppercase;
+              letter-spacing: 0.2rem;
+            }
+          }
+
+          em {
+            font-size: $font-size-body-xs;
+            font-weight: $weight-bold;
+            text-transform: uppercase;
+            letter-spacing: 0.1rem;
+            color: $color-catus;
+          }
+        }
+
+        img {
+          width: 48px;
+          height: auto;
+        }
+      }
+
       p {
         @include rem(font-size, $font-size-body-l);
         font-weight: $weight-bold;
@@ -1271,6 +1323,47 @@ export default {
       width: 64vw;
 
       h2 {
+        &.--catus {
+          transform: none;
+
+          p {
+            margin: 0;
+          }
+
+          * {
+            font-size: $font-size-body-xl;
+            font-style: normal;
+
+            strong {
+              font-size: $font-size-body-xl;
+              font-weight: $weight-bold;
+              text-transform: uppercase;
+              letter-spacing: 0.32rem;
+              color: $color-catus;
+
+              em {
+                font-size: $font-size-body-m;
+                font-weight: $weight-bold;
+                text-transform: uppercase;
+                letter-spacing: 0.4rem;
+              }
+            }
+
+            em {
+              font-size: $font-size-body-m;
+              font-weight: $weight-bold;
+              text-transform: uppercase;
+              letter-spacing: 0.2rem;
+              color: $color-catus;
+            }
+          }
+
+          img {
+            width: 160px;
+            height: auto;
+          }
+        }
+
         p {
           @include rem(font-size, $font-size-heading-4);
         }

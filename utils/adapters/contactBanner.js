@@ -1,9 +1,9 @@
 import imageAdapter from './imageAdapter'
 
-export default function ($prismic, moduleContactBanner, moduleSocialMedia) {
+export default function ($prismic, moduleContactBanner, moduleSocialMedia, moduleCatus) {
   const data = moduleContactBanner?.data
   return {
-    title: $prismic.asHTML(data.title),
+    title: [$prismic.asHTML(data.title), $prismic.asHTML(moduleCatus)],
     email: {
       label: data.email_label,
       content: data.email,
