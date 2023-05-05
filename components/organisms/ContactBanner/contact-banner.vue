@@ -1088,10 +1088,10 @@ export default {
 
     this.$gsap
       .timeline({ repeat: -1 })
-      .to(this.$refs.title.children[0], { opacity: 0, duration: 2.4 }, 0)
-      .to(this.$refs.title.children[0], { opacity: 1, duration: 2.4 }, 4.8)
-      .to(this.$refs.title.children[1], { opacity: 1, duration: 2.4 }, 1.2)
-      .to(this.$refs.title.children[1], { opacity: 0, duration: 2.4 }, 4.8)
+      .to(this.$refs.title.children[0], { opacity: 0, duration: 4 }, 0)
+      .to(this.$refs.title.children[0], { opacity: 1, duration: 4 }, 6.4)
+      .to(this.$refs.title.children[1], { opacity: 1, duration: 4 }, 2.8)
+      .to(this.$refs.title.children[1], { opacity: 0, duration: 4 }, 6.4)
   },
   methods: {
     isQR(item) {
@@ -1125,27 +1125,32 @@ export default {
           font-size: $font-size-body-m;
           font-style: normal;
 
-          strong {
-            font-size: $font-size-body-m;
-            font-weight: $weight-bold;
-            text-transform: uppercase;
-            letter-spacing: 0.32rem;
-            color: $color-catus;
+          a {
+            text-decoration: none;
+
+            strong {
+              font-size: $font-size-body-m;
+              font-weight: $weight-bold;
+              text-transform: uppercase;
+              letter-spacing: 0.32rem;
+              color: $color-catus;
+            }
 
             em {
               font-size: $font-size-body-xs;
               font-weight: $weight-bold;
               text-transform: uppercase;
+              letter-spacing: 0.1rem;
+              color: $color-catus;
+            }
+
+            strong em,
+            em strong {
+              font-size: $font-size-body-xs;
+              font-weight: $weight-bold;
+              text-transform: uppercase;
               letter-spacing: 0.2rem;
             }
-          }
-
-          em {
-            font-size: $font-size-body-xs;
-            font-weight: $weight-bold;
-            text-transform: uppercase;
-            letter-spacing: 0.1rem;
-            color: $color-catus;
           }
         }
 
