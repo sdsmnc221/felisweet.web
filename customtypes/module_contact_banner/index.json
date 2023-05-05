@@ -14,6 +14,24 @@
           "multi": "paragraph,heading2,strong"
         }
       },
+      "title_alternative": {
+        "type": "StructuredText",
+        "config": {
+          "label": "Title Alternative",
+          "placeholder": "",
+          "allowTargetBlank": true,
+          "multi": "paragraph,preformatted,strong,em,hyperlink,image"
+        }
+      },
+      "alternative_title": {
+        "type": "StructuredText",
+        "config": {
+          "label": "Alternative Title",
+          "placeholder": "",
+          "allowTargetBlank": true,
+          "multi": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
+        }
+      },
       "email_label": {
         "type": "Text",
         "config": {

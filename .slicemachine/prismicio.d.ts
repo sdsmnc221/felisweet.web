@@ -100,6 +100,17 @@ interface HomePageDocumentData {
      */
     site_footer: prismicT.RelationField<"site_footer">;
     /**
+     * catus field in *Home Page*
+     *
+     * - **Field Type**: Rich Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: home_page.catus
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
+     *
+     */
+    catus: prismicT.RichTextField;
+    /**
      * Slice Zone field in *Home Page*
      *
      * - **Field Type**: Slice Zone
@@ -190,6 +201,28 @@ interface ModuleContactBannerDocumentData {
      *
      */
     title: prismicT.RichTextField;
+    /**
+     * Title Alternative field in *Module Contact Banner*
+     *
+     * - **Field Type**: Rich Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: module_contact_banner.title_alternative
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
+     *
+     */
+    title_alternative: prismicT.RichTextField;
+    /**
+     * Alternative Title field in *Module Contact Banner*
+     *
+     * - **Field Type**: Rich Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: module_contact_banner.alternative_title
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
+     *
+     */
+    alternative_title: prismicT.RichTextField;
     /**
      * Email Label field in *Module Contact Banner*
      *

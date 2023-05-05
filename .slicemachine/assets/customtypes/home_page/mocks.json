@@ -41,6 +41,13 @@
       "first_publication_date": "1970-01-01T00:00:01+0000",
       "last_publication_date": "1970-01-01T01:00:00+0000"
     },
+    "catus": [
+      {
+        "type": "paragraph",
+        "text": "Exercitation exercitation sit deserunt mollit velit do culpa do excepteur eu nostrud adipisicing excepteur irure. Aliquip tempor veniam adipisicing aliqua commodo eu incididunt quis ut. Eiusmod duis officia esse aute nulla Lorem.",
+        "spans": []
+      }
+    ],
     "slices": []
   }
 }

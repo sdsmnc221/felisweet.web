@@ -1,6 +1,13 @@
 {
   "_cts": {
-    "home_page": {},
+    "home_page": {
+      "catus": {
+        "config": {
+          "patternType": "PARAGRAPH",
+          "blocks": 1
+        }
+      }
+    },
     "module_hero_banner": {
       "logo_text": {
         "config": {
@@ -54,7 +61,20 @@
         }
       }
     },
-    "module_contact_banner": {},
+    "module_contact_banner": {
+      "title_alternative": {
+        "config": {
+          "patternType": "PARAGRAPH",
+          "blocks": 1
+        }
+      },
+      "alternative_title": {
+        "config": {
+          "patternType": "PARAGRAPH",
+          "blocks": 1
+        }
+      }
+    },
     "module_social_media": {},
     "module_photo_banner": {
       "description": {
