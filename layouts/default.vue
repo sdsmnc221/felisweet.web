@@ -107,7 +107,7 @@ export default {
         ]
         break
       case 'comportementaliste-felin':
-        head.title = `Qu'est-ce qu'un.e comportementaliste félin.e ?`
+        head.title = `A quoi sert un comportementaliste félin ?`
         head.meta = [
           {
             hid: 'description-comportementaliste_felin',

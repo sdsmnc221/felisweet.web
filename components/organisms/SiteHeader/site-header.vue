@@ -176,8 +176,8 @@ export default {
       a {
         text-align: center;
         margin: $spacing-xl 0;
-        padding: 0 $spacing-xl;
-        font-size: $font-size-heading-3;
+        padding: 0 $spacing-s;
+        font-size: $font-size-heading-4;
       }
     }
   }
