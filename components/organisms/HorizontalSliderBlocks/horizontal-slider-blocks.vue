@@ -4,19 +4,21 @@
       <atom-wrapper tag="section">
         <div class="top-content">
           <atom-image :src="data.top.illustration.filename" />
-          <div class="text" v-html="data.top.text"></div>
+          <div ref="topContent" class="text" v-html="data.top.text"></div>
         </div>
       </atom-wrapper>
     </scroll-reveal-wrapper>
-    <scroll-reveal-wrapper :top="200" class="slider-container">
-      <div class="bottom-content">
-        <div class="slider">
-          <div
-            v-for="(block, index) in data.sliders"
-            :key="`slider-block-text-${index}`"
-            class="block-text"
-          >
-            <div v-html="block"></div>
+    <scroll-reveal-wrapper :top="200">
+      <div class="slider-container">
+        <div ref="bottomContent" class="bottom-content">
+          <div class="slider">
+            <div
+              v-for="(block, index) in data.sliders"
+              :key="`slider-block-text-${index}`"
+              class="block-text"
+            >
+              <div v-html="block"></div>
+            </div>
           </div>
         </div>
       </div>
@@ -45,6 +47,7 @@ export default {
   data() {
     return {
       tl: null,
+      bottomContentTop: 0,
     }
   },
   computed: {
@@ -58,23 +61,39 @@ export default {
     this.$gsap.registerPlugin(ScrollTrigger)
   },
   mounted() {
+    setTimeout(() => {
+      this.bottomContentTop =
+        this.$refs.bottomContent.getBoundingClientRect().top -
+        this.$refs.topContent.getBoundingClientRect().bottom
+      this.$gsap.set(this.$refs.bottomContent, {
+        top: `-${this.bottomContentTop}px`,
+      })
+    }, 120)
+
+    // Scroll Trigger
     const sections = this.$gsap.utils.toArray('.block-text')
 
     this.tl = this.$gsap.timeline({
       scrollTrigger: {
-        trigger: document.body.querySelector('.slider-container'),
+        trigger: document.body.querySelector('.bottom-content-container'),
         pin: '.bottom-content',
-        scrub: 0.16,
-        // snap: 1 / sections.length,
-        start: 'top 20%',
+        scrub: 2.4,
+        snap: 1 / (sections.length - 1),
+        start: 'top top',
         end: '+=' + window.innerWidth,
+        onLeaveBack: () =>
+          this.$gsap.to(this.$refs.bottomContent, {
+            top: `-${this.bottomContentTop}px`,
+            duration: 1.2,
+            ease: 'power2.inOut',
+          }),
       },
     })
 
     this.tl.to(sections, {
-      xPercent: -100 * sections.length - 1,
+      xPercent: -100 * (sections.length - 1),
       duration: 2.4,
-      ease: 'power2.inOut',
+      ease: 'linear',
     })
   },
 }
@@ -107,7 +126,7 @@ export default {
         width: 48vw;
         padding: $spacing-4xl;
         background-color: $color-white;
-        color: $color-service-blue;
+        color: $color-shakespear-blue;
         border-radius: 120px;
         margin-top: -32vh;
 
@@ -119,8 +138,11 @@ export default {
       }
     }
 
+    .slider-container {
+      position: relative;
+    }
+
     .bottom-content {
-      transform: translateY(-10vh);
       position: relative;
       z-index: 2;
       height: 100vh;
@@ -135,10 +157,11 @@ export default {
         width: 400vw;
         height: 100%;
         align-items: center;
+        flex-wrap: nowrap;
 
         .block-text {
           width: 100vw;
-          height: 100%;
+          height: 100vh;
           display: flex;
           justify-content: center;
           align-items: center;
@@ -169,7 +192,7 @@ export default {
       width: 40vw;
       background-color: $color-white;
       border-radius: 0 0 72px 72px;
-      transform: translateY(-20vh);
+      transform: translateY(-12vh);
       position: relative;
       z-index: -1;
 
@@ -187,8 +210,9 @@ export default {
 
       * {
         text-align: center;
-        font-size: $font-size-body-l;
-        color: $color-service-blue;
+        font-size: $font-size-body-xl;
+        font-weight: 600;
+        color: $color-shakespear-blue;
         margin: 24px;
       }
 
