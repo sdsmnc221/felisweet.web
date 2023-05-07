@@ -47,7 +47,6 @@ export default {
   data() {
     return {
       tl: null,
-      bottomContentTop: 0,
     }
   },
   computed: {
@@ -61,15 +60,6 @@ export default {
     this.$gsap.registerPlugin(ScrollTrigger)
   },
   mounted() {
-    setTimeout(() => {
-      this.bottomContentTop =
-        this.$refs.bottomContent.getBoundingClientRect().top -
-        this.$refs.topContent.getBoundingClientRect().bottom
-      this.$gsap.set(this.$refs.bottomContent, {
-        top: `-${this.bottomContentTop}px`,
-      })
-    }, 120)
-
     // Scroll Trigger
     const sections = this.$gsap.utils.toArray('.block-text')
 
@@ -77,22 +67,17 @@ export default {
       scrollTrigger: {
         trigger: document.body.querySelector('.bottom-content-container'),
         pin: '.bottom-content',
+        anticipatePin: 1,
         scrub: 2.4,
         snap: 1 / (sections.length - 1),
         start: 'top top',
-        end: '+=' + window.innerWidth,
-        onLeaveBack: () =>
-          this.$gsap.to(this.$refs.bottomContent, {
-            top: `-${this.bottomContentTop}px`,
-            duration: 1.2,
-            ease: 'power2.inOut',
-          }),
+        end: '+=' + window.innerWidth * 5,
       },
     })
 
     this.tl.to(sections, {
       xPercent: -100 * (sections.length - 1),
-      duration: 2.4,
+      duration: 3.2,
       ease: 'linear',
     })
   },
@@ -150,6 +135,7 @@ export default {
       background-repeat: no-repeat;
       background-size: contain;
       background-position: center;
+      transition: none;
 
       .slider {
         position: relative;
@@ -165,7 +151,6 @@ export default {
           display: flex;
           justify-content: center;
           align-items: center;
-          will-change: transform;
           position: relative;
 
           div {
