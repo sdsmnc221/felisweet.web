@@ -1088,10 +1088,10 @@ export default {
 
     this.$gsap
       .timeline({ repeat: -1 })
-      .to(this.$refs.title.children[0], { opacity: 0, duration: 4 }, 0)
-      .to(this.$refs.title.children[0], { opacity: 1, duration: 4 }, 6.4)
-      .to(this.$refs.title.children[1], { opacity: 1, duration: 4 }, 2.8)
-      .to(this.$refs.title.children[1], { opacity: 0, duration: 4 }, 6.4)
+      .to(this.$refs.title.children[0], { opacity: 0, duration: 2.8 }, 0)
+      .to(this.$refs.title.children[0], { opacity: 1, duration: 2.8 }, 8.6)
+      .to(this.$refs.title.children[1], { opacity: 1, duration: 2.8 }, 2.8)
+      .to(this.$refs.title.children[1], { opacity: 0, duration: 2.8 }, 8.6)
   },
   methods: {
     isQR(item) {
