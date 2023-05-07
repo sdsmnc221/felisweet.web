@@ -213,7 +213,7 @@ export default {
         font-size: $font-size-body-xl;
         font-weight: 600;
         color: $color-shakespear-blue;
-        margin: 24px;
+        margin: 24px 0;
       }
 
       ul {
