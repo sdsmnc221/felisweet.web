@@ -1329,7 +1329,8 @@ export default {
 
       h2 {
         &.--catus {
-          transform: none;
+          transform: scale(0.8);
+          bottom: 4vh;
 
           p {
             margin: 0;
