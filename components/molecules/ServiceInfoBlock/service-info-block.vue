@@ -225,6 +225,14 @@ export default {
       p {
         @include rem(font-size, $font-size-body-l);
         font-weight: $weight-bold;
+
+        em,
+        strong {
+          @include rem(font-size, $font-size-body-l);
+          font-weight: $weight-medium;
+          text-decoration: underline;
+          font-style: normal;
+        }
       }
 
       &:first-of-type {
