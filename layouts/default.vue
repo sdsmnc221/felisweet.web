@@ -3,7 +3,7 @@
     <transition v-if="!$store.state.loading">
       <div class="container">
         <site-header
-          v-if="$route.name !== 'noel2022'"
+          v-if="$route.name !== 'noel2022' && $route.name !== 'chachou-bible'"
           v-bind="$store.state.header"
         />
         <nuxt-child
@@ -26,7 +26,7 @@
             </template>
           </pop-up>
         </Transition>
-        <site-footer />
+        <site-footer v-if="$route.name !== 'chachou-bible'" />
         <dot-cursor v-if="$route.name !== 'noel2022'" />
       </div>
     </transition>
