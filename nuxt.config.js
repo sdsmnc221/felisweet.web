@@ -103,5 +103,7 @@ export default {
   // Environment variables, prefered over env property: https://nuxtjs.org/tutorials/moving-from-nuxtjs-dotenv-to-runtime-config/#introducing-the-nuxtjs-runtime-config
   publicRuntimeConfig: {
     prismicRepository: process.env.PRISMIC_REPOSITORY,
+    chachouBiblePassword: process.env.CHACHOU_BIBLE_PASSWORD,
+    chachouBibleEmbed: process.env.CHACHOU_BIBLE_EMBED,
   },
 }

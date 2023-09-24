@@ -4,11 +4,20 @@
       <iframe
         ref="iframe"
         loading="lazy"
-        src="https://www.canva.com/design/DAFvX8wacAs/6QOIEk_m2YhEuQJ1ixs4cQ/view?embed"
+        src=""
         allowfullscreen="allowfullscreen"
         allow="fullscreen"
       >
       </iframe>
+    </div>
+    <div class="password-protection" v-if="!canEnter">
+      <label for="password">Mot de passe</label>
+      <input
+        id="password"
+        type="password"
+        @input="onInput"
+        @keyup.enter="checkPassword"
+      />
     </div>
   </atom-wrapper>
 </template>
@@ -19,14 +28,23 @@ export default {
   name: 'ChachouBible',
   components: { AtomWrapper },
   props: {},
+  data() {
+    return {
+      password: '',
+      canEnter: false,
+    }
+  },
   methods: {
-    iframeRef(frameRef) {
-      return frameRef.contentWindow
-        ? frameRef.contentWindow.document
-        : frameRef.contentDocument
+    onInput(e) {
+      this.password = e.target.value
+    },
+    checkPassword() {
+      if (this.password === this.$config.chachouBiblePassword) {
+        this.$refs.iframe.src = this.$config.chachouBibleEmbed
+        this.canEnter = true
+      }
     },
   },
-  mounted() {},
 }
 </script>
 
@@ -48,6 +66,25 @@ main {
       border: none;
       padding: 0;
       margin: 0;
+    }
+  }
+
+  .password-protection {
+    position: fixed;
+    z-index: 99;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    top: 0;
+    left: 0;
+
+    input {
+      text-align: center;
+      padding: 4px 8px;
     }
   }
 
