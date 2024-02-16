@@ -11,9 +11,9 @@ self.addEventListener("message", async (event) => {
   const {
     imageURL,
     imgCount,
-    // imgIndex,
+    imgIndex,
     sectionIndex,
-    // imgCountInCurrentSection,
+    imgCountInCurrentSection,
     imgCountInFirstSections,
     isVideoBlock,
     blob: blob_,
@@ -27,18 +27,18 @@ self.addEventListener("message", async (event) => {
     countImgFirstSections++;
   }
 
-  // console.log({
-  //   imgCount,
-  //   imgIndex,
-  //   countImg,
-  //   sectionIndex,
-  //   imgCountInCurrentSection,
-  // });
+  console.log({
+    imgCount,
+    imgIndex,
+    countImg,
+    sectionIndex,
+    imgCountInCurrentSection,
+  });
 
   if (!isLoadingFinished) {
     isLoadingFinished =
       // countImg === imgCountInFirstSections || countImg === imgCount / 2;
-      countImg === imgCountInFirstSections;
+      countImg === imgCountInFirstSections && countImg !== 0;
   }
 
   // Cache the blob asset

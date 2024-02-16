@@ -100,6 +100,10 @@ export default {
     },
   },
 
+  serverMiddleware: [
+    { path: '/story-2023', handler: '~/server-middleware/story2023.js' },
+  ],
+
   // Environment variables, prefered over env property: https://nuxtjs.org/tutorials/moving-from-nuxtjs-dotenv-to-runtime-config/#introducing-the-nuxtjs-runtime-config
   publicRuntimeConfig: {
     prismicRepository: process.env.PRISMIC_REPOSITORY,
