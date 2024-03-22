@@ -5,9 +5,9 @@ export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
     titleTemplate:
-      '%s - FeliSweet Marie-Bénédicte Siruguet - Comportementaliste et Cat-sitter autour de Sainte-Geneviève-des-Bois',
+      'FeliSweet Comportementaliste et Cat-sitter - Sainte-Geneviève-des-Bois - %s -',
     title:
-      'FeliSweet Marie-Bénédicte Siruguet - Comportementaliste et Cat-sitter autour de Sainte-Geneviève-des-Bois',
+      'FeliSweet Comportementaliste et Cat-sitter - Sainte-Geneviève-des-Bois',
     htmlAttrs: {
       lang: 'fr',
     },
@@ -24,7 +24,7 @@ export default {
         hid: 'keywords',
         name: 'keywords',
         content:
-          'FeliSweet, Comportementaliste, Félin, Cat-sitting, Cat sitting, Sainte-Geneviève-des-Bois, Sainte Geneviève des Bois, Ile de France, Chat, Chats, Marie Bénédicte Siruguet, Comportementalisme',
+          'FeliSweet, Comportementaliste, Félin, Cat-sitting, Cat sitting, Sainte-Geneviève-des-Bois, Sainte Geneviève des Bois, Ile de France, Chat, Chats, chats craintifs, Comportementalisme, Essone',
       },
     ],
     link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
