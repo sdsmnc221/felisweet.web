@@ -1,0 +1,86 @@
+[
+  {
+    "__TYPE__": "SharedSliceContent",
+    "variation": "default",
+    "primary": {
+      "text": {
+        "__TYPE__": "StructuredTextContent",
+        "value": [
+          {
+            "type": "paragraph",
+            "content": {
+              "text": "Ullamco officia quis sunt nisi consequat fugiat culpa Lorem. Duis cupidatat reprehenderit sunt ullamco voluptate aliquip."
+            }
+          }
+        ]
+      },
+      "with_border": {
+        "__TYPE__": "BooleanContent",
+        "value": true
+      },
+      "big_text": {
+        "__TYPE__": "BooleanContent",
+        "value": true
+      },
+      "text_class": {
+        "__TYPE__": "FieldContent",
+        "value": "affect",
+        "type": "Text"
+      }
+    },
+    "items": [
+      {
+        "__TYPE__": "GroupItemContent",
+        "value": [
+          [
+            "image",
+            {
+              "__TYPE__": "ImageContent",
+              "origin": {
+                "id": "main",
+                "url": "https://images.unsplash.com/photo-1560762484-813fc97650a0",
+                "width": 3344,
+                "height": 2509
+              },
+              "url": "https://images.unsplash.com/photo-1560762484-813fc97650a0",
+              "width": 3344,
+              "height": 2509,
+              "edit": {
+                "zoom": 1,
+                "crop": {
+                  "x": 0,
+                  "y": 0
+                },
+                "background": "transparent"
+              },
+              "thumbnails": {}
+            }
+          ],
+          [
+            "image_with_border",
+            {
+              "__TYPE__": "BooleanContent",
+              "value": true
+            }
+          ],
+          [
+            "image_position",
+            {
+              "__TYPE__": "FieldContent",
+              "value": "up",
+              "type": "Select"
+            }
+          ],
+          [
+            "image_class",
+            {
+              "__TYPE__": "FieldContent",
+              "value": "pitch",
+              "type": "Text"
+            }
+          ]
+        ]
+      }
+    ]
+  }
+]

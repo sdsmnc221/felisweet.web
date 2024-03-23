@@ -1,0 +1,59 @@
+[
+  {
+    "credits_cta_label": {
+      "__TYPE__": "FieldContent",
+      "value": "guard",
+      "type": "Text"
+    },
+    "credits_content": {
+      "__TYPE__": "StructuredTextContent",
+      "value": [
+        {
+          "type": "paragraph",
+          "content": {
+            "text": "Esse aliquip esse sunt dolore eu. Nostrud cillum deserunt aliquip ex deserunt dolore do velit."
+          }
+        }
+      ]
+    },
+    "legal_mention_cta_label": {
+      "__TYPE__": "FieldContent",
+      "value": "control",
+      "type": "Text"
+    },
+    "legal_mention_content": {
+      "__TYPE__": "StructuredTextContent",
+      "value": [
+        {
+          "type": "paragraph",
+          "content": {
+            "text": "Elit do sint velit excepteur pariatur nulla magna."
+          }
+        }
+      ]
+    },
+    "module_logo": {
+      "__TYPE__": "LinkContent",
+      "value": {
+        "__TYPE__": "DocumentLink",
+        "id": "mock_document_id"
+      }
+    },
+    "copyright_content": {
+      "__TYPE__": "StructuredTextContent",
+      "value": [
+        {
+          "type": "paragraph",
+          "content": {
+            "text": "Irure minim consectetur occaecat aliqua incididunt. Duis sint aliquip eiusmod veniam non cupidatat tempor excepteur ex consectetur. Reprehenderit ullamco do veniam et qui voluptate irure consectetur laboris adipisicing laborum qui."
+          }
+        }
+      ]
+    },
+    "planning_iframe": {
+      "__TYPE__": "FieldContent",
+      "value": "slope",
+      "type": "Text"
+    }
+  }
+]

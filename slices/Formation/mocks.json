@@ -1,0 +1,85 @@
+[
+  {
+    "__TYPE__": "SharedSliceContent",
+    "variation": "default",
+    "primary": {
+      "cta_text": {
+        "__TYPE__": "FieldContent",
+        "value": "unless",
+        "type": "Text"
+      },
+      "cta_bg_image": {
+        "__TYPE__": "ImageContent",
+        "origin": {
+          "id": "main",
+          "url": "https://images.unsplash.com/photo-1589321599763-d66926c29613",
+          "width": 3168,
+          "height": 4752
+        },
+        "url": "https://images.unsplash.com/photo-1589321599763-d66926c29613",
+        "width": 3168,
+        "height": 4752,
+        "edit": {
+          "zoom": 1,
+          "crop": {
+            "x": 0,
+            "y": 0
+          },
+          "background": "transparent"
+        },
+        "thumbnails": {}
+      }
+    },
+    "items": [
+      {
+        "__TYPE__": "GroupItemContent",
+        "value": [
+          [
+            "year",
+            {
+              "__TYPE__": "FieldContent",
+              "value": "describe",
+              "type": "Text"
+            }
+          ],
+          [
+            "name",
+            {
+              "__TYPE__": "StructuredTextContent",
+              "value": [
+                {
+                  "type": "paragraph",
+                  "content": {
+                    "text": "Officia duis mollit elit aliquip elit id."
+                  }
+                }
+              ]
+            }
+          ],
+          [
+            "certificate",
+            {
+              "__TYPE__": "FieldContent",
+              "value": "fed",
+              "type": "Text"
+            }
+          ],
+          [
+            "description",
+            {
+              "__TYPE__": "StructuredTextContent",
+              "value": [
+                {
+                  "type": "paragraph",
+                  "content": {
+                    "text": "Exercitation quis ipsum amet tempor aliquip. Cupidatat exercitation laboris tempor ex duis."
+                  }
+                }
+              ]
+            }
+          ]
+        ]
+      }
+    ]
+  }
+]

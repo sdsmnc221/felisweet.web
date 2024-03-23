@@ -1,0 +1,87 @@
+[
+  {
+    "illustration": {
+      "__TYPE__": "ImageContent",
+      "origin": {
+        "id": "main",
+        "url": "https://images.unsplash.com/photo-1560457079-9a6532ccb118",
+        "width": 4160,
+        "height": 3120
+      },
+      "url": "https://images.unsplash.com/photo-1560457079-9a6532ccb118",
+      "width": 4160,
+      "height": 3120,
+      "edit": {
+        "zoom": 1,
+        "crop": {
+          "x": 0,
+          "y": 0
+        },
+        "background": "transparent"
+      },
+      "thumbnails": {}
+    },
+    "illustration_alt": {
+      "__TYPE__": "FieldContent",
+      "value": "bag",
+      "type": "Text"
+    },
+    "illustration_logo": {
+      "__TYPE__": "LinkContent",
+      "value": {
+        "__TYPE__": "DocumentLink",
+        "id": "mock_document_id"
+      }
+    },
+    "logo_text": {
+      "__TYPE__": "StructuredTextContent",
+      "value": [
+        {
+          "type": "paragraph",
+          "content": {
+            "text": "Officia ea consequat aliqua dolor ad in et velit nulla esse Lorem consequat."
+          }
+        }
+      ]
+    },
+    "text": {
+      "__TYPE__": "StructuredTextContent",
+      "value": [
+        {
+          "type": "paragraph",
+          "content": {
+            "text": "In irure ut Lorem excepteur id deserunt. Culpa aliquip aute veniam et incididunt consequat esse voluptate occaecat esse ut aliqua sit deserunt cupidatat. Veniam non minim reprehenderit aliquip adipisicing eiusmod tempor nostrud velit eiusmod laboris pariatur minim fugiat eiusmod."
+          }
+        }
+      ]
+    },
+    "module_logo": {
+      "__TYPE__": "LinkContent",
+      "value": {
+        "__TYPE__": "DocumentLink",
+        "id": "mock_document_id"
+      }
+    },
+    "bubble_chat": {
+      "__TYPE__": "ImageContent",
+      "origin": {
+        "id": "main",
+        "url": "https://images.unsplash.com/photo-1493119508027-2b584f234d6c",
+        "width": 3424,
+        "height": 3424
+      },
+      "url": "https://images.unsplash.com/photo-1493119508027-2b584f234d6c",
+      "width": 3424,
+      "height": 3424,
+      "edit": {
+        "zoom": 1,
+        "crop": {
+          "x": 0,
+          "y": 0
+        },
+        "background": "transparent"
+      },
+      "thumbnails": {}
+    }
+  }
+]

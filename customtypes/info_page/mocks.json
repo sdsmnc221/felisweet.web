@@ -1,0 +1,142 @@
+[
+  {
+    "uid": {
+      "__TYPE__": "UIDContent",
+      "value": "decide"
+    },
+    "module_banner": {
+      "__TYPE__": "LinkContent",
+      "value": {
+        "__TYPE__": "DocumentLink",
+        "id": "mock_document_id"
+      }
+    },
+    "site_footer": {
+      "__TYPE__": "LinkContent",
+      "value": {
+        "id": "mock_Media_link",
+        "kind": "image/jpeg",
+        "name": "mock_name",
+        "url": "https://source.unsplash.com/daily",
+        "size": "0",
+        "__TYPE__": "FileLink"
+      }
+    },
+    "slices": {
+      "__TYPE__": "SliceContentType",
+      "value": [
+        {
+          "key": "service_info_block$bd65f2d3-e815-497d-8f19-337b938c84c7",
+          "name": "service_info_block",
+          "widget": {
+            "__TYPE__": "SharedSliceContent",
+            "variation": "default",
+            "primary": {
+              "title": {
+                "__TYPE__": "FieldContent",
+                "value": "official",
+                "type": "Text"
+              },
+              "subtitle_up": {
+                "__TYPE__": "StructuredTextContent",
+                "value": [
+                  {
+                    "type": "paragraph",
+                    "content": {
+                      "text": "Dolor excepteur elit fugiat laborum ullamco dolore est laborum pariatur esse id id veniam labore adipisicing."
+                    }
+                  }
+                ]
+              },
+              "subtitle_down": {
+                "__TYPE__": "StructuredTextContent",
+                "value": [
+                  {
+                    "type": "paragraph",
+                    "content": {
+                      "text": "In incididunt pariatur ut ad sunt nostrud laborum nostrud incididunt tempor incididunt."
+                    }
+                  }
+                ]
+              },
+              "description": {
+                "__TYPE__": "StructuredTextContent",
+                "value": [
+                  {
+                    "type": "paragraph",
+                    "content": {
+                      "text": "Officia commodo occaecat pariatur excepteur in non aute. Officia eiusmod excepteur commodo deserunt ipsum enim sunt proident est consequat fugiat laborum. Laborum est aliquip qui eu consectetur adipisicing aliquip sit enim velit commodo anim excepteur et."
+                    }
+                  }
+                ]
+              },
+              "warning": {
+                "__TYPE__": "StructuredTextContent",
+                "value": [
+                  {
+                    "type": "paragraph",
+                    "content": {
+                      "text": "Reprehenderit ea do consectetur. Irure aute exercitation nisi sit culpa anim laboris ex ad elit laboris consequat tempor adipisicing fugiat."
+                    }
+                  }
+                ]
+              },
+              "illustration": {
+                "__TYPE__": "ImageContent",
+                "origin": {
+                  "id": "main",
+                  "url": "https://images.unsplash.com/photo-1515378791036-0648a3ef77b2",
+                  "width": 5616,
+                  "height": 3744
+                },
+                "url": "https://images.unsplash.com/photo-1515378791036-0648a3ef77b2",
+                "width": 5616,
+                "height": 3744,
+                "edit": {
+                  "zoom": 1,
+                  "crop": {
+                    "x": 0,
+                    "y": 0
+                  },
+                  "background": "transparent"
+                },
+                "thumbnails": {}
+              },
+              "warning_icon": {
+                "__TYPE__": "ImageContent",
+                "origin": {
+                  "id": "main",
+                  "url": "https://images.unsplash.com/photo-1593642532973-d31b6557fa68",
+                  "width": 8640,
+                  "height": 8640
+                },
+                "url": "https://images.unsplash.com/photo-1593642532973-d31b6557fa68",
+                "width": 8640,
+                "height": 8640,
+                "edit": {
+                  "zoom": 1,
+                  "crop": {
+                    "x": 0,
+                    "y": 0
+                  },
+                  "background": "transparent"
+                },
+                "thumbnails": {}
+              },
+              "has_outer_border": {
+                "__TYPE__": "BooleanContent",
+                "value": false
+              }
+            },
+            "items": [
+              {
+                "__TYPE__": "GroupItemContent",
+                "value": []
+              }
+            ]
+          }
+        }
+      ]
+    }
+  }
+]
