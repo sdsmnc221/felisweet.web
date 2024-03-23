@@ -217,6 +217,7 @@ main {
 
         div {
           display: flex;
+          flex-direction: row;
           gap: 32px;
 
           .rect-picto {
