@@ -1,5 +1,5 @@
 <template>
-  <atom-wrapper ref="paws" class="paws-pattern" />
+  <atom-wrapper ref="paws" class="paws-pattern" :class="{ '--deep': deep }" />
 </template>
 
 <script>
@@ -13,6 +13,10 @@ export default {
     pawsPerSection: {
       type: Number,
       default: 2,
+    },
+    deep: {
+      type: Boolean,
+      default: false,
     },
   },
   mounted() {
@@ -101,7 +105,14 @@ export default {
   width: 100vw;
   height: 100%;
   pointer-events: none;
-  z-index: 0;
+
+  &.--deep {
+    z-index: 0;
+  }
+
+  &:not(.--deep) {
+    z-index: -2;
+  }
 
   .paw {
     position: absolute;

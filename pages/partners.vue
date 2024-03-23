@@ -23,7 +23,7 @@
       </atom-wrapper>
     </scroll-reveal-wrapper>
 
-    <paws-pattern :paws-per-section="4" />
+    <paws-pattern :paws-per-section="4" deep />
   </atom-wrapper>
 </template>
 
