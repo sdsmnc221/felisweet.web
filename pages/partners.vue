@@ -10,6 +10,19 @@
       </atom-wrapper>
     </scroll-reveal-wrapper>
 
+    <scroll-reveal-wrapper :top="200">
+      <atom-wrapper tag="section" class="partners-partners">
+        <rect-picto
+          v-for="(partner, index) in slices[2].data"
+          :key="`patternaire-${index}`"
+          :variant="index % 2 === 0 ? 'blue' : 'white'"
+          :logo="partner.logo"
+          :link="partner.link"
+          :text="partner.name"
+        ></rect-picto>
+      </atom-wrapper>
+    </scroll-reveal-wrapper>
+
     <paws-pattern :paws-per-section="4" />
   </atom-wrapper>
 </template>
@@ -18,7 +31,8 @@
 import ScrollRevealWrapper from '../components/atoms/ScrollRevealWrapper'
 import PawsPattern from '../components/organisms/Paws-Pattern'
 import AtomWrapper from '../components/atoms/AtomWrapper'
-import PartnersBanner from '../components/molecules/PartnersBanner/partners-banner.vue'
+import PartnersBanner from '../components/molecules/PartnersBanner'
+import RectPicto from '../components/molecules/RectPicto/rect-picto.vue'
 
 import imageAdapter from '../utils/adapters/imageAdapter'
 import partnersDescription from '../utils/adapters/partnersDescription'
@@ -31,6 +45,7 @@ export default {
     PawsPattern,
     AtomWrapper,
     PartnersBanner,
+    RectPicto,
   },
   props: {
     openPopup: {
@@ -92,6 +107,11 @@ export default {
       }
     },
   },
+  mounted() {
+    setTimeout(() => {
+      console.log(this.slices)
+    }, 2000)
+  },
 }
 </script>
 
@@ -135,6 +155,16 @@ main {
         font-weight: $weight-medium !important;
         color: $color-jellybean-blue;
       }
+    }
+    &-partners {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 64px;
+      margin-top: -64px;
     }
   }
 
