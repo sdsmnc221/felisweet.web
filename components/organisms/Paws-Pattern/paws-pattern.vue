@@ -101,7 +101,7 @@ export default {
   width: 100vw;
   height: 100%;
   pointer-events: none;
-  z-index: -2;
+  z-index: 0;
 
   .paw {
     position: absolute;

@@ -182,6 +182,7 @@ main {
         border-radius: 72px;
         width: 64%;
         margin: 0 auto;
+        margin-top: -32px;
 
         * {
           font-size: $font-size-body-xl;
