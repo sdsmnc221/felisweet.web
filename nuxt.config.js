@@ -24,11 +24,7 @@ export default {
         hid: 'keywords',
         name: 'keywords',
         content:
-<<<<<<< Updated upstream
-          'FeliSweet, Comportementaliste, Félin, Cat-sitting, Cat sitting, Sainte-Geneviève-des-Bois, Sainte Geneviève des Bois, Ile de France, Chat, Chats, Marie Bénédicte Siruguet, Comportementalisme',
-=======
           'FeliSweet, Comportementaliste, Félin, Cat-sitting, Cat sitting, Sainte-Geneviève-des-Bois, Sainte Geneviève des Bois, Ile de France, Chat, Chats, chats craintifsi, Comportementalisme, Essone',
->>>>>>> Stashed changes
       },
     ],
     link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
