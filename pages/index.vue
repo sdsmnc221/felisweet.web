@@ -212,6 +212,12 @@ export default {
       document?.data?.module_contact_banner?.id
     )
 
+    console.log(
+      document,
+      await $prismic.api.getByID(document?.data?.module_contact_banner?.id),
+      moduleContactBanner
+    )
+
     const moduleCatus = document?.data?.catus
 
     if (document) {
