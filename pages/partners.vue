@@ -169,6 +169,36 @@ main {
   }
 
   @media #{$mq-medium} {
+    .scroll-reveal:first-of-type {
+      background-image: url('/images/photo-banner-pattern.svg');
+    }
+    .partners {
+      &-banner {
+        width: 50%;
+      }
+      &-description {
+        z-index: 4;
+        padding: 64px;
+        border-radius: 72px;
+        width: 64%;
+        margin: 0 auto;
+
+        * {
+          font-size: $font-size-body-xl;
+        }
+      }
+      &-partners {
+        flex-wrap: wrap;
+        flex-direction: row;
+        gap: 32px;
+        margin-top: 2vh;
+        margin-bottom: 32vh;
+
+        .rect-picto {
+          width: 240px;
+        }
+      }
+    }
   }
 
   @media #{$mq-xlarge} {
