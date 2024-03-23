@@ -12,14 +12,27 @@
 
     <scroll-reveal-wrapper :top="200">
       <atom-wrapper tag="section" class="partners-partners">
-        <rect-picto
-          v-for="(partner, index) in slices[2].data"
-          :key="`patternaire-${index}`"
-          :variant="index % 2 === 0 ? 'blue' : 'white'"
-          :logo="partner.logo"
-          :link="partner.link"
-          :text="partner.name"
-        ></rect-picto>
+        <div
+          v-for="(chunk, chunkIndex) of chunkOfPartners"
+          :key="`chunk-partners-${chunkIndex}`"
+        >
+          <rect-picto
+            v-for="(partner, index) in chunk"
+            :key="`patternaire-${index}`"
+            :variant="
+              chunkIndex % 2 === 0
+                ? index % 2 === 0
+                  ? 'blue'
+                  : 'white'
+                : index % 2 !== 0
+                ? 'blue'
+                : 'white'
+            "
+            :logo="partner.logo"
+            :link="partner.link"
+            :text="partner.name"
+          ></rect-picto>
+        </div>
       </atom-wrapper>
     </scroll-reveal-wrapper>
 
@@ -38,6 +51,8 @@ import imageAdapter from '../utils/adapters/imageAdapter'
 import partnersDescription from '../utils/adapters/partnersDescription'
 import parnersUsers from '../utils/adapters/parnersUsers'
 
+import { chunk } from '../utils/chunk'
+
 export default {
   name: 'PartnerPage',
   components: {
@@ -47,16 +62,7 @@ export default {
     PartnersBanner,
     RectPicto,
   },
-  props: {
-    openPopup: {
-      type: Function,
-      default: null,
-    },
-    popupContentPlanning: {
-      type: String,
-      default: null,
-    },
-  },
+
   async asyncData({ $prismic, $enhancedLinkSerializer, error }) {
     const document = await $prismic.api.getSingle('partnerspage')
 
@@ -96,6 +102,11 @@ export default {
     } else {
       error({ statusCode: 404, message: 'Page not found' })
     }
+  },
+  computed: {
+    chunkOfPartners() {
+      return chunk(this.slices[2].data, 3)
+    },
   },
   methods: {
     getComponent(sliceType) {
@@ -165,6 +176,15 @@ main {
       align-items: center;
       margin-bottom: 64px;
       margin-top: -64px;
+
+      div {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+        justify-content: center;
+        align-items: center;
+      }
     }
   }
 
@@ -190,13 +210,18 @@ main {
       }
       &-partners {
         flex-wrap: wrap;
-        flex-direction: row;
+        flex-direction: column;
         gap: 32px;
         margin-top: 2vh;
-        margin-bottom: 32vh;
+        margin-bottom: 24vh;
 
-        .rect-picto {
-          width: 240px;
+        div {
+          display: flex;
+          gap: 32px;
+
+          .rect-picto {
+            width: 240px;
+          }
         }
       }
     }
