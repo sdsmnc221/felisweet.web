@@ -1244,6 +1244,8 @@ export default {
     }
 
     .contact-note {
+      padding: 0 10%;
+
       p {
         @include rem(font-size, $font-size-body-xxs);
         color: $color-white;
