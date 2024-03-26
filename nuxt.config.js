@@ -5,9 +5,7 @@ export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
     titleTemplate:
-      'FeliSweet Comportementaliste et Cat-sitter à Sainte-Geneviève-des-Bois - %s',
-    title:
-      'FeliSweet Comportementaliste et Cat-sitter à Sainte-Geneviève-des-Bois',
+      'FeliSweet Comportementaliste - Cat-sitter à Sainte-Geneviève-des-Bois - %s',
     htmlAttrs: {
       lang: 'fr',
     },
@@ -24,7 +22,7 @@ export default {
         hid: 'keywords',
         name: 'keywords',
         content:
-          'FeliSweet, Comportementaliste, Félin, Cat-sitting, Cat sitting, Sainte-Geneviève-des-Bois, Sainte Geneviève des Bois, Ile de France, Chat, Chats, chats craintifsi, Comportementalisme, Essone',
+          'FeliSweet, Comportementaliste, Félin, Cat-sitting, Cat sitting, Sainte-Geneviève-des-Bois, Sainte Geneviève des Bois, Ile de France, Chat, Chats, chats craintifs, Comportementalisme, Essone',
       },
     ],
     link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
