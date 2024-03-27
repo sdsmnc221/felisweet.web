@@ -139,6 +139,17 @@ export default {
           },
         ]
         break
+        case 'partners':
+          head.title = `Découvrez nos Patte'naires`
+          head.meta = [
+            {
+              hid: 'description-partners',
+              name: 'description',
+              content:
+                'Pour valoriser nos partenaires aux services des quatre pattes !',
+            },
+          ]
+          break
       default:
         break
     }
