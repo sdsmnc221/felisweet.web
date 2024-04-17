@@ -1,4 +1,8 @@
-export default {
+import { defineNuxtConfig } from '@nuxt/bridge'
+
+export default defineNuxtConfig({
+  bridge: false,
+
   // Target: https://go.nuxtjs.dev/config-target
   target: 'static',
 
@@ -104,4 +108,4 @@ export default {
     chachouBiblePassword: process.env.CHACHOU_BIBLE_PASSWORD,
     chachouBibleEmbed: process.env.CHACHOU_BIBLE_EMBED,
   },
-}
+})
