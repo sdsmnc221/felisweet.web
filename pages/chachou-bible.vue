@@ -10,7 +10,7 @@
       >
       </iframe>
     </div>
-    <div class="password-protection" v-if="!canEnter">
+    <!-- <div class="password-protection" v-if="!canEnter">
       <label for="password">Mot de passe</label>
       <input
         id="password"
@@ -18,7 +18,7 @@
         @input="onInput"
         @keyup.enter="checkPassword"
       />
-    </div>
+    </div> -->
   </atom-wrapper>
 </template>
 
@@ -33,6 +33,9 @@ export default {
       password: '',
       canEnter: true,
     }
+  },
+  mounted() {
+    this.$refs.iframe.src = this.$config.chachouBibleEmbed
   },
   methods: {
     onInput(e) {
