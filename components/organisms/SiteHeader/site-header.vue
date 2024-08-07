@@ -346,6 +346,25 @@ export default {
       justify-content: space-between;
       align-items: center;
       background-color: transparent;
+
+      &:has(.announcement-bar) {
+        top: 0px;
+      }
+    }
+
+    .announcement-bar {
+      &.--f-w {
+        position: fixed;
+        top: 64px;
+        left: 0;
+        width: 100vw;
+        border-radius: 0;
+        margin-top: 0;
+        padding: $spacing-s 16vw;
+      }
+      &.--mobile {
+        display: none;
+      }
     }
 
     .mobile-menu {
@@ -366,18 +385,6 @@ export default {
         border-radius: 64px;
         display: flex;
         padding: $spacing-s $spacing-m;
-      }
-
-      .announcement-bar {
-        &.--f-w {
-          position: fixed;
-          top: 64px;
-          left: 0;
-          width: 100vw;
-          border-radius: 0;
-          margin-top: 0;
-          padding: $spacing-s 16vw;
-        }
       }
 
       a {
