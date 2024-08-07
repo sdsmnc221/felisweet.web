@@ -3,6 +3,7 @@
   "label": "Site Header",
   "repeatable": false,
   "status": true,
+  "format": "custom",
   "json": {
     "Main": {
       "logo": {
@@ -10,9 +11,7 @@
         "config": {
           "label": "logo",
           "select": "document",
-          "customtypes": [
-            "module_logo"
-          ]
+          "customtypes": ["module_logo"]
         }
       },
       "slices": {
@@ -20,6 +19,9 @@
         "fieldset": "Slice Zone",
         "config": {
           "choices": {
+            "announcement_bar": {
+              "type": "SharedSlice"
+            },
             "header_link": {
               "type": "SharedSlice"
             }

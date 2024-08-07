@@ -3,14 +3,20 @@
     <atom-wrapper ref="header" tag="header">
       <logo-felisweet v-if="headerLogo" v-bind="headerLogo" />
       <div v-if="links.length > 0" class="links">
-        <a
-          v-for="(linkItem, index) in links"
-          :key="`link-${index}`"
-          :href="linkItem.link.field.url || `/${linkItem.link.field.uid}`"
-          class="link"
-        >
-          {{ linkItem.title }}
-        </a>
+        <div>
+          <a
+            v-for="(linkItem, index) in links"
+            :key="`link-${index}`"
+            :href="linkItem.link.field.url || `/${linkItem.link.field.uid}`"
+            class="link"
+          >
+            {{ linkItem.title }}
+          </a>
+        </div>
+
+        <div ref="announcement" class="announcement-bar">
+          {{ announcement }}
+        </div>
       </div>
 
       <a class="link contact" href="/#contact"
@@ -24,6 +30,10 @@
           <span class="line line2"></span>
           <span class="line line3"></span>
         </div>
+      </div>
+
+      <div ref="announcementB" class="announcement-bar --mobile">
+        {{ announcement }}
       </div>
 
       <div ref="mobileMenu" class="mobile-menu-content">
@@ -65,6 +75,7 @@ export default {
       headerLogo: null,
       links: [],
       lastScroll: 0,
+      announcement: '',
     }
   },
   async fetch() {
@@ -80,6 +91,14 @@ export default {
       title,
       link: this.$enhancedLinkSerializer(link),
     }))
+    if (
+      headerData?.slices &&
+      headerData.slices.find((s) => s.slice_type === 'announcement_bar')
+    ) {
+      this.announcement = headerData.slices.find(
+        (s) => s.slice_type === 'announcement_bar'
+      ).primary.text[0].text
+    }
   },
   mounted() {
     window.addEventListener('scroll', () => {
@@ -90,9 +109,11 @@ export default {
       if (currentScroll > 0 && this.lastScroll <= currentScroll) {
         this.lastScroll = currentScroll
         color = 'white'
+        this.$refs.announcement.classList.add('--f-w')
       } else {
         this.lastScroll = currentScroll
         color = 'transparent'
+        this.$refs.announcement.classList.remove('--f-w')
       }
 
       this.$gsap.set(this.$refs.header, {
@@ -133,6 +154,16 @@ export default {
     background-color: transparent;
     padding: $spacing-xl;
     position: relative;
+
+    &:has(.announcement-bar) {
+      top: 72px;
+
+      .mobile-menu-content {
+        .logo-felisweet {
+          top: 72px;
+        }
+      }
+    }
   }
 
   .logo-felisweet {
@@ -142,6 +173,28 @@ export default {
     img {
       width: auto;
       height: 32px;
+    }
+  }
+
+  .announcement-bar {
+    margin-top: 12px;
+    background-color: $color-shakespear-blue;
+    padding: $spacing-s;
+    border-radius: 24px;
+    text-align: center;
+    color: $color-white;
+    font-size: $font-size-body-s;
+    transition: all ease 0.64s;
+
+    &.--mobile {
+      position: fixed;
+      top: 0;
+      left: 0;
+      opacity: 1 !important;
+      width: 100vw;
+      border-radius: 0;
+      margin: 0;
+      font-size: $font-size-body-xs;
     }
   }
 
@@ -301,9 +354,31 @@ export default {
 
     .links {
       display: flex;
-      background-color: $color-white;
-      padding: $spacing-s $spacing-m;
-      border-radius: 64px;
+      flex-direction: column;
+
+      &:not(:has(.--f-w)) {
+        margin-top: $spacing-3xl;
+      }
+
+      div:first-child {
+        flex: 1;
+        background-color: $color-white;
+        border-radius: 64px;
+        display: flex;
+        padding: $spacing-s $spacing-m;
+      }
+
+      .announcement-bar {
+        &.--f-w {
+          position: fixed;
+          top: 64px;
+          left: 0;
+          width: 100vw;
+          border-radius: 0;
+          margin-top: 0;
+          padding: $spacing-s 16vw;
+        }
+      }
 
       a {
         text-align: center;

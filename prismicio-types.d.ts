@@ -952,7 +952,7 @@ export type SiteFooterDocument<Lang extends string = string> =
     Lang
   >
 
-type SiteHeaderDocumentDataSlicesSlice = HeaderLinkSlice
+type SiteHeaderDocumentDataSlicesSlice = AnnouncementBarSlice | HeaderLinkSlice
 
 /**
  * Content for Site Header documents
@@ -1185,6 +1185,51 @@ type AboutTitleBlockSliceVariation = AboutTitleBlockSliceDefault
 export type AboutTitleBlockSlice = prismic.SharedSlice<
   'about_title_block',
   AboutTitleBlockSliceVariation
+>
+
+/**
+ * Primary content in *AnnouncementBar → Primary*
+ */
+export interface AnnouncementBarSliceDefaultPrimary {
+  /**
+   * text field in *AnnouncementBar → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: announcement_bar.primary.text
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  text: prismic.RichTextField
+}
+
+/**
+ * Default variation for AnnouncementBar Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type AnnouncementBarSliceDefault = prismic.SharedSliceVariation<
+  'default',
+  Simplify<AnnouncementBarSliceDefaultPrimary>,
+  never
+>
+
+/**
+ * Slice variation for *AnnouncementBar*
+ */
+type AnnouncementBarSliceVariation = AnnouncementBarSliceDefault
+
+/**
+ * AnnouncementBar Shared Slice
+ *
+ * - **API ID**: `announcement_bar`
+ * - **Description**: AnnouncementBar
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type AnnouncementBarSlice = prismic.SharedSlice<
+  'announcement_bar',
+  AnnouncementBarSliceVariation
 >
 
 /**
@@ -2165,6 +2210,10 @@ declare module '@prismicio/client' {
       AboutTitleBlockSliceDefaultPrimary,
       AboutTitleBlockSliceVariation,
       AboutTitleBlockSliceDefault,
+      AnnouncementBarSlice,
+      AnnouncementBarSliceDefaultPrimary,
+      AnnouncementBarSliceVariation,
+      AnnouncementBarSliceDefault,
       FormationSlice,
       FormationSliceDefaultPrimary,
       FormationSliceDefaultItem,
