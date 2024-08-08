@@ -116,10 +116,14 @@ export default {
         this.$refs.announcement.classList.remove('--f-w')
       }
 
+      const offsetAnnouncement =
+        this.$refs.announcementB.getBoundingClientRect().height
+
       this.$gsap.set(this.$refs.header, {
         backgroundColor: color,
         duration: 1.2,
         ease: 'circ.in',
+        top: offsetAnnouncement,
       })
     })
 
@@ -353,6 +357,8 @@ export default {
     }
 
     .announcement-bar {
+      font-size: 12px;
+
       &.--f-w {
         position: fixed;
         top: 64px;
