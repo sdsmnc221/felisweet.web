@@ -151,14 +151,13 @@ export default {
       text-transform: uppercase;
 
       p {
-        &:first-of-type,
-        &:first-of-type strong {
+        &:first-of-type {
           @include rem(font-size, $font-size-body-m);
           letter-spacing: 0.5px;
         }
 
         &:last-of-type,
-        &:last-of-type strong {
+        strong {
           @include rem(font-size, $font-size-body-l);
           letter-spacing: 1px;
         }
@@ -185,13 +184,12 @@ export default {
           }
 
           &:nth-of-type(1),
-          &:nth-last-of-type(2) strong {
+          strong {
             @include rem(font-size, $font-size-heading-4);
             letter-spacing: 0.1px;
           }
 
-          &:last-of-type,
-          &:last-of-type strong {
+          &:last-of-type {
             @include rem(font-size, $font-size-heading-3);
             letter-spacing: 2px;
           }
@@ -219,13 +217,13 @@ export default {
       div {
         p {
           &:nth-of-type(1),
-          &:nth-last-of-type(2) strong {
+          &:nth-last-of-type(2) {
             @include rem(font-size, $font-size-heading-3);
             letter-spacing: 0.1px;
           }
 
           &:last-of-type,
-          &:last-of-type strong {
+          strong {
             @include rem(font-size, $font-size-heading-2);
             letter-spacing: 2px;
           }
