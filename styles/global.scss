@@ -28,11 +28,13 @@ body {
   transition: all ease 0.64s;
   cursor: none !important;
 
-  width: 100vw;
-  overflow-x: hidden;
+
 }
 
 body {
   background-color: $color-light-blue;
   color: $color-shakespear-blue;
+
+  width: 100vw;
+  overflow-x: hidden;
 }
