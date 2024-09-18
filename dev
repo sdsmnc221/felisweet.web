@@ -1,0 +1,237 @@
+> nuxt dev
+
+Nuxt 3.12.4 with Nitro 2.9.7                                                       10:05:58
+                                                                                   10:05:59
+  ➜ Local:    http://localhost:3000/
+  ➜ Network:  use -  ➜ Network:  use -  ➜ Network:  use -  ➜ Network:  use -  ➜ Network:  use -  ➜ Network:  use -  ➜ Network:  use -  ➜ Network:  use -  ➜ Network:  use -  ➜ Network:  use -  ➜ Network:  use -  ➜ Network:  use -  ➜ Network:  use -  ➜ Network:  use -  ➜ Network:  use -  ➜ Network:  use -  ➜ Network:  use -  ➜ Network:  use -  ➜ Network:  use -  ➜ Network:  use -  ➜ Network:  use -  ➜ Network:  use -  ➜ Network:  use -  ➜ Network:  use -  ➜ Network:  use -  ➜ Network:  use -  ➜ Network:  use -  ➜ Network:  use -  ➜ Network:  use -  ➜ Network:  use -  ➜ Network:  use -  ➜ Network:  use -  ➜ Network:  use -  ➜ Network:  use -  ➜ Network:  use -  ➜ Network:  use -  ➜ Ne    ➜ Network::01  � Vite client warmed up in 0ms                                                    10:06:01
+ℹ Vite server warmed up in 413ms                                                  10:06:01
+
+ WARN  [Vue warn]: Extraneous non-props attributes (class) were passed to component but could not be automatically inherited because component renders fragment or text root nodes.
+
+
+ WARN  [Vue warn]: Extraneous non-props attributes (class) were passed to component but could not be automatically inherited because component renders fragment or text root nodes.
+
+
+ WARN  [Vue warn]: Missing required prop: "index"
+
+
+ WARN  [Vue warn]: Missing required prop: "slices"
+
+
+ WARN  [Vue warn]: Missing required prop: "context"
+
+
+ WARN  [Vue warn]: Missing required prop: "index"
+
+
+ WARN  [Vue warn]: Missing required prop: "slices"
+
+
+ WARN  [Vue warn]: Missing required prop: "context"
+
+
+ WARN  [Vue warn]: Missing required prop: "index"
+
+
+ WARN  [Vue warn]: Missing required prop: "slices"
+
+
+ WARN  [Vue warn]: Missing required prop: "context"
+
+
+ WARN  [Vue warn]: Missing required prop: "index"
+
+
+ WARN  [Vue warn]: Missing required prop: "slices"
+
+
+ WARN  [Vue warn]: Missing required prop: "context"
+
+
+ WARN  [Vue warn]: Missing required prop: "index"
+
+
+ WARN  [Vue warn]: Missing required prop: "slices"
+
+
+ WARN  [Vue warn]: Missing required prop: "context"
+
+
+ WARN  [Vue warn]: Missing required prop: "index"
+
+
+ WARN  [Vue warn]: Missing required prop: "slices"
+
+
+ WARN  [Vue warn]: Missing required prop: "context"
+
+
+ WARN  [Vue warn]: Missing required prop: "index"
+
+
+ WARN  [Vue warn]: Missing required prop: "slices"
+
+
+ WARN  [Vue warn]: Missing required prop: "context"
+
+
+ WARN  [Vue warn]: Missing required prop: "index"
+
+
+ WARN  [Vue warn]: Missing required prop: "slices"
+
+
+ WARN  [Vue warn]: Missing required prop: "context"
+
+
+ WARN  [Vue warn]: Extraneous non-props attributes (class) were passed to component but could not be automatically inherited because component renders fragment or text root nodes.
+
+
+ WARN  [Vue warn]: Extraneous non-props attributes (class) were passed to component but could not be automatically inherited because component renders fragment or text root nodes.
+
+
+ WARN  [Vue warn]: Missing required prop: "index"
+
+
+ WARN  [Vue warn]: Missing required prop: "slices"
+
+
+ WARN  [Vue warn]: Missing required prop: "context"
+
+
+ WARN  [Vue warn]: Invalid prop: type check failed for prop "field". Expected Object, got Undefined
+
+
+ WARN  [Vue warn]: Missing required prop: "index"
+
+
+ WARN  [Vue warn]: Missing required prop: "slices"
+
+
+ WARN  [Vue warn]: Missing required prop: "context"
+
+
+ WARN  [Vue warn]: Missing required prop: "index"
+
+
+ WARN  [Vue warn]: Missing required prop: "slices"
+
+
+ WARN  [Vue warn]: Missing required prop: "context"
+
+
+ WARN  [Vue warn]: Missing required prop: "index"
+
+
+ WARN  [Vue warn]: Missing required prop: "slices"
+
+
+ WARN  [Vue warn]: Missing required prop: "context"
+
+
+ WARN  [Vue warn]: Missing required prop: "index"
+
+
+ WARN  [Vue warn]: Missing required prop: "slices"
+
+
+ WARN  [Vue warn]: Missing required prop: "context"
+
+
+ WARN  [Vue warn]: Missing required prop: "index"
+
+
+ WARN  [Vue warn]: Missing required prop: "slices"
+
+
+ WARN  [Vue warn]: Missing required prop: "context"
+
+ℹ hmr update /components/UiButton/index.vue?vue&type=style&index=0&lang.scss      10:07:30
+ℹ hmr update /slices/MultiTextBlock/index.vue?vue&type=style&index=0&lang.scss    10:08:21
+✔ Vite server hmr 19 files in 75.832ms
+
+ WARN  [Vue warn]: Extraneous non-props attributes (class) were passed to component but could not be automatically inherited because component renders fragment or text root nodes.
+
+
+ WARN  [Vue warn]: Extraneous non-props attributes (class) were passed to component but could not be automatically inherited because component renders fragment or text root nodes.
+
+
+ WARN  [Vue warn]: Missing required prop: "index"
+
+
+ WARN  [Vue warn]: Missing required prop: "slices"
+
+
+ WARN  [Vue warn]: Missing required prop: "context"
+
+
+ WARN  [Vue warn]: Invalid prop: type check failed for prop "field". Expected Object, got Undefined
+
+
+ WARN  [Vue warn]: Missing required prop: "index"
+
+
+ WARN  [Vue warn]: Missing required prop: "slices"
+
+
+ WARN  [Vue warn]: Missing required prop: "context"
+
+
+ WARN  [Vue warn]: Missing required prop: "index"
+
+
+ WARN  [Vue warn]: Missing required prop: "slices"
+
+
+ WARN  [Vue warn]: Missing required prop: "context"
+
+
+ WARN  [Vue warn]: Missing required prop: "index"
+
+
+ WARN  [Vue warn]: Missing required prop: "slices"
+
+
+ WARN  [Vue warn]: Missing required prop: "context"
+
+
+ WARN  [Vue warn]: Missing required prop: "index"
+
+
+ WARN  [Vue warn]: Missing required prop: "slices"
+
+
+ WARN  [Vue warn]: Missing required prop: "context"
+
+
+ WARN  [Vue warn]: Missing required prop: "index"
+
+
+ WARN  [Vue warn]: Missing required prop: "slices"
+
+
+ WARN  [Vue warn]: Missing required prop: "context"
+
+
+ ERROR  [unhandledRejection] read ECONNRESET                                       10:08:25
+
+  at TCP.onStreamRead (node:internal/stream_base_commons:217:20)
+
+[10:08:37] ℹ hmr update /slices/MultiTextBlock/index.vue?vue&type=style&index=0&lang.scss (x2)
+
+[10:08:37]  ERROR  Internal server error: [sass] "Invalid size parameter: 14. Valid options are regular, medium, large, xlarge, xxlarge, 16, 20, or 24."
+   ╷
+44 │     @include ft-s(14);
+   │     ^^^^^^^^^^^^^^^^^
+   ╵
+  file:///Users/thivanan.truong/ThiVanAn.TRUONG/Works/lpc/lpc.web.main-site/slices/MultiTextBlock/index.vue 44:5  root stylesheet
+  Plugin: vite:css
+  File: /Users/thivanan.truong/ThiVanAn.TRUONG/Works/lpc/lpc.web.main-site/slices/MultiTextBlock/index.vue:94:5
+  Error: "Invalid size parameter: 14. Valid options are regular, medium, large, xlarge, xxlarge, 16, 20, or 24."
+     ╷
+  44 │     @include ft-s(14);
+     │     ^^^^^^^^^^^^^^^^^
+     ╵
+    file:///Users/thivanan.truong/ThiVanAn.TRUONG/Works/lpc/lpc.web.main-site/slices/MultiTextBlock/index.vue 44:5  root stylesheet
+      at handleCompileResponse (/Users/thivanan.truong/ThiVanAn.TRUONG/Works/lpc/lpc.web.main-site/node_modules/sass-embedded/lib/src/compiler/utils.ts:221:11)
+      at AsyncCompiler.compileRequestAsync (/Users/thivanan.truong/ThiVanAn.TRUONG/Works/lpc/lpc.web.main-site/node_modules/sass-embedded/lib/src/compiler/async.ts:136:33)
