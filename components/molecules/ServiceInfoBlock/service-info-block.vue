@@ -128,6 +128,11 @@ export default {
     }
   }
 
+  a {
+    color: $color-white;
+    font-weight: $weight-medium;
+  }
+
   &.--small .content {
     margin-top: -6px;
   }

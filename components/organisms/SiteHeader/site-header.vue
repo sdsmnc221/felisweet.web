@@ -101,7 +101,7 @@ export default {
     }
   },
   mounted() {
-    window.addEventListener('scroll', () => {
+    const onScroll = () => {
       let color = 'transparent'
       const currentScroll =
         document.documentElement.scrollTop || document.body.scrollTop // Get Current Scroll Value
@@ -119,24 +119,36 @@ export default {
       const offsetAnnouncement =
         this.$refs.announcementB.getBoundingClientRect().height
 
+      if (this.$store.state.isMobile) {
+        this.$gsap.set('#__nuxt', {
+          marginTop: offsetAnnouncement,
+        })
+      }
+
       this.$gsap.set(this.$refs.header, {
         backgroundColor: color,
         duration: 1.2,
         ease: 'circ.in',
         top: offsetAnnouncement,
       })
-    })
 
-    this.$refs.ham.addEventListener('click', () => {
-      this.showMenu = !this.showMenu
+      this.$refs.ham.addEventListener('click', () => {
+        this.showMenu = !this.showMenu
 
-      this.$gsap.to(this.$refs.mobileMenu, {
-        opacity: this.showMenu ? 1 : 0,
-        pointerEvents: this.showMenu ? 'auto' : 'none',
-        duration: 0.8,
-        ease: 'circ.in',
+        this.$gsap.to(this.$refs.mobileMenu, {
+          opacity: this.showMenu ? 1 : 0,
+          pointerEvents: this.showMenu ? 'auto' : 'none',
+          duration: 0.8,
+          ease: 'circ.in',
+        })
       })
-    })
+    }
+
+    setTimeout(() => {
+      onScroll()
+    }, 600)
+
+    window.addEventListener('scroll', onScroll)
   },
 }
 </script>
