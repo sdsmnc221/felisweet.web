@@ -27,9 +27,14 @@ body {
   @include rem(font-size, $font-size-root);
   transition: all ease 0.64s;
   cursor: none !important;
+
+
 }
 
 body {
   background-color: $color-light-blue;
   color: $color-shakespear-blue;
+
+  width: 100vw;
+  overflow-x: hidden;
 }
