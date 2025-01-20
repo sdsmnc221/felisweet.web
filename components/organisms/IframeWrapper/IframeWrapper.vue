@@ -39,13 +39,13 @@ export default {
 
 <style scoped>
 .iframe-container {
-  width: 100%;
+  width: 100vw;
   min-height: 100vh;
   position: relative;
 }
 
 .embedded-frame {
-  width: 100%;
+  width: 100vw;
   min-height: 100vh;
   border: none;
 }
