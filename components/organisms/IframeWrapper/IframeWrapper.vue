@@ -42,6 +42,7 @@ export default {
   width: 100vw;
   min-height: 100vh;
   position: relative;
+  overflow: hidden;
 }
 
 .embedded-frame {
