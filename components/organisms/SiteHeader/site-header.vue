@@ -246,7 +246,7 @@ export default {
       justify-content: center;
       align-items: center;
       flex-direction: column;
-      padding: 24vh 32px 0 32px;
+      padding: 12vh 32px 0 32px;
 
       a {
         text-align: center;
