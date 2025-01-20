@@ -246,12 +246,13 @@ export default {
       justify-content: center;
       align-items: center;
       flex-direction: column;
+      padding: 24vh 32px 0 32px;
 
       a {
         text-align: center;
-        margin: $spacing-xl 0;
+        margin: $spacing-m 0;
         padding: 0 $spacing-s;
-        font-size: $font-size-heading-4;
+        font-size: $font-size-heading-5;
       }
     }
   }
@@ -300,6 +301,7 @@ export default {
     position: relative;
     height: 3rem;
     width: 3rem;
+    z-index: 999;
 
     .ham-menu {
       height: 3rem;
