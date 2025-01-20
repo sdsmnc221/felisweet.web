@@ -9,7 +9,7 @@ export default defineNuxtConfig({
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
     titleTemplate:
-      'FeliSweet Comportementaliste - Cat-sitter à Sainte-Geneviève-des-Bois - %s',
+      'FeliSweet Comportementaliste - %s - Cat-sitter à Sainte-Geneviève-des-Bois - ',
     htmlAttrs: {
       lang: 'fr',
     },
@@ -107,5 +107,6 @@ export default defineNuxtConfig({
     prismicRepository: process.env.PRISMIC_REPOSITORY,
     chachouBiblePassword: process.env.CHACHOU_BIBLE_PASSWORD,
     chachouBibleEmbed: process.env.CHACHOU_BIBLE_EMBED,
+    projectLaPuce: process.env.PROJECT_LAPUCE,
   },
 })

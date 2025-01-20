@@ -139,17 +139,28 @@ export default {
           },
         ]
         break
-        case 'partners':
-          head.title = `Découvrez nos Patte'naires`
-          head.meta = [
-            {
-              hid: 'description-partners',
-              name: 'description',
-              content:
-                'Pour valoriser nos partenaires aux services des quatre pattes !',
-            },
-          ]
-          break
+      case 'partners':
+        head.title = `Découvrez nos Patte'naires`
+        head.meta = [
+          {
+            hid: 'description-partners',
+            name: 'description',
+            content:
+              'Pour valoriser nos partenaires aux services des quatre pattes !',
+          },
+        ]
+        break
+      case 'facilicat':
+        head.title = "Facili'Cat - Un nouveau service de FeliSweet"
+        head.meta = [
+          {
+            hid: 'description-facilicat',
+            name: 'description',
+            content:
+              "Nous aidons les personnes en situation de handicap, ou ayant des difficultés à s'occuper pleinement",
+          },
+        ]
+        break
       default:
         break
     }

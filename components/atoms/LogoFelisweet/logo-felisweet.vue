@@ -1,7 +1,8 @@
 <template>
   <atom-wrapper tag="picture" class="logo-felisweet" :style="cssProps">
+    <div v-if="hideLogo" class="logo-placeholder"></div>
     <nuxt-link
-      v-if="!noLink && link"
+      v-else-if="!noLink && link"
       :to="link.href || link.field.url"
       class="link"
     >
@@ -19,6 +20,10 @@ export default {
   name: 'LogoFelisweet',
   components: { AtomWrapper, AtomImage },
   props: {
+    hideLogo: {
+      type: Boolean,
+      default: false,
+    },
     image: {
       type: Object,
       required: true,
@@ -49,5 +54,10 @@ export default {
 <style lang="scss">
 .logo-felisweet {
   width: var(--size);
+
+  .logo-placeholder {
+    width: 100%;
+    padding-top: 100%;
+  }
 }
 </style>

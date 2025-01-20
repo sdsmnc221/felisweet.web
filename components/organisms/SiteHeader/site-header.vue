@@ -1,7 +1,12 @@
 <template>
   <scroll-reveal-wrapper class="site-header">
     <atom-wrapper ref="header" tag="header">
-      <logo-felisweet v-if="headerLogo" v-bind="headerLogo" />
+      <logo-felisweet
+        v-if="headerLogo"
+        v-bind="headerLogo"
+        :hide-logo="$route.name === 'facilicat'"
+      />
+
       <div v-if="links.length > 0" class="links">
         <div>
           <a
