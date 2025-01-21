@@ -95,6 +95,8 @@
 </template>
 
 <script>
+import { nextTick } from 'vue'
+
 import AtomWrapper from '../components/atoms/AtomWrapper'
 import AtomImage from '../components/atoms/AtomImage'
 import BubbleImage from '../components/atoms/BubbleImage'
@@ -249,15 +251,29 @@ export default {
     }
   },
   mounted() {
-    if (this.$route.hash.includes('#contact'))
-      this.$refs.contact.$el.scrollIntoView(false)
-    this.$gsap.to([this.$refs.scrollDown.$el], {
-      opacity: 1,
-      scale: 1,
-      duration: 2.4,
-      ease: 'circ.in',
-      delay: 6.4,
-    })
+    if (this.$route.hash.includes('#contact')) {
+      nextTick(() => {
+        setTimeout(() => {
+          this.$refs.contact.$el.scrollIntoView(false)
+
+          setTimeout(() => {
+            window.scroll({
+              top: window.scrollY + window.innerHeight * 0.72,
+              left: 0,
+              behavior: 'smooth',
+            })
+
+            this.$gsap.to([this.$refs.scrollDown.$el], {
+              opacity: 1,
+              scale: 1,
+              duration: 2.4,
+              ease: 'circ.in',
+              delay: 6.4,
+            })
+          }, 600)
+        }, 1200)
+      })
+    }
   },
   methods: {
     scrollDown() {

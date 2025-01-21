@@ -25,7 +25,7 @@
         </div>
       </div>
 
-      <a class="link contact" :class="{ '--bottom': show }" href="/#contact"
+      <a class="link contact" href="/#contact"
         ><atom-image src="/images/contact-btn.svg"
       /></a>
 
@@ -122,15 +122,15 @@ export default {
       if (currentScroll > 0 && this.lastScroll <= currentScroll) {
         this.lastScroll = currentScroll
         color = 'white'
-        this.$refs.announcement.classList.add('--f-w')
+        this.$refs.announcement?.classList.add('--f-w')
       } else {
         this.lastScroll = currentScroll
         color = 'transparent'
-        this.$refs.announcement.classList.remove('--f-w')
+        this.$refs.announcement?.classList.remove('--f-w')
       }
 
       const offsetAnnouncement =
-        this.$refs.announcementB.getBoundingClientRect().height
+        this.$refs.announcementB?.getBoundingClientRect().height
 
       if (this.$store.state.isMobile) {
         this.$gsap.set('#__nuxt', {
