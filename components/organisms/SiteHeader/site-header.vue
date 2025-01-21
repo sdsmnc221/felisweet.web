@@ -14,6 +14,7 @@
             :key="`link-${index}`"
             :href="linkItem.link.field.url || `/${linkItem.link.field.uid}`"
             class="link"
+            :class="{ '--new': linkItem.isnew }"
           >
             {{ linkItem.title }}
           </a>
@@ -24,7 +25,7 @@
         </div>
       </div>
 
-      <a class="link contact" href="/#contact"
+      <a class="link contact" :class="{ '--bottom': show }" href="/#contact"
         ><atom-image src="/images/contact-btn.svg"
       /></a>
 
@@ -37,7 +38,11 @@
         </div>
       </div>
 
-      <div ref="announcementB" class="announcement-bar --mobile">
+      <div
+        v-if="$route.name !== 'facilicat'"
+        ref="announcementB"
+        class="announcement-bar --mobile"
+      >
         {{ announcement }}
       </div>
 
@@ -49,6 +54,7 @@
             :key="`link-${index}`"
             :href="linkItem.link.field.url || `/${linkItem.link.field.uid}`"
             class="link"
+            :class="{ '--new': linkItem.isnew }"
           >
             {{ linkItem.title }}
           </a>
@@ -92,9 +98,11 @@ export default {
       headerData.logo.id
     )
     this.headerLogo = headerLogo
-    this.links = headerData.slices[0].items.map(({ link, title }) => ({
+
+    this.links = headerData.slices[0].items.map(({ link, title, isnew }) => ({
       title,
       link: this.$enhancedLinkSerializer(link),
+      isnew,
     }))
     if (
       headerData?.slices &&
@@ -246,13 +254,35 @@ export default {
       justify-content: center;
       align-items: center;
       flex-direction: column;
-      padding: 12vh 32px 0 32px;
+      padding: 10vh 32px 0 32px;
 
       a {
         text-align: center;
         margin: $spacing-m 0;
         padding: 0 $spacing-s;
-        font-size: $font-size-heading-5;
+        font-size: calc($font-size-heading-4 * 0.64);
+      }
+
+      .link {
+        &.--new {
+          position: relative;
+
+          &::after {
+            background-image: url('../../../static/images/new.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            width: 72px;
+            height: 72px;
+            content: '';
+            position: absolute;
+            left: 48px;
+            top: -48px;
+            background-color: transparent;
+
+            @extend .animate-blink;
+          }
+        }
       }
     }
   }
@@ -293,6 +323,26 @@ export default {
 
       &::after {
         width: 100%;
+      }
+    }
+
+    &.--new {
+      position: relative;
+
+      &::after {
+        background-image: url('../../../static/images/new.png');
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+        width: 64px;
+        height: 64px;
+        content: '';
+        position: absolute;
+        left: 36px;
+        top: -40px;
+        background-color: transparent;
+
+        @extend .animate-blink;
       }
     }
   }
@@ -432,6 +482,23 @@ export default {
     .logo-felisweet {
       display: block;
     }
+  }
+}
+
+.animate-blink {
+  animation: blink 1.5s infinite;
+  animation-fill-mode: both;
+}
+
+@keyframes blink {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
   }
 }
 </style>

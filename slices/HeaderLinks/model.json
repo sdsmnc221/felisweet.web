@@ -26,6 +26,15 @@
             "placeholder": "",
             "select": null
           }
+        },
+        "isnew": {
+          "type": "Boolean",
+          "config": {
+            "label": "isNew",
+            "placeholder_false": "false",
+            "placeholder_true": "true",
+            "default_value": false
+          }
         }
       },
       "imageUrl": "https://images.prismic.io/slice-machine/621a5ec4-0387-4bc5-9860-2dd46cbc07cd_default_ss.png?auto=compress,format"

@@ -1355,6 +1355,17 @@ export interface HeaderLinkSliceDefaultItem {
    * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
    */
   link: prismic.LinkField
+
+  /**
+   * isNew field in *HeaderLinks → Items*
+   *
+   * - **Field Type**: Boolean
+   * - **Placeholder**: *None*
+   * - **Default Value**: false
+   * - **API ID Path**: header_link.items[].isnew
+   * - **Documentation**: https://prismic.io/docs/field#boolean
+   */
+  isnew: prismic.BooleanField
 }
 
 /**
