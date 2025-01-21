@@ -74,3 +74,10 @@ export default {
   },
 }
 </script>
+
+<style lang="scss">
+.embedded-page {
+  position: relative;
+  z-index: 0;
+}
+</style>

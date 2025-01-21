@@ -167,6 +167,21 @@ export default {
 </script>
 
 <style lang="scss">
+.container:has(.embedded-page) {
+  .site-header {
+    header {
+      top: 24px;
+    }
+
+    .link.contact {
+      bottom: -84vh;
+      right: 8px;
+      left: unset;
+      top: unset;
+    }
+  }
+}
+
 .site-header {
   position: fixed;
   top: 0;
