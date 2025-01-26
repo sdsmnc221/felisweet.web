@@ -39,7 +39,9 @@
       </div>
 
       <div
-        v-if="$route.name !== 'facilicat' && announcement"
+        v-if="
+          $route.name !== 'facilicat' && announcement && !$store.state.loading
+        "
         ref="announcementB"
         class="announcement-bar --mobile"
       >
@@ -114,23 +116,18 @@ export default {
     }
   },
   watch: {
-    '$refs.announcementB': {
-      handler() {
-        if (this.$refs.announcementB && this.announcement) {
-          setTimeout(() => {
-            this.onScroll()
-          }, 600)
+    '$store.state.loading': {
+      handler(newValue) {
+        if (!newValue && this.announcement) {
+          setTimeout(this.onScroll, 600)
         }
       },
+      immediate: true,
     },
-    announcement: {
-      handler() {
-        if (this.$refs.announcementB && this.announcement) {
-          setTimeout(() => {
-            this.onScroll()
-          }, 600)
-        }
-      },
+    announcement(newValue) {
+      if (newValue && !this.$store.state.loading) {
+        setTimeout(this.onScroll, 600)
+      }
     },
   },
   mounted() {

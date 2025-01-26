@@ -2,7 +2,7 @@
   <div class="page-loader">
     <img
       v-if="
-        !$store.state.isMobiile ||
+        !$store.state.isMobile ||
         ($store.state.isMobile && $store.state.isLandscape)
       "
       class="img"
