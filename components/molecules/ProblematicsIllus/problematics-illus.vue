@@ -724,6 +724,10 @@ export default {
     position: relative;
     @include rem(top, -$spacing-3xl);
     @include rem(left, $spacing-l);
+
+    div p {
+      transform: scale(0.8) translateY(-10px);
+    }
   }
 
   svg {
