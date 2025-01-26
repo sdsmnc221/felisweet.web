@@ -39,7 +39,7 @@
       </div>
 
       <div
-        v-if="$route.name !== 'facilicat'"
+        v-if="$route.name !== 'facilicat' && announcement"
         ref="announcementB"
         class="announcement-bar --mobile"
       >
@@ -114,9 +114,24 @@ export default {
     }
   },
   watch: {
-    announcementB: {
+    '$refs.announcementB': {
       handler() {
-        if (this.$refs.announcementB) {
+        if (this.$refs.announcementB && this.announcement) {
+          const offsetAnnouncement =
+            this.$refs.announcementB?.getBoundingClientRect().height
+
+          if (this.$store.state.isMobile) {
+            this.$gsap.set('#__nuxt', {
+              marginTop: offsetAnnouncement,
+            })
+          }
+        }
+      },
+      immediate: true,
+    },
+    announcement: {
+      handler() {
+        if (this.$refs.announcementB && this.announcement) {
           const offsetAnnouncement =
             this.$refs.announcementB?.getBoundingClientRect().height
 
