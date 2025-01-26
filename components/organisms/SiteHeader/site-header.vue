@@ -116,7 +116,9 @@ export default {
   watch: {
     announcementB: {
       handler() {
-        this.onScroll()
+        if (this.$refs.announcementB) {
+          this.onScroll()
+        }
       },
       immediate: true,
     },
