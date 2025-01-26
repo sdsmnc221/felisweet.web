@@ -117,18 +117,20 @@ export default {
     '$refs.announcementB': {
       handler() {
         if (this.$refs.announcementB && this.announcement) {
-          this.onScroll()
+          setTimeout(() => {
+            this.onScroll()
+          }, 600)
         }
       },
-      immediate: true,
     },
     announcement: {
       handler() {
         if (this.$refs.announcementB && this.announcement) {
-          this.onScroll()
+          setTimeout(() => {
+            this.onScroll()
+          }, 600)
         }
       },
-      immediate: true,
     },
   },
   mounted() {
