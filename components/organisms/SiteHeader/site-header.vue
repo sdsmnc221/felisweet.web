@@ -117,14 +117,7 @@ export default {
     '$refs.announcementB': {
       handler() {
         if (this.$refs.announcementB && this.announcement) {
-          const offsetAnnouncement =
-            this.$refs.announcementB?.getBoundingClientRect().height
-
-          if (this.$store.state.isMobile) {
-            this.$gsap.set('#__nuxt', {
-              marginTop: offsetAnnouncement,
-            })
-          }
+          this.onScroll()
         }
       },
       immediate: true,
@@ -132,14 +125,7 @@ export default {
     announcement: {
       handler() {
         if (this.$refs.announcementB && this.announcement) {
-          const offsetAnnouncement =
-            this.$refs.announcementB?.getBoundingClientRect().height
-
-          if (this.$store.state.isMobile) {
-            this.$gsap.set('#__nuxt', {
-              marginTop: offsetAnnouncement,
-            })
-          }
+          this.onScroll()
         }
       },
       immediate: true,
