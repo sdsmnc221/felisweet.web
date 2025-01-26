@@ -157,11 +157,13 @@ export default {
       })
     }
 
-    setTimeout(() => {
-      onScroll()
-    }, 600)
+    this.$nextTick(() => {
+      setTimeout(() => {
+        onScroll()
+      }, 600)
 
-    window.addEventListener('scroll', onScroll)
+      window.addEventListener('scroll', onScroll)
+    })
   },
 }
 </script>
