@@ -113,8 +113,25 @@ export default {
       ).primary.text[0].text
     }
   },
+  watch: {
+    announcementB: {
+      handler() {
+        this.onScroll()
+      },
+      immediate: true,
+    },
+  },
   mounted() {
-    const onScroll = () => {
+    this.$nextTick(() => {
+      setTimeout(() => {
+        this.onScroll()
+      }, 600)
+
+      window.addEventListener('scroll', this.onScroll)
+    })
+  },
+  methods: {
+    onScroll() {
       let color = 'transparent'
       const currentScroll =
         document.documentElement.scrollTop || document.body.scrollTop // Get Current Scroll Value
@@ -145,7 +162,7 @@ export default {
         top: offsetAnnouncement,
       })
 
-      this.$refs.ham.addEventListener('click', () => {
+      this.$refs.ham?.addEventListener('click', () => {
         this.showMenu = !this.showMenu
 
         this.$gsap.to(this.$refs.mobileMenu, {
@@ -155,15 +172,7 @@ export default {
           ease: 'circ.in',
         })
       })
-    }
-
-    this.$nextTick(() => {
-      setTimeout(() => {
-        onScroll()
-      }, 600)
-
-      window.addEventListener('scroll', onScroll)
-    })
+    },
   },
 }
 </script>
