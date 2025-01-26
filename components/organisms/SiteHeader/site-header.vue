@@ -117,7 +117,14 @@ export default {
     announcementB: {
       handler() {
         if (this.$refs.announcementB) {
-          this.onScroll()
+          const offsetAnnouncement =
+            this.$refs.announcementB?.getBoundingClientRect().height
+
+          if (this.$store.state.isMobile) {
+            this.$gsap.set('#__nuxt', {
+              marginTop: offsetAnnouncement,
+            })
+          }
         }
       },
       immediate: true,
