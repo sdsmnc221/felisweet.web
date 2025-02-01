@@ -53,13 +53,10 @@ export default {
   flex-direction: column;
 
   .banner {
-    width: 72%;
+    width: 100vw;
     position: relative;
-    @include rem(margin-bottom, $spacing-3xl);
 
-    img {
-      transform: translateX(6%);
-    }
+    @include rem(margin-bottom, $spacing-3xl);
 
     .bubble-description {
       overflow: visible;
@@ -94,8 +91,6 @@ export default {
     overflow-y: visible;
     width: 100vw;
     height: 100vh;
-    background-image: url('/images/photo-banner-pattern.svg');
-    background-repeat: repeat;
     margin: 0;
     display: flex;
     justify-content: center;
@@ -107,20 +102,15 @@ export default {
       justify-content: center;
       align-items: center;
 
-      img {
-        transform: translateX(20%);
-        width: 32%;
-      }
-
       .bubble-description {
-        width: 32%;
-        min-height: 80%;
-        position: relative;
+        width: 16vw;
+        max-height: 80%;
+        position: absolute;
         transform: none;
-        bottom: 0;
-        left: 0;
+        top: 12vh;
+        left: 20vw;
         background-image: var(--bubble-desktop);
-        background-size: 100% auto;
+        background-size: 92% auto;
         margin: 0;
         display: flex;
         justify-content: center;
@@ -130,7 +120,7 @@ export default {
         p {
           color: $color-white;
           @include rem(font-size, $font-size-body-l);
-          transform: rotate(-3.2deg);
+          transform: rotate(4deg);
         }
       }
     }
