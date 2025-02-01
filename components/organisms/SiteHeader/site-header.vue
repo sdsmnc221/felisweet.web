@@ -21,6 +21,9 @@
         </div>
 
         <div
+          v-if="
+            $route.name !== 'facilicat' && announcement && !$store.state.loading
+          "
           ref="announcement"
           class="announcement-bar"
           v-html="announcement"
@@ -134,10 +137,6 @@ export default {
   },
   mounted() {
     this.$nextTick(() => {
-      setTimeout(() => {
-        this.onScroll()
-      }, 600)
-
       window.addEventListener('scroll', this.onScroll)
     })
   },
