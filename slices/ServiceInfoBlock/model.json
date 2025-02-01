@@ -24,7 +24,7 @@
             "label": "Subtitle Up",
             "placeholder": "",
             "allowTargetBlank": true,
-            "multi": "paragraph,strong,em,hyperlink"
+            "multi": "paragraph,strong,em,hyperlink,heading3,heading2"
           }
         },
         "subtitle_down": {

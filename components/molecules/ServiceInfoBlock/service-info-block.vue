@@ -244,6 +244,11 @@ export default {
         }
       }
 
+      h2,
+      h3 {
+        @include rem(font-size, $font-size-heading-2);
+      }
+
       &:first-of-type {
         border-radius: 32px 32px 0 0;
       }
@@ -260,7 +265,7 @@ export default {
     border-radius: 10px;
     position: relative;
     margin: 0 auto;
-    transform: translateY(-32%);
+    transform: translateY(-40%);
     @include rem(padding, $spacing-m);
     width: 64%;
 
