@@ -3,7 +3,7 @@
     class="service-info-block"
     :class="{
       '--small': smallTitle,
-      '--reverse': rowReverse,
+      '--reverse': rowReverse || warningPositionReverse,
       '--variation-white': data.variation === 'isWhite',
       '--variation-default': data.variation === 'default',
       '--attached-top': data.attachedTop,
@@ -111,6 +111,9 @@ export default {
     hasWarning() {
       return !!this.data.warning.text
     },
+    warningPositionReverse() {
+      return this.data.warning?.position === 'left'
+    },
   },
 }
 </script>
@@ -124,7 +127,8 @@ export default {
     font-weight: bold;
 
     &.--small {
-      @include rem(font-size, $font-size-body-xl);
+      @include rem(font-size, $font-size-heading-2);
+      @include rem(line-height, $font-size-heading-2);
     }
   }
 
@@ -256,7 +260,7 @@ export default {
     border-radius: 10px;
     position: relative;
     margin: 0 auto;
-    transform: translateY(-40%);
+    transform: translateY(-32%);
     @include rem(padding, $spacing-m);
     width: 64%;
 
@@ -322,7 +326,8 @@ export default {
 
     h2,
     h2.--small {
-      @include rem(font-size, $font-size-heading-2);
+      @include rem(font-size, $font-size-heading-1);
+      @include rem(line-height, $font-size-heading-1);
     }
 
     .warning-block {

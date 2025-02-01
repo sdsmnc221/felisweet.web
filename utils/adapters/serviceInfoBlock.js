@@ -15,6 +15,7 @@ const adapter = ({ $prismic, data }) => {
     warning: {
       text: $prismic.asHTML(primary?.warning),
       icon: imageAdapter(primary?.warning_icon),
+      position: primary?.warningblockposition,
     },
     ...(variation === 'isWhite' && {
       illustrations: {

@@ -1927,6 +1927,17 @@ export interface ServiceInfoBlockSliceDefaultPrimary {
   warning: prismic.RichTextField
 
   /**
+   * WarningBlockPosition field in *ServiceInfoBlock → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **Default Value**: right
+   * - **API ID Path**: service_info_block.primary.warningblockposition
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  warningblockposition: prismic.SelectField<'right' | 'left', 'filled'>
+
+  /**
    * Illustration field in *ServiceInfoBlock → Primary*
    *
    * - **Field Type**: Image

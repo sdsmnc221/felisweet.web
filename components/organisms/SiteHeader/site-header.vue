@@ -136,9 +136,9 @@ export default {
     },
   },
   mounted() {
-    this.$nextTick(() => {
-      window.addEventListener('scroll', this.onScroll)
-    })
+    // this.$nextTick(() => {
+    //   window.addEventListener('scroll', this.onScroll)
+    // })
   },
   methods: {
     onScroll() {
@@ -492,9 +492,9 @@ export default {
       display: flex;
       flex-direction: column;
 
-      &:not(:has(.--f-w)) {
-        margin-top: $spacing-3xl;
-      }
+      // &:not(:has(.--f-w)) {
+      // margin-top: $spacing-3xl;
+      // }
 
       div:first-child {
         flex: 1;

@@ -1,7 +1,11 @@
 <template>
   <atom-wrapper class="photo-banner">
     <atom-wrapper tag="figure" class="banner">
-      <h1 v-if="data.bubbleDescription.title" class="banner__title">
+      <h1
+        v-if="data.bubbleDescription.title"
+        class="banner__title"
+        :class="{ '--small': smallTitle }"
+      >
         {{ data.bubbleDescription.title }}
       </h1>
       <atom-image :src="data.image.filename" />
@@ -43,6 +47,9 @@ export default {
         '--bubble-mobile': `url(${this.data.bubbleDescription.mobile.filename})`,
       }
     },
+    smallTitle() {
+      return this.data.bubbleDescription?.title?.length >= 8
+    },
   },
 }
 </script>
@@ -72,6 +79,12 @@ export default {
       transform: translateX(-50%);
       text-shadow: -2px -2px 0 $color-white, 2px -2px 0 $color-white,
         -2px 2px 0 $color-white, 2px 2px 0 $color-white;
+
+      &.--small {
+        @include rem(font-size, calc($font-size-heading-2));
+        width: 100%;
+        text-align: center;
+      }
     }
 
     .bubble-description {
@@ -124,6 +137,14 @@ export default {
         top: 24vh;
         left: 80%;
         letter-spacing: -0.64rem;
+
+        &.--small {
+          @include rem(font-size, calc($font-size-heading-1 * 2.4));
+          @include rem(line-height, calc($font-size-heading-1 * 1.6));
+          letter-spacing: -0.48rem;
+          text-align: center;
+          margin-left: 48px;
+        }
       }
 
       .bubble-description {

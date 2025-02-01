@@ -54,6 +54,18 @@
             "single": "paragraph,strong,em"
           }
         },
+        "warningblockposition": {
+          "type": "Select",
+          "config": {
+            "label": "WarningBlockPosition",
+            "placeholder": "",
+            "options": [
+              "right",
+              "left"
+            ],
+            "default_value": "right"
+          }
+        },
         "illustration": {
           "type": "Image",
           "config": {
