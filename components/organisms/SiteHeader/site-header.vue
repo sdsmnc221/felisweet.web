@@ -31,7 +31,7 @@
         ><atom-image src="/images/contact-btn.svg"
       /></a>
 
-      <div ref="ham" class="mobile-menu link">
+      <div ref="ham" class="mobile-menu link" @click="onMenu">
         <input type="checkbox" name="" class="check" />
         <div class="ham-menu">
           <span class="line line1"></span>
@@ -172,16 +172,15 @@ export default {
         ease: 'circ.in',
         top: offsetAnnouncement,
       })
+    },
+    onMenu() {
+      this.showMenu = !this.showMenu
 
-      this.$refs.ham?.addEventListener('click', () => {
-        this.showMenu = !this.showMenu
-
-        this.$gsap.to(this.$refs.mobileMenu, {
-          opacity: this.showMenu ? 1 : 0,
-          pointerEvents: this.showMenu ? 'auto' : 'none',
-          duration: 0.8,
-          ease: 'circ.in',
-        })
+      this.$gsap.to(this.$refs.mobileMenu, {
+        opacity: this.showMenu ? 1 : 0,
+        pointerEvents: this.showMenu ? 'auto' : 'none',
+        duration: 0.8,
+        ease: 'circ.in',
       })
     },
   },
