@@ -88,7 +88,7 @@ export default {
 
     &.--top {
       top: -24px;
-      left: 20%;
+      left: 56%;
     }
 
     &.--bottom {
