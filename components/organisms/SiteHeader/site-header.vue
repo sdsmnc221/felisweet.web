@@ -20,9 +20,11 @@
           </a>
         </div>
 
-        <div ref="announcement" class="announcement-bar">
-          {{ announcement }}
-        </div>
+        <div
+          ref="announcement"
+          class="announcement-bar"
+          v-html="announcement"
+        ></div>
       </div>
 
       <a class="link contact" href="/#contact"
@@ -44,9 +46,8 @@
         "
         ref="announcementB"
         class="announcement-bar --mobile"
-      >
-        {{ announcement }}
-      </div>
+        v-html="announcement"
+      ></div>
 
       <div ref="mobileMenu" class="mobile-menu-content">
         <logo-felisweet v-if="headerLogo" v-bind="headerLogo" />
@@ -110,9 +111,10 @@ export default {
       headerData?.slices &&
       headerData.slices.find((s) => s.slice_type === 'announcement_bar')
     ) {
-      this.announcement = headerData.slices.find(
-        (s) => s.slice_type === 'announcement_bar'
-      ).primary.text[0].text
+      this.announcement = this.$prismic.asHTML(
+        headerData.slices.find((s) => s.slice_type === 'announcement_bar')
+          .primary.text
+      )
     }
   },
   watch: {
@@ -247,8 +249,12 @@ export default {
     border-radius: 24px;
     text-align: center;
     color: $color-white;
-    font-size: $font-size-body-s;
+
     transition: all ease 0.64s;
+
+    * {
+      font-size: $font-size-body-xs;
+    }
 
     &.--mobile {
       position: fixed;
@@ -258,7 +264,10 @@ export default {
       width: 100vw;
       border-radius: 0;
       margin: 0;
-      font-size: $font-size-body-xs;
+
+      * {
+        font-size: calc($font-size-body-xs * 0.72);
+      }
     }
   }
 

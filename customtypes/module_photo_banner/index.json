@@ -3,6 +3,7 @@
   "label": "Module Photo Banner",
   "repeatable": true,
   "status": true,
+  "format": "custom",
   "json": {
     "Main": {
       "image": {
@@ -11,6 +12,13 @@
           "label": "image",
           "constraint": {},
           "thumbnails": []
+        }
+      },
+      "title": {
+        "type": "Text",
+        "config": {
+          "label": "title",
+          "placeholder": ""
         }
       },
       "description": {

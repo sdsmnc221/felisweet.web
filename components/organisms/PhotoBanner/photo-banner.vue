@@ -1,6 +1,9 @@
 <template>
   <atom-wrapper class="photo-banner">
     <atom-wrapper tag="figure" class="banner">
+      <h1 v-if="data.bubbleDescription.title" class="banner__title">
+        {{ data.bubbleDescription.title }}
+      </h1>
       <atom-image :src="data.image.filename" />
       <atom-wrapper
         class="bubble-description"
@@ -58,9 +61,22 @@ export default {
 
     @include rem(margin-bottom, $spacing-3xl);
 
+    &__title {
+      position: absolute;
+      @include rem(font-size, calc($font-size-heading-1));
+      font-weight: bold;
+      color: $color-service-blue;
+      bottom: unset;
+      top: -4vh;
+      left: 50%;
+      transform: translateX(-50%);
+      text-shadow: -2px -2px 0 $color-white, 2px -2px 0 $color-white,
+        -2px 2px 0 $color-white, 2px 2px 0 $color-white;
+    }
+
     .bubble-description {
       overflow: visible;
-      width: 100%;
+      width: 80%;
       height: 40%;
       position: absolute;
       bottom: -32%;
@@ -79,6 +95,7 @@ export default {
         color: $color-white;
         text-align: center;
         font-weight: $weight-medium;
+        transform: translateY(-16px);
       }
     }
   }
@@ -101,6 +118,13 @@ export default {
       display: flex;
       justify-content: center;
       align-items: center;
+
+      &__title {
+        @include rem(font-size, calc($font-size-heading-1 * 2.4));
+        top: 24vh;
+        left: 80%;
+        letter-spacing: -0.64rem;
+      }
 
       .bubble-description {
         width: 16vw;

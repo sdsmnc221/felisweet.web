@@ -70,6 +70,7 @@ export default {
     const document = await $prismic.api.getByUID('info_page', 'tarifs', {
       fetchLinks: [
         'module_photo_banner.image',
+        'module_photo_banner.title',
         'module_photo_banner.description',
         'module_photo_banner.bubble_desktop',
         'module_photo_banner.bubble_mobile',

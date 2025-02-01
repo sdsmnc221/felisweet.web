@@ -564,6 +564,17 @@ interface ModulePhotoBannerDocumentData {
   image: prismic.ImageField<never>
 
   /**
+   * title field in *Module Photo Banner*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: module_photo_banner.title
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  title: prismic.KeyTextField
+
+  /**
    * description field in *Module Photo Banner*
    *
    * - **Field Type**: Rich Text
