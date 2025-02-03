@@ -1,6 +1,6 @@
 <template>
   <atom-wrapper class="service-block">
-    <h3>{{ title }}</h3>
+    <h3 :class="{ '--small': title.length >= 15 }">{{ title }}</h3>
     <p v-html="description" />
     <bubble-image
       :class="`--${imagePos}`"
@@ -43,25 +43,18 @@ export default {
 .service-block {
   @include rem(padding, $spacing-xl);
 
-  &:first-of-type {
-    h3 {
-      text-align: left;
-      @include rem(margin-left, $spacing-xl);
-    }
-  }
-
-  &:last-of-type {
-    h3 {
-      text-align: right;
-      @include rem(margin-right, $spacing-xl);
-    }
-  }
-
   h3 {
     color: $color-shakespear-blue;
     font-weight: $weight-bold;
-    letter-spacing: 0.2px;
-    @include rem(font-size, $font-size-body-l);
+    letter-spacing: -0.2px;
+    @include rem(font-size, calc($font-size-heading-5 * 1.6));
+    text-align: center;
+    padding-right: $spacing-4xl;
+
+    &.--small {
+      @include rem(font-size, calc($font-size-heading-5 * 1.2));
+      padding: 0;
+    }
   }
 
   p {
@@ -111,6 +104,11 @@ export default {
 
     h3 {
       @include rem(font-size, $font-size-heading-4);
+
+      &.--small {
+        @include rem(font-size, calc($font-size-heading-5 * 2));
+        padding: 0;
+      }
     }
 
     .bubble-image.--top {

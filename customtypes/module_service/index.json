@@ -3,6 +3,7 @@
   "label": "Module Service",
   "repeatable": true,
   "status": true,
+  "format": "custom",
   "json": {
     "Main": {
       "title": {
@@ -18,7 +19,7 @@
           "label": "Description",
           "placeholder": "",
           "allowTargetBlank": true,
-          "multi": "paragraph,strong"
+          "multi": "paragraph,strong,hyperlink"
         }
       },
       "image": {
