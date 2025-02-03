@@ -342,7 +342,7 @@ export default {
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      text-align: justify;
+      text-align: center;
       transition: all ease 1.2s;
       position: relative;
       border-radius: 24px;

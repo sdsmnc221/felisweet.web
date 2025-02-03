@@ -69,7 +69,7 @@ export default {
     color: $color-white;
     @include rem(padding, $spacing-l);
     border-radius: 48px;
-    text-align: justify;
+    text-align: center;
     position: relative;
     top: -6px;
     z-index: -1;
