@@ -265,7 +265,7 @@ export default {
     border-radius: 10px;
     position: relative;
     margin: 0 auto;
-    transform: translateY(-40%);
+    transform: translateY(-20%);
     @include rem(padding, $spacing-m);
     width: 64%;
 
