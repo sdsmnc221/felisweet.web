@@ -430,6 +430,10 @@ main {
     }
 
     .section-reviews {
+      h2 {
+        top: 3.6vh;
+      }
+
       h2,
       h2 p,
       h2 p strong {
