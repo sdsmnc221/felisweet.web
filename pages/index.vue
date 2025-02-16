@@ -345,14 +345,17 @@ main {
 
   .section-reviews {
     // @include rem(margin-bottom, $spacing-l);
+    height: 100svh;
 
     &.--flex {
-      justify-content: flex-start;
+      justify-content: center;
     }
 
     h2 {
       @include rem(padding, 0 $spacing-2xl);
-      @include rem(margin, $spacing-2xl 0 calc($spacing-2xl/2) 0);
+      @include rem(margin, $spacing-2xl 0);
+      top: -6.4vh;
+      position: relative;
 
       p {
         @include rem(font-size, $font-size-body-xl);
@@ -364,6 +367,8 @@ main {
         font-weight: $weight-bold;
       }
     }
+
+    @include rem(margin-top, $spacing-2xl);
 
     .reviews-more {
       position: absolute;

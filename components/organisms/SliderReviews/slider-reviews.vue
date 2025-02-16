@@ -58,10 +58,12 @@
 	c-2.5,1.9-4.6,4.3-6.2,7.1c-1.6,2.8-2.4,5.7-2.4,8.6c0,4.1,1.1,7.4,3.3,9.9C33.9,31,36.8,32.3,40.5,32.3z"
             />
           </svg>
-          <div class="reviews-content">
+          <div class="reviews-content font-childlike">
             <div v-html="review.text" />
           </div>
-          <span class="reviews-author">- {{ review.author }} - </span>
+          <span class="reviews-author font-childlike"
+            >- {{ review.author }} -
+          </span>
           <p v-if="reviewsLabel && reviewsLink" class="reviews-more">
             <a class="link" target="_blank" :href="reviewsLink.href">{{
               reviewsLabel
@@ -331,8 +333,10 @@ export default {
     position: relative;
     width: 64vw;
     min-height: 40vh;
-    @include rem(margin, $spacing-l);
-    @include rem(margin-bottom, $spacing-5xl);
+    height: fit-content;
+    display: flex;
+    align-items: flex-start;
+    @include rem(margin, 0 $spacing-l);
 
     ul {
       list-style-type: none;
@@ -341,12 +345,13 @@ export default {
       transform: translate(0, -50%);
       display: flex;
       transition: all ease 0.64s;
-      align-items: stretch;
-      @include rem(margin, $spacing-2xl 0);
+      align-items: center;
+      justify-content: center;
     }
 
     li {
       min-width: 64vw;
+      height: fit-content;
       width: calc(100% - calc($spacing-l * 2));
       @include rem(padding, $spacing-2xl $spacing-l);
       display: flex;
@@ -372,12 +377,23 @@ export default {
 
       div.reviews-content {
         position: relative;
-        max-height: 40vh;
+        min-height: 40vh;
+        max-height: 64vh;
+
         overflow-y: scroll;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        * {
+          @include rem(font-size, $font-size-body-m);
+        }
 
         div {
           overflow-y: scroll;
           width: 100%;
+          padding: 12px 0;
           display: flex;
           flex-direction: column;
           justify-content: flex-start;
@@ -388,7 +404,6 @@ export default {
       p,
       span {
         text-align: center;
-        font-family: $font-family-lucida;
         word-break: break-word;
         white-space: pre-line;
       }
@@ -402,7 +417,7 @@ export default {
 
         &:nth-of-type(2) {
           transform: scale(-1.4);
-          bottom: -12px;
+          bottom: 32px;
           right: 12px;
           top: auto;
           left: auto;
@@ -418,25 +433,39 @@ export default {
       span {
         display: block;
 
-        @include rem(font-size, $font-size-body-xs);
+        @include rem(font-size, $font-size-body-m);
         @include rem(line-height, calc($font-size-body-xs * 1.2));
       }
 
       .reviews-author {
-        position: relative;
-        @include rem(margin-top, $spacing-l);
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translate(-50%, 0);
         white-space: nowrap;
+
+        @include rem(font-size, $font-size-body-l);
+
+        @include rem(margin-top, $spacing-l);
       }
 
       .reviews-more {
         position: absolute;
-        bottom: -16px;
-        right: 50%;
-        transform: translateX(50%);
-        @include rem(padding, calc($spacing-s / 2) $spacing-xl);
-        background-color: transparentize($color-light-blue, 0.16);
+        z-index: 2;
+        top: -64px;
+        bottom: unset;
+        left: 0;
+        right: unset;
+        transform: rotate(-6deg);
+        padding: 2px 5px;
+        background-color: $color-shakespear-blue;
         border-radius: 32px;
         white-space: nowrap;
+
+        * {
+          font-size: $font-size-body-xs;
+          color: $color-light-blue;
+        }
 
         &::after {
           content: '';
@@ -481,7 +510,7 @@ export default {
   @media #{$mq-xlarge} {
     .reviews-more {
       right: 72px !important;
-      transform: translateX(0) scale(1.4) !important;
+      transform: translateX(-10vw) translateY(32px) !important;
     }
   }
 
@@ -492,7 +521,6 @@ export default {
 
       ul {
         align-items: center;
-        @include rem(margin, $spacing-5xl 0);
       }
 
       li {
@@ -500,7 +528,8 @@ export default {
 
         div.reviews-content {
           overflow-y: scroll;
-          @include rem(margin, $spacing-3xl 0 $spacing-4xl 0);
+          min-height: unset;
+          @include rem(margin-top, $spacing-xl);
 
           div {
             justify-content: center;
@@ -522,18 +551,27 @@ export default {
 
         p,
         span {
-          text-align: left;
-          @include rem(font-size, $font-size-body-m);
+          text-align: center;
+          @include rem(font-size, $font-size-body-l);
+          @include rem(line-height, calc($font-size-body-l * 1.6));
         }
 
         .reviews-author {
-          @include rem(font-size, $font-size-heading-2);
+          left: 20vw !important;
+          @include rem(font-size, $font-size-heading-1);
         }
 
         .reviews-more {
           bottom: -16px;
-          right: 30px;
-          transform: translateX(0);
+          right: -10vw;
+          left: unset;
+          top: unset;
+          padding: 0 12px;
+
+          * {
+            padding: 0;
+            margin: 0;
+          }
         }
 
         .reviews-author {
