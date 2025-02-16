@@ -37,16 +37,17 @@ export default {
 <style lang="scss">
 .pop-up {
   position: fixed;
-  top: 50%;
+  bottom: -16vh;
   left: 50%;
   width: 80vw;
-  height: 80vh;
-  transform: translate(-50%, -50%);
+  height: 74vh;
+  transform: translate(-50%, calc(-16vh - 3.6vh));
   background-color: $color-link-water;
-  border-radius: 48px;
+  border-radius: 48px 48px 0 0;
   overflow: visible;
   @include rem(padding, $spacing-m);
   z-index: 999;
+  transition: opacity ease-in-out 0.64s;
 
   .bubble-image.close-btn {
     position: absolute;
@@ -59,7 +60,7 @@ export default {
 
     &:hover {
       &::after {
-        border: 4px dashed $color-shakespear-blue;
+        border: 1px solid $color-shakespear-blue;
         transform: translate(-50%, -50%) scale(1);
       }
     }
@@ -68,10 +69,11 @@ export default {
       z-index: -1;
       display: block !important;
       background-image: none;
-      border: 4px dashed $color-link-water;
+      border: 2px solid $color-link-water;
       border-radius: $radius-full;
       transform: translate(-50%, -50%) scale(0);
       transition: all ease 0.64s;
+      transition-delay: opacity 0.32s;
     }
   }
 
@@ -81,7 +83,7 @@ export default {
     overflow: scroll;
 
     * {
-      @include rem(font-size, $font-size-body-l);
+      @include rem(font-size, $font-size-body-s);
     }
 
     a {
@@ -92,6 +94,10 @@ export default {
       width: 100%;
       height: 100%;
       mix-blend-mode: multiply;
+      border-radius: 48px;
+      padding: 16px;
+
+      padding-bottom: 2vh;
     }
 
     &.credits {
@@ -109,6 +115,7 @@ export default {
 
     &.legals {
       padding: 32px;
+      padding-bottom: 7.2vh;
       strong {
         font-weight: 700;
       }
@@ -116,7 +123,7 @@ export default {
       h3,
       h3 strong {
         text-align: center;
-        @include rem(font-size, $font-size-heading-4);
+        @include rem(font-size, $font-size-body-l);
         font-weight: 700;
         margin-bottom: 32px;
       }
@@ -130,25 +137,11 @@ export default {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    border: 4px dashed $color-service-blue;
+    border: 2px solid $color-service-blue;
     background-color: rgba($color-link-water, 64%);
-    border-radius: 48px;
+    border-radius: 48px 48px 0 0;
     width: calc(100% + 24px);
     height: calc(100% + 24px);
-    z-index: -1;
-  }
-
-  &::before {
-    content: '';
-    display: block;
-    position: absolute;
-    top: -100vw;
-    left: -100vh;
-    width: 400vw;
-    height: 400vh;
-    overflow: hidden;
-    backdrop-filter: blur(12px);
-    background-color: transparentize($color-shakespear-blue, 0.8);
     z-index: -1;
   }
 
@@ -159,6 +152,17 @@ export default {
     .bubble-image.close-btn {
       transform: scale(1);
       right: -72px;
+    }
+
+    .popup-content {
+      * {
+        @include rem(font-size, $font-size-body-l);
+      }
+
+      h3,
+      h3 strong {
+        @include rem(font-size, $font-size-heading-4);
+      }
     }
   }
 }

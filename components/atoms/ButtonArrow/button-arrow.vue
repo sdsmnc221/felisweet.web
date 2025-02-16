@@ -60,6 +60,7 @@ export default {
   height: var(--size);
   border: 6px solid transparent;
   position: relative;
+  z-index: 9;
 
   &::after {
     content: '';

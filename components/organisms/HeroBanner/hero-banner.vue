@@ -15,7 +15,7 @@
       />
       <div
         ref="heroText"
-        class="hero-baseline"
+        class="hero-baseline font-childlike"
         v-html="$prismic.asHTML(text)"
       />
     </atom-wrapper>
@@ -232,7 +232,7 @@ export default {
 
       .hero-baseline {
         p:first-of-type {
-          @include rem(margin-top, $spacing-3xl);
+          @include rem(margin-top, $spacing-5xl);
         }
       }
     }
