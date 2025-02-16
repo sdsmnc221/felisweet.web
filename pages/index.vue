@@ -354,7 +354,7 @@ main {
     h2 {
       @include rem(padding, 0 $spacing-2xl);
       @include rem(margin, $spacing-2xl 0);
-      top: -6.4vh;
+      top: -16vh;
       position: relative;
 
       p {
