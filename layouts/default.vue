@@ -25,7 +25,6 @@
           </div>
         </Transition>
         <site-footer v-if="$route.name !== 'chachou-bible'" />
-        <dot-cursor v-if="$route.name !== 'noel2022'" />
       </div>
     </transition>
     <transition name="fade">
@@ -59,7 +58,6 @@
 import SiteFooter from '../components/organisms/SiteFooter'
 import SiteHeader from '../components/organisms/SiteHeader'
 import PopUp from '../components/molecules/PopUp'
-import DotCursor from '../components/molecules/DotCursor'
 import PageLoader from '../components/organisms/PageLoader'
 import NoelPageLoader from '../components/noel/NoelPageLoader'
 import NoelSnow from '../components/noel/NoelSnow'
@@ -70,7 +68,7 @@ export default {
     SiteFooter,
     SiteHeader,
     PopUp,
-    DotCursor,
+
     PageLoader,
     NoelPageLoader,
     NoelSnow,

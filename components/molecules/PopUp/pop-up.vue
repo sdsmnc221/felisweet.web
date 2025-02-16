@@ -95,7 +95,9 @@ export default {
       height: 100%;
       mix-blend-mode: multiply;
       border-radius: 48px;
-      padding: 24px;
+      padding: 16px;
+
+      padding-bottom: 2vh;
     }
 
     &.credits {
