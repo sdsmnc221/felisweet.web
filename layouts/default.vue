@@ -12,19 +12,17 @@
             $store.state.footer.popupContentHTML.planning
           "
         />
-        <Transition name="fade" mode="out-in">
-          <pop-up
-            v-if="$store.state.page.displayPopup"
-            :open="openPopup"
-            :close="closePopup"
-          >
-            <template #content>
-              <div
-                :class="`popup-content ${$store.state.page.popupType}`"
-                v-html="$store.state.page.popupContent"
-              />
-            </template>
-          </pop-up>
+        <Transition name="slide" mode="out-in">
+          <div v-if="$store.state.page.displayPopup" class="popup-container">
+            <pop-up :open="openPopup" :close="closePopup">
+              <template #content>
+                <div
+                  :class="`popup-content ${$store.state.page.popupType}`"
+                  v-html="$store.state.page.popupContent"
+                />
+              </template>
+            </pop-up>
+          </div>
         </Transition>
         <site-footer v-if="$route.name !== 'chachou-bible'" />
         <dot-cursor v-if="$route.name !== 'noel2022'" />
@@ -218,6 +216,34 @@ export default {
   flex-direction: column;
 }
 
+.popup-container {
+  position: fixed;
+  bottom: -10vh;
+  left: 0;
+  z-index: 999;
+  width: 100%;
+  height: 120vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  backdrop-filter: blur(12px);
+  background-color: transparentize($color-shakespear-blue, 0.8);
+
+  .pop-up {
+    animation: fadein 1.2s;
+  }
+}
+
+@keyframes fadein {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
 .fade-enter-active,
 .fade-leave-active {
   transition: all 0.64s ease;
@@ -231,5 +257,22 @@ export default {
 .fade-enter,
 .fade-leave-to {
   opacity: 0;
+}
+
+.slide-enter-active,
+.slide-leave-active {
+  transition: opacity 1.2s ease, transform 0.64s ease-out;
+}
+
+.slide-enter-to,
+.slide-leave-from {
+  opacity: 1;
+  transform: translateY(-7.2vh);
+}
+
+.slide-enter-from,  /* Note: changed from fade-enter to fade-enter-from */
+.slide-leave-to {
+  opacity: 0;
+  transform: translateY(7.2vh); /* This makes it slide up from 20px below */
 }
 </style>
