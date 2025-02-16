@@ -17,6 +17,7 @@
             '--bg-img-1': index == 0,
             '--bg-img-2': index == 1,
             '--bg-img-3': index == 2,
+            'font-childlike': true,
           }"
         >
           {{ question }}
@@ -82,7 +83,7 @@ export default {
     width: 50vw;
     height: 32vh;
     @include rem(margin, 0 $spacing-l);
-    overflow: hidden;
+    // overflow: hidden;
 
     ul {
       list-style-type: none;
@@ -115,7 +116,7 @@ export default {
         background-size: contain;
         background-repeat: no-repeat;
         background-position: center;
-        width: 2200%;
+        width: 220%;
         height: 220%;
         z-index: -1;
       }
@@ -141,6 +142,27 @@ export default {
       &.--visible {
         opacity: 1;
         transform: scale(1);
+
+        &.--bg-img-3 {
+          &::after {
+            width: 100%;
+          }
+        }
+      }
+    }
+  }
+
+  @media screen and (max-width: 350px) {
+    .--visible {
+      opacity: 1;
+      transform: scale(1);
+
+      &.--bg-img-3 {
+        left: 16vw;
+
+        &::after {
+          width: 100%;
+        }
       }
     }
   }

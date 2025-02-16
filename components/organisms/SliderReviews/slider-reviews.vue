@@ -514,6 +514,18 @@ export default {
     }
   }
 
+  @media screen and (max-width: 350px) {
+    li {
+      div.reviews-content {
+        max-height: 44vh !important;
+
+        * {
+          font-size: $font-size-body-s !important;
+        }
+      }
+    }
+  }
+
   @media #{$mq-medium} {
     .reviews {
       @include rem(margin-top, $spacing-2xl);
