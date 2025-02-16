@@ -187,6 +187,7 @@ export default {
     const reviewsBlock = Object.entries(document?.data?.slices).find(
       (slice) => slice[1].slice_type === 'reviews_block'
     )[1]
+
     const moduleReviews = reviewsBlock?.items
     const reviews = {
       block: moduleReviews.map((review) =>
@@ -194,7 +195,7 @@ export default {
       ),
       title: $prismic.asHTML(reviewsBlock?.primary?.title),
       detailLabel: reviewsBlock?.primary?.detail_label,
-      link: $enhancedLinkSerializer(reviewsBlock?.primary?.link),
+      link: $enhancedLinkSerializer(reviewsBlock?.primary?.source),
     }
 
     const socialMediaBlock = Object.entries(document?.data?.slices).find(
@@ -214,11 +215,7 @@ export default {
       document?.data?.module_contact_banner?.id
     )
 
-    console.log(
-      document,
-      await $prismic.api.getByID(document?.data?.module_contact_banner?.id),
-      moduleContactBanner
-    )
+    console.log(reviews, reviewsBlock)
 
     const moduleCatus = document?.data?.catus
 

@@ -64,8 +64,8 @@
           <span class="reviews-author font-childlike"
             >- {{ review.author }} -
           </span>
-          <p v-if="reviewsLabel && reviewsLink" class="reviews-more">
-            <a class="link" target="_blank" :href="reviewsLink.href">{{
+          <p v-if="reviewsLabel && review.source" class="reviews-more">
+            <a class="link" target="_blank" :href="review.source.url">{{
               reviewsLabel
             }}</a>
           </p>

@@ -1760,6 +1760,16 @@ export interface ReviewsBlockSliceDefaultItem {
    * - **Documentation**: https://prismic.io/docs/field#rich-text-title
    */
   review: prismic.RichTextField
+
+  /**
+   * source field in *ReviewsBlock → Items*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: reviews_block.items[].source
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  source: prismic.LinkField
 }
 
 /**
