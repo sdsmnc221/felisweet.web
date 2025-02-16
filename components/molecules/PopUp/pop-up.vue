@@ -83,7 +83,7 @@ export default {
     overflow: scroll;
 
     * {
-      @include rem(font-size, $font-size-body-l);
+      @include rem(font-size, $font-size-body-s);
     }
 
     a {
@@ -121,7 +121,7 @@ export default {
       h3,
       h3 strong {
         text-align: center;
-        @include rem(font-size, $font-size-heading-4);
+        @include rem(font-size, $font-size-body-l);
         font-weight: 700;
         margin-bottom: 32px;
       }
@@ -150,6 +150,17 @@ export default {
     .bubble-image.close-btn {
       transform: scale(1);
       right: -72px;
+    }
+
+    .popup-content {
+      * {
+        @include rem(font-size, $font-size-body-l);
+      }
+
+      h3,
+      h3 strong {
+        @include rem(font-size, $font-size-heading-4);
+      }
     }
   }
 }
