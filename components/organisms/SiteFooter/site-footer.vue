@@ -98,8 +98,12 @@ export default {
       top: 50%;
       right: 4vw;
       transform: translateY(-50%);
-      width: 150px;
-      text-align: right;
+      min-width: 150px;
+      display: flex;
+      flex-direction: column-reverse;
+      gap: 3.2px;
+      justify-content: flex-end;
+      align-items: flex-end;
 
       span {
         display: none;

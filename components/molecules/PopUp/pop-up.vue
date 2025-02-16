@@ -58,6 +58,8 @@ export default {
     background-color: transparentize($color-service-blue, 0.8);
     border-radius: $radius-full;
 
+    aspect-ratio: 1;
+
     &:hover {
       &::after {
         border: 1px solid $color-shakespear-blue;
@@ -101,24 +103,19 @@ export default {
     }
 
     &.credits {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
+      padding: 32px 12px;
+      padding-bottom: 7.2vh;
 
       h2,
       h3 {
-        margin-bottom: 32px;
+        @include rem(font-size, $font-size-body-m);
+        font-weight: 700;
       }
     }
 
     &.legals {
-      padding: 32px;
+      padding: 32px 12px;
       padding-bottom: 7.2vh;
-      strong {
-        font-weight: 700;
-      }
 
       h3,
       h3 strong {
@@ -127,6 +124,15 @@ export default {
         font-weight: 700;
         margin-bottom: 32px;
       }
+    }
+
+    p {
+      margin-bottom: $spacing-s;
+    }
+
+    strong,
+    em {
+      font-weight: 700;
     }
   }
 
