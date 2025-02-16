@@ -215,8 +215,6 @@ export default {
       document?.data?.module_contact_banner?.id
     )
 
-    console.log(reviews, reviewsBlock)
-
     const moduleCatus = document?.data?.catus
 
     if (document) {

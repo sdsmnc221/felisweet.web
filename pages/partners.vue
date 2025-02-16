@@ -118,11 +118,6 @@ export default {
       }
     },
   },
-  mounted() {
-    setTimeout(() => {
-      console.log(this.slices)
-    }, 2000)
-  },
 }
 </script>
 

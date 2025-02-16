@@ -382,10 +382,6 @@ export default {
 
         overflow-y: scroll;
 
-        display: flex;
-        justify-content: center;
-        align-items: center;
-
         * {
           @include rem(font-size, $font-size-body-m);
         }
