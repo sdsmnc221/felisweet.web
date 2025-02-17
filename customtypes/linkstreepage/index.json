@@ -1,0 +1,66 @@
+{
+  "format": "custom",
+  "id": "linkstreepage",
+  "label": "LinkstreePage",
+  "repeatable": true,
+  "status": true,
+  "json": {
+    "Main": {
+      "uid": {
+        "config": {
+          "label": "UID"
+        },
+        "type": "UID"
+      },
+      "pagetitle": {
+        "type": "Text",
+        "config": {
+          "label": "pageTitle",
+          "placeholder": ""
+        }
+      },
+      "pagedescription": {
+        "type": "StructuredText",
+        "config": {
+          "label": "pageDescription",
+          "placeholder": "",
+          "allowTargetBlank": true,
+          "multi": "paragraph,preformatted,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
+        }
+      },
+      "linksillustration": {
+        "type": "Image",
+        "config": {
+          "label": "linksIllustration",
+          "constraint": {},
+          "thumbnails": []
+        }
+      },
+      "links": {
+        "type": "Group",
+        "config": {
+          "label": "links",
+          "repeat": true,
+          "fields": {
+            "linklabel": {
+              "type": "Text",
+              "config": {
+                "label": "linklabel",
+                "placeholder": ""
+              }
+            },
+            "linkurl": {
+              "type": "Link",
+              "config": {
+                "label": "linkUrl",
+                "placeholder": "",
+                "allowTargetBlank": true,
+                "select": null
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
