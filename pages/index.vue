@@ -258,6 +258,15 @@ export default {
               behavior: 'smooth',
             })
 
+            this.$gsap.to(
+              document.querySelector('.site-header .mobile-menu-content'),
+              {
+                opacity: 0,
+                duration: 1.2,
+                ease: 'circ.in',
+              }
+            )
+
             this.$gsap.to([this.$refs.scrollDown.$el], {
               opacity: 1,
               scale: 1,
