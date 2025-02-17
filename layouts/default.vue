@@ -82,7 +82,7 @@ export default {
 
     switch (this.$route.name) {
       case 'noel2022':
-        head.title = `Fêtez la fin de l'année 2022 avec FeliSweet`
+        head.title = `Fêtez la fin de l'année 2022`
         head.meta = [
           {
             hid: 'description-noel2022',
@@ -93,39 +93,39 @@ export default {
         ]
         break
       case 'about':
-        head.title = `À propos de FeliSweet`
+        head.title = `À propos`
         head.meta = [
           {
             hid: 'description-about',
             name: 'description',
-            content: 'Présentation de FeliSweet et de Marie',
+            content:
+              'Présentation de FeliSweet et de moi-même, Marie-Bénédicte SIRUGUET. Découvrez mon parcours et mes compétences.',
           },
         ]
         break
       case 'comportementaliste-felin':
-        head.title = `A quoi sert un comportementaliste félin ?`
+        head.title = `Comportementaliste`
         head.meta = [
           {
             hid: 'description-comportementaliste_felin',
             name: 'description',
             content:
-              'Quelles sont les missions d’un.e comportementaliste félin.e chez FeliSweet ?',
+              'Les commportements félins - Quelles sont les missions d’un.e comportementaliste félin.e chez FeliSweet ?',
           },
         ]
         break
       case 'services':
-        head.title = `Découvrez nos Services`
+        head.title = `Cat-sitting`
         head.meta = [
           {
             hid: 'description-services',
             name: 'description',
-            content:
-              'Les services proposés par FeliSweet : Comportements du chat et Cat-sitting',
+            content: 'Le service de Cat-sitting, chez FeliSweet',
           },
         ]
         break
       case 'tarifs':
-        head.title = `Découvrez nos Tarifs`
+        head.title = `Tarifs`
         head.meta = [
           {
             hid: 'description-tarifs',
@@ -136,7 +136,7 @@ export default {
         ]
         break
       case 'partners':
-        head.title = `Découvrez nos Patte'naires`
+        head.title = `Patte'naires`
         head.meta = [
           {
             hid: 'description-partners',
@@ -147,7 +147,7 @@ export default {
         ]
         break
       case 'facilicat':
-        head.title = "Facili'Cat - Un nouveau service de FeliSweet"
+        head.title = "Facili'Cat - Un nouveau service"
         head.meta = [
           {
             hid: 'description-facilicat',

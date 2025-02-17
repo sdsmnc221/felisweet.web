@@ -9,7 +9,7 @@ export default defineNuxtConfig({
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
     titleTemplate:
-      'FeliSweet Comportementaliste - %s - Cat-sitter à Sainte-Geneviève-des-Bois - ',
+      '%s : FeliSweet Comportementaliste & Cat-sitter à Sainte-Geneviève-des-Bois ',
     htmlAttrs: {
       lang: 'fr',
     },
