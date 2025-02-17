@@ -981,6 +981,17 @@ interface SiteHeaderDocumentData {
   logo: prismic.ContentRelationshipField<'module_logo'>
 
   /**
+   * bottomMobileIllust field in *Site Header*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: site_header.bottommobileillust
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  bottommobileillust: prismic.ImageField<never>
+
+  /**
    * Slice Zone field in *Site Header*
    *
    * - **Field Type**: Slice Zone

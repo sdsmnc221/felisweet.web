@@ -14,6 +14,14 @@
           "customtypes": ["module_logo"]
         }
       },
+      "bottommobileillust": {
+        "type": "Image",
+        "config": {
+          "label": "bottomMobileIllust",
+          "constraint": {},
+          "thumbnails": []
+        }
+      },
       "slices": {
         "type": "Slices",
         "fieldset": "Slice Zone",

@@ -69,6 +69,10 @@
             {{ linkItem.title }}
           </a>
         </div>
+
+        <div class="mobile-menu-illust">
+          <img :src="headerMobileIllus.url" alt="mobile-illus" />
+        </div>
       </div>
     </atom-wrapper>
   </scroll-reveal-wrapper>
@@ -98,6 +102,7 @@ export default {
       lastScroll: 0,
       announcement: '',
       showMenu: false,
+      headerMobileIllus: null,
     }
   },
   async fetch() {
@@ -109,6 +114,7 @@ export default {
       headerData.logo.id
     )
     this.headerLogo = headerLogo
+    this.headerMobileIllus = headerData.bottommobileillust
 
     this.links = headerData.slices[0].items.map(({ link, title, isnew }) => ({
       title,
@@ -288,10 +294,22 @@ export default {
     align-items: center;
     flex-direction: column;
 
+    .mobile-menu-illust {
+      position: absolute;
+      z-index: -1;
+      bottom: -32px;
+      left: 0;
+      width: 100%;
+      text-align: center;
+      img {
+        width: 100%;
+      }
+    }
+
     .logo-felisweet {
       display: block;
       position: absolute;
-      bottom: 32px;
+      bottom: 22vh;
       width: 100%;
       text-align: center;
     }
@@ -301,7 +319,7 @@ export default {
       justify-content: center;
       align-items: center;
       flex-direction: column;
-      padding: 0 32px 10vh 32px;
+      padding: 0 32px 24vh 32px;
 
       a {
         text-align: center;
@@ -348,7 +366,7 @@ export default {
     }
 
     &:has(+ .--show) {
-      top: 48px;
+      top: 32px;
     }
   }
 
@@ -406,7 +424,7 @@ export default {
     z-index: 999;
 
     &.--show {
-      top: 32px;
+      top: 16px;
     }
 
     .ham-menu {
