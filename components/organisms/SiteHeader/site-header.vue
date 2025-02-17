@@ -297,7 +297,7 @@ export default {
     .mobile-menu-illust {
       position: absolute;
       z-index: -1;
-      bottom: -32px;
+      bottom: -10px;
       left: 0;
       width: 100%;
       text-align: center;
