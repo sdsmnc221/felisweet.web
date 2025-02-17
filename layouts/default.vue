@@ -104,7 +104,7 @@ export default {
         ]
         break
       case 'comportementaliste-felin':
-        head.title = `Comportementaliste`
+        head.title = `Comportements félins`
         head.meta = [
           {
             hid: 'description-comportementaliste_felin',
