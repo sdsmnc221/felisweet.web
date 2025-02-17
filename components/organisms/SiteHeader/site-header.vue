@@ -286,7 +286,7 @@ export default {
     .logo-felisweet {
       display: block;
       position: absolute;
-      top: 32px;
+      bottom: 32px;
       width: 100%;
       text-align: center;
     }
@@ -296,7 +296,7 @@ export default {
       justify-content: center;
       align-items: center;
       flex-direction: column;
-      padding: 10vh 32px 0 32px;
+      padding: 0 32px 10vh 32px;
 
       a {
         text-align: center;
