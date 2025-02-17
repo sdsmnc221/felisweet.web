@@ -34,7 +34,11 @@
         ><atom-image src="/images/contact-btn.svg"
       /></a>
 
-      <div ref="ham" class="mobile-menu link" @click="onMenu">
+      <div
+        class="mobile-menu link"
+        :class="{ '--show': showMenu }"
+        @click="onMenu"
+      >
         <input type="checkbox" name="" class="check" />
         <div class="ham-menu">
           <span class="line line1"></span>
@@ -93,6 +97,7 @@ export default {
       links: [],
       lastScroll: 0,
       announcement: '',
+      showMenu: false,
     }
   },
   async fetch() {
@@ -335,10 +340,15 @@ export default {
 
   .contact {
     position: absolute !important;
+    z-index: 99;
     top: 16px;
     left: 16px;
     img {
       width: 84px;
+    }
+
+    &:has(+ .--show) {
+      top: 48px;
     }
   }
 
@@ -394,6 +404,10 @@ export default {
     height: 3rem;
     width: 3rem;
     z-index: 999;
+
+    &.--show {
+      top: 32px;
+    }
 
     .ham-menu {
       height: 3rem;
