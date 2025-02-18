@@ -68,7 +68,6 @@ export default {
   &__content {
     position: absolute;
     bottom: 32px;
-    height: 36vh;
     width: 100%;
     display: flex;
     flex-direction: column;
