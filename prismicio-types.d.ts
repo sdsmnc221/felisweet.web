@@ -218,6 +218,96 @@ export type InfoPageDocument<Lang extends string = string> =
     Lang
   >
 
+/**
+ * Item in *LinkstreePage → links*
+ */
+export interface LinkstreepageDocumentDataLinksItem {
+  /**
+   * linklabel field in *LinkstreePage → links*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: linkstreepage.links[].linklabel
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  linklabel: prismic.KeyTextField
+
+  /**
+   * linkUrl field in *LinkstreePage → links*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: linkstreepage.links[].linkurl
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  linkurl: prismic.LinkField
+}
+
+/**
+ * Content for LinkstreePage documents
+ */
+interface LinkstreepageDocumentData {
+  /**
+   * pageTitle field in *LinkstreePage*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: linkstreepage.pagetitle
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  pagetitle: prismic.KeyTextField
+
+  /**
+   * pageDescription field in *LinkstreePage*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: linkstreepage.pagedescription
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  pagedescription: prismic.RichTextField
+
+  /**
+   * linksIllustration field in *LinkstreePage*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: linkstreepage.linksillustration
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  linksillustration: prismic.ImageField<never>
+
+  /**
+   * links field in *LinkstreePage*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: linkstreepage.links[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  links: prismic.GroupField<Simplify<LinkstreepageDocumentDataLinksItem>>
+}
+
+/**
+ * LinkstreePage document from Prismic
+ *
+ * - **API ID**: `linkstreepage`
+ * - **Repeatable**: `true`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type LinkstreepageDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithUID<
+    Simplify<LinkstreepageDocumentData>,
+    'linkstreepage',
+    Lang
+  >
+
 type ModuleContactBannerDocumentDataSlicesSlice = never
 
 /**
@@ -1024,6 +1114,7 @@ export type AllDocumentTypes =
   | ComportementalistePageDocument
   | HomePageDocument
   | InfoPageDocument
+  | LinkstreepageDocument
   | ModuleContactBannerDocument
   | ModuleHeroBannerDocument
   | ModuleLogoDocument
@@ -2233,6 +2324,9 @@ declare module '@prismicio/client' {
       InfoPageDocument,
       InfoPageDocumentData,
       InfoPageDocumentDataSlicesSlice,
+      LinkstreepageDocument,
+      LinkstreepageDocumentData,
+      LinkstreepageDocumentDataLinksItem,
       ModuleContactBannerDocument,
       ModuleContactBannerDocumentData,
       ModuleContactBannerDocumentDataSlicesSlice,
