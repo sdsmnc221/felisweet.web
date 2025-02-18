@@ -975,13 +975,13 @@
           v-for="item of data.socialMedia"
           :key="item.title"
           class="link"
-          :class="{ qr: isQR(item) }"
+          :class="{ qr: isLinkstree(item) }"
           :href="item.link.url"
           :target="item.link.target"
         >
           <bubble-image
             :src="item.icon.filename"
-            :size="isQR(item) ? 72 : $store.state.isMobile ? 32 : 50"
+            :size="isLinkstree(item) ? 72 : $store.state.isMobile ? 32 : 50"
           />
         </a>
       </div>
@@ -1094,8 +1094,8 @@ export default {
       .to(this.$refs.title.children[1], { opacity: 0, duration: 2.8 }, 8.6)
   },
   methods: {
-    isQR(item) {
-      return item.title.includes('QR')
+    isLinkstree(item) {
+      return item.title.includes('Linkstree')
     },
   },
 }
@@ -1439,10 +1439,10 @@ export default {
             right: 6%;
             bottom: auto;
             left: auto;
-            transform: rotate(24deg) scale(0.72);
+            transform: rotate(-30deg);
 
             .atom-image {
-              width: 100%;
+              width: 132%;
             }
           }
         }
@@ -1555,10 +1555,10 @@ export default {
           &.qr {
             top: -2%;
             right: 6%;
-            transform: rotate(0) scale(1);
+            transform: rotate(-30deg);
 
             .atom-image {
-              width: 100%;
+              width: 132%;
             }
           }
         }
