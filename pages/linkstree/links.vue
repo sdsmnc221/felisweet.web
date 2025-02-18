@@ -67,12 +67,13 @@ export default {
 
   &__content {
     position: absolute;
-    bottom: 32px;
+    bottom: 0;
+    height: 50vh;
     width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: flex-start;
+    justify-content: space-around;
   }
 
   &__title {
