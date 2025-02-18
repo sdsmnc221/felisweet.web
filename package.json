@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "nuxt2",
     "build": "cp -r xp/. static && nuxt2 build",
-    "xp-story2023": "cp -r xp/. static && cp -r xp/story-2023/. static && rm static/index.html && nuxt2 generate",
+    "xp-story2023": "cp -r xp/. static && cp -r xp/story-2023/. static && rm static/index.html && nuxt2 generate && nuxt2 build",
     "start": "nuxt2 start",
     "generate": "nuxt2 generate",
     "lint:js": "eslint --ext \".js,.vue\" --ignore-path .gitignore .",
