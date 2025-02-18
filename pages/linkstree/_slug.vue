@@ -163,6 +163,89 @@ export default {
   }
 
   @media #{$mq-medium} {
+    background: $color-jellybean-blue;
+
+    &__list {
+      left: 40vw;
+      width: 60vw;
+      top: 50%;
+      transform: translateY(-50%);
+
+      li {
+        @include rem(margin, $spacing-3xl 0);
+        position: relative;
+
+        a {
+          color: $color-link-water !important;
+
+          @include rem(font-size, $font-size-heading-3);
+        }
+
+        &::after {
+          left: 0;
+          width: 200%;
+          height: 1px;
+          background: $color-service-blue;
+        }
+
+        &:hover {
+          a {
+            color: $color-white !important;
+          }
+
+          &::after {
+            height: 10px;
+            bottom: -16px;
+          }
+        }
+      }
+    }
+
+    &__content {
+      top: 10vh;
+      width: 100%;
+
+      justify-content: center;
+    }
+
+    &__title {
+      @include rem(font-size, $font-size-heading-1);
+      @include rem(padding, $spacing-xl);
+
+      text-align: center;
+      color: $color-link-water;
+    }
+
+    &__description {
+      width: 80%;
+
+      * {
+        @include rem(font-size, $font-size-body-l);
+      }
+
+      @include rem(padding, $spacing-m);
+
+      background-color: transparentize(
+        $color: $color-outremer-blue,
+        $amount: 0.48
+      );
+    }
+
+    &__illustration {
+      height: 100vh;
+      overflow: hidden;
+      border-right: 10px solid $color-service-blue;
+      background: linear-gradient(180deg, $color-nepal-blue 0%, #9eb9b6 100%);
+
+      display: flex;
+      align-items: flex-end;
+
+      img {
+        width: auto;
+        max-width: 40vw;
+        height: 50vh;
+      }
+    }
   }
 
   @media #{$mq-xlarge} {
