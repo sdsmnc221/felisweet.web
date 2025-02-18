@@ -33,7 +33,7 @@ export default {
   },
   layout: 'linkstree',
   props: {},
-  async asyncData({ $prismic, error, params }) {
+  async asyncData({ $prismic, error }) {
     const document = await $prismic.api.getByUID('linkstreepage', 'links')
 
     const data = document?.data
@@ -68,7 +68,7 @@ export default {
   &__content {
     position: absolute;
     bottom: 32px;
-    height: 50vh;
+    height: 36vh;
     width: 100%;
     display: flex;
     flex-direction: column;
