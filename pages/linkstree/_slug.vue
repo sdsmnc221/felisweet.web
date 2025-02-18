@@ -38,9 +38,6 @@ export default {
 
     const data = document?.data
 
-    // eslint-disable-next-line no-console
-    console.log(data)
-
     if (data) {
       return {
         pageTitle: data.pagetitle,
