@@ -71,11 +71,12 @@ export default {
   &__content {
     position: absolute;
     bottom: 32px;
-    height: 40vh;
+    height: 50vh;
+    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-between;
+    justify-content: flex-start;
   }
 
   &__title {
@@ -109,7 +110,10 @@ export default {
 
   &__list {
     position: absolute;
-    top: 16px;
+    top: 32px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 72vw;
 
     @include rem(padding, $spacing-m $spacing-xl);
     list-style: none;
@@ -159,6 +163,87 @@ export default {
       display: block;
       width: 100vw;
       height: auto;
+    }
+  }
+
+  @media (orientation: landscape) {
+    background: $color-jellybean-blue;
+
+    &__list {
+      left: 40vw;
+      width: 60vw;
+      top: 50%;
+      transform: translateY(-50%);
+
+      li {
+        position: relative;
+
+        a {
+          color: $color-link-water !important;
+        }
+
+        &::after {
+          left: 0;
+          width: 200%;
+          height: 1px;
+          background: $color-service-blue;
+        }
+
+        &:hover {
+          a {
+            color: $color-white !important;
+          }
+
+          &::after {
+            height: 10px;
+            bottom: -16px;
+          }
+        }
+      }
+    }
+
+    &__content {
+      top: 10vh;
+      width: 100%;
+
+      justify-content: center;
+    }
+
+    &__title {
+      text-align: center;
+      color: $color-link-water;
+      @include rem(font-size, $font-size-body-l);
+    }
+
+    &__description {
+      width: 80%;
+
+      background-color: transparentize(
+        $color: $color-outremer-blue,
+        $amount: 0.48
+      );
+
+      @include rem(padding, 10px);
+
+      * {
+        @include rem(font-size, $font-size-body-xxs);
+      }
+    }
+
+    &__illustration {
+      height: 100vh;
+      overflow: hidden;
+      border-right: 10px solid $color-service-blue;
+      background: linear-gradient(180deg, $color-nepal-blue 0%, #9eb9b6 100%);
+
+      display: flex;
+      align-items: flex-end;
+
+      img {
+        width: auto;
+        max-width: 40vw;
+        height: 50vh;
+      }
     }
   }
 
@@ -248,7 +333,30 @@ export default {
     }
   }
 
-  @media #{$mq-xlarge} {
+  @media #{$mq-tablet} {
+    &__content {
+      top: -4.8vh;
+    }
+
+    &__title {
+      @include rem(font-size, $font-size-heading-2);
+    }
+
+    &__description {
+      width: 72vw;
+
+      * {
+        @include rem(font-size, $font-size-body-l);
+      }
+    }
+
+    &__list {
+      li {
+        a {
+          @include rem(font-size, $font-size-heading-4);
+        }
+      }
+    }
   }
 }
 </style>
