@@ -158,6 +158,8 @@ export default {
         ]
         break
       default:
+        head.title = 'Bienvenue !'
+
         break
     }
 
