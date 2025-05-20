@@ -2,6 +2,12 @@ export default {
   // Target: https://go.nuxtjs.dev/config-target
   target: 'server',
 
+  // Server configuration for better Vercel compatibility
+  server: {
+    port: process.env.PORT || 3000,
+    host: '0.0.0.0',
+  },
+
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
     titleTemplate: `Comportementaliste & Cat-sitter à Sainte-Geneviève-des-Bois : %s`,
