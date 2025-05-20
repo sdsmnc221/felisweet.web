@@ -8,8 +8,8 @@
         "serverFiles": [
           "server-middleware/**",
           "middleware/**",
-          "api/**",
-          "plugins/**/*.server.js"
+          "plugins/**",
+          "api/**"
         ],
         "tscOptions": {
           "sourceMap": true
