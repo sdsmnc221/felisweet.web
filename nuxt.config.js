@@ -1,10 +1,6 @@
-import { defineNuxtConfig } from '@nuxt/bridge'
-
-export default defineNuxtConfig({
-  bridge: false,
-
+export default {
   // Target: https://go.nuxtjs.dev/config-target
-  target: 'static',
+  target: 'server',
 
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
@@ -108,4 +104,4 @@ export default defineNuxtConfig({
     chachouBibleEmbed: process.env.CHACHOU_BIBLE_EMBED,
     projectLaPuce: process.env.PROJECT_LAPUCE,
   },
-})
+}
