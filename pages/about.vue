@@ -1,22 +1,17 @@
 // pages/about.vue - Optimized version with multiple scroll reveals
 <template>
   <atom-wrapper tag="main">
-    <!-- Keep multiple ScrollRevealWrapper instances but with performance optimization -->
-    <scroll-reveal-wrapper
+    <atom-wrapper
+      tag="section"
       v-for="(slice, index) in slices"
       :key="`slice-about${index}`"
-      :top="200"
-      :delay="index * 100"
-      :cleanup-on-exit="true"
     >
-      <atom-wrapper tag="section">
-        <component
-          :is="getComponent(slice.type)"
-          :data="slice.data"
-          :ref="`component-${index}`"
-        />
-      </atom-wrapper>
-    </scroll-reveal-wrapper>
+      <component
+        :is="getComponent(slice.type)"
+        :data="slice.data"
+        :ref="`component-${index}`"
+      />
+    </atom-wrapper>
 
     <paws-pattern :paws-per-section="4" />
   </atom-wrapper>
@@ -67,6 +62,11 @@ export default {
     }
   },
   mounted() {
+    this.$gsap.set([...document.querySelectorAll('section')], {
+      autoAlpha: 0,
+      y: 50,
+    })
+
     this.setupPerformanceOptimizations()
   },
   beforeDestroy() {
@@ -137,8 +137,33 @@ export default {
             const section = entry.target
             const isVisible = entry.isIntersecting
 
-            // Pause/resume animations based on visibility
-            this.toggleSectionAnimations(section, isVisible)
+            // Only animate when coming into view, not when going out of view
+            if (isVisible) {
+              this.$gsap.to(section, {
+                autoAlpha: 1,
+                y: 0,
+                ease: 'sine.out',
+                duration: 0.8,
+              })
+              this.$gsap.fromTo(
+                [...section.querySelectorAll('.atom-wrapper')],
+                {
+                  autoAlpha: 0,
+                  y: 50,
+                },
+                {
+                  autoAlpha: 1,
+                  y: 0,
+                  ease: 'sine.out',
+                  duration: 0.8,
+                  delay: 0.4,
+                }
+              )
+
+              // Once animated in, stop observing this section to prevent fade-out
+              this.intersectionObserver.unobserve(section)
+            }
+            // Remove the else clause that was causing fade-out behavior
           })
         },
         {
@@ -161,21 +186,6 @@ export default {
       }, 60000) // Every minute
     },
 
-    toggleSectionAnimations(section, isVisible) {
-      // Find GSAP animations in this section and pause/resume them
-      const elements = section.querySelectorAll('*')
-      elements.forEach((element) => {
-        const tweens = this.$gsap.getTweensOf(element)
-        tweens.forEach((tween) => {
-          if (isVisible) {
-            tween.resume()
-          } else {
-            tween.pause()
-          }
-        })
-      })
-    },
-
     performMemoryCleanup() {
       // Check memory usage if available
       if (performance.memory) {
@@ -191,21 +201,20 @@ export default {
     },
 
     cleanupNonVisibleAnimations() {
-      const sections = this.$el.querySelectorAll('section')
-      sections.forEach((section) => {
-        const rect = section.getBoundingClientRect()
-        const isVisible =
-          rect.top < window.innerHeight + 200 && rect.bottom > -200
-
-        if (!isVisible) {
-          // Kill animations for non-visible sections
-          const elements = section.querySelectorAll('*')
-          elements.forEach((element) => {
-            const tweens = this.$gsap.getTweensOf(element)
-            tweens.forEach((tween) => tween.kill())
-          })
-        }
-      })
+      // const sections = this.$el.querySelectorAll('section')
+      // sections.forEach((section) => {
+      //   const rect = section.getBoundingClientRect()
+      //   const isVisible =
+      //     rect.top < window.innerHeight + 200 && rect.bottom > -200
+      //   if (!isVisible) {
+      //     // Kill animations for non-visible sections
+      //     const elements = section.querySelectorAll('*')
+      //     elements.forEach((element) => {
+      //       const tweens = this.$gsap.getTweensOf(element)
+      //       tweens.forEach((tween) => tween.kill())
+      //     })
+      //   }
+      // })
     },
 
     cleanup() {
@@ -215,18 +224,18 @@ export default {
         this.intersectionObserver = null
       }
 
-      // Clear memory cleanup interval
-      if (this.memoryCleanupInterval) {
-        clearInterval(this.memoryCleanupInterval)
-        this.memoryCleanupInterval = null
-      }
+      // // Clear memory cleanup interval
+      // if (this.memoryCleanupInterval) {
+      //   clearInterval(this.memoryCleanupInterval)
+      //   this.memoryCleanupInterval = null
+      // }
 
-      // Cleanup all GSAP animations
-      this.$gsap.killTweensOf('*')
+      // // Cleanup all GSAP animations
+      // this.$gsap.killTweensOf('*')
 
-      if (this.$gsap.ScrollTrigger) {
-        this.$gsap.ScrollTrigger.killAll()
-      }
+      // if (this.$gsap.ScrollTrigger) {
+      //   this.$gsap.ScrollTrigger.killAll()
+      // }
     },
   },
 }
