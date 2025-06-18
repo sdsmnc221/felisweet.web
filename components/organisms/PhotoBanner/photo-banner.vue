@@ -139,7 +139,7 @@ export default {
         letter-spacing: -0.64rem;
 
         &.--small {
-          @include rem(font-size, calc($font-size-heading-1 * 2.4));
+          @include rem(font-size, calc($font-size-heading-1 * 2));
           @include rem(line-height, calc($font-size-heading-1 * 1.6));
           letter-spacing: -0.48rem;
           text-align: center;

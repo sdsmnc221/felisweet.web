@@ -1,10 +1,12 @@
-import { defineNuxtConfig } from '@nuxt/bridge'
-
-export default defineNuxtConfig({
-  bridge: false,
-
+export default {
   // Target: https://go.nuxtjs.dev/config-target
-  target: 'static',
+  target: 'server',
+
+  // Server configuration for better Vercel compatibility
+  server: {
+    port: process.env.PORT || 3000,
+    host: '0.0.0.0',
+  },
 
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
@@ -52,6 +54,7 @@ export default defineNuxtConfig({
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
+    { src: '~/plugins/node-fetch-polyfill.js', mode: 'server' },
     '~/plugins/gsap.js',
     '~/plugins/inlinesvg.js',
     '~/plugins/prismic/enhanced-link-serializer',
@@ -108,4 +111,4 @@ export default defineNuxtConfig({
     chachouBibleEmbed: process.env.CHACHOU_BIBLE_EMBED,
     projectLaPuce: process.env.PROJECT_LAPUCE,
   },
-})
+}
