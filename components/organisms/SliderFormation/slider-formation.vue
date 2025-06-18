@@ -217,6 +217,8 @@ export default {
   data() {
     return {
       activeIndex: 0,
+      animations: [], // Store animation references
+      isVisible: true,
     }
   },
   computed: {
@@ -229,40 +231,112 @@ export default {
     },
   },
   mounted() {
-    const refs = this.$refs.svg
-    this.$gsap
-      .timeline()
-      .addLabel('start', 0)
-      .to(
-        refs.map((ref) => ref.querySelector('#Tail')),
-        {
-          skewX: 'random(-16, 16)',
-          skewY: 'random(-16, 16)',
-          repeat: -1,
-          repeatRefresh: true,
-          yoyo: true,
-          duration: 0.8,
-          stagger: 0.2,
-          ease: 'circ.in',
-        },
-        'start'
-      )
-      .to(
-        [...refs.map((ref) => ref.querySelectorAll('[id^=Whisker]'))],
-        {
-          skewX: 'random(-16, 16)',
-          skewY: 'random(-16, 16)',
-          rotate: 'random(-32, 32)',
-          repeat: -1,
-          repeatRefresh: true,
-          yoyo: true,
-          duration: 0.6,
-          ease: 'circ.in',
-        },
-        'start'
-      )
+    this.initAnimations()
+
+    // Set up intersection observer to pause animations when not visible
+    this.setupVisibilityObserver()
+  },
+  beforeDestroy() {
+    this.cleanup()
   },
   methods: {
+    initAnimations() {
+      const refs = this.$refs.svg
+      if (!refs) return
+
+      const mainTimeline = this.$gsap.timeline()
+
+      // Store reference for cleanup
+      this.animations.push(mainTimeline)
+
+      mainTimeline
+        .addLabel('start', 0)
+        .to(
+          refs.map((ref) => ref.querySelector('#Tail')),
+          {
+            skewX: 'random(-16, 16)',
+            skewY: 'random(-16, 16)',
+            repeat: -1,
+            repeatRefresh: true,
+            yoyo: true,
+            duration: 0.8,
+            stagger: 0.2,
+            ease: 'circ.in',
+            paused: !this.isVisible, // Start paused if not visible
+          },
+          'start'
+        )
+        .to(
+          [...refs.map((ref) => ref.querySelectorAll('[id^=Whisker]'))],
+          {
+            skewX: 'random(-16, 16)',
+            skewY: 'random(-16, 16)',
+            rotate: 'random(-32, 32)',
+            repeat: -1,
+            repeatRefresh: true,
+            yoyo: true,
+            duration: 0.6,
+            ease: 'circ.in',
+            paused: !this.isVisible, // Start paused if not visible
+          },
+          'start'
+        )
+    },
+
+    setupVisibilityObserver() {
+      if (!window.IntersectionObserver) return
+
+      this.observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            this.isVisible = entry.isIntersecting
+
+            // Pause/resume animations based on visibility
+            this.animations.forEach((animation) => {
+              if (this.isVisible) {
+                animation.resume()
+              } else {
+                animation.pause()
+              }
+            })
+          })
+        },
+        { threshold: 0.1 }
+      )
+
+      this.observer.observe(this.$el)
+    },
+
+    cleanup() {
+      // Kill all animations
+      this.animations.forEach((animation) => {
+        if (animation) {
+          animation.kill()
+        }
+      })
+      this.animations = []
+
+      // Disconnect observer
+      if (this.observer) {
+        this.observer.disconnect()
+        this.observer = null
+      }
+
+      // Clear props on SVG elements
+      const refs = this.$refs.svg
+      if (refs) {
+        refs.forEach((ref) => {
+          const tail = ref.querySelector('#Tail')
+          const whiskers = ref.querySelectorAll('[id^=Whisker]')
+
+          if (tail) this.$gsap.set(tail, { clearProps: 'all' })
+          whiskers.forEach((whisker) =>
+            this.$gsap.set(whisker, { clearProps: 'all' })
+          )
+        })
+      }
+    },
+
     prev() {
       this.activeIndex =
         this.activeIndex > 0
