@@ -1,10 +1,16 @@
-// pages/about.vue - Optimized version with multiple scroll reveals
+// pages/about.vue - Enhanced version with debugging and error handling
 <template>
   <atom-wrapper tag="main">
+    <!-- Loading indicator for debugging -->
+    <div v-if="isLoading" class="debug-loader">
+      <p>Loading about page... {{ loadingStep }}</p>
+    </div>
+
     <atom-wrapper
       tag="section"
       v-for="(slice, index) in slices"
       :key="`slice-about${index}`"
+      v-show="!isLoading"
     >
       <component
         :is="getComponent(slice.type)"
@@ -13,7 +19,7 @@
       />
     </atom-wrapper>
 
-    <paws-pattern :paws-per-section="4" />
+    <paws-pattern :paws-per-section="4" v-show="!isLoading" />
   </atom-wrapper>
 </template>
 
@@ -54,70 +60,151 @@ export default {
       default: null,
     },
   },
-  data() {
-    return {
-      slices: [],
-      scrollRevealInstances: [], // Track instances for cleanup
-      intersectionObserver: null,
-    }
-  },
-  mounted() {
-    this.$gsap.set([...document.querySelectorAll('section')], {
-      autoAlpha: 0,
-      y: 50,
-    })
-
-    this.setupPerformanceOptimizations()
-  },
-  beforeDestroy() {
-    this.cleanup()
-  },
   async asyncData({ $prismic, $enhancedLinkSerializer, error }) {
+    const startTime = Date.now()
+    console.log('About page asyncData started')
+
     try {
       const document = await $prismic.api.getSingle('about_page')
+
       const data = document?.data
 
+      console.log('About page data loaded in', Date.now() - startTime, 'ms')
+
       if (!data) {
+        console.error('No data found for about page')
         error({ statusCode: 404, message: 'Page not found' })
         return
       }
 
-      // Optimize adapter processing with lazy loading for non-critical slices
-      const slices = data.slices.map((slice, index) => {
+      // Process slices with error handling for each adapter
+      const slices = []
+
+      for (let i = 0; i < data.slices.length; i++) {
+        const slice = data.slices[i]
         const { slice_type: type } = slice
-        let adaptedData = {}
 
-        // Use object lookup instead of switch for better performance
-        const adapters = {
-          about_title_block: () => aboutTitleAdapter($prismic, slice),
-          rect_text_block: () => rectTextAdapter($prismic, slice),
-          round_text_block: () => roundTextAdapter($prismic, slice),
-          formation: () => sliderFormationAdapter($prismic, slice),
-          about_contact: () =>
-            aboutContactAdapter($prismic, $enhancedLinkSerializer, slice),
+        try {
+          let adaptedData = {}
+
+          const adapters = {
+            about_title_block: () => aboutTitleAdapter($prismic, slice),
+            rect_text_block: () => rectTextAdapter($prismic, slice),
+            round_text_block: () => roundTextAdapter($prismic, slice),
+            formation: () => sliderFormationAdapter($prismic, slice),
+            about_contact: () =>
+              aboutContactAdapter($prismic, $enhancedLinkSerializer, slice),
+          }
+
+          if (adapters[type]) {
+            adaptedData = await adapters[type]()
+          } else {
+            console.warn(`Unknown slice type: ${type}`)
+          }
+
+          slices.push({
+            type,
+            data: adaptedData,
+            index: i,
+            priority: i < 3 ? 'high' : 'low',
+          })
+        } catch (adapterError) {
+          console.error(`Error processing slice ${i} (${type}):`, adapterError)
+          // Continue with other slices instead of failing completely
         }
+      }
 
-        if (adapters[type]) {
-          adaptedData = adapters[type]()
-        }
-
-        return {
-          type,
-          data: adaptedData,
-          index,
-          priority: index < 3 ? 'high' : 'low', // First 3 sections are high priority
-        }
-      })
-
+      console.log(
+        'About page asyncData completed in',
+        Date.now() - startTime,
+        'ms'
+      )
       return { slices }
     } catch (err) {
       console.error('Error loading about page:', err)
-      error({ statusCode: 500, message: 'Server error' })
+
+      // Provide fallback data instead of hard error
+      if (err.message === 'API call timeout') {
+        error({
+          statusCode: 408,
+          message: 'Request timeout - please try again',
+        })
+      } else {
+        error({ statusCode: 500, message: 'Server error' })
+      }
     }
   },
+  data() {
+    return {
+      slices: [],
+      scrollRevealInstances: [],
+      intersectionObserver: null,
+      isLoading: true,
+      loadingStep: 'Initializing...',
+      loadingTimeout: null,
+    }
+  },
+  mounted() {
+    console.log('About page mounted')
+    this.loadingStep = 'Setting up animations...'
+
+    // Use a more appropriate timing mechanism for mounted hook
+    this.loadingTimeout = this.createSafetyTimeout()
+
+    this.$nextTick(() => {
+      this.setupInitialAnimations()
+      this.setupPerformanceOptimizations()
+      this.loadingStep = 'Ready'
+      this.isLoading = false
+
+      // Clear timeout since we completed successfully
+      if (this.loadingTimeout) {
+        clearTimeout(this.loadingTimeout)
+        this.loadingTimeout = null
+      }
+    })
+  },
+  beforeDestroy() {
+    this.cleanup()
+  },
   methods: {
+    createSafetyTimeout() {
+      // Create safety timeout in a separate method to avoid timing issues
+      return setTimeout(() => {
+        console.error('About page loading timeout - forcing completion')
+        this.forceLoadingComplete()
+      }, 10000) // 10 second timeout
+    },
+
+    forceLoadingComplete() {
+      this.isLoading = false
+      this.loadingStep = 'Completed (forced)'
+
+      // Ensure animations are set up even if there was an error
+      this.$nextTick(() => {
+        this.setupInitialAnimations()
+        this.setupPerformanceOptimizations()
+      })
+    },
+
+    setupInitialAnimations() {
+      try {
+        // Only set up animations if GSAP is available and elements exist
+        if (this.$gsap && this.$el) {
+          const sections = this.$el.querySelectorAll('section')
+          if (sections.length > 0) {
+            this.$gsap.set(sections, {
+              autoAlpha: 0,
+              y: 50,
+            })
+          }
+        }
+      } catch (animationError) {
+        console.error('Error setting up initial animations:', animationError)
+      }
+    },
+
     getComponent(sliceType) {
-      // Use object lookup for better performance
       const components = {
         about_title_block: AboutTitleBlock,
         rect_text_block: RectTextBlock,
@@ -130,112 +217,101 @@ export default {
     },
 
     setupPerformanceOptimizations() {
-      // Setup intersection observer to track visible sections
-      this.intersectionObserver = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            const section = entry.target
-            const isVisible = entry.isIntersecting
+      try {
+        // Check if IntersectionObserver is supported
+        if (typeof IntersectionObserver === 'undefined') {
+          console.warn(
+            'IntersectionObserver not supported, skipping scroll animations'
+          )
+          return
+        }
 
-            // Only animate when coming into view, not when going out of view
-            if (isVisible) {
-              this.$gsap.to(section, {
-                autoAlpha: 1,
-                y: 0,
-                ease: 'sine.out',
-                duration: 0.8,
-              })
-              this.$gsap.fromTo(
-                [...section.querySelectorAll('.atom-wrapper')],
-                {
-                  autoAlpha: 0,
-                  y: 50,
-                },
-                {
+        this.intersectionObserver = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              const section = entry.target
+              const isVisible = entry.isIntersecting
+
+              if (isVisible && this.$gsap) {
+                this.$gsap.to(section, {
                   autoAlpha: 1,
                   y: 0,
                   ease: 'sine.out',
                   duration: 0.8,
-                  delay: 0.4,
+                })
+
+                const wrappers = section.querySelectorAll('.atom-wrapper')
+                if (wrappers.length > 0) {
+                  this.$gsap.fromTo(
+                    wrappers,
+                    {
+                      autoAlpha: 0,
+                      y: 50,
+                    },
+                    {
+                      autoAlpha: 1,
+                      y: 0,
+                      ease: 'sine.out',
+                      duration: 0.8,
+                      delay: 0.4,
+                    }
+                  )
                 }
-              )
 
-              // Once animated in, stop observing this section to prevent fade-out
-              this.intersectionObserver.unobserve(section)
-            }
-            // Remove the else clause that was causing fade-out behavior
-          })
-        },
-        {
-          threshold: 0.1,
-          rootMargin: '100px', // Start animations slightly before element comes into view
-        }
-      )
+                this.intersectionObserver.unobserve(section)
+              }
+            })
+          },
+          {
+            threshold: 0.1,
+            rootMargin: '100px',
+          }
+        )
 
-      // Observe all sections after next tick
-      this.$nextTick(() => {
-        const sections = this.$el.querySelectorAll('section')
-        sections.forEach((section) => {
-          this.intersectionObserver.observe(section)
+        this.$nextTick(() => {
+          if (this.$el) {
+            const sections = this.$el.querySelectorAll('section')
+            sections.forEach((section) => {
+              this.intersectionObserver.observe(section)
+            })
+          }
         })
-      })
-
-      // Memory cleanup interval
-      this.memoryCleanupInterval = setInterval(() => {
-        this.performMemoryCleanup()
-      }, 60000) // Every minute
-    },
-
-    performMemoryCleanup() {
-      // Check memory usage if available
-      if (performance.memory) {
-        const usedMB = performance.memory.usedJSHeapSize / 1024 / 1024
-        console.log(`Memory usage: ${usedMB.toFixed(2)}MB`)
-
-        // If memory usage is high, cleanup non-visible animations
-        if (usedMB > 150) {
-          // 150MB threshold
-          this.cleanupNonVisibleAnimations()
-        }
+      } catch (observerError) {
+        console.error(
+          'Error setting up performance optimizations:',
+          observerError
+        )
       }
     },
 
-    cleanupNonVisibleAnimations() {
-      // const sections = this.$el.querySelectorAll('section')
-      // sections.forEach((section) => {
-      //   const rect = section.getBoundingClientRect()
-      //   const isVisible =
-      //     rect.top < window.innerHeight + 200 && rect.bottom > -200
-      //   if (!isVisible) {
-      //     // Kill animations for non-visible sections
-      //     const elements = section.querySelectorAll('*')
-      //     elements.forEach((element) => {
-      //       const tweens = this.$gsap.getTweensOf(element)
-      //       tweens.forEach((tween) => tween.kill())
-      //     })
-      //   }
-      // })
-    },
-
     cleanup() {
+      console.log('About page cleanup started')
+
+      // Clear loading timeout
+      if (this.loadingTimeout) {
+        clearTimeout(this.loadingTimeout)
+        this.loadingTimeout = null
+      }
+
       // Disconnect intersection observer
       if (this.intersectionObserver) {
         this.intersectionObserver.disconnect()
         this.intersectionObserver = null
       }
 
-      // // Clear memory cleanup interval
-      // if (this.memoryCleanupInterval) {
-      //   clearInterval(this.memoryCleanupInterval)
-      //   this.memoryCleanupInterval = null
-      // }
+      // Cleanup GSAP animations more carefully
+      try {
+        if (this.$gsap && this.$el) {
+          const elements = this.$el.querySelectorAll('*')
+          elements.forEach((element) => {
+            this.$gsap.killTweensOf(element)
+          })
+        }
+      } catch (cleanupError) {
+        console.error('Error during cleanup:', cleanupError)
+      }
 
-      // // Cleanup all GSAP animations
-      // this.$gsap.killTweensOf('*')
-
-      // if (this.$gsap.ScrollTrigger) {
-      //   this.$gsap.ScrollTrigger.killAll()
-      // }
+      console.log('About page cleanup completed')
     },
   },
 }
@@ -250,13 +326,27 @@ main {
     @include rem(margin-top, $spacing-5xl);
   }
 
+  .debug-loader {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(255, 255, 255, 0.9);
+    padding: 20px;
+    border-radius: 8px;
+    z-index: 1000;
+
+    p {
+      margin: 0;
+      font-size: 14px;
+      color: #333;
+    }
+  }
+
   @media #{$mq-medium} {
     img.-with-border {
       top: $spacing-2xl;
     }
-  }
-
-  @media #{$mq-xlarge} {
   }
 }
 </style>

@@ -68,11 +68,16 @@ export default {
     SiteFooter,
     SiteHeader,
     PopUp,
-
     PageLoader,
     NoelPageLoader,
     NoelSnow,
     NoelRotateScreen,
+  },
+  data() {
+    return {
+      pageLoadTimeout: null,
+      maxLoadingTime: 30000, // 30 seconds max loading time
+    }
   },
   async middleware({ store, $prismic }) {
     await store.dispatch('fetchFooter', $prismic)
@@ -110,7 +115,7 @@ export default {
             hid: 'description-comportementaliste_felin',
             name: 'description',
             content:
-              'Les commportements félins - Quelles sont les missions d’un.e comportementaliste félin.e chez FeliSweet ?',
+              "Les commportements félins - Quelles sont les missions d'un.e comportementaliste félin.e chez FeliSweet ?",
           },
         ]
         break
@@ -159,25 +164,27 @@ export default {
         break
       default:
         head.title = 'Bienvenue !'
-
         break
     }
 
     return head
   },
+  watch: {
+    $route() {
+      // Reset loading state when route changes
+      this.handleRouteChange()
+    },
+  },
   mounted() {
-    if (this.$route.name !== 'noel2022') {
-      setTimeout(
-        () => this.$store.dispatch('setLoading', { loading: false }),
-        1200
-      )
-    }
+    console.log('Layout mounted for route:', this.$route.name)
+    this.handleRouteChange()
 
     this.$store.dispatch('detectMobile', { navigator: window.navigator })
     this.$store.dispatch('detectOrientation', {
       innerWidth: window.innerWidth,
       innerHeight: window.innerHeight,
     })
+
     window.addEventListener('resize', () => {
       this.$store.dispatch('detectMobile', { navigator: window.navigator })
       this.$store.dispatch('detectOrientation', {
@@ -186,13 +193,82 @@ export default {
       })
     })
   },
+  beforeDestroy() {
+    if (this.pageLoadTimeout) {
+      clearTimeout(this.pageLoadTimeout)
+    }
+  },
   methods: {
+    handleRouteChange() {
+      // Clear any existing timeout
+      if (this.pageLoadTimeout) {
+        clearTimeout(this.pageLoadTimeout)
+        this.pageLoadTimeout = null
+      }
+
+      // Set loading state
+      this.$store.dispatch('setLoading', { loading: true })
+
+      // Different handling for different routes
+      if (this.$route.name === 'noel2022') {
+        // Special handling for noel2022 page
+        return
+      }
+
+      // For about page and other heavy pages, use longer timeout
+      const loadingTimeout = this.$route.name === 'about' ? 5000 : 1200
+
+      // Set up timeout to force loading completion
+      this.pageLoadTimeout = setTimeout(() => {
+        console.warn('Page loading timeout reached, forcing completion')
+        this.$store.dispatch('setLoading', { loading: false })
+      }, loadingTimeout)
+
+      // Set up a safety timeout for really stuck pages
+      const safetyTimeout = setTimeout(() => {
+        console.error('Safety timeout reached - page may be stuck')
+        this.$store.dispatch('setLoading', { loading: false })
+
+        // Optionally show an error message or reload
+        if (this.$route.name === 'about') {
+          console.log('About page appears to be stuck, consider reloading')
+        }
+      }, this.maxLoadingTime)
+
+      // Listen for page load completion
+      this.$nextTick(() => {
+        // Check if the route component has finished loading
+        const checkComponentReady = () => {
+          const routeComponent = this.$children.find(
+            (child) => child.$options.name === 'AboutPage'
+          )
+
+          if (routeComponent && !routeComponent.isLoading) {
+            // Component is ready, clear timeouts and set loading to false
+            clearTimeout(this.pageLoadTimeout)
+            clearTimeout(safetyTimeout)
+            this.$store.dispatch('setLoading', { loading: false })
+          } else if (this.$route.name === 'about') {
+            // For about page, check again in a bit
+            setTimeout(checkComponentReady, 100)
+          } else {
+            // For other pages, use the original timeout
+            // This is already handled by the timeout above
+          }
+        }
+
+        // Start checking after a short delay
+        setTimeout(checkComponentReady, 100)
+      })
+    },
+
     openPopup() {
       this.$store.dispatch('openPopup', {
         popupContent: this.$store.state.footer.popupContentHTML.planning,
         popupType: 'planning',
       })
     },
+
     closePopup() {
       this.$store.dispatch('closePopup')
     },
@@ -270,9 +346,9 @@ export default {
   transform: translateY(-7.2vh);
 }
 
-.slide-enter-from,  /* Note: changed from fade-enter to fade-enter-from */
+.slide-enter-from,
 .slide-leave-to {
   opacity: 0;
-  transform: translateY(7.2vh); /* This makes it slide up from 20px below */
+  transform: translateY(7.2vh);
 }
 </style>

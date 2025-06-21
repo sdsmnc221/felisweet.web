@@ -121,8 +121,14 @@ export default {
 
         * {
           text-align: center;
-          font-weight: $weight-bold;
           font-size: $font-size-body-xl;
+        }
+
+        strong,
+        em {
+          font-weight: $weight-bold;
+          display: inline-block;
+          margin-bottom: $spacing-m;
         }
       }
     }
