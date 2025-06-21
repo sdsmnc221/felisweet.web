@@ -114,7 +114,7 @@ export default {
           })
         },
         {
-          threshold: -0.1,
+          threshold: this.$store.state.isMobile ? 0 : -0.1,
           rootMargin: '-100% 0px -100% 0px', // Only trigger when completely out of view
         }
       )

@@ -71,7 +71,7 @@
         </div>
 
         <div class="mobile-menu-illust">
-          <img :src="headerMobileIllus.url" alt="mobile-illus" />
+          <img :src="headerMobileIllus?.url || ''" alt="mobile-illus" />
         </div>
       </div>
     </atom-wrapper>

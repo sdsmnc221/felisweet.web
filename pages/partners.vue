@@ -1,5 +1,7 @@
 <template>
   <atom-wrapper tag="main">
+    <h1 class="banner__title">{{ pageTitle }}</h1>
+
     <scroll-reveal-wrapper :top="200">
       <partners-banner :data="slices[0].data"></partners-banner>
     </scroll-reveal-wrapper>
@@ -67,6 +69,9 @@ export default {
     const document = await $prismic.api.getSingle('partnerspage')
 
     const data = document?.data
+
+    const pageTitle = data?.page_title || 'Nos partenaires'
+
     delete data.page_title
 
     const getAdapter = (key, slice) => {
@@ -98,6 +103,7 @@ export default {
             ...getAdapter(key, slice),
           }
         }),
+        pageTitle,
       }
     } else {
       error({ statusCode: 404, message: 'Page not found' })
@@ -126,8 +132,33 @@ main {
   overflow: hidden;
   background: linear-gradient(180deg, #eef9ff 0%, #87bccf 100%);
 
+  position: relative;
+
   .scroll-reveal:first-of-type {
     @include rem(margin-top, $spacing-5xl);
+  }
+
+  .banner {
+    width: 100vw;
+    position: relative;
+
+    @include rem(margin-bottom, $spacing-3xl);
+
+    &__title {
+      z-index: 10;
+      position: absolute;
+      @include rem(font-size, calc($font-size-heading-2));
+      width: 100%;
+      text-align: center;
+      font-weight: bold;
+      color: $color-service-blue;
+      bottom: unset;
+      top: 44vh;
+      left: 50%;
+      transform: translateX(-50%);
+      text-shadow: -2px -2px 0 $color-white, 2px -2px 0 $color-white,
+        -2px 2px 0 $color-white, 2px 2px 0 $color-white;
+    }
   }
 
   .partners {
@@ -221,9 +252,61 @@ main {
         }
       }
     }
+
+    .banner {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      &__title {
+        @include rem(font-size, calc($font-size-heading-1 * 1.2));
+        @include rem(line-height, calc($font-size-heading-1 * 1.6));
+        letter-spacing: -0.24rem;
+        text-align: center;
+        margin-left: 48px;
+        top: 56vh;
+        left: 50%;
+      }
+
+      .bubble-description {
+        width: 16vw;
+        max-height: 80%;
+        position: absolute;
+        transform: none;
+        top: 12vh;
+        left: 20vw;
+        background-image: var(--bubble-desktop);
+        background-size: 92% auto;
+        margin: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transform: scale(0.8);
+
+        p {
+          color: $color-white;
+          @include rem(font-size, $font-size-body-l);
+          transform: rotate(4deg);
+        }
+      }
+    }
   }
 
   @media #{$mq-xlarge} {
+    .banner {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      &__title {
+        @include rem(font-size, calc($font-size-heading-1 * 2.2));
+        top: 52vh;
+        left: 50%;
+        letter-spacing: -0.64rem;
+      }
+    }
   }
 }
 </style>

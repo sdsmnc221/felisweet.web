@@ -1,7 +1,11 @@
 <template>
   <atom-wrapper tag="section" class="partners-banner">
     <div class="top-content">
-      <atom-image :src="data.filename" alt="Banner Partners" />
+      <atom-image
+        v-if="data.filename"
+        :src="data.filename"
+        alt="Banner Partners"
+      />
     </div>
   </atom-wrapper>
 </template>
