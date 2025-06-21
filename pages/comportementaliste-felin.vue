@@ -96,9 +96,14 @@ main {
 
   .--is-first-section {
     .service-info-block {
+      img.--has-margin-top {
+        width: 100vw;
+        height: auto;
+        object-fit: cover;
+      }
       .content {
         &.--has-margin-top {
-          margin-top: -32%;
+          margin-top: 10%;
         }
       }
     }

@@ -92,6 +92,7 @@ export default {
     display: block;
 
     .top-content {
+      position: relative;
       width: 100vw;
       height: 100vh;
 
@@ -104,7 +105,10 @@ export default {
       flex-direction: column;
 
       .atom-image {
-        width: 72vw;
+        position: absolute;
+        bottom: 10vh;
+        left: 0;
+        width: 100vw;
       }
 
       .text {
