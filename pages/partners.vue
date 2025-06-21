@@ -153,7 +153,7 @@ main {
       font-weight: bold;
       color: $color-service-blue;
       bottom: unset;
-      top: 44vh;
+      top: 38vh;
       left: 50%;
       transform: translateX(-50%);
       text-shadow: -2px -2px 0 $color-white, 2px -2px 0 $color-white,
