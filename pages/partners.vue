@@ -153,9 +153,9 @@ main {
       font-weight: bold;
       color: $color-service-blue;
       bottom: unset;
-      top: 38vh;
+      top: 16vh;
       left: 50%;
-      transform: translateX(-50%);
+      transform: translateX(-50%) rotate(-10deg);
       text-shadow: -2px -2px 0 $color-white, 2px -2px 0 $color-white,
         -2px 2px 0 $color-white, 2px 2px 0 $color-white;
     }
@@ -267,6 +267,7 @@ main {
         margin-left: 48px;
         top: 56vh;
         left: 50%;
+        transform: rotate(0) translateX(-50%);
       }
 
       .bubble-description {

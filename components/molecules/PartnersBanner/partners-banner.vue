@@ -35,7 +35,13 @@ export default {
   justify-content: center;
 
   img {
-    width: 160%;
+    width: 140%;
+  }
+
+  @media #{$mq-medium} {
+    img {
+      width: 160%;
+    }
   }
 }
 </style>
